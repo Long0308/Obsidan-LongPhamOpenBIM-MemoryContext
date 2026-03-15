@@ -1,0 +1,1 @@
+Conv 5: Built Memory Dashboard + Fixed GitHub PAT. Dashboard verified with live data. PAT updated to fine-grained token with repo access.
