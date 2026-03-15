@@ -51,6 +51,19 @@ openspec/changes/<name>/
 | Apply | → | [[Executing Plans]] |
 | Archive | → | [[Finishing Dev Branch]] |
 
+## 🎯 Coordinator
+
+| Command | Agent | Vai trò |
+|---------|-------|---------|
+| `/opsx:explore` | `project-planner` | Research, suy nghĩ yêu cầu |
+| `/opsx:propose` | `project-planner` + `security-auditor` | Design + security review |
+| `/opsx:apply` | `orchestrator` → multi-agent | Decompose tasks → dispatch |
+| `/opsx:archive` | `devops-engineer` | Merge, PR, cleanup |
+
+> **Routing rule:** `"openspec"` / `"propose"` / `"explore change"` → `project-planner`.
+> `"apply change"` → `orchestrator` (vì cross-domain).
+> `"archive"` → `devops-engineer`.
+
 ## Links
 
 - [[Antigravity Kit|← Antigravity Kit]]

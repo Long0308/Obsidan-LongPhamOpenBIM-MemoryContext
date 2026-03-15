@@ -49,6 +49,21 @@ graph LR
 | 12 | [[Finishing Dev Branch]] | 🚀 Ship | "merge", "PR" |
 | 13 | [[Git Worktrees]] | 🌳 Isolate | "worktree" |
 
+## 🎯 Coordinator
+
+| Phase | Agent | Skills |
+|-------|-------|--------|
+| 💡 Ideation | `project-planner` | Brainstorming, Writing Plans |
+| ⚡ Execution | `orchestrator` | Executing Plans, Subagent Driven Dev, Dispatching Parallel |
+| 👀 Review | `test-engineer` | Requesting/Receiving Code Review |
+| 🧪 Test | `test-engineer` | TDD Workflow, Test Driven Development |
+| 🐛 Debug | `debugger` | Systematic Debugging |
+| ✅ Ship | `devops-engineer` | Verification, Finishing Dev Branch, Git Worktrees |
+
+> **Routing rule:** `"brainstorm"` / `"plan"` → `project-planner`.
+> `"execute"` / `"implement"` → `orchestrator` → decompose & dispatch.
+> `"test"` / `"verify"` / `"debug"` → `test-engineer` / `debugger`.
+
 ## Meta Skills
 
 | Skill | Mô tả |

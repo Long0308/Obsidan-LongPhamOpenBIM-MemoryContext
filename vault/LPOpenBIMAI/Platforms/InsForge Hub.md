@@ -56,6 +56,19 @@ aliases:
 | Session Notes | [[session-2026-03-15-antigravity-LPOpenBIMAI]] |
 | E2E Guide | [[E2E-Setup-Guide]] |
 
+## 🎯 Coordinator
+
+| Vai trò | Agent | Khi nào |
+|---------|-------|---------|
+| **Lead** | `backend-specialist` | Mọi InsForge task |
+| **Schema** | `database-architect` | Table design, migrations, RLS |
+| **Security** | `security-auditor` | Auth flows, RLS policies, API keys |
+| **Test** | `test-engineer` | Sau mỗi DB/function change |
+
+> **Routing rule:** `"insforge"` / `"edge function"` / `"db query"` → `backend-specialist`.
+> `"schema"` / `"table"` / `"RLS"` → `database-architect`.
+> `"auth"` / `"login"` trên InsForge → `security-auditor` + `backend-specialist`.
+
 ## Links
 
 - [[Antigravity Kit|← Antigravity Kit]]

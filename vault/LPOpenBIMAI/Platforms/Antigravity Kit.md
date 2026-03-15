@@ -47,6 +47,28 @@ aliases:
 |---------|------|---------|
 | [[session-2026-03-15-antigravity-LPOpenBIMAI]] | 2026-03-15 | LPOpenBIMAI |
 
+## 🎯 Coordinator
+
+| Vai trò | Agent | Khi nào |
+|---------|-------|---------|
+| **Lead** | `orchestrator` | Multi-domain tasks, cross-platform |
+| **Planning** | `project-planner` | New features, roadmap |
+| **Discovery** | `explorer-agent` | Codebase mapping |
+
+> **Routing rule:** Nếu task chạm ≥2 platforms → `orchestrator` tự động coordinate.
+> Single-platform → route thẳng đến coordinator của platform đó.
+
+### Agent → Platform Routing
+
+| Agent | Platform chính |
+|-------|---------------|
+| `frontend-specialist` | [[UI Design Hub]] |
+| `backend-specialist` | [[InsForge Hub]] |
+| `mobile-developer` | [[UI Design Hub]] |
+| `security-auditor` | Cross-platform |
+| `test-engineer` | Cross-platform |
+| `debugger` | Cross-platform |
+
 ## Liên Kết Sinh Thái
 
 - [[Superpowers Hub]] — Dev workflow skills (từ ag-kit)

@@ -60,6 +60,20 @@ aliases:
 | [[Server Management]] | Server ops |
 | [[Documentation Templates]] | Docs structure |
 
+## 🎯 Coordinator
+
+| Vai trò | Agent | Khi nào |
+|---------|-------|---------|
+| **Web UI** | `frontend-specialist` | React, Next.js, Tailwind, components |
+| **Mobile UI** | `mobile-developer` | React Native, Flutter, iOS/Android |
+| **Quality** | `performance-optimizer` | Core Web Vitals, bundle size |
+| **Security** | `security-auditor` | XSS, CSRF, input validation |
+| **Testing** | `test-engineer` | Component tests, Playwright E2E |
+
+> **Routing rule:** `"UI"` / `"design"` / `"component"` / `"layout"` → `frontend-specialist`.
+> `"mobile"` / `"app"` / `"iOS"` / `"Android"` → `mobile-developer`.
+> `"performance"` / `"lighthouse"` → `performance-optimizer`.
+
 ## Links
 
 - [[Antigravity Kit|← Antigravity Kit]]

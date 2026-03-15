@@ -44,6 +44,17 @@ aliases:
 | [[Agent-Swarm.canvas]] | Skill map visual |
 | [[Memory-Graph.canvas]] | Memory system graph |
 
+## 🎯 Coordinator
+
+| Vai trò | Agent | Khi nào |
+|---------|-------|---------|
+| **Lead** | `explorer-agent` | Vault navigation, file discovery |
+| **Content** | `documentation-writer` | Note creation, templates |
+| **Quality** | `frontend-specialist` | Canvas layout, visual structure |
+
+> **Routing rule:** `"obsidian"` / `"vault"` / `"note"` / `"canvas"` → `explorer-agent`.
+> `"viết note"` / `"tạo doc"` → `documentation-writer`.
+
 ## Links
 
 - [[Antigravity Kit|← Antigravity Kit]]
