@@ -82,16 +82,37 @@ platform: insforge
 | Function | memory-gateway (active) |
 | URL | https://4ian5xm8.functions.insforge.app |
 
-## Auto-Memory Status
+### Phase 7: Auto-Memory System Deployed ✅
 
-> [!warning] Chưa tự động
-> Memory hiện hoạt động **thủ công**. Cần implement:
-> 1. **End-of-session hook** — tự lưu khi prompt cuối cùng
-> 2. **Obsidian template** — template cho session notes với naming convention
-> 3. **Edge function trigger** — gọi memory-gateway API tự động
+| # | Component | File/Location | Status |
+|---|-----------|---------------|--------|
+| 1 | 🔒 **GitHub Repo** (private) | [Long0308/Obsidan-LongPhamOpenBIM-MemoryContext](https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext) | ✅ Active |
+| 2 | 🔑 **Insforge Secrets** | `GITHUB_PAT`, `GITHUB_OWNER`, `GITHUB_REPO` (encrypted) | ✅ Stored |
+| 3 | ⚡ **Memory Gateway v2** | `insforge/functions/memory-gateway/index.ts` | ⏳ Code ready, v1 running |
+| 4 | ⏰ **Cron Schedule** | Insforge Cron: `0 */2 * * *` (ID: `c86c044a`) | ✅ Active (next: 3:00 PM) |
+| 5 | 📘 **Auto-Memory Skill** | [[Auto Memory]] → `.agent/skills/auto-memory/SKILL.md` | ✅ Created |
+| 6 | ⚙️ **Obsidian Config** | [[memory-config]] → `Agent-Memory/memory-config.md` | ✅ Editable |
+| 7 | 📊 **Context Monitor** | Trong SKILL.md: 60%→warn, 80%→save, 95%→new session | ✅ Defined |
+
+### Edge Function Endpoints (v2)
+
+| Method | Path | Mô tả |
+|--------|------|-------|
+| GET | `/health` | Health check + table counts |
+| POST | `/save-session` | Lưu session → DB + GitHub push |
+| GET | `/sessions` | List sessions theo project/IDE |
+| GET | `/context-stats` | Memory stats + recent syncs |
+| POST | `/sync-github` | Cron snapshot → GitHub |
+
+## Auto-Memory Config
+
+> [!tip] Chỉnh trực tiếp
+> Mở [[memory-config]] trong Obsidian để thay đổi sync interval, thresholds, etc.
 
 ## Links
 
 - [[AGENT_SWARM|MOC]]
 - [[E2E-Guide|E2E Guide]]
 - [[System-Guide|Plugin Usage Guide]]
+- [[Auto Memory|Auto-Memory Skill]]
+- [[memory-config|Memory Config]]
