@@ -1,7 +1,49 @@
 {
-  "timestamp": "2026-03-15T14:39:59.533Z",
-  "count": 44,
+  "timestamp": "2026-03-15T15:47:49.860Z",
+  "count": 46,
   "data": [
+    {
+      "id": "fd958994-e5f7-445d-bd24-37e9c49ac86b",
+      "type": "long-term",
+      "category": "session-init",
+      "content": "Conv 1074004b: Session initialized — 2026-03-15T14:53:36.611Z",
+      "tags": [
+        "session-init",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.3,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T14:53:36.869756+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T14:53:36.869756+00:00",
+      "updated_at": "2026-03-15T14:53:36.869756+00:00"
+    },
+    {
+      "id": "4524cbc3-83cb-4df4-8863-48d9a92ff5ee",
+      "type": "long-term",
+      "category": "session-init",
+      "content": "Conv test-dep: Session initialized — 2026-03-15T14:49:07.163Z",
+      "tags": [
+        "session-init",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.3,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T14:49:07.238307+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T14:49:07.238307+00:00",
+      "updated_at": "2026-03-15T14:49:07.238307+00:00"
+    },
     {
       "id": "e420b050-9d76-4a47-a1b3-b48b4833d8c8",
       "type": "long-term",
