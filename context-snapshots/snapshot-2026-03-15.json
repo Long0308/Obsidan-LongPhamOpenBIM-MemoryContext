@@ -1,7 +1,108 @@
 {
-  "timestamp": "2026-03-15T15:47:49.860Z",
-  "count": 46,
+  "timestamp": "2026-03-15T16:40:00.203Z",
+  "count": 50,
   "data": [
+    {
+      "id": "2e3485c3-eaa5-478e-b400-efa701ef957a",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "deploy-insforge-site",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "4eade317-27cd-41f3-90c2-6f1756e200f1",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "remove-fake-data",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "6e210822-fd38-4ff3-94a4-b503607c80fc",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "quota-sync-at-session-start",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "051f85c8-e47f-4043-aac9-40a841142ed8",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "quota-remaining-display-100-to-0",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "4bd605fa-1645-4e25-8fcd-44012e97a962",
+      "type": "long-term",
+      "category": "session",
+      "content": "Session 2026-03-15: 34 queries. Live quota fetch via sync-quotas.ps1. Dashboard deployed to insforge.site. Auto-memory protocol updated with quota sync step.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.55359+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.55359+00:00",
+      "updated_at": "2026-03-15T16:15:23.55359+00:00"
+    },
     {
       "id": "fd958994-e5f7-445d-bd24-37e9c49ac86b",
       "type": "long-term",
@@ -65,10 +166,10 @@
       "updated_at": "2026-03-15T12:15:33.445114+00:00"
     },
     {
-      "id": "56663359-4d84-478f-a5d0-9ab2e6b5ca82",
+      "id": "120596ba-c7cf-4d2b-b675-6cb79f28fb4e",
       "type": "long-term",
       "category": "decisions",
-      "content": "Redeployed mem-gw-final",
+      "content": "Added Conv 4+5 to session note",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -85,10 +186,10 @@
       "updated_at": "2026-03-15T12:15:33.445114+00:00"
     },
     {
-      "id": "120596ba-c7cf-4d2b-b675-6cb79f28fb4e",
+      "id": "56663359-4d84-478f-a5d0-9ab2e6b5ca82",
       "type": "long-term",
       "category": "decisions",
-      "content": "Added Conv 4+5 to session note",
+      "content": "Redeployed mem-gw-final",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -126,30 +227,10 @@
       "updated_at": "2026-03-15T12:15:33.422434+00:00"
     },
     {
-      "id": "5e74a633-b6b6-41e4-adba-15a4f5e0a7ba",
+      "id": "b2aaf268-36a5-43db-b3dd-79556c6f1610",
       "type": "long-term",
       "category": "decisions",
-      "content": "Single HTML file, no framework",
-      "tags": [
-        "decision",
-        "LPOpenBIMAI"
-      ],
-      "metadata": {},
-      "importance": 0.85,
-      "decay_rate": 0.01,
-      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
-      "access_count": 0,
-      "source": "auto-memory",
-      "project_id": null,
-      "session_id": null,
-      "created_at": "2026-03-15T12:01:51.814445+00:00",
-      "updated_at": "2026-03-15T12:01:51.814445+00:00"
-    },
-    {
-      "id": "7faa9749-8904-4364-aa15-cc73161b2cb3",
-      "type": "long-term",
-      "category": "decisions",
-      "content": "Dark glassmorphism design",
+      "content": "Project selector auto-discovers from sessions API",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -186,10 +267,30 @@
       "updated_at": "2026-03-15T12:01:51.814445+00:00"
     },
     {
-      "id": "b2aaf268-36a5-43db-b3dd-79556c6f1610",
+      "id": "7faa9749-8904-4364-aa15-cc73161b2cb3",
       "type": "long-term",
       "category": "decisions",
-      "content": "Project selector auto-discovers from sessions API",
+      "content": "Dark glassmorphism design",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.814445+00:00",
+      "updated_at": "2026-03-15T12:01:51.814445+00:00"
+    },
+    {
+      "id": "5e74a633-b6b6-41e4-adba-15a4f5e0a7ba",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Single HTML file, no framework",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -248,10 +349,10 @@
       "updated_at": "2026-03-15T11:46:27.057723+00:00"
     },
     {
-      "id": "bac42255-9239-4b26-92b3-bd3dbe596150",
+      "id": "5c35be84-e1e3-4f59-8325-727822f3b5e0",
       "type": "long-term",
       "category": "decisions",
-      "content": "Auto-memory embedded in both global + workspace GEMINI.md",
+      "content": "NEXT: Full vault audit for descriptions + setup docs needed in new session",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -268,10 +369,10 @@
       "updated_at": "2026-03-15T10:49:05.249201+00:00"
     },
     {
-      "id": "1a6e1bec-f523-4377-9787-b34bc0f8e497",
+      "id": "bac42255-9239-4b26-92b3-bd3dbe596150",
       "type": "long-term",
       "category": "decisions",
-      "content": "80% threshold = auto-save + ask user",
+      "content": "Auto-memory embedded in both global + workspace GEMINI.md",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -308,10 +409,10 @@
       "updated_at": "2026-03-15T10:49:05.249201+00:00"
     },
     {
-      "id": "5c35be84-e1e3-4f59-8325-727822f3b5e0",
+      "id": "1a6e1bec-f523-4377-9787-b34bc0f8e497",
       "type": "long-term",
       "category": "decisions",
-      "content": "NEXT: Full vault audit for descriptions + setup docs needed in new session",
+      "content": "80% threshold = auto-save + ask user",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -349,10 +450,10 @@
       "updated_at": "2026-03-15T10:49:05.153732+00:00"
     },
     {
-      "id": "742b6f1b-d4ae-4f3e-8637-2941b201e849",
+      "id": "90c2327b-4ae2-49fc-90b2-29173a9f0859",
       "type": "long-term",
       "category": "decisions",
-      "content": "80% = auto-save + ask user, 100% = save + stop",
+      "content": ".gemini artifacts linked to Obsidian via Agent-Memory reference note",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -369,10 +470,10 @@
       "updated_at": "2026-03-15T10:27:59.98343+00:00"
     },
     {
-      "id": "90c2327b-4ae2-49fc-90b2-29173a9f0859",
+      "id": "742b6f1b-d4ae-4f3e-8637-2941b201e849",
       "type": "long-term",
       "category": "decisions",
-      "content": ".gemini artifacts linked to Obsidian via Agent-Memory reference note",
+      "content": "80% = auto-save + ask user, 100% = save + stop",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -410,10 +511,10 @@
       "updated_at": "2026-03-15T10:27:59.905191+00:00"
     },
     {
-      "id": "9826d301-020b-4100-b96b-689bc8d27966",
+      "id": "0a3673f9-d879-4ebb-a000-979a24dea11c",
       "type": "long-term",
       "category": "decisions",
-      "content": "Embed auto-memory in GEMINI.md TIER 0 - only always-on enforcement layer",
+      "content": "Self-Check Trigger pattern - AI asks itself before each response if checkpoint due",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -430,10 +531,10 @@
       "updated_at": "2026-03-15T10:24:27.687577+00:00"
     },
     {
-      "id": "0a3673f9-d879-4ebb-a000-979a24dea11c",
+      "id": "9826d301-020b-4100-b96b-689bc8d27966",
       "type": "long-term",
       "category": "decisions",
-      "content": "Self-Check Trigger pattern - AI asks itself before each response if checkpoint due",
+      "content": "Embed auto-memory in GEMINI.md TIER 0 - only always-on enforcement layer",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -471,10 +572,10 @@
       "updated_at": "2026-03-15T10:24:27.598595+00:00"
     },
     {
-      "id": "ddd87554-a776-4981-8e92-7e2ed84736c0",
+      "id": "26d237b2-d009-49ce-9ab1-ed36d0ca0aec",
       "type": "long-term",
       "category": "decisions",
-      "content": "Option A+B for Platform Coordinators - both documentation + runtime routing",
+      "content": "Index notes needed for folder-level wikilinks - Obsidian requires .md files to resolve",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -491,10 +592,10 @@
       "updated_at": "2026-03-15T10:17:46.132475+00:00"
     },
     {
-      "id": "26d237b2-d009-49ce-9ab1-ed36d0ca0aec",
+      "id": "ddd87554-a776-4981-8e92-7e2ed84736c0",
       "type": "long-term",
       "category": "decisions",
-      "content": "Index notes needed for folder-level wikilinks - Obsidian requires .md files to resolve",
+      "content": "Option A+B for Platform Coordinators - both documentation + runtime routing",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -532,26 +633,6 @@
       "updated_at": "2026-03-15T10:17:46.054675+00:00"
     },
     {
-      "id": "57a379ee-cefc-4430-9b96-f24af4d822c6",
-      "type": "long-term",
-      "category": "decisions",
-      "content": "Fixed sync_log_operation_check constraint to allow save-session and cron-sync operations",
-      "tags": [
-        "decision",
-        "LPOpenBIMAI"
-      ],
-      "metadata": {},
-      "importance": 0.85,
-      "decay_rate": 0.01,
-      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
-      "access_count": 0,
-      "source": "auto-memory",
-      "project_id": null,
-      "session_id": null,
-      "created_at": "2026-03-15T08:39:53.854741+00:00",
-      "updated_at": "2026-03-15T08:39:53.854741+00:00"
-    },
-    {
       "id": "4c393dd3-fde3-40e5-9057-8ab033bb21f5",
       "type": "long-term",
       "category": "decisions",
@@ -572,10 +653,30 @@
       "updated_at": "2026-03-15T08:39:53.854741+00:00"
     },
     {
-      "id": "47cc4468-ee22-4600-a599-31fd89ca713f",
+      "id": "57a379ee-cefc-4430-9b96-f24af4d822c6",
       "type": "long-term",
       "category": "decisions",
-      "content": "Deployed as mem-gw-final slug (new) instead of updating old memory-gateway",
+      "content": "Fixed sync_log_operation_check constraint to allow save-session and cron-sync operations",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "13d891cb-b668-4b66-a590-dced946feeea",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Updated SKILL.md with Step 0 AUTO-LOAD protocol and multi-conversation tracking",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -612,10 +713,10 @@
       "updated_at": "2026-03-15T08:39:53.854741+00:00"
     },
     {
-      "id": "13d891cb-b668-4b66-a590-dced946feeea",
+      "id": "47cc4468-ee22-4600-a599-31fd89ca713f",
       "type": "long-term",
       "category": "decisions",
-      "content": "Updated SKILL.md with Step 0 AUTO-LOAD protocol and multi-conversation tracking",
+      "content": "Deployed as mem-gw-final slug (new) instead of updating old memory-gateway",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -756,10 +857,10 @@
       "updated_at": "2026-03-15T08:26:51.374442+00:00"
     },
     {
-      "id": "3c3450c2-f674-412a-b015-8267e342b6e0",
+      "id": "356d9598-c699-471d-a1b1-5fa66c7f41a3",
       "type": "long-term",
       "category": "decisions",
-      "content": "Minified v2 to 4.9KB to fit InsForge 5KB source limit",
+      "content": "Extracted ghPush helper for code reuse",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -776,10 +877,10 @@
       "updated_at": "2026-03-15T08:22:06.000811+00:00"
     },
     {
-      "id": "356d9598-c699-471d-a1b1-5fa66c7f41a3",
+      "id": "3c3450c2-f674-412a-b015-8267e342b6e0",
       "type": "long-term",
       "category": "decisions",
-      "content": "Extracted ghPush helper for code reuse",
+      "content": "Minified v2 to 4.9KB to fit InsForge 5KB source limit",
       "tags": [
         "decision",
         "LPOpenBIMAI"
@@ -857,17 +958,17 @@
       "updated_at": "2026-03-15T06:42:20.880724+00:00"
     },
     {
-      "id": "d93fa467-c716-4673-ad65-1356d1ada717",
-      "type": "long-term",
-      "category": "preferences",
-      "content": "User prefers Vietnamese responses, English code. Uses Obsidian as knowledge hub. Vault: LPOpenBIMAI",
+      "id": "70e124b2-76c8-4d17-a47b-0b0d84505f07",
+      "type": "short-term",
+      "category": "session",
+      "content": "E2E test results: 9/9 pass. All systems operational. Insforge agent linked and skills installed.",
       "tags": [
-        "preferences",
-        "language",
-        "obsidian"
+        "test",
+        "e2e",
+        "verification"
       ],
       "metadata": {},
-      "importance": 0.85,
+      "importance": 0.7,
       "decay_rate": 0.01,
       "last_accessed": "2026-03-15T06:42:20.880724+00:00",
       "access_count": 0,
@@ -899,17 +1000,17 @@
       "updated_at": "2026-03-15T06:42:20.880724+00:00"
     },
     {
-      "id": "70e124b2-76c8-4d17-a47b-0b0d84505f07",
-      "type": "short-term",
-      "category": "session",
-      "content": "E2E test results: 9/9 pass. All systems operational. Insforge agent linked and skills installed.",
+      "id": "d93fa467-c716-4673-ad65-1356d1ada717",
+      "type": "long-term",
+      "category": "preferences",
+      "content": "User prefers Vietnamese responses, English code. Uses Obsidian as knowledge hub. Vault: LPOpenBIMAI",
       "tags": [
-        "test",
-        "e2e",
-        "verification"
+        "preferences",
+        "language",
+        "obsidian"
       ],
       "metadata": {},
-      "importance": 0.7,
+      "importance": 0.85,
       "decay_rate": 0.01,
       "last_accessed": "2026-03-15T06:42:20.880724+00:00",
       "access_count": 0,
@@ -918,27 +1019,6 @@
       "session_id": "2026-03-15",
       "created_at": "2026-03-15T06:42:20.880724+00:00",
       "updated_at": "2026-03-15T06:42:20.880724+00:00"
-    },
-    {
-      "id": "eba6acb7-432f-464d-9bbb-a65a77db9d87",
-      "type": "long-term",
-      "category": "session",
-      "content": "Session 2026-03-15: Deployed Memory Gateway to Insforge with 4 tables, 15 plugins, 56 skills. Agent Swarm fully operational.",
-      "tags": [
-        "session",
-        "deployment",
-        "agent-swarm"
-      ],
-      "metadata": {},
-      "importance": 0.9,
-      "decay_rate": 0.01,
-      "last_accessed": "2026-03-15T06:40:51.210088+00:00",
-      "access_count": 0,
-      "source": "agent",
-      "project_id": "LPOpenBIMAI",
-      "session_id": "2026-03-15",
-      "created_at": "2026-03-15T06:40:51.210088+00:00",
-      "updated_at": "2026-03-15T06:40:51.210088+00:00"
     }
   ]
 }
