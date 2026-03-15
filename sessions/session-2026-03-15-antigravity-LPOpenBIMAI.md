@@ -5,13 +5,49 @@ tags:
   - memory
   - context
   - agent-swarm
+  - auto-memory
 date: 2026-03-15
 ide: antigravity
 project: LPOpenBIMAI
 platform: insforge
+objective: "Auto-Memory System Deployment"
 ---
 
-# 📝 Session Context — 2026-03-15 — Antigravity — LPOpenBIMAI
+# 📝 Session: Auto-Memory System Deployment
+
+> **Objective:** Triển khai hệ thống auto-memory hoàn chỉnh — GitHub sync, Insforge DB, context monitor, cron schedule, Obsidian config.
+> **Date:** 2026-03-15 | **IDE:** Antigravity | **Project:** LPOpenBIMAI
+
+---
+
+## 🗣️ User Query Log (từ đầu tới giờ)
+
+| # | Thời gian | User Query | Kết quả |
+|---|-----------|------------|----------|
+| 1 | Sáng | Obsidian integration, migration 21 skills + 5 memory notes | ✅ Phase 1 hoàn thành |
+| 2 | Sáng | Deploy Insforge Memory Gateway (4 tables, indexes, RLS) | ✅ Schema + edge function v1 |
+| 3 | Sáng | Tạo 20 agent notes trong Obsidian | ✅ `Agent-Agents/` folder |
+| 4 | Sáng | Tạo 26 skill notes còn thiếu | ✅ Total: 47 skills |
+| 5 | Trưa | Graph coloring — phân biệt màu cha/con/cháu | ✅ 6 color groups trong `graph.json` |
+| 6 | Trưa | "Thêm luôn nhé, hệ thống phải tự động thêm group" | ✅ 15 plugin notes + auto-tag |
+| 7 | Trưa | Auto-memory: session naming `session-{date}-{ide}-{project}` | ✅ Convention applied |
+| 8 | Chiều | "Tích hợp memory với GitHub, token: ghp_tL1..." | ✅ GitHub repo + secrets |
+| 9 | Chiều | "Project name detection lấy từ folder gốc, repo private, 2h sync" | ✅ Config confirmed |
+| 10 | Chiều | "Sao trong log sync tôi không thấy gì" → sync_log rỗng | ⏳ CLI read-only, dùng edge function |
+| 11 | Chiều | "Deploy v2 function" + "session thiếu user queries" | ✅ v2 deployed, note enriched |
+
+## 📋 Decision Log
+
+| Quyết định | Lý do | Kết quả |
+|-----------|-------|----------|
+| GitHub repo **private** | User yêu cầu bảo mật | `Long0308/Obsidan-LongPhamOpenBIM-MemoryContext` |
+| Sync mỗi **2h** | User xác nhận, có cơ chế đổi | Cron ID: `c86c044a`, config tại `memory-config.md` |
+| Project name = **folder gốc** | `D:\RevitAPI` → `RevitAPI` | Logic trong SKILL.md |
+| Context monitor **heuristic** | IDE API không expose token count | 60%→warn, 80%→save, 95%→new session |
+| `export default function` thay vì `Deno.serve()` | Insforge validator reject `Deno.serve` | Fix deploy INVALID_INPUT |
+| `--name` + `--description` flags | Update existing function cần flags | Fix deploy cho function đã tồn tại |
+
+---
 
 ## Session Phases
 
@@ -88,7 +124,7 @@ platform: insforge
 |---|-----------|---------------|--------|
 | 1 | 🔒 **GitHub Repo** (private) | [Long0308/Obsidan-LongPhamOpenBIM-MemoryContext](https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext) | ✅ Active |
 | 2 | 🔑 **Insforge Secrets** | `GITHUB_PAT`, `GITHUB_OWNER`, `GITHUB_REPO` (encrypted) | ✅ Stored |
-| 3 | ⚡ **Memory Gateway v2** | `insforge/functions/memory-gateway/index.ts` | ⏳ Code ready, v1 running |
+| 3 | ⚡ **Memory Gateway v2** | `insforge/functions/memory-gateway/index.ts` | ✅ Deployed |
 | 4 | ⏰ **Cron Schedule** | Insforge Cron: `0 */2 * * *` (ID: `c86c044a`) | ✅ Active (next: 3:00 PM) |
 | 5 | 📘 **Auto-Memory Skill** | [[Auto Memory]] → `.agent/skills/auto-memory/SKILL.md` | ✅ Created |
 | 6 | ⚙️ **Obsidian Config** | [[memory-config]] → `Agent-Memory/memory-config.md` | ✅ Editable |
