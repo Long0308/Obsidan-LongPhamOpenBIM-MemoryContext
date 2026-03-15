@@ -1,1 +1,1 @@
-Conv 3 continued: Fixed auto-memory enforcement architecture. Root cause: SKILL.md is documentation-only, lost on context truncation, no enforcement layer. Fix: Embedded auto-memory lifecycle protocol into GEMINI.md TIER 0 (.agent/rules/GEMINI.md) - this survives truncation as always-on user rules. Added enforcement cross-reference to SKILL.md.
+Conv 3 final: Fixed 80% threshold to auto-save + ask user. Created .gemini-artifacts.md note linking Antigravity brain dir to Obsidian vault. All changes pushed to GitHub.
