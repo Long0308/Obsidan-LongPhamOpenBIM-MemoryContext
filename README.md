@@ -99,6 +99,20 @@ Base URL: `https://4ian5xm8.functions.insforge.app`
 
 See [docs/E2E-Setup-Guide.md](docs/E2E-Setup-Guide.md)
 
+## 👥 For Other Users (Setup Your Own Backend)
+
+Repo này dùng InsForge + GitHub PAT của Long. Để setup backend riêng:
+
+👉 **[docs/SETUP-FOR-OTHERS.md](docs/SETUP-FOR-OTHERS.md)** — Hướng dẫn step-by-step
+
+Tóm tắt:
+1. Tạo InsForge account + project
+2. Run `schema/setup.sql`
+3. Deploy `functions/index.ts`
+4. Tạo GitHub repo + PAT → add secrets
+5. Setup cron schedule
+6. Update URL trong `SKILL.md` + `memory-config.md`
+
 ## License
 
 Private — LongPhamOpenBIM
