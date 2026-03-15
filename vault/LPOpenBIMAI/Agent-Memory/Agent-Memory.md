@@ -46,6 +46,8 @@ aliases:
 |-------|--------|
 | [[E2E-Setup-Guide]] | End-to-end setup guide |
 | [[E2E-Guide]] | E2E workflow guide |
+| [[Gemini Artifacts]] | .gemini brain directory reference |
+| [[Auto Memory]] | Auto-Memory Skill & protocol |
 
 ## Links
 
