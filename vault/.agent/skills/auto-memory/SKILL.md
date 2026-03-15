@@ -122,8 +122,8 @@ Changes: ...
 
 ### Heuristic thresholds:
 - ~50 tool calls → WARNING "Context ~60%"
-- ~80 tool calls → ALERT "Context ~80%, auto-saving"
-- ~100 tool calls → CRITICAL "Context ~95%, save + new session"
+- ~80 tool calls → ALERT "Context ~80%, auto-saving" → POST /save-session → **ASK user: tiếp tục hay mở session mới?**
+- ~100 tool calls → CRITICAL "Context ~95%, save + STOP → yêu cầu mở session mới"
 
 ### Alert Format
 

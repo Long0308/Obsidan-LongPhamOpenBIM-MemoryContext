@@ -127,8 +127,12 @@ When user's prompt is NOT in English:
 2. Estimate context: `tool_calls ÷ 100 × 100`%
 3. Update session note with new user queries + decisions
 4. If tool_calls > 50 → log: `⚠️ Context Monitor: ~60% used ({n} tool calls)`
-5. If tool_calls > 80 → log: `🟠 Context ~80%, auto-saving` → POST /save-session
-6. If tool_calls > 100 → log: `🔴 Context ~95%` → save + suggest new session
+5. If tool_calls > 80 → **AUTO-SAVE + ASK USER:**
+   - POST /save-session immediately
+   - Log: `🟠 Context ~80%, session auto-saved`
+   - **ASK:** "Context window ~80%. Tiếp tục hay mở session mới?"
+   - Wait for user response before continuing
+6. If tool_calls > 100 → `🔴 Context ~95%` → save + **STOP** → tell user to start new session
 7. Log: `📌 Checkpoint #{n} saved`
 
 **C. Session End (user says done/bye/xong, OR context > 85%):**
