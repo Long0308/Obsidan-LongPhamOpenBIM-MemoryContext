@@ -6,11 +6,13 @@ tags:
   - context
   - agent-swarm
   - auto-memory
+  - antigravity-kit
 date: 2026-03-15
 ide: antigravity
 project: LPOpenBIMAI
 platform: insforge
 objective: "Auto-Memory System Deployment"
+parent: "[[Antigravity Kit]]"
 ---
 
 # 📝 Session: Auto-Memory System Deployment
