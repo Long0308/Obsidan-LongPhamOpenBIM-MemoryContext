@@ -33,18 +33,21 @@ cd Obsidan-LongPhamOpenBIM-MemoryContext
 │   ├── E2E-Guide.md              ← E2E setup reference
 │   ├── Agent-Swarm.canvas        ← Visual agent graph
 │   ├── Memory-Graph.canvas       ← Memory relationship graph
+│   ├── Vault Dashboard.base      ← 📊 Interactive vault overview (Bases)
 │   ├── Agent-Agents/             ← 20 AI agent profiles
 │   │   ├── Orchestrator.md
 │   │   ├── Frontend Specialist.md
 │   │   ├── Backend Specialist.md
 │   │   ├── Debugger.md
 │   │   └── ... (20 agents total)
-│   ├── Agent-Skills/             ← 48 skill cards
+│   ├── Agent-Skills/             ← 58 skill cards
+│   │   ├── Skills Dashboard.base ← 📊 Skills overview (Bases)
 │   │   ├── Auto Memory.md
 │   │   ├── Clean Code.md
 │   │   ├── Brainstorming.md
-│   │   └── ... (48 skills total)
+│   │   └── ... (58 skills total)
 │   ├── Agent-Plugins/            ← 15 Obsidian plugins
+│   │   └── Plugins Dashboard.base ← 📊 Plugins overview (Bases)
 │   ├── Agent-Memory/             ← Memory system files
 │   │   ├── memory-config.md
 │   │   ├── E2E-Setup-Guide.md
@@ -53,13 +56,26 @@ cd Obsidan-LongPhamOpenBIM-MemoryContext
 │   │   ├── preferences.md
 │   │   ├── people.md
 │   │   └── tech-stack.md
+│   ├── Platforms/                ← Platform integration guides
+│   ├── Resources/                ← Shared resources & references
 │   └── .obsidian/                ← Vault settings (graph colors, etc.)
 │
 ├── sessions/                     ← Auto-saved session data
 └── context-snapshots/            ← Cron snapshots
 ```
 
-**Total: 116 files** — toàn bộ vault + backend + edge function.
+**Total: 130+ files** — toàn bộ vault + backend + edge function.
+
+### Vault Stats
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| 🤖 Agents | 20 | AI specialist profiles (Orchestrator, Frontend, Backend, etc.) |
+| 🧩 Skills | 58 | Skill cards with triggers, connections, memory hooks |
+| 🔌 Plugins | 15 | Obsidian plugin configs with usage guides |
+| 🧠 Memory | 7 | Memory system files (config, patterns, context) |
+| 📊 Dashboards | 3 | Obsidian Base views (Vault, Skills, Plugins) |
+| 🗺️ Canvases | 3 | Visual graphs (Agent-Swarm, Memory-Graph) |
 
 ## Architecture
 
