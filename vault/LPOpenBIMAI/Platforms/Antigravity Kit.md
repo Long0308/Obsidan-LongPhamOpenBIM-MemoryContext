@@ -69,6 +69,15 @@ aliases:
 | `test-engineer` | Cross-platform |
 | `debugger` | Cross-platform |
 
+## 📂 Index Notes
+
+| Index | Items |
+|-------|-------|
+| [[Agent-Agents]] | 20 specialist agents |
+| [[Agent-Skills]] | 48 skills |
+| [[Agent-Memory]] | Memory system |
+| [[Agent-Plugins]] | 15 Obsidian plugins |
+
 ## Liên Kết Sinh Thái
 
 - [[Superpowers Hub]] — Dev workflow skills (từ ag-kit)

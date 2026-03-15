@@ -13,6 +13,15 @@ aliases:
 
 > **Antigravity Kit** + **48 skills** + **20 agents** + **Memory Gateway** + **OpenSpec**
 
+## 📂 Index Notes
+
+| Index | Nội dung | Items |
+|-------|---------|-------|
+| [[Agent-Agents]] | Danh sách 20 specialist agents | 20 agents |
+| [[Agent-Skills]] | Danh sách 48 skills | 48 skills |
+| [[Agent-Memory]] | Memory system config & sessions | 8 files |
+| [[Agent-Plugins]] | Obsidian plugins | 15 plugins |
+
 ## Hệ Thống Platform
 
 ```mermaid
@@ -179,6 +188,10 @@ graph TB
 
 ## Links
 
+- [[Agent-Agents|🤖 Agents Index]] — 20 specialist agents
+- [[Agent-Skills|🧩 Skills Index]] — 48 skills
+- [[Agent-Memory|🧠 Memory Index]] — Memory system
+- [[Agent-Plugins|🔌 Plugins Index]] — 15 plugins
 - [[E2E-Guide|📘 Hướng Dẫn E2E]]
 - [[Memory-Graph.canvas|🧠 Memory Graph]]
 - [[Agent-Swarm.canvas|🗺️ Skill Map]]
