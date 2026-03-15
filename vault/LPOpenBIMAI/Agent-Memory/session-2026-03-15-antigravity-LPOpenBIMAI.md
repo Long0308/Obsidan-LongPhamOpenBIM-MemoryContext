@@ -42,6 +42,10 @@ parent: "[[Antigravity Kit]]"
 | 14 | 15:30 | Final E2E: save-session → DB → GitHub → sync_log | ✅ Full pipeline working |
 | 15 | 15:32 | Cleanup 4 test functions | ✅ Only mem-gw-final remains |
 | 16 | 15:34 | Update SKILL.md: add auto-load + multi-conversation | ✅ Protocol updated |
+| 17 | 16:00 | Audit orchestration: runtime + routing + Obsidian layers | ✅ Audit report created |
+| 18 | 16:30 | Wire Platform Coordinators (Option A+B): 6 hubs + routing | ✅ Coordinators assigned |
+| 19 | 17:00 | Fix missing index notes: Agent-Agents/Skills/Memory/Plugins | ✅ 4 index notes created |
+| 20 | 17:15 | "Đã lưu session memory chưa?" → save session | ✅ Saving now |
 
 ## 📋 Decision Log
 
@@ -57,6 +61,8 @@ parent: "[[Antigravity Kit]]"
 | Fix `sync_log_operation_check` | CHECK chỉ allow create/update/delete/sync | Expand thêm save-session, cron-sync |
 | Delete 4 test functions | Cleanup sau khi deploy stable | Chỉ còn `mem-gw-final` |
 | SKILL.md Step 0 AUTO-LOAD | Agent cần load context trước khi làm | Query DB tự động ở session start |
+| **Option A+B** cho Platform Coordinators | User chọn cả documentation + runtime routing | 6 hubs + intelligent-routing SKILL extended |
+| **Index notes** thay vì folder-level wikilinks | Obsidian cần .md file để resolve wikilinks | 4 index notes: Agent-Agents/Skills/Memory/Plugins |
 
 ---
 
@@ -106,16 +112,16 @@ parent: "[[Antigravity Kit]]"
 - Pattern: `session-YYYY-MM-DD-{ide}-{project}.md`
 - Supported IDEs: antigravity, codex, claude, cursor, gemini
 
-## Vault Stats (End of Session)
-
 | Folder | Files | Tag |
 |--------|-------|-----|
-| Agent-Agents | 20 | #agent |
-| Agent-Skills | 47 | #skill |
-| Agent-Memory | 6 | #memory |
-| Agent-Plugins | 15 | #plugin |
+| Agent-Agents | 21 | #agent |
+| Agent-Skills | 49 | #skill |
+| Agent-Memory | 9 | #memory |
+| Agent-Plugins | 16 | #plugin |
+| Platforms | 6 | #platform |
+| Resources | 7 | #resources |
 | Root MDs | 5 | #hub / #canvas |
-| **Total** | **93** | |
+| **Total** | **113** | |
 
 ## Insforge Project 
 
@@ -177,6 +183,17 @@ parent: "[[Antigravity Kit]]"
 ### Conv fbdd4deb — Session 2 — Antigravity
 **Objective:** E2E verification, fix sync_log, deploy v2, update SKILL.md
 **Status:** ✅ Completed — v2 deployed, sync_log fixed, auto-load added
+
+### Conv fbdd4deb — Session 3 — Antigravity (current)
+**Objective:** Orchestration audit + Platform coordinator wiring + Index notes fix
+**Status:** ✅ Completed
+**Changes:**
+- Audited 3 orchestration layers (runtime, routing, Obsidian)
+- Created 6 Platform hub notes with Coordinator sections (Option A)
+- Extended `intelligent-routing/SKILL.md` with platform-aware routing (Option B)
+- Created 4 index notes (Agent-Agents, Agent-Skills, Agent-Memory, Agent-Plugins)
+- Updated AGENT_SWARM.md with index note links
+- Pushed 3 commits to GitHub
 
 ## Links
 
