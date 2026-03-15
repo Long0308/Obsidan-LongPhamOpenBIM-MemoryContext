@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"b1c2d3e4f5a60001","type":"group","x":-400,"y":-100,"width":1200,"height":200,"label":"🧠 Memory Gateway API","color":"3"},
+		{"id":"b1c2d3e4f5a60002","type":"text","x":-350,"y":-50,"width":350,"height":100,"text":"## Gateway Interface\n`store()` · `recall()` · `search()`\n`link()` · `traverse()` · `sync()`\n`export()` · `import()` · `health()`","color":"3"},
+		{"id":"b1c2d3e4f5a60003","type":"file","x":50,"y":-50,"width":300,"height":100,"file":".agent/memory/gateway/interface.ts"},
+		{"id":"b1c2d3e4f5a60004","type":"file","x":400,"y":-50,"width":300,"height":100,"file":".agent/memory/gateway/ops.ts"},
+		{"id":"b1c2d3e4f5a60010","type":"group","x":-400,"y":150,"width":700,"height":200,"label":"⚙️ Middleware","color":"5"},
+		{"id":"b1c2d3e4f5a60011","type":"text","x":-350,"y":210,"width":200,"height":80,"text":"### Fallback Controller\nInsforge → Supabase → SQLite\nTransparent failover","color":"5"},
+		{"id":"b1c2d3e4f5a60012","type":"text","x":-100,"y":210,"width":200,"height":80,"text":"### Ops Logger\nAppend-only journal\nReplay + audit trail","color":"5"},
+		{"id":"b1c2d3e4f5a60013","type":"text","x":150,"y":210,"width":200,"height":80,"text":"### Decay Manager\nAuto-archive stale\nAccess-based scoring","color":"5"},
+		{"id":"b1c2d3e4f5a60020","type":"group","x":-400,"y":400,"width":1050,"height":200,"label":"💾 Backend Adapters (Fallback Chain)","color":"1"},
+		{"id":"b1c2d3e4f5a60021","type":"text","x":-350,"y":460,"width":250,"height":100,"text":"## 🟢 Insforge\nSQLite + pgvector\nSemantic search\n**Primary adapter**","color":"1"},
+		{"id":"b1c2d3e4f5a60022","type":"text","x":-50,"y":460,"width":250,"height":100,"text":"## 🟡 Supabase\nRemote Postgres\nCross-device sync\n**Backup adapter**","color":"2"},
+		{"id":"b1c2d3e4f5a60023","type":"text","x":250,"y":460,"width":250,"height":100,"text":"## 🟢 SQLite\nLocal agent.db\nAlways available\n**Offline fallback**","color":"4"},
+		{"id":"b1c2d3e4f5a60030","type":"group","x":-400,"y":650,"width":1050,"height":200,"label":"📁 Memory Storage","color":"6"},
+		{"id":"b1c2d3e4f5a60031","type":"text","x":-350,"y":710,"width":250,"height":100,"text":"### Obsidian KG\n📝 markdown notes\n🔗 wikilink graph\n📊 bases views\n🖼️ canvas maps","color":"6"},
+		{"id":"b1c2d3e4f5a60032","type":"text","x":-50,"y":710,"width":250,"height":100,"text":"### Projects Memory\n`memory/projects/`\nContexts · Decisions\nEntities · Sessions","color":"3"},
+		{"id":"b1c2d3e4f5a60033","type":"text","x":250,"y":710,"width":250,"height":100,"text":"### Long-Term Memory\npreferences · tech-stack\npatterns · people\n**Permanent, no decay**","color":"3"},
+		{"id":"b1c2d3e4f5a60034","type":"text","x":550,"y":710,"width":200,"height":100,"text":"### Archive\n`memory/archive/`\ndecayScore < 0.1\n**Cold storage**","color":"1"}
+	],
+	"edges":[
+		{"id":"f1a2b3c4d5e60001","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60011","toSide":"top"},
+		{"id":"f1a2b3c4d5e60002","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60012","toSide":"top"},
+		{"id":"f1a2b3c4d5e60003","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60013","toSide":"top"},
+		{"id":"f1a2b3c4d5e60004","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60021","toSide":"top","label":"primary"},
+		{"id":"f1a2b3c4d5e60005","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60022","toSide":"top","label":"fallback"},
+		{"id":"f1a2b3c4d5e60006","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60023","toSide":"top","label":"offline"},
+		{"id":"f1a2b3c4d5e60007","fromNode":"b1c2d3e4f5a60021","fromSide":"right","toNode":"b1c2d3e4f5a60022","toSide":"left","label":"sync"},
+		{"id":"f1a2b3c4d5e60008","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60031","toSide":"top","label":"export .md"},
+		{"id":"f1a2b3c4d5e60009","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60032","toSide":"top","label":"per-project"},
+		{"id":"f1a2b3c4d5e60010","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60033","toSide":"top","label":"global"},
+		{"id":"f1a2b3c4d5e60011","fromNode":"b1c2d3e4f5a60013","fromSide":"bottom","toNode":"b1c2d3e4f5a60034","toSide":"top","label":"archive"}
+	]
+}

@@ -1,0 +1,30 @@
+# Obsidian Vault - LPOpenBIMAI
+# Git configuration for Agent Memory Context
+
+# Obsidian workspace files (local only)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+
+# InsForge nested deploy artifacts
+insforge/insforge/
+
+# Node modules
+node_modules/
+.cache/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temp files
+*.tmp
+*.bak
+~$*
+
+# Large binary (keep small images)
+*.mp4
+*.mov
+*.zip
+*.rar

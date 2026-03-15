@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "cbe42d2c1f413b0e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b6aa574faa95df0d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1c1ad75c87958d7d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "62dfeaa342118d1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "7904a94e90fb33a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e5e1e56efacc205",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "6b4e27ad3a359616",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8f14fde9d4d5d91e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 403.5
+  },
+  "right": {
+    "id": "a7fb49bd79fead9b",
+    "type": "split",
+    "children": [
+      {
+        "id": "892f5b202f2290d6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c50dcb6cf34836a0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "e4ce0c452dbdb348",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "7bbcc981bef89583",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e4ecac23af53cba6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "be2a0235f2cb91fd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "publish:Publish changes...": false
+    }
+  },
+  "active": "1c1ad75c87958d7d",
+  "lastOpenFiles": [
+    "Agent-Memory/Memory Types trong Agentic Systems.md",
+    "Agent-Memory/session-2026-03-15-antigravity-LPOpenBIMAI.md",
+    "Agent-Memory/feedback.json",
+    "Agent-Memory/annotations.json",
+    "Agent-Memory/Context Hub Analysis.md",
+    "Agent-Memory/assets/memory-types-agentic-systems.png",
+    "Agent-Memory/assets",
+    "Agent-Memory/explore-api.ps1",
+    "Agent-Memory/QUOTA-API-README.md",
+    "Agent-Memory/sync-quotas.ps1",
+    "Agent-Memory/Memory Context Monitor.md",
+    "Agent-Memory/memory-decisions.md",
+    "Agent-Memory/memory-patterns.md",
+    "Agent-Memory/memory-active-context.md",
+    "Agent-Memory/memory-config.md",
+    "Vault Dashboard.base",
+    "System-Guide.md",
+    "Memory-Graph Canvas.md",
+    "Memory-Graph.canvas",
+    "E2E-Guide.md",
+    "Agent-Memory/GEMINI Rules.md",
+    "Agent-Memory/memory-troubleshooting.md",
+    "Resources/AI Agent Resources.md",
+    "Platforms/Antigravity Kit.md",
+    "Agent-Skills/Using Superpowers.md",
+    "Agent-Skills/OpenSpec Archive.md",
+    "Agent-Skills/OpenSpec Apply.md",
+    "AGENT_SWARM.md",
+    "Agent-Memory/MCP Config.md",
+    "Agent-Memory/Gemini Artifacts.md",
+    "Agent-Memory/dashboard.html",
+    "Agent-Swarm Canvas.md",
+    "Agent-Swarm.canvas",
+    "Agent-Plugins/Plugins Dashboard.base",
+    "Agent-Skills/Skills Dashboard.base",
+    "Agent-Skills/Verification.md",
+    "Agent-Skills/OpenSpec Archive Change.md",
+    "Untitled.canvas",
+    "Platforms"
+  ]
+}

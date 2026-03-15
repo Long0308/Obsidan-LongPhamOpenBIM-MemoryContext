@@ -1,0 +1,9 @@
+{
+  "skill_annotations": {},
+  "session_annotations": {},
+  "metadata": {
+    "created": "2026-03-15T23:37:00+07:00",
+    "version": "1.0",
+    "description": "Local annotations that persist across sessions — inspired by context-hub"
+  }
+}

@@ -1,0 +1,74 @@
+filters:
+  or:
+    - file.hasTag("skill")
+    - file.hasTag("agent")
+    - file.hasTag("plugin")
+    - file.hasTag("memory")
+    - file.hasTag("hub")
+    - file.hasTag("moc")
+formulas:
+  category: if(file.hasTag("skill"), "🧩 Skill", if(file.hasTag("agent"), "🤖 Agent", if(file.hasTag("plugin"), "🔌 Plugin", if(file.hasTag("memory"), "🧠 Memory", if(file.hasTag("hub"), "📂 Hub", "📄 Other")))))
+  nhom: if(group, group, "—")
+  modified: file.mtime.format("YYYY-MM-DD")
+  size_kb: (file.size / 1024).round(1)
+  backlink_count: file.backlinks.length
+properties:
+  formula.category:
+    displayName: Type
+  formula.nhom:
+    displayName: Group
+  formula.modified:
+    displayName: Modified
+  formula.size_kb:
+    displayName: Size (KB)
+  formula.backlink_count:
+    displayName: Backlinks
+views:
+  - type: table
+    name: 📊 Full Vault Overview
+    groupBy:
+      property: formula.category
+      direction: ASC
+    order:
+      - file.name
+      - formula.category
+      - formula.modified
+      - formula.size_kb
+      - formula.nhom
+      - formula.backlink_count
+    sort:
+      - property: file.name
+        direction: DESC
+    columnSize:
+      file.name: 180
+  - type: table
+    name: 🧩 Skills Only
+    filters:
+      and:
+        - file.hasTag("skill")
+    groupBy:
+      property: formula.nhom
+      direction: ASC
+    order:
+      - file.name
+      - formula.nhom
+      - formula.modified
+      - formula.size_kb
+  - type: table
+    name: 🤖 Agents Only
+    filters:
+      and:
+        - file.hasTag("agent")
+    order:
+      - file.name
+      - formula.modified
+      - formula.size_kb
+  - type: cards
+    name: 🃏 All Cards
+    groupBy:
+      property: formula.category
+      direction: ASC
+    order:
+      - file.name
+      - formula.category
+      - formula.nhom

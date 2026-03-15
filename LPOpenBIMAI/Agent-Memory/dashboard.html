@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Context Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ======================== DESIGN TOKENS ======================== */
+:root {
+  --bg-deep: #060a1a;
+  --bg-base: #0a0e27;
+  --bg-surface: rgba(255,255,255,0.04);
+  --bg-glass: rgba(255,255,255,0.06);
+  --bg-glass-hover: rgba(255,255,255,0.10);
+  --border-glass: rgba(255,255,255,0.08);
+  --border-active: rgba(0,212,255,0.3);
+
+  --text-primary: #e8eaf6;
+  --text-secondary: rgba(232,234,246,0.6);
+  --text-muted: rgba(232,234,246,0.35);
+  --text-accent: #00d4ff;
+
+  --accent-cyan: #00d4ff;
+  --accent-blue: #0066ff;
+  --accent-green: #00e676;
+  --accent-yellow: #ffd600;
+  --accent-red: #ff5252;
+  --accent-purple: #b388ff;
+
+  --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c4dff 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-glow: 0 0 40px rgba(0,212,255,0.06);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ======================== RESET ======================== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:15px; scroll-behavior:smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ======================== BG EFFECTS ======================== */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,212,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,102,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ======================== LAYOUT ======================== */
+.app { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding: 24px 20px 60px; }
+
+/* ======================== HEADER ======================== */
+.header {
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+  padding: 20px 0 28px;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 28px;
+}
+.header-left { display:flex; align-items:center; gap:14px; }
+.logo {
+  width:40px; height:40px; border-radius: var(--radius-sm);
+  background: var(--gradient-hero);
+  display:grid; place-items:center;
+  font-size:18px; font-weight:700;
+}
+.header h1 {
+  font-size:1.35rem; font-weight:600;
+  background: var(--gradient-hero);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.header-right { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+
+/* Project selector */
+.project-select {
+  background: var(--bg-glass); color:var(--text-primary);
+  border:1px solid var(--border-glass); border-radius:var(--radius-sm);
+  padding:8px 14px; font-family:var(--font-mono); font-size:0.82rem;
+  cursor:pointer; outline:none;
+  transition: border var(--transition);
+}
+.project-select:focus { border-color: var(--border-active); }
+.project-select option { background: var(--bg-base); }
+
+/* Clock */
+.clock {
+  font-family:var(--font-mono); font-size:0.82rem;
+  color:var(--text-secondary); letter-spacing:0.5px;
+}
+
+/* Auto-refresh toggle */
+.toggle-wrap { display:flex; align-items:center; gap:8px; cursor:pointer; }
+.toggle-wrap span { font-size:0.78rem; color:var(--text-secondary); }
+.toggle-track {
+  width:38px; height:20px; border-radius:10px;
+  background:rgba(255,255,255,0.1); position:relative;
+  transition: background var(--transition);
+}
+.toggle-track.active { background: var(--accent-cyan); }
+.toggle-track::after {
+  content:''; position:absolute; top:2px; left:2px;
+  width:16px; height:16px; border-radius:50%;
+  background:#fff; transition: transform var(--transition);
+}
+.toggle-track.active::after { transform:translateX(18px); }
+
+/* ======================== STATS GRID ======================== */
+.stats-grid {
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:16px; margin-bottom:28px;
+}
+.stat-card {
+  background: var(--gradient-glass);
+  border:1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding:22px 24px;
+  position:relative; overflow:hidden;
+  transition: border var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.stat-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+.stat-card .label {
+  font-size:0.72rem; font-weight:500; text-transform:uppercase;
+  letter-spacing:1.2px; color:var(--text-muted); margin-bottom:10px;
+}
+.stat-card .value {
+  font-size:2.2rem; font-weight:700;
+  font-family:var(--font-mono);
+}
+.stat-card .sub {
+  font-size:0.75rem; color:var(--text-secondary); margin-top:6px;
+}
+.stat-card .icon {
+  position:absolute; top:18px; right:20px;
+  font-size:1.5rem; opacity:0.3;
+}
+/* color accents per card */
+.stat-card[data-accent="cyan"]  .value { color:var(--accent-cyan); }
+.stat-card[data-accent="blue"]  .value { color:var(--accent-blue); }
+.stat-card[data-accent="green"] .value { color:var(--accent-green); }
+.stat-card[data-accent="yellow"] .value { color:var(--accent-yellow); }
+
+/* ======================== CONTEXT WINDOW PANEL ======================== */
+.context-section {
+  display:grid; grid-template-columns: 240px 1fr;
+  gap:24px; margin-bottom:28px;
+}
+@media (max-width:768px) { .context-section { grid-template-columns:1fr; } }
+
+/* Radial gauge */
+.context-gauge {
+  background: var(--gradient-glass);
+  border:1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding:28px 24px;
+  display:flex; flex-direction:column; align-items:center;
+  gap:12px;
+  transition: border var(--transition);
+}
+.context-gauge:hover { border-color: var(--border-active); }
+.gauge-ring {
+  position:relative; width:180px; height:180px;
+}
+.gauge-ring svg { transform: rotate(-90deg); }
+.gauge-ring circle {
+  fill:none; stroke-width:10;
+}
+.gauge-bg { stroke:rgba(255,255,255,0.06); }
+.gauge-fill {
+  stroke:var(--accent-green);
+  stroke-dasharray:490; stroke-dashoffset:490;
+  stroke-linecap:round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1), stroke 0.5s ease;
+}
+.gauge-fill.warn { stroke:var(--accent-yellow); }
+.gauge-fill.danger { stroke:var(--accent-red); }
+.gauge-center {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+}
+.gauge-percent {
+  font-size:2.2rem; font-weight:700;
+  font-family:var(--font-mono);
+  color:var(--text-primary);
+  line-height:1;
+}
+.gauge-title-inside {
+  font-size:0.72rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:1.5px;
+  color:var(--accent-cyan);
+  margin-top:6px;
+}
+.gauge-tokens {
+  font-size:0.72rem; font-family:var(--font-mono);
+  color:var(--text-muted);
+  text-align:center;
+}
+.context-gauge .gauge-status {
+  font-size:0.78rem; font-weight:500;
+  padding:4px 12px; border-radius:20px;
+}
+.gauge-status.ok { background:rgba(0,230,118,0.1); color:var(--accent-green); }
+.gauge-status.warn { background:rgba(255,214,0,0.1); color:var(--accent-yellow); }
+.gauge-status.danger { background:rgba(255,82,82,0.12); color:var(--accent-red); }
+
+/* Token breakdown bars */
+.context-breakdown {
+  margin-top:16px; padding-top:16px;
+  border-top:1px solid var(--border-glass);
+}
+.breakdown-item {
+  display:grid; grid-template-columns: 120px 1fr 50px;
+  align-items:center; gap:10px;
+  margin-bottom:8px;
+}
+.bk-label {
+  font-size:0.75rem; color:var(--text-secondary);
+}
+.bk-bar {
+  height:8px; background:rgba(255,255,255,0.04);
+  border-radius:4px; overflow:hidden;
+}
+.bk-fill {
+  height:100%; border-radius:4px;
+  background:var(--accent-green);
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+}
+.bk-fill.bk-blue { background:var(--accent-blue); }
+.bk-fill.bk-purple { background:#a78bfa; }
+.bk-fill.bk-yellow { background:var(--accent-yellow); }
+.bk-value {
+  font-size:0.7rem; font-family:var(--font-mono);
+  color:var(--text-muted); text-align:right;
+}
+
+/* ======================== MODEL QUOTAS ======================== */
+.quota-grid {
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap:14px;
+}
+.quota-card {
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding:16px 18px;
+  transition: border var(--transition), transform 0.2s ease;
+}
+.quota-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+}
+.quota-card-header {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:10px;
+}
+.quota-model {
+  font-size:0.85rem; font-weight:600; color:var(--text-primary);
+}
+.quota-tier {
+  font-size:0.65rem; padding:2px 8px;
+  border-radius:10px; font-weight:500;
+  background:rgba(0,230,118,0.1); color:var(--accent-green);
+}
+.quota-tier.medium { background:rgba(255,214,0,0.1); color:var(--accent-yellow); }
+.quota-tier.low { background:rgba(255,82,82,0.12); color:var(--accent-red); }
+.quota-bar-wrap {
+  height:8px; background:rgba(255,255,255,0.04);
+  border-radius:4px; overflow:hidden; margin-bottom:8px;
+}
+.quota-bar-fill {
+  height:100%; border-radius:4px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+.quota-bar-fill.green  { background:var(--accent-green); }
+.quota-bar-fill.yellow { background:var(--accent-yellow); }
+.quota-bar-fill.red    { background:var(--accent-red); }
+.quota-meta {
+  display:flex; justify-content:space-between;
+  font-size:0.72rem; color:var(--text-muted);
+  font-family:var(--font-mono);
+}
+.quota-pct { font-weight:600; }
+.quota-pct.green  { color:var(--accent-green); }
+.quota-pct.yellow { color:var(--accent-yellow); }
+.quota-pct.red    { color:var(--accent-red); }
+
+/* Context details panel */
+.context-details {
+  background: var(--gradient-glass);
+  border:1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding:24px;
+  display:flex; flex-direction:column; gap:16px;
+}
+.context-details h3 {
+  font-size:0.85rem; font-weight:600; color:var(--text-primary);
+  display:flex; align-items:center; gap:8px;
+}
+.context-meta-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+  gap:12px;
+}
+.context-meta-item {
+  background:rgba(0,0,0,0.15);
+  border-radius:var(--radius-sm);
+  padding:14px 16px;
+}
+.context-meta-item .meta-label {
+  font-size:0.65rem; font-weight:500;
+  text-transform:uppercase; letter-spacing:1px;
+  color:var(--text-muted); margin-bottom:6px;
+}
+.context-meta-item .meta-value {
+  font-size:1.2rem; font-weight:600;
+  font-family:var(--font-mono);
+}
+.context-meta-item .meta-value.cyan { color:var(--accent-cyan); }
+.context-meta-item .meta-value.green { color:var(--accent-green); }
+.context-meta-item .meta-value.yellow { color:var(--accent-yellow); }
+.context-meta-item .meta-value.red { color:var(--accent-red); }
+
+/* Checkpoint timeline */
+.checkpoint-list { display:flex; flex-direction:column; gap:8px; }
+.checkpoint-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:0.78rem;
+  padding:8px 12px;
+  background:rgba(0,0,0,0.1);
+  border-radius:var(--radius-sm);
+  border-left:3px solid var(--accent-cyan);
+}
+.checkpoint-item.active { border-left-color:var(--accent-green); background:rgba(0,230,118,0.04); }
+.checkpoint-item.passed { border-left-color:var(--accent-yellow); background:rgba(255,214,0,0.04); }
+.checkpoint-item.critical { border-left-color:var(--accent-red); background:rgba(255,82,82,0.04); }
+.checkpoint-item .cp-threshold {
+  font-family:var(--font-mono); font-weight:600;
+  min-width:45px;
+}
+.checkpoint-item .cp-label { color:var(--text-secondary); flex:1; }
+.checkpoint-item .cp-status {
+  font-size:0.7rem; font-weight:500;
+  padding:2px 8px; border-radius:10px;
+}
+.cp-status.reached { background:rgba(0,230,118,0.15); color:var(--accent-green); }
+.cp-status.upcoming { background:rgba(255,255,255,0.06); color:var(--text-muted); }
+
+/* ======================== PANELS ======================== */
+.panel {
+  background: var(--gradient-glass);
+  border:1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  margin-bottom:24px;
+  overflow:hidden;
+}
+.panel-header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 24px;
+  border-bottom:1px solid var(--border-glass);
+}
+.panel-header h2 {
+  font-size:0.95rem; font-weight:600;
+  display:flex; align-items:center; gap:10px;
+}
+.panel-header h2 .badge {
+  font-size:0.65rem; font-weight:500;
+  background:rgba(0,212,255,0.12); color:var(--accent-cyan);
+  padding:3px 8px; border-radius:20px;
+}
+.panel-body { padding:0; }
+
+/* ======================== SESSIONS TABLE ======================== */
+.sessions-table { width:100%; border-collapse:collapse; }
+.sessions-table th {
+  text-align:left; padding:12px 24px;
+  font-size:0.7rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:1px;
+  color:var(--text-muted);
+  background:rgba(0,0,0,0.15);
+  border-bottom:1px solid var(--border-glass);
+}
+.sessions-table td {
+  padding:14px 24px;
+  font-size:0.85rem;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  vertical-align:top;
+}
+.sessions-table tr {
+  transition: background var(--transition);
+  cursor:pointer;
+}
+.sessions-table tbody tr:hover { background:rgba(0,212,255,0.04); }
+.sessions-table .tag {
+  display:inline-block; font-size:0.65rem;
+  padding:2px 8px; border-radius:20px;
+  background:rgba(255,255,255,0.06); color:var(--text-secondary);
+  margin:2px 2px 2px 0;
+}
+.sessions-table .tag.ide {
+  background:rgba(0,212,255,0.1); color:var(--accent-cyan);
+}
+.sessions-table .content-preview {
+  max-width:320px; overflow:hidden; text-overflow:ellipsis;
+  white-space:nowrap; color:var(--text-secondary); font-size:0.8rem;
+}
+.sessions-table .content-full {
+  display:none; white-space:pre-wrap; word-break:break-word;
+  color:var(--text-secondary); font-size:0.8rem;
+  padding-top:8px; line-height:1.6;
+  max-height:300px; overflow:auto;
+}
+.sessions-table tr.expanded .content-preview { display:none; }
+.sessions-table tr.expanded .content-full { display:block; }
+.time-cell {
+  font-family:var(--font-mono); font-size:0.78rem; color:var(--text-muted);
+  white-space:nowrap;
+}
+
+/* ======================== SYNC TIMELINE ======================== */
+.timeline { padding:16px 24px; }
+.timeline-item {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.timeline-item:last-child { border-bottom:none; }
+.timeline-dot {
+  width:10px; height:10px; border-radius:50%;
+  margin-top:5px; flex-shrink:0;
+}
+.timeline-dot.success { background:var(--accent-green); box-shadow:0 0 8px rgba(0,230,118,0.3); }
+.timeline-dot.failed { background:var(--accent-red); box-shadow:0 0 8px rgba(255,82,82,0.3); }
+.timeline-info { flex:1; }
+.timeline-op {
+  font-size:0.82rem; font-weight:500; color:var(--text-primary);
+}
+.timeline-meta {
+  font-size:0.72rem; color:var(--text-muted); margin-top:3px;
+  font-family:var(--font-mono);
+}
+.timeline-time {
+  font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted);
+  white-space:nowrap;
+}
+
+/* ======================== ACTIONS BAR ======================== */
+.actions-bar {
+  display:flex; gap:12px; flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 20px; border:none; border-radius:var(--radius-sm);
+  font-family:var(--font-sans); font-size:0.82rem; font-weight:500;
+  cursor:pointer; transition: all var(--transition);
+  position:relative; overflow:hidden;
+}
+.btn::after {
+  content:''; position:absolute; inset:0;
+  background:rgba(255,255,255,0); transition: background var(--transition);
+}
+.btn:hover::after { background:rgba(255,255,255,0.08); }
+.btn:active { transform:scale(0.97); }
+.btn-primary {
+  background: var(--gradient-hero); color:#fff;
+}
+.btn-secondary {
+  background: var(--bg-glass); color:var(--text-primary);
+  border:1px solid var(--border-glass);
+}
+.btn-secondary:hover { border-color:var(--border-active); }
+.btn.loading { opacity:0.7; pointer-events:none; }
+.btn .spinner {
+  width:14px; height:14px; border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff; border-radius:50%;
+  animation: spin 0.6s linear infinite;
+  display:none;
+}
+.btn.loading .spinner { display:block; }
+
+/* ======================== TOAST ======================== */
+.toast-container {
+  position:fixed; top:20px; right:20px; z-index:999;
+  display:flex; flex-direction:column; gap:8px;
+}
+.toast {
+  padding:14px 20px; border-radius:var(--radius-sm);
+  font-size:0.82rem; font-weight:500;
+  background:var(--bg-base); border:1px solid var(--border-glass);
+  box-shadow:var(--shadow-card);
+  animation: slideIn 0.3s ease-out;
+  display:flex; align-items:center; gap:10px;
+}
+.toast.success { border-color:rgba(0,230,118,0.3); }
+.toast.error   { border-color:rgba(255,82,82,0.3); }
+
+/* ======================== EMPTY STATE ======================== */
+.empty-state {
+  text-align:center; padding:48px 24px; color:var(--text-muted);
+}
+.empty-state .icon { font-size:2.5rem; margin-bottom:12px; opacity:0.4; }
+.empty-state p { font-size:0.85rem; }
+
+/* ======================== LOADING SKELETON ======================== */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width:768px) {
+  .app { padding:16px 12px 40px; }
+  .header { flex-direction:column; align-items:flex-start; gap:12px; }
+  .stats-grid { grid-template-columns:1fr 1fr; gap:10px; }
+  .stat-card { padding:16px 18px; }
+  .stat-card .value { font-size:1.6rem; }
+  .sessions-table th, .sessions-table td { padding:10px 14px; }
+  .sessions-table .hide-mobile { display:none; }
+}
+@media (max-width:480px) {
+  .stats-grid { grid-template-columns:1fr; }
+}
+
+/* ======================== ANIMATIONS ======================== */
+@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+@keyframes slideIn { from{transform:translateX(60px);opacity:0} to{transform:translateX(0);opacity:1} }
+@keyframes fadeUp { from{transform:translateY(12px);opacity:0} to{transform:translateY(0);opacity:1} }
+.fade-up { animation: fadeUp 0.4s ease-out both; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- ======== HEADER ======== -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">🧠</div>
+      <div>
+        <h1>Memory Context Monitor</h1>
+        <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">v2.0 — mem-gw-final</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <select class="project-select" id="projectSelect">
+        <option value="">All Projects</option>
+        <option value="LPOpenBIMAI" selected>LPOpenBIMAI</option>
+        <option value="10.Obsidan">10.Obsidan</option>
+      </select>
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="toggle-wrap" id="refreshToggle">
+        <span>Auto</span>
+        <div class="toggle-track active" id="toggleTrack"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== ACTIONS ======== -->
+  <div class="actions-bar">
+    <button class="btn btn-primary" id="btnSyncGithub" onclick="triggerSync()">
+      <span class="spinner"></span>⬆ Sync to GitHub
+    </button>
+    <button class="btn btn-secondary" id="btnRefresh" onclick="loadAll()">
+      ↻ Refresh Now
+    </button>
+  </div>
+
+  <!-- ======== STATS ======== -->
+  <div class="stats-grid" id="statsGrid">
+    <div class="stat-card fade-up" data-accent="cyan">
+      <div class="icon">💾</div>
+      <div class="label">Memories</div>
+      <div class="value" id="memCount">—</div>
+      <div class="sub">Long-term + decisions</div>
+    </div>
+    <div class="stat-card fade-up" data-accent="green" style="animation-delay:0.06s">
+      <div class="icon">🔗</div>
+      <div class="label">Entities</div>
+      <div class="value" id="entCount">—</div>
+      <div class="sub">Projects, tools, concepts</div>
+    </div>
+    <div class="stat-card fade-up" data-accent="blue" style="animation-delay:0.12s">
+      <div class="icon">🔄</div>
+      <div class="label">Sync Log</div>
+      <div class="value" id="syncCount">—</div>
+      <div class="sub">Total sync operations</div>
+    </div>
+    <div class="stat-card fade-up" data-accent="yellow" style="animation-delay:0.18s">
+      <div class="icon">📂</div>
+      <div class="label">Sessions</div>
+      <div class="value" id="sessionCount">—</div>
+      <div class="sub" id="sessionSub">For selected project</div>
+    </div>
+  </div>
+
+  <!-- ======== CONTEXT WINDOW ======== -->
+  <div class="context-section fade-up" style="animation-delay:0.2s">
+    <div class="context-gauge">
+      <div class="gauge-ring">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle class="gauge-bg" cx="90" cy="90" r="78" />
+          <circle class="gauge-fill" id="gaugeFill" cx="90" cy="90" r="78" />
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-percent" id="gaugePercent">—</div>
+          <div class="gauge-title-inside">Context Window</div>
+        </div>
+      </div>
+      <div class="gauge-tokens" id="gaugeTokens">— / 200K tokens</div>
+      <div class="gauge-status ok" id="gaugeStatus">Ready</div>
+      <div style="font-size:0.65rem;color:var(--text-muted);margin-top:4px;text-align:center;font-style:italic" id="gaugeAge">Updates on agent checkpoint</div>
+    </div>
+    <div class="context-details">
+      <h3>📊 Current Session Context</h3>
+      <div class="context-meta-grid">
+        <div class="context-meta-item">
+          <div class="meta-label">Est. Tokens</div>
+          <div class="meta-value cyan" id="ctxTokens">—</div>
+        </div>
+        <div class="context-meta-item">
+          <div class="meta-label">Model Limit</div>
+          <div class="meta-value green" id="ctxModelLimit">200K</div>
+        </div>
+        <div class="context-meta-item">
+          <div class="meta-label">Session Start</div>
+          <div class="meta-value cyan" id="ctxStartTime">—</div>
+        </div>
+        <div class="context-meta-item">
+          <div class="meta-label">Last Checkpoint</div>
+          <div class="meta-value yellow" id="ctxLastCheckpoint">—</div>
+        </div>
+      </div>
+      <div class="context-breakdown" id="ctxBreakdown">
+        <h3 style="margin-bottom:10px">🧩 Token Breakdown</h3>
+        <div class="breakdown-bars">
+          <div class="breakdown-item">
+            <span class="bk-label">💬 Chat History</span>
+            <div class="bk-bar"><div class="bk-fill" id="bkChat" style="width:0%"></div></div>
+            <span class="bk-value" id="bkChatVal">0</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="bk-label">📄 Files & Code</span>
+            <div class="bk-bar"><div class="bk-fill bk-blue" id="bkFiles" style="width:0%"></div></div>
+            <span class="bk-value" id="bkFilesVal">0</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="bk-label">🔧 System Prompt</span>
+            <div class="bk-bar"><div class="bk-fill bk-purple" id="bkSystem" style="width:0%"></div></div>
+            <span class="bk-value" id="bkSystemVal">~2K</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="bk-label">🛠️ Tool Results</span>
+            <div class="bk-bar"><div class="bk-fill bk-yellow" id="bkTools" style="width:0%"></div></div>
+            <span class="bk-value" id="bkToolsVal">0</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:10px">🚦 Checkpoint Thresholds</h3>
+        <div class="checkpoint-list" id="checkpointList">
+          <div class="checkpoint-item" data-threshold="30">
+            <span class="cp-threshold">30%</span>
+            <span class="cp-label">Checkpoint #1 — status log</span>
+            <span class="cp-status upcoming" id="cp30">upcoming</span>
+          </div>
+          <div class="checkpoint-item" data-threshold="60">
+            <span class="cp-threshold">60%</span>
+            <span class="cp-label">Checkpoint #2 — save session</span>
+            <span class="cp-status upcoming" id="cp60">upcoming</span>
+          </div>
+          <div class="checkpoint-item" data-threshold="80">
+            <span class="cp-threshold">80%</span>
+            <span class="cp-label">Auto-save + ask user</span>
+            <span class="cp-status upcoming" id="cp80">upcoming</span>
+          </div>
+          <div class="checkpoint-item" data-threshold="90">
+            <span class="cp-threshold">90%</span>
+            <span class="cp-label">🔴 Save + STOP</span>
+            <span class="cp-status upcoming" id="cp90">upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== MODEL QUOTAS ======== -->
+  <div class="panel fade-up" style="animation-delay:0.22s">
+    <div class="panel-header">
+      <h2>⚡ Model Quotas <span class="badge" id="quotaBadge">0</span></h2>
+      <span style="font-size:0.72rem;color:var(--text-muted)" id="quotaResetInfo">—</span>
+    </div>
+    <div class="panel-body">
+      <div class="quota-grid" id="quotaGrid">
+        <div class="empty-state"><div class="icon">⏳</div><p>Loading quotas…</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== SESSIONS TABLE ======== -->
+  <div class="panel fade-up" style="animation-delay:0.2s">
+    <div class="panel-header">
+      <h2>📋 Sessions <span class="badge" id="sessionsBadge">0</span></h2>
+    </div>
+    <div class="panel-body">
+      <table class="sessions-table">
+        <thead>
+          <tr>
+            <th>Created</th>
+            <th>Tags</th>
+            <th>Content</th>
+            <th class="hide-mobile">Importance</th>
+          </tr>
+        </thead>
+        <tbody id="sessionsBody">
+          <tr><td colspan="4" class="empty-state"><div class="icon">📭</div><p>Loading sessions…</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ======== SYNC TIMELINE ======== -->
+  <div class="panel fade-up" style="animation-delay:0.25s">
+    <div class="panel-header">
+      <h2>🔄 Recent Syncs <span class="badge" id="syncsBadge">0</span></h2>
+    </div>
+    <div class="panel-body">
+      <div class="timeline" id="syncTimeline">
+        <div class="empty-state"><div class="icon">⏳</div><p>Loading sync history…</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ======================== CONFIG ========================
+const BASE = 'https://4ian5xm8.functions.insforge.app/mem-gw-final';
+let autoRefresh = true;
+let refreshTimer = null;
+const REFRESH_INTERVAL = 30000;
+
+// ======================== HELPERS ========================
+const $ = id => document.getElementById(id);
+const api = async (path, opts = {}) => {
+  const r = await fetch(`${BASE}/${path}`, {
+    headers: { 'Content-Type': 'application/json' },
+    ...opts
+  });
+  return r.json();
+};
+
+function formatDate(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  const date = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  const time = d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+  return `${date} ${time}`;
+}
+
+function relativeTime(iso) {
+  if (!iso) return '';
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  return `${Math.floor(hrs / 24)}d ago`;
+}
+
+function toast(msg, type = 'success') {
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `${type === 'success' ? '✅' : '❌'} ${msg}`;
+  $('toastContainer').appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// ======================== DATA LOADERS ========================
+async function loadHealth() {
+  try {
+    const d = await api('health');
+    $('memCount').textContent = d.counts?.memories ?? '?';
+    $('entCount').textContent = d.counts?.entities ?? '?';
+    $('syncCount').textContent = d.counts?.sync_log ?? '?';
+  } catch (e) {
+    console.error('Health error:', e);
+  }
+}
+
+async function loadSessions() {
+  try {
+    const project = $('projectSelect').value;
+    const q = project ? `sessions?project=${encodeURIComponent(project)}` : 'sessions';
+    const d = await api(q);
+    const sessions = d.sessions || [];
+    $('sessionCount').textContent = sessions.length;
+    $('sessionsBadge').textContent = sessions.length;
+    $('sessionSub').textContent = project ? `Project: ${project}` : 'All projects';
+
+    if (!sessions.length) {
+      $('sessionsBody').innerHTML = '<tr><td colspan="4" class="empty-state"><div class="icon">📭</div><p>No sessions found</p></td></tr>';
+      return;
+    }
+
+    $('sessionsBody').innerHTML = sessions.map((s, i) => {
+      const tags = (s.tags || []).map(t => {
+        const cls = ['antigravity','cursor','claude','codex','gemini'].includes(t) ? 'tag ide' : 'tag';
+        return `<span class="${cls}">${t}</span>`;
+      }).join('');
+      const content = s.content || '(empty)';
+      const preview = content.length > 80 ? content.substring(0, 80) + '…' : content;
+      return `<tr onclick="this.classList.toggle('expanded')" style="animation-delay:${i*0.04}s" class="fade-up">
+        <td class="time-cell">${formatDate(s.created_at)}<br><span style="color:var(--accent-cyan)">${relativeTime(s.created_at)}</span></td>
+        <td>${tags}</td>
+        <td>
+          <div class="content-preview">${escHtml(preview)}</div>
+          <div class="content-full">${escHtml(content)}</div>
+        </td>
+        <td class="hide-mobile" style="font-family:var(--font-mono);color:var(--accent-yellow)">${s.importance ?? '—'}</td>
+      </tr>`;
+    }).join('');
+  } catch (e) {
+    console.error('Sessions error:', e);
+    $('sessionsBody').innerHTML = '<tr><td colspan="4" class="empty-state"><div class="icon">❌</div><p>Failed to load sessions</p></td></tr>';
+  }
+}
+
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+async function loadSyncTimeline() {
+  try {
+    const d = await api('context-stats');
+    const syncs = d.recent_syncs || [];
+    $('syncsBadge').textContent = syncs.length;
+
+    if (!syncs.length) {
+      $('syncTimeline').innerHTML = '<div class="empty-state"><div class="icon">📭</div><p>No syncs yet</p></div>';
+      return;
+    }
+
+    $('syncTimeline').innerHTML = syncs.map((s, i) => `
+      <div class="timeline-item fade-up" style="animation-delay:${i*0.06}s">
+        <div class="timeline-dot ${s.status || 'success'}"></div>
+        <div class="timeline-info">
+          <div class="timeline-op">${s.operation || 'sync'}</div>
+          <div class="timeline-meta">${s.adapter_source || '?'} → ${s.adapter_target || '?'}</div>
+        </div>
+        <div class="timeline-time">${relativeTime(s.created_at || s.synced_at)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error('Context-stats error:', e);
+  }
+}
+
+// ======================== ACTIONS ========================
+async function triggerSync() {
+  const btn = $('btnSyncGithub');
+  btn.classList.add('loading');
+  try {
+    const d = await api('sync-github', { method: 'POST' });
+    if (d.status === 'synced') {
+      toast(`Synced! Snapshot: ${d.snapshot}`);
+    } else {
+      toast(`Sync returned: ${d.status || d.error}`, 'error');
+    }
+    loadAll();
+  } catch (e) {
+    toast(`Sync failed: ${e.message}`, 'error');
+  } finally {
+    btn.classList.remove('loading');
+  }
+}
+
+// ======================== CONTEXT WINDOW ========================
+// Token-based context window calculation
+// Reference: 1 token ≈ 4 characters (English), ≈ 2-3 chars (Vietnamese/CJK)
+// Claude 3.5 Sonnet: 200,000 token context window
+// Components: System Prompt + Chat History + Files/Code + Tool Results + RAG snippets
+
+// Source: https://www.anthropic.com/news/claude-opus-4-6 (Feb 2026)
+// Pricing: $5/$25 per 1M tokens (standard), $10/$37.50 for >200K input
+const MODEL_LIMITS = {
+  'claude-opus-4.6':   1000000,  // 1M tokens (beta) — first Opus with 1M
+  'claude-sonnet-4.6':  200000,  // 200K (1M on AWS Bedrock)
+  'claude-sonnet-4.5':  200000,  // Antigravity default model
+  'claude-opus-4.5':    200000,
+  'gpt-5.4':            272000,
+  'gpt-5.2':            400000,
+  'gemini-3-pro':      1000000,
+  'default':            200000   // Antigravity uses Claude Sonnet 4.5
+};
+
+function estimateTokens(text) {
+  if (!text) return 0;
+  // Mixed content (English + Vietnamese + code): ~3.5 chars per token average
+  return Math.round(text.length / 3.5);
+}
+
+function parseContextFromSession(session) {
+  if (!session || !session.content) return null;
+  const c = session.content;
+  const modelLimit = MODEL_LIMITS['default'];
+  
+  // 1. SYSTEM PROMPT: ~2,000 tokens (GEMINI.md rules, SKILL.md, system instructions)
+  const systemTokens = 2000;
+  
+  // 2. CHAT HISTORY: Estimate from session content
+  //    Session content is a summary, actual conversation is ~3-5x larger
+  const sessionTokens = estimateTokens(c);
+  const chatHistoryTokens = sessionTokens * 4; // conversation is ~4x the summary
+  
+  // 3. FILES & CODE: Estimate from content references
+  //    Count file references in content to estimate files loaded
+  const fileRefs = (c.match(/\.(md|ts|js|py|html|css|json)\b/gi) || []).length;
+  const fileTokens = fileRefs * 800; // ~800 tokens per file on average
+  
+  // 4. TOOL RESULTS: Each tool call returns ~500-2000 tokens
+  const tcMatch = c.match(/(\d+)\s*tool\s*calls?/i);
+  const toolCallCount = tcMatch ? parseInt(tcMatch[1]) : Math.round(c.length / 250);
+  const toolTokens = toolCallCount * 1200; // ~1200 tokens per tool result average
+  
+  // 5. Check for explicit context % in content (from checkpoints)
+  const pctMatch = c.match(/context\s*[~≈]?\s*(\d+)\s*%/i);
+  
+  // Total estimated tokens
+  const totalTokens = systemTokens + chatHistoryTokens + fileTokens + toolTokens;
+  
+  // Calculate percentage
+  let percent;
+  if (pctMatch) {
+    // Trust explicit checkpoint markers from the agent
+    percent = parseInt(pctMatch[1]);
+  } else {
+    percent = Math.min(100, Math.round((totalTokens / modelLimit) * 100));
+  }
+  
+  // Parse checkpoints
+  const cpMatch = c.match(/checkpoint\s*#?(\d)/gi);
+  const checkpoints = [];
+  if (cpMatch) cpMatch.forEach(m => {
+    const n = m.match(/\d/); if (n) checkpoints.push(parseInt(n[0]));
+  });
+  
+  return {
+    percent,
+    totalTokens,
+    modelLimit,
+    breakdown: {
+      system: systemTokens,
+      chat: chatHistoryTokens,
+      files: fileTokens,
+      tools: toolTokens
+    },
+    toolCalls: toolCallCount,
+    checkpoints
+  };
+}
+
+function formatTokens(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+  return n.toString();
+}
+
+function updateContextGauge(sessions) {
+  const latest = sessions && sessions.length ? sessions[0] : null;
+  const ctx = parseContextFromSession(latest);
+  
+  const fill = $('gaugeFill');
+  const pctEl = $('gaugePercent');
+  const statusEl = $('gaugeStatus');
+  const tokenEl = $('gaugeTokens');
+  const circumference = 2 * Math.PI * 78; // r=78 (new ring size)
+  
+  if (!ctx || !latest) {
+    pctEl.textContent = '0%';
+    fill.style.strokeDashoffset = circumference;
+    tokenEl.textContent = '0 / 200K tokens';
+    statusEl.textContent = 'No active session';
+    statusEl.className = 'gauge-status ok';
+    $('ctxTokens').textContent = '0';
+    $('ctxStartTime').textContent = '—';
+    $('ctxLastCheckpoint').textContent = 'None';
+    // Reset breakdown
+    ['bkChat','bkFiles','bkSystem','bkTools'].forEach(id => { if ($(id)) $(id).style.width = '0%'; });
+    ['bkChatVal','bkFilesVal','bkToolsVal'].forEach(id => { if ($(id)) $(id).textContent = '0'; });
+    return;
+  }
+  
+  const pct = Math.min(ctx.percent, 100);
+  const offset = circumference - (pct / 100) * circumference;
+  
+  fill.style.strokeDasharray = circumference;
+  fill.style.strokeDashoffset = offset;
+  pctEl.textContent = pct + '%';
+  tokenEl.textContent = `${formatTokens(ctx.totalTokens)} / ${formatTokens(ctx.modelLimit)} tokens`;
+  
+  // Color coding
+  fill.classList.remove('warn', 'danger');
+  
+  if (pct >= 80) {
+    fill.classList.add('danger');
+    statusEl.textContent = pct >= 90 ? '🔴 Critical — new session needed' : '🟠 High — consider new session';
+    statusEl.className = 'gauge-status danger';
+  } else if (pct >= 60) {
+    fill.classList.add('warn');
+    statusEl.textContent = '⚠️ Moderate usage';
+    statusEl.className = 'gauge-status warn';
+  } else {
+    statusEl.textContent = '✅ Healthy';
+    statusEl.className = 'gauge-status ok';
+  }
+  
+  // Meta cards
+  $('ctxTokens').textContent = formatTokens(ctx.totalTokens);
+  $('ctxTokens').className = pct >= 80 ? 'meta-value red' : pct >= 60 ? 'meta-value yellow' : 'meta-value cyan';
+  
+  // Session start time
+  if (latest.created_at) {
+    const d = new Date(latest.created_at);
+    $('ctxStartTime').textContent = d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+  }
+  
+  // Token breakdown bars
+  const bk = ctx.breakdown;
+  const maxToken = ctx.modelLimit;
+  const pctOf = (v) => Math.min(100, (v / maxToken) * 100 * 5).toFixed(1); // scale x5 for visibility
+  
+  if ($('bkChat')) $('bkChat').style.width = pctOf(bk.chat) + '%';
+  if ($('bkFiles')) $('bkFiles').style.width = pctOf(bk.files) + '%';
+  if ($('bkSystem')) $('bkSystem').style.width = pctOf(bk.system) + '%';
+  if ($('bkTools')) $('bkTools').style.width = pctOf(bk.tools) + '%';
+  
+  if ($('bkChatVal')) $('bkChatVal').textContent = formatTokens(bk.chat);
+  if ($('bkFilesVal')) $('bkFilesVal').textContent = formatTokens(bk.files);
+  if ($('bkSystemVal')) $('bkSystemVal').textContent = '~2K';
+  if ($('bkToolsVal')) $('bkToolsVal').textContent = formatTokens(bk.tools);
+  
+  // Checkpoints
+  const thresholds = [30, 60, 80, 90];
+  thresholds.forEach(t => {
+    const el = $('cp' + t);
+    const item = el?.closest('.checkpoint-item');
+    if (!el || !item) return;
+    
+    if (pct >= t) {
+      el.textContent = '✓ reached';
+      el.className = 'cp-status reached';
+      item.className = t >= 80 ? 'checkpoint-item critical' : 'checkpoint-item passed';
+    } else if (pct >= t - 15) {
+      el.textContent = 'approaching';
+      el.className = 'cp-status upcoming';
+      item.className = 'checkpoint-item active';
+    } else {
+      el.textContent = 'upcoming';
+      el.className = 'cp-status upcoming';
+      item.className = 'checkpoint-item';
+    }
+  });
+  
+  // Last checkpoint
+  const passedCps = thresholds.filter(t => pct >= t);
+  $('ctxLastCheckpoint').textContent = passedCps.length ? `#${passedCps.length} (${passedCps[passedCps.length-1]}%)` : 'None';
+  
+  // Staleness indicator
+  if (latest.created_at) {
+    const age = relativeTime(latest.created_at);
+    $('gaugeAge').textContent = age ? `Last saved ${age}` : 'Updates on agent checkpoint';
+  }
+}
+
+// ======================== MAIN LOOP ========================
+// ======================== MODEL QUOTAS ========================
+function getQuotaColor(pct) {
+  if (pct > 50) return 'green';
+  if (pct > 20) return 'yellow';
+  return 'red';
+}
+
+function formatCountdown(resetAt) {
+  const diff = resetAt - Date.now();
+  if (diff <= 0) return 'Resetting…';
+  const hrs = Math.floor(diff / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  return `${hrs}h ${mins}m`;
+}
+
+function getNextReset(hourUTC, minUTC) {
+  const now = new Date();
+  const reset = new Date(now);
+  reset.setUTCHours(hourUTC, minUTC, 0, 0);
+  if (reset <= now) reset.setUTCDate(reset.getUTCDate() + 1);
+  return reset.getTime();
+}
+
+async function loadQuotas() {
+  const grid = $('quotaGrid');
+
+  try {
+    const data = await api('quotas');
+    const rows = data.quotas || [];
+
+    if (!rows.length) {
+      grid.innerHTML = '<div class="empty-state">No quota data yet. Run sync-quotas.ps1 or agent will report at next session.</div>';
+      $('quotaBadge').textContent = '0';
+      return;
+    }
+
+    $('quotaBadge').textContent = rows.length;
+
+    // Calculate nearest reset (if any have reset_at)
+    const resets = rows.filter(r => r.reset_at).map(r => new Date(r.reset_at).getTime());
+    if (resets.length) {
+      const nearest = Math.min(...resets);
+      $('quotaResetInfo').textContent = `Next reset in ${formatCountdown(nearest)}`;
+    } else {
+      const updatedTimes = rows.map(r => new Date(r.updated_at).getTime());
+      const latest = Math.max(...updatedTimes);
+      $('quotaResetInfo').textContent = `Updated ${new Date(latest).toLocaleString('en-GB', { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })}`;
+    }
+
+    grid.innerHTML = rows.map(q => {
+      const remaining = q.usage_pct; // now = remaining% (100→0)
+      const color = remaining > 60 ? 'green' : remaining > 25 ? 'yellow' : 'red';
+      const tierLabel = q.tier || (remaining > 60 ? 'High' : remaining > 25 ? 'Medium' : 'Low');
+      const tierClass = remaining > 60 ? '' : remaining > 25 ? 'medium' : 'low';
+      const updatedStr = new Date(q.updated_at).toLocaleString('en-GB', {
+        month:'2-digit', day:'2-digit', year:'numeric',
+        hour:'2-digit', minute:'2-digit'
+      });
+      return `
+        <div class="quota-card">
+          <div class="quota-card-header">
+            <span class="quota-model">${q.model_name}</span>
+            <span class="quota-tier ${tierClass}">${tierLabel}</span>
+          </div>
+          <div class="quota-bar-wrap">
+            <div class="quota-bar-fill ${color}" style="width:${remaining}%"></div>
+          </div>
+          <div class="quota-meta">
+            <span class="quota-pct ${color}">${remaining.toFixed(1)}%</span>
+            <span title="${updatedStr}">Updated ${updatedStr}</span>
+          </div>
+        </div>`;
+    }).join('');
+  } catch (err) {
+    console.error('Quota fetch failed:', err);
+    grid.innerHTML = '<div class="empty-state">⚠️ Could not load quotas. Check API connection.</div>';
+  }
+}
+
+async function loadAll() {
+  const sessionPromise = loadSessions();
+  await Promise.all([loadHealth(), sessionPromise, loadSyncTimeline()]);
+  
+  // Load model quotas (always, regardless of session state)
+  try { loadQuotas(); } catch (_) {}
+
+  // Update context gauge from latest session OR init-session
+  try {
+    const project = $('projectSelect').value;
+    const q = project ? `sessions?project=${encodeURIComponent(project)}` : 'sessions';
+    const d = await api(q);
+    const sessions = d.sessions || [];
+    
+    // Check for recent init-session (new conv started but no checkpoint yet)
+    const latestSession = sessions[0];
+    if (latestSession && latestSession.category === 'session-init') {
+      const initAge = Date.now() - new Date(latestSession.created_at).getTime();
+      if (initAge < 3600000) { // within last hour
+        $('gaugePercent').textContent = '2%';
+        document.querySelector('.gauge-fill')?.setAttribute('stroke-dasharray', `${2 * 4.4} ${440 - 2 * 4.4}`);
+        $('gaugeTokens').textContent = '~2K / 200K tokens';
+        $('gaugeStatus').textContent = '🆕 New Session';
+        $('gaugeStatus').className = 'gauge-status ok';
+        $('gaugeAge').textContent = `Session started ${relativeTime(latestSession.created_at)}`;
+        return;
+      }
+    }
+    
+    updateContextGauge(sessions);
+  } catch (_) {}
+}
+
+function startAutoRefresh() {
+  if (refreshTimer) clearInterval(refreshTimer);
+  if (autoRefresh) {
+    refreshTimer = setInterval(loadAll, REFRESH_INTERVAL);
+  }
+}
+
+// Clock
+function tickClock() {
+  const now = new Date();
+  $('clock').textContent = now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+}
+
+// Toggle auto-refresh
+$('refreshToggle').addEventListener('click', () => {
+  autoRefresh = !autoRefresh;
+  $('toggleTrack').classList.toggle('active', autoRefresh);
+  startAutoRefresh();
+  toast(autoRefresh ? 'Auto-refresh ON (30s)' : 'Auto-refresh OFF');
+});
+
+// Project change
+$('projectSelect').addEventListener('change', () => {
+  loadSessions();
+});
+
+// ======================== INIT ========================
+(async () => {
+  tickClock();
+  setInterval(tickClock, 1000);
+  await loadAll();
+
+  // Discover projects from sessions
+  try {
+    const all = await api('sessions');
+    const projects = new Set();
+    (all.sessions || []).forEach(s => {
+      (s.tags || []).forEach(t => {
+        if (!['session','antigravity','cursor','claude','codex','gemini','auto-memory'].includes(t)) {
+          projects.add(t);
+        }
+      });
+    });
+    const sel = $('projectSelect');
+    const existing = new Set([...sel.options].map(o => o.value));
+    projects.forEach(p => {
+      if (!existing.has(p)) {
+        const opt = document.createElement('option');
+        opt.value = p; opt.textContent = p;
+        sel.appendChild(opt);
+      }
+    });
+  } catch (_) {}
+
+  startAutoRefresh();
+})();
+</script>
+</body>
+</html>

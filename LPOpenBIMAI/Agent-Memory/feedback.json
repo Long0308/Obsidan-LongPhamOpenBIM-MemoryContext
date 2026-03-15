@@ -1,0 +1,9 @@
+{
+  "session_feedback": [],
+  "metadata": {
+    "created": "2026-03-15T23:40:00+07:00",
+    "version": "1.0",
+    "description": "Agent self-rating for sessions and skills — inspired by context-hub feedback pattern",
+    "labels": ["helpful", "outdated", "incomplete", "confusing", "effective", "needs-update", "accurate", "well-structured"]
+  }
+}

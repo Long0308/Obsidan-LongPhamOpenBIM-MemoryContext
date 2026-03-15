@@ -1,0 +1,28 @@
+filters:
+  and:
+    - file.hasTag("plugin")
+    - 'file.ext == "md"'
+    - file.inFolder("LPOpenBIMAI/Agent-Plugins")
+
+formulas:
+  modified: 'file.mtime.format("YYYY-MM-DD")'
+  size_kb: '(file.size / 1024).round(1)'
+
+properties:
+  formula.modified:
+    displayName: "Modified"
+  formula.size_kb:
+    displayName: "Size (KB)"
+
+views:
+  - type: table
+    name: "📋 All Plugins"
+    order:
+      - file.name
+      - formula.modified
+      - formula.size_kb
+
+  - type: cards
+    name: "🃏 Plugin Cards"
+    order:
+      - file.name

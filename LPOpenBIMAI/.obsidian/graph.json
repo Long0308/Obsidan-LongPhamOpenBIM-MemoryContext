@@ -1,0 +1,93 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#platform",
+      "color": {
+        "a": 1,
+        "rgb": 3899638
+      }
+    },
+    {
+      "query": "tag:#resources",
+      "color": {
+        "a": 1,
+        "rgb": 15662848
+      }
+    },
+    {
+      "query": "tag:#hub",
+      "color": {
+        "a": 1,
+        "rgb": 16724787
+      }
+    },
+    {
+      "query": "tag:#agent",
+      "color": {
+        "a": 1,
+        "rgb": 16750899
+      }
+    },
+    {
+      "query": "tag:#skill",
+      "color": {
+        "a": 1,
+        "rgb": 5635925
+      }
+    },
+    {
+      "query": "tag:#memory",
+      "color": {
+        "a": 1,
+        "rgb": 4382181
+      }
+    },
+    {
+      "query": "tag:#plugin",
+      "color": {
+        "a": 1,
+        "rgb": 15453133
+      }
+    },
+    {
+      "query": "tag:#canvas",
+      "color": {
+        "a": 1,
+        "rgb": 10233776
+      }
+    },
+    {
+      "query": "tag:#openspec",
+      "color": {
+        "a": 1,
+        "rgb": 9133302
+      }
+    },
+    {
+      "query": "tag:#session",
+      "color": {
+        "a": 1,
+        "rgb": 16095641
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.58,
+  "lineSizeMultiplier": 1.16,
+  "collapse-forces": true,
+  "centerStrength": 0.52,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.5359795996225916,
+  "close": false
+}

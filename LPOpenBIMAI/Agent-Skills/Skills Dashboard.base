@@ -1,0 +1,44 @@
+filters:
+  and:
+    - file.hasTag("skill")
+    - 'file.ext == "md"'
+    - file.inFolder("LPOpenBIMAI/Agent-Skills")
+
+formulas:
+  nhom: 'if(group, group, "—")'
+  trigger_summary: 'if(role, role, "—")'
+  modified: 'file.mtime.format("YYYY-MM-DD")'
+  size_kb: '(file.size / 1024).round(1)'
+
+properties:
+  formula.nhom:
+    displayName: "Nhóm"
+  formula.trigger_summary:
+    displayName: "Role"
+  formula.modified:
+    displayName: "Modified"
+  formula.size_kb:
+    displayName: "Size (KB)"
+
+views:
+  - type: table
+    name: "📋 All Skills"
+    order:
+      - file.name
+      - formula.nhom
+      - formula.trigger_summary
+      - formula.modified
+      - formula.size_kb
+    groupBy:
+      property: formula.nhom
+      direction: ASC
+
+  - type: cards
+    name: "🃏 Skill Cards"
+    order:
+      - file.name
+      - formula.nhom
+      - formula.trigger_summary
+    groupBy:
+      property: formula.nhom
+      direction: ASC
