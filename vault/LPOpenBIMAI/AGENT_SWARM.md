@@ -120,6 +120,7 @@ Config: `Agent/memory/gateway.config.json`
 | 4 | [[Antigravity Kit Resources]] | ag-kit, Superpowers, InsForge |
 | 5 | [[Claude Skills Resources]] | Claude skills, best practices |
 | 6 | [[SaaS Planning Workflow]] | Production SaaS planning methodology |
+| 7 | [[OpenSpec Integration]] | Spec-driven development — propose → design → tasks |
 
 ## Links
 - [[E2E-Guide|📘 Hướng Dẫn E2E]]
