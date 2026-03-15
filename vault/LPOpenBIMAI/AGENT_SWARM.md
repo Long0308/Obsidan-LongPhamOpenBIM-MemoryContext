@@ -1,4 +1,4 @@
-﻿---
+---
 title: Agent Swarm MOC
 tags:
   - agent
@@ -110,9 +110,21 @@ Config: `Agent/memory/gateway.config.json`
 | mcp-server-for-revit | BIM automation |
 | stitch-mcp | UI generation |
 
+## 📚 Resources
+
+| # | Note | Nội dung |
+|---|------|---------|
+| 1 | [[AI Agent Resources]] | System prompts, OpenAI cookbook, LLM apps |
+| 2 | [[Prompt & AI Image Library]] | Nano Banana Pro, AI image prompts |
+| 3 | [[UI-UX Design Resources]] | Dribbble, Stitch, components, themes |
+| 4 | [[Antigravity Kit Resources]] | ag-kit, Superpowers, InsForge |
+| 5 | [[Claude Skills Resources]] | Claude skills, best practices |
+| 6 | [[SaaS Planning Workflow]] | Production SaaS planning methodology |
+
 ## Links
 - [[E2E-Guide|📘 Hướng Dẫn E2E]]
 - [[Memory-Graph.canvas|🧠 Memory Graph]]
 - [[Agent-Swarm.canvas|🗺️ Skill Map]]
 - `.agent/ARCHITECTURE.md` — Kiến trúc ag-kit
 - `.agent/mcp_config.json` — MCP server config
+
