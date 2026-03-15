@@ -1,7 +1,88 @@
 {
-  "timestamp": "2026-03-15T12:15:18.353Z",
-  "count": 40,
+  "timestamp": "2026-03-15T12:15:45.612Z",
+  "count": 44,
   "data": [
+    {
+      "id": "e420b050-9d76-4a47-a1b3-b48b4833d8c8",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Updated GITHUB_PAT in InsForge",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "56663359-4d84-478f-a5d0-9ab2e6b5ca82",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Redeployed mem-gw-final",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "120596ba-c7cf-4d2b-b675-6cb79f28fb4e",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Added Conv 4+5 to session note",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "56386d67-bbde-4655-bbfe-f5fb456b2b8e",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 5: Built Memory Dashboard + Fixed GitHub PAT. Dashboard verified with live data. PAT updated to fine-grained token with repo access.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.422434+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.422434+00:00",
+      "updated_at": "2026-03-15T12:15:33.422434+00:00"
+    },
     {
       "id": "5e74a633-b6b6-41e4-adba-15a4f5e0a7ba",
       "type": "long-term",
