@@ -1,1 +1,1 @@
-Phase 2 Context Tracking Reliability COMPLETE: (1) Staleness detection - text turns red when >30m since last update, (2) Context history sparkline - SVG chart with 30-point rolling window tracks context % over time, (3) Smart staleness text shows session age + conv ID. All verified in browser.
+Phase 3 Memory MITM Architecture COMPLETE: Designed full architecture mapping MC MITM to agent memory - UnifiedSession schema, normalizer pipeline, agent_registry + handoff_notes + context_history tables, /normalize + /agents + /handoff endpoints, per-agent config, 8-step roadmap.
