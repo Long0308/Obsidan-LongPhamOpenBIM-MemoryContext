@@ -811,7 +811,7 @@ async function loadHealth() {
     const d = await api('health');
     $('memCount').textContent = d.counts?.memories ?? '?';
     $('entCount').textContent = d.counts?.entities ?? '?';
-    $('syncCount').textContent = d.counts?.sync_log ?? '?';
+    $('syncCount').textContent = d.counts?.sync ?? d.counts?.sync_log ?? '?';
   } catch (e) {
     console.error('Health error:', e);
   }
