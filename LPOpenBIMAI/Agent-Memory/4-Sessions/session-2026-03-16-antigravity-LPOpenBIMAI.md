@@ -1,1 +1,1 @@
-Dashboard audit live check: all OK - auto-refresh working, v2.5, sparkline 4pts, 20 sessions, 6 quotas at 100%. Synced 5 Skill Graph notes to Obsidian vault Agent-Skills: Skill Graphs, Graph Structure, Agent Cognition, Discovery Retrieval, Processing Workflow. Updated MOC count 65?70.
+Added Vault Node Placement Protocol to GEMINI.md TIER 0. Rule enforces: (1) new files go inside numbered group folders, (2) update MOC, (3) add wikilinks. Moved 5 skill graph notes from Agent-Skills root into 9-Knowledge-Architecture subfolder.
