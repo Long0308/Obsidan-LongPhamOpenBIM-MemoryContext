@@ -1,1 +1,1 @@
-Phase 1 Dashboard Hardening COMPLETE: (1) version v2.3?v2.5, (2) API retry with exponential backoff, (3) sync button sends lightweight context instead of overwriting, (4) green/red connection indicator, (5) 3 export buttons for sessions/quotas. All verified in browser.
+Phase 2 Context Tracking Reliability COMPLETE: (1) Staleness detection - text turns red when >30m since last update, (2) Context history sparkline - SVG chart with 30-point rolling window tracks context % over time, (3) Smart staleness text shows session age + conv ID. All verified in browser.
