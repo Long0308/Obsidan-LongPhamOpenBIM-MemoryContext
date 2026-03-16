@@ -1044,14 +1044,29 @@ async function triggerSync() {
   const btn = $('btnSyncGithub');
   btn.classList.add('loading');
   try {
-    // 1) Push to GitHub (cloud)
+    const project = $('projectSelect').value || 'LPOpenBIMAI';
+
+    // 1) Build session note markdown
+    const md = await buildSessionMarkdown(project);
+
+    // 2) Push session note to GitHub via save-session
+    if (md) {
+      await api('save-session', {
+        method: 'POST',
+        body: JSON.stringify({
+          content: md,
+          project: project,
+          ide: 'dashboard',
+          push_github: true
+        })
+      });
+    }
+
+    // 3) Sync existing sessions to GitHub
     const d = await api('sync-github', { method: 'POST' });
 
-    // 2) Build local session note and save to Obsidian vault
-    const localSaved = await saveSessionToObsidian();
-
     if (d.status === 'synced') {
-      toast(`Synced ${d.n} files to GitHub${localSaved ? ' + Obsidian saved' : ''}`);
+      toast(`✅ Synced ${d.n} files to GitHub — git pull to update vault`);
     } else {
       toast(`Sync: ${d.error || d.status}`, 'error');
     }
@@ -1063,19 +1078,16 @@ async function triggerSync() {
   }
 }
 
-// Save session note as .md file to local Obsidian vault
-async function saveSessionToObsidian() {
+// Build session markdown content (pushed to GitHub, not downloaded)
+async function buildSessionMarkdown(project) {
   try {
-    // Load sessions + context
-    const project = $('projectSelect').value || 'LPOpenBIMAI';
     const [sessData, ctxData] = await Promise.all([
       api(`sessions?project=${encodeURIComponent(project)}`),
       api(`context-status?project=${encodeURIComponent(project)}`)
     ]);
     const sessions = sessData.sessions || [];
-    if (!sessions.length) return false;
+    if (!sessions.length) return null;
 
-    // Build session note markdown
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
     const timeStr = now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
@@ -1084,9 +1096,8 @@ async function saveSessionToObsidian() {
 
     let md = `---\ndate: ${dateStr}\nide: ${ide}\nproject: ${project}\nmodel: ${ctxData.model || 'unknown'}\ntags: [session, auto-memory, ${project}]\n---\n\n`;
     md += `# Session ${dateStr} — ${ide}\n\n`;
-    md += `> Synced at ${timeStr} from Dashboard v2.3\n\n`;
+    md += `> Synced at ${timeStr} from Dashboard v2.4\n\n`;
 
-    // Context snapshot
     if (ctxData.active) {
       md += `## 📊 Context Snapshot\n`;
       md += `| Metric | Value |\n|--------|-------|\n`;
@@ -1095,17 +1106,16 @@ async function saveSessionToObsidian() {
       md += `| Session Start | ${ctxData.session_start || '—'} |\n`;
       md += `| Last Checkpoint | ${ctxData.last_checkpoint || 'None'} |\n`;
       if (ctxData.breakdown) {
-        md += `| Chat Tokens | ${formatTokens(ctxData.breakdown.chat || 0)} |\n`;
-        md += `| File Tokens | ${formatTokens(ctxData.breakdown.files || 0)} |\n`;
-        md += `| System Tokens | ${formatTokens(ctxData.breakdown.system || 0)} |\n`;
-        md += `| Tool Tokens | ${formatTokens(ctxData.breakdown.tools || 0)} |\n`;
+        md += `| Chat | ${formatTokens(ctxData.breakdown.chat || 0)} |\n`;
+        md += `| Files | ${formatTokens(ctxData.breakdown.files || 0)} |\n`;
+        md += `| System | ${formatTokens(ctxData.breakdown.system || 0)} |\n`;
+        md += `| Tools | ${formatTokens(ctxData.breakdown.tools || 0)} |\n`;
       }
       md += `\n`;
     }
 
-    // Session log
     md += `## 🗣️ Session Log\n`;
-    md += `| # | Time | Category | Content |\n|---|------|----------|--------|\n`;
+    md += `| # | Time | Category | Content |\n|---|------|----------|---------|\n`;
     sessions.slice(0, 20).forEach((s, i) => {
       const t = s.created_at ? new Date(s.created_at).toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }) : '—';
       const name = extractSessionName(s.content, s.category);
@@ -1113,29 +1123,15 @@ async function saveSessionToObsidian() {
     });
     md += `\n`;
 
-    // Conversation reference
     if (convId) {
       md += `## Conversations\n`;
       md += `- conv-${convId.substring(0, 8)}: Session ${dateStr} (${ide})\n\n`;
     }
 
-    // Download file to local machine
-    const filename = `session-${dateStr}-${ide}-${project}.md`;
-    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    return true;
+    return md;
   } catch (e) {
-    console.error('Local save error:', e);
-    return false;
+    console.error('Build session MD error:', e);
+    return null;
   }
 }
 
