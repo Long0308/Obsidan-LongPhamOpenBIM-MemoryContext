@@ -1,1 +1,1 @@
-Added Vault Node Placement Protocol to GEMINI.md TIER 0. Rule enforces: (1) new files go inside numbered group folders, (2) update MOC, (3) add wikilinks. Moved 5 skill graph notes from Agent-Skills root into 9-Knowledge-Architecture subfolder.
+Completed 8 skill graph notes in 9-Knowledge-Architecture: Knowledge Work (synthesis MOC), Skill Graphs, Graph Structure, Agent Cognition, Agent Cognition Hooks, Discovery Retrieval, Processing Workflow, Maintenance Quality. All follow Vault Node Placement Protocol. MOC count 73. GEMINI.md updated with vault placement rule.
