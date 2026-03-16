@@ -1,0 +1,77 @@
+filters:
+  and:
+    - file.hasTag("session")
+formulas:
+  session_date: if(date, date.format("YYYY-MM-DD"), file.cday.format("YYYY-MM-DD"))
+  ide_name: if(ide, ide, "—")
+  project_name: if(project, project, "—")
+  model_name: if(model, model, "—")
+  ctx_used: if(context_used, context_used, "—")
+  tools: if(tool_calls, tool_calls, "—")
+  file_size: (file.size / 1024).round(1)
+  conv_id: if(conversation_id, conversation_id.substring(0, 8) + "...", "—")
+  status_icon: if(status = "active", "🟢", if(status = "saved", "💾", "📋"))
+properties:
+  formula.session_date:
+    displayName: Date
+  formula.ide_name:
+    displayName: IDE
+  formula.project_name:
+    displayName: Project
+  formula.model_name:
+    displayName: Model
+  formula.ctx_used:
+    displayName: Context %
+  formula.tools:
+    displayName: Tool Calls
+  formula.file_size:
+    displayName: Size (KB)
+  formula.conv_id:
+    displayName: Conv ID
+  formula.status_icon:
+    displayName: Status
+views:
+  - type: table
+    name: 📋 All Sessions
+    order:
+      - formula.status_icon
+      - file.name
+      - formula.session_date
+      - formula.ide_name
+      - formula.model_name
+      - formula.ctx_used
+      - formula.tools
+      - formula.conv_id
+      - formula.file_size
+    sort:
+      - property: formula.session_date
+        direction: DESC
+    columnSize:
+      file.name: 279
+      formula.session_date: 324
+      formula.model_name: 278
+      formula.ctx_used: 90
+      formula.tools: 90
+      formula.conv_id: 110
+  - type: table
+    name: 🔥 By Project
+    groupBy:
+      property: formula.project_name
+      direction: ASC
+    order:
+      - file.name
+      - formula.session_date
+      - formula.model_name
+      - formula.ctx_used
+      - formula.tools
+    sort:
+      - property: formula.session_date
+        direction: DESC
+  - type: cards
+    name: 🃏 Session Cards
+    order:
+      - file.name
+      - formula.session_date
+      - formula.ide_name
+      - formula.model_name
+      - formula.ctx_used
