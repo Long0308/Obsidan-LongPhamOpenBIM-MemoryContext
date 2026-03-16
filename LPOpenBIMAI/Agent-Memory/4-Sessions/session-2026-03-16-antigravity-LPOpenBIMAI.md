@@ -1,60 +1,56 @@
 ---
-parent: Agent-Memory
-group: Sessions
-title: "Session 2026-03-16 — Vault Cleanup, E2E Audit & README"
-date: 2026-03-16
-ide: antigravity
 project: LPOpenBIMAI
-model: claude-sonnet-4.5
-conversation_id: 453a7ede-f70a-416f-9bb6-605e741135a6
-context_used: 85%
-tool_calls: 480
+ide: antigravity
+date: 2026-03-16
+context_used: 40%
+tool_calls: 40
 status: active
-tags: [session, auto-memory, antigravity, LPOpenBIMAI, agentswarm]
+tags: [session, antigravity, LPOpenBIMAI]
 ---
 
-# Session 2026-03-16 — Antigravity — LPOpenBIMAI
-
-## Summary
-Continued vault cleanup from previous sessions. Fixed Skills Dashboard filter (`skill` → `agent-skill` tag). E2E vault audit: 148 files, 0 duplicates, 0 ghost links, 0 broken wikilinks. Fixed 13 phantom `skill-source` wikilinks. Connected session notes to Agent-Memory MOC. Tested auto-memory pipeline (save-session + GitHub sync). Restructured README v2.3 with accurate architecture tree, vault stats, and data flow diagram. Pushed 3 commits to GitHub.
+# Session 2026-03-16 — antigravity — LPOpenBIMAI
 
 ## 📊 Context
-- **Usage:** ~85% (~480 tool calls across 2 conversations today)
+- **Usage:** 40% (~40 tool calls)
 - **Model:** claude-sonnet-4.5
-- **Synced:** 2026-03-16 19:13 (UTC+7)
+- **Synced:** 2026-03-16T19:47:44 (UTC+7)
 
 ## 🗣️ User Query Log
-
-| # | Time | Query | Result |
-|---|------|-------|--------|
-| 1 | 11:22 | "Nên mở session mới cho Batch 3" | Loaded auto-memory, started batch 3 skill enrichment |
-| 2 | 11:32 | "TIẾN HÀNH PHASE 4" | Deep verification: 0 thin, 0 dupes, 0 broken wikilinks |
-| 3 | 11:34 | "KIỂM TRA NODE KHÔNG CÓ TRONG HỆ THỐNG" | Fixed 41 ghost .md links, added 7 missing skills to MOC |
-| 4 | 12:00 | "audit e2e toàn hệ thống, graph trùng" | Full E2E duplicate scan: 128 groups → fixed to 0 |
-| 5 | 12:20 | "xóa luôn archive" | Deleted _archive/ (31 files) |
-| 6 | 12:30 | "sao các mục không được gôm nhóm" | Skills missing group tags — identified ungrouped nodes |
-| 7 | 12:40 | "skill dashboard không có giá trị" | Fixed filter: `file.hasTag("skill")` → `file.hasTag("agent-skill")` |
-| 8 | 18:46 | "ko thấy gì cả" (dashboard empty) | Simplified filter, removed folder constraint |
-| 9 | 18:47 | "filters parse error" | Added `and:` wrapper to filter YAML |
-| 10 | 18:47 | "không thấy gemini king mode" | Fixed 3 files missing agent-skill tag |
-| 11 | 18:57 | "audit lại e2e, push github, cấu trúc lại readme" | Full E2E audit passed, 3 git commits pushed, README v2.3 |
-| 12 | 18:59 | "test e2e auto memory pipeline" | save-session API OK, 20 sessions loaded |
-| 13 | 19:00 | "tại sao session mất graph" | Connected session notes to Agent-Memory MOC |
-| 14 | 19:08 | "cập nhật Architecture section phù hợp code" | Architecture tree + Vault Stats + Auto-Memory Protocol updated |
-| 15 | 19:13 | "chưa thấy save session trong obsidian" | Updating session note NOW |
+| # | Time | Query Summary | Result |
+|---|------|--------------|--------|
+| 1 | 19:39 |  | ✅ |
+| 2 | 19:05 |  | ✅ |
+| 3 | 18:16 | Batch 3 Skill Enrichment: enriched 14 never-enriched skills from source SKILL.md | ✅ |
+| 4 | 15:02 | Conv ac8ba15d - Vault Restructure + Dashboard Fix. Restructured entire vault fro | ✅ |
+| 5 | 14:34 | Session 2026-03-16 FINAL: AgentSwarm upgrade + context tracker + agent groups +  | ✅ |
 
 ## 📋 Decision Log
-
 | # | Decision | Context |
-|---|----------|---------|
-| 1 | skill-source wikilinks → plain text | `[[App Builder SKILL\|path]]` creates phantom nodes, replaced with `"path"` |
-| 2 | Skills Dashboard filter: tag-only | `file.inFolder()` doesn't recurse subfolders, use `file.hasTag("agent-skill")` only |
-| 3 | Filter YAML must use `and:` wrapper | Obsidian Bases requires filters wrapped in `and`/`or`/`not` |
-| 4 | Force push for vault cleanup | Single-user repo, many file deletions caused divergent history |
-| 5 | README Architecture matches real tree | Scanned actual dirs: 20 agents, 64 skills, 6 memory subfolders, 4 plugin groups |
+|---|----------|--------|
+| 1 | Architecture skill source is only 56L - kept as-is since intentionally lean | 2026-03-16 |
+| 2 | Enriched all thin subfolder notes from source SKILL.md files | 2026-03-16 |
+| 3 | Archived 61 root-level duplicate .md files to _archive folder | 2026-03-16 |
+| 4 | Numbered prefix sub-folders for sort order | 2026-03-16 |
+| 5 | Runtime files (dashboard.html, scripts, json) stay at Agent-Memory root | 2026-03-16 |
+| 6 | 5 unclassified skills mapped: App Builder/Plan Writing/Parallel Agents?Superpowers, Intelligent Rout | 2026-03-16 |
+| 7 | init-session auto-resets context gauge to 0% | 2026-03-16 |
+| 8 | 20 agents grouped into 6 functional categories | 2026-03-16 |
+| 9 | Session Dashboard note created in Obsidian | 2026-03-16 |
+| 10 | Tool calls as context proxy - 100 calls = 100% | 2026-03-16 |
+| 11 | Session note auto-write to Obsidian vault | 2026-03-16 |
+| 12 | Dashboard polls /context-status every 30s | 2026-03-16 |
+| 13 | Used pg_trgm for text similarity instead of pgvector - more practical for current scale | 2026-03-16 |
+| 14 | Created SQLite adapter as code pattern - ready for offline-first mode | 2026-03-16 |
+| 15 | Memory decay via SQL function - server-side, efficient, callable via POST /decay | 2026-03-16 |
+| 16 | Progressive Disclosure 3-layer | 2026-03-16 |
+| 17 | Feedback loop (self-improving) | 2026-03-16 |
+| 18 | MCP Bypass thay vi full MCP server | 2026-03-16 |
+| 19 | Annotations system (context-hub pattern) | 2026-03-16 |
+| 20 | quota-remaining-display-100-to-0 | 2026-03-16 |
 
 ## Conversations
-
-- **Conv 453a7ede** (current): Vault Cleanup & E2E Audit — deduplication, Skills Dashboard fix, phantom wikilink fix, auto-memory pipeline test, README restructure
-- **Conv ac8ba15d** (earlier): Skill Enrichment Batch 2+3 — enriched all 64 vault notes with full source content
-- **Conv 1074004b** (yesterday): Context Tracker Implementation — edge function endpoints, dashboard real-time tracking
+- **2026-03-16T19:39:48 (VN)**: 
+- **2026-03-16T19:05:07 (VN)**: 
+- **2026-03-16T18:16:49 (VN)**: Batch 3 Skill Enrichment: enriched 14 never-enriched skills from source SKILL.md, copied 15 root files to subfolders, ar
+- **2026-03-16T15:02:16 (VN)**: Conv ac8ba15d - Vault Restructure + Dashboard Fix. Restructured entire vault from flat to 28 grouped sub-folders. Fixed 
+- **2026-03-16T14:34:48 (VN)**: Session 2026-03-16 FINAL: AgentSwarm upgrade + context tracker + agent groups + session dashboard. v2.5 deployed with in
