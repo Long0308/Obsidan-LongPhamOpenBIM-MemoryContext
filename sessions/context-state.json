@@ -2,21 +2,21 @@
   {
     "id": 1,
     "project": "LPOpenBIMAI",
-    "pct": 90,
-    "est_tokens": 180000,
+    "pct": 2,
+    "est_tokens": 2000,
     "model_limit": 200000,
-    "session_start": "2026-03-16T13:20:29.384+00:00",
-    "last_checkpoint": "21:47",
-    "conversation_id": "453a7ede-f70a-416f-9bb6-605e741135a6",
-    "model": "gemini-2.5-pro",
+    "session_start": "2026-03-16T15:56:08.587+00:00",
+    "last_checkpoint": "None",
+    "conversation_id": "ae0987a6-809b-46f0-83b2-de7361039007",
+    "model": "claude-sonnet-4-20250514",
     "ide": "antigravity",
     "breakdown": {
-      "chat": 95000,
-      "files": 45000,
-      "tools": 30000,
-      "system": 25000
+      "chat": 0,
+      "files": 0,
+      "tools": 0,
+      "system": 2000
     },
-    "updated_at": "2026-03-16T14:49:36.307+00:00",
+    "updated_at": "2026-03-16T15:56:08.587+00:00",
     "title": "Fixing Sync Button Save + Context Gauge",
     "work_summary": "1. Fixed context gauge reset to 0% — moved from in-memory to PostgreSQL persistence (cold-start safe)\\n2. Fixed sync button downloading random files — now pushes session note to GitHub at correct Obsidian vault path\\n3. Added conversation title + work summary tracking to session notes"
   }
