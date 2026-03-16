@@ -1,18 +1,21 @@
-{
-  "LPOpenBIMAI": {
+[
+  {
+    "id": 1,
+    "project": "LPOpenBIMAI",
     "pct": 85,
     "est_tokens": 170000,
     "model_limit": 200000,
-    "session_start": "2026-03-16T12:55:38.892Z",
-    "last_checkpoint": "2026-03-16T12:55:38.7434266Z",
-    "conversation_id": "453a7ede-f70a-416f-9bb6-605e741135a6",
-    "model": "claude-sonnet-4.5",
+    "session_start": "2026-03-16T13:20:29.384+00:00",
+    "last_checkpoint": "20:22",
+    "conversation_id": "453a7ede",
+    "model": "gemini-2.5-pro",
     "ide": "antigravity",
     "breakdown": {
-      "tools": 20000,
-      "chat": 80000,
+      "chat": 88000,
       "files": 45000,
+      "tools": 28000,
       "system": 25000
-    }
+    },
+    "updated_at": "2026-03-16T13:20:29.384+00:00"
   }
-}
+]
