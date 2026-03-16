@@ -11,10 +11,14 @@
             "id": "1c1ad75c87958d7d",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Agent-Memory/4-Sessions/session-2026-03-16-antigravity-LPOpenBIMAI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "session-2026-03-16-antigravity-LPOpenBIMAI"
             }
           }
         ]
@@ -179,6 +183,8 @@
   },
   "active": "1c1ad75c87958d7d",
   "lastOpenFiles": [
+    "Session Dashboard.base",
+    "Agent-Memory/4-Sessions/session-2026-03-16-antigravity-LPOpenBIMAI.md",
     "Agent-Skills/Skills Dashboard.base",
     "Agent-Skills/Agent-Skills.md",
     "AI-Link-Dashboard.md",
@@ -186,7 +192,6 @@
     "Agent-Skills/5-Backend-Infra/Documentation Templates.md",
     "Agent-Skills/1-Superpowers/Test-Driven Development.md",
     "Agent-Skills/4-Design-Frontend/Gemini-King-Mode.md",
-    "Agent-Memory/4-Sessions/session-2026-03-16-antigravity-LPOpenBIMAI.md",
     "Agent-Skills/_archive/Writing Skills.md",
     "Agent-Skills/_archive/Writing Plans.md",
     "Agent-Skills/_archive/Webapp Testing.md",
@@ -213,7 +218,6 @@
     "Agent-Skills/8-Additional/3-Frontend-Service",
     "Agent-Skills/8-Additional/2-Backend-Service",
     "Agent-Skills/8-Additional/1-Architecture-Decisions",
-    "GitHub Dashboard.base",
     "Memory-Graph.canvas",
     "Agent-Memory/assets/memory-types-agentic-systems.png",
     "Agent-Swarm.canvas",

@@ -565,7 +565,7 @@ body::before {
       <div class="logo">🧠</div>
       <div>
         <h1>Memory Context Monitor</h1>
-        <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">v2.0 — mem-gw-final</div>
+        <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">v2.3 — mem-gw-final</div>
       </div>
     </div>
     <div class="header-right">
@@ -766,7 +766,7 @@ body::before {
 const BASE = 'https://4ian5xm8.functions.insforge.app/mem-gw-final';
 let autoRefresh = true;
 let refreshTimer = null;
-const REFRESH_INTERVAL = 30000;
+const REFRESH_INTERVAL = 15000; // 15s for more responsive context tracking
 
 // ======================== HELPERS ========================
 const $ = id => document.getElementById(id);
@@ -797,6 +797,12 @@ function relativeTime(iso) {
   return `${Math.floor(hrs / 24)}d ago`;
 }
 
+function formatTokens(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+  return n.toString();
+}
+
 function toast(msg, type = 'success') {
   const el = document.createElement('div');
   el.className = `toast ${type}`;
@@ -805,13 +811,36 @@ function toast(msg, type = 'success') {
   setTimeout(() => el.remove(), 4000);
 }
 
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Extract meaningful session name from raw content
+function extractSessionName(content, category) {
+  if (!content) return category === 'session-init' ? '🆕 Session Init' : '(empty)';
+  // Pattern: "Conv abc123: init 2026-..." → extract date
+  const initMatch = content.match(/^Conv\s+(\w{8}):\s*init\s+(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})/);
+  if (initMatch) return `🆕 Init — Conv ${initMatch[1]}`;
+  // Pattern: "Sync HH:MM:SS (UTC+7) — Manual sync — N files ..."
+  const syncMatch = content.match(/Sync\s+(\d{2}:\d{2}:\d{2})\s*\([^)]+\)\s*—\s*(.*)/);
+  if (syncMatch) return `🔄 ${syncMatch[2].substring(0, 60)}`;
+  // Pattern: "Session summary: ..."
+  const summaryMatch = content.match(/(?:session|summary|title)[:\s]+(.{10,80})/i);
+  if (summaryMatch) return `📋 ${summaryMatch[1].trim()}`;
+  // Fallback: first 60 chars
+  const firstLine = content.split('\n')[0].substring(0, 70);
+  return category === 'session-init' ? `🆕 ${firstLine}` : `📋 ${firstLine}`;
+}
+
 // ======================== DATA LOADERS ========================
 async function loadHealth() {
   try {
     const d = await api('health');
     $('memCount').textContent = d.counts?.memories ?? '?';
     $('entCount').textContent = d.counts?.entities ?? '?';
-    $('syncCount').textContent = d.counts?.sync ?? d.counts?.sync_log ?? '?';
+    $('syncCount').textContent = d.counts?.sync ?? '?';
   } catch (e) {
     console.error('Health error:', e);
   }
@@ -837,13 +866,13 @@ async function loadSessions() {
         const cls = ['antigravity','cursor','claude','codex','gemini'].includes(t) ? 'tag ide' : 'tag';
         return `<span class="${cls}">${t}</span>`;
       }).join('');
+      const name = extractSessionName(s.content, s.category);
       const content = s.content || '(empty)';
-      const preview = content.length > 80 ? content.substring(0, 80) + '…' : content;
       return `<tr onclick="this.classList.toggle('expanded')" style="animation-delay:${i*0.04}s" class="fade-up">
         <td class="time-cell">${formatDate(s.created_at)}<br><span style="color:var(--accent-cyan)">${relativeTime(s.created_at)}</span></td>
         <td>${tags}</td>
         <td>
-          <div class="content-preview">${escHtml(preview)}</div>
+          <div class="content-preview">${escHtml(name)}</div>
           <div class="content-full">${escHtml(content)}</div>
         </td>
         <td class="hide-mobile" style="font-family:var(--font-mono);color:var(--accent-yellow)">${s.importance ?? '—'}</td>
@@ -853,12 +882,6 @@ async function loadSessions() {
     console.error('Sessions error:', e);
     $('sessionsBody').innerHTML = '<tr><td colspan="4" class="empty-state"><div class="icon">❌</div><p>Failed to load sessions</p></td></tr>';
   }
-}
-
-function escHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
 }
 
 async function loadSyncTimeline() {
@@ -883,7 +906,136 @@ async function loadSyncTimeline() {
       </div>
     `).join('');
   } catch (e) {
-    console.error('Context-stats error:', e);
+    console.error('Sync timeline error:', e);
+  }
+}
+
+// ======================== CONTEXT WINDOW (REAL DATA) ========================
+// Polls /context-status for agent-reported data instead of guessing
+async function loadContextStatus() {
+  const fill = $('gaugeFill');
+  const pctEl = $('gaugePercent');
+  const statusEl = $('gaugeStatus');
+  const tokenEl = $('gaugeTokens');
+  const circumference = 2 * Math.PI * 78;
+
+  try {
+    const project = $('projectSelect').value || 'LPOpenBIMAI';
+    const ctx = await api(`context-status?project=${encodeURIComponent(project)}`);
+
+    if (!ctx.active) {
+      // No active session — show idle state
+      pctEl.textContent = '0%';
+      fill.style.strokeDasharray = circumference;
+      fill.style.strokeDashoffset = circumference;
+      tokenEl.textContent = '0 / 200K tokens';
+      statusEl.textContent = 'No active session';
+      statusEl.className = 'gauge-status ok';
+      $('ctxTokens').textContent = '0';
+      $('ctxModelLimit').textContent = '200K';
+      $('ctxStartTime').textContent = '—';
+      $('ctxLastCheckpoint').textContent = 'None';
+      $('gaugeAge').textContent = 'Waiting for agent checkpoint';
+      ['bkChat','bkFiles','bkSystem','bkTools'].forEach(id => { if ($(id)) $(id).style.width = '0%'; });
+      ['bkChatVal','bkFilesVal','bkSystemVal','bkToolsVal'].forEach(id => { if ($(id)) $(id).textContent = '0'; });
+      return;
+    }
+
+    // ── Real data from agent ──
+    const pct = Math.min(ctx.pct || 0, 100);
+    const offset = circumference - (pct / 100) * circumference;
+
+    fill.style.strokeDasharray = circumference;
+    fill.style.strokeDashoffset = offset;
+    fill.classList.remove('warn', 'danger');
+    pctEl.textContent = pct + '%';
+    tokenEl.textContent = `${formatTokens(ctx.est_tokens || 0)} / ${formatTokens(ctx.model_limit || 200000)} tokens`;
+
+    if (pct >= 80) {
+      fill.classList.add('danger');
+      statusEl.textContent = pct >= 90 ? '🔴 Critical — new session needed' : '🟠 High — consider new session';
+      statusEl.className = 'gauge-status danger';
+    } else if (pct >= 60) {
+      fill.classList.add('warn');
+      statusEl.textContent = '⚠️ Moderate usage';
+      statusEl.className = 'gauge-status warn';
+    } else if (pct > 0) {
+      statusEl.textContent = '✅ Healthy';
+      statusEl.className = 'gauge-status ok';
+    } else {
+      statusEl.textContent = '🆕 Session started';
+      statusEl.className = 'gauge-status ok';
+    }
+
+    // Meta cards
+    $('ctxTokens').textContent = formatTokens(ctx.est_tokens || 0);
+    $('ctxTokens').className = pct >= 80 ? 'meta-value red' : pct >= 60 ? 'meta-value yellow' : 'meta-value cyan';
+    $('ctxModelLimit').textContent = formatTokens(ctx.model_limit || 200000);
+
+    if (ctx.session_start) {
+      const d = new Date(ctx.session_start);
+      $('ctxStartTime').textContent = d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+    }
+
+    // Last checkpoint
+    if (ctx.last_checkpoint && ctx.last_checkpoint !== 'None') {
+      const cp = new Date(ctx.last_checkpoint);
+      $('ctxLastCheckpoint').textContent = cp.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+    } else {
+      $('ctxLastCheckpoint').textContent = 'None';
+    }
+
+    // Token breakdown bars (from real agent data)
+    const bk = ctx.breakdown || {};
+    const modelLimit = ctx.model_limit || 200000;
+    const pctOf = (v) => Math.min(100, ((v || 0) / modelLimit) * 100 * 5).toFixed(1); // x5 scale for visibility
+
+    if ($('bkChat')) $('bkChat').style.width = pctOf(bk.chat) + '%';
+    if ($('bkFiles')) $('bkFiles').style.width = pctOf(bk.files) + '%';
+    if ($('bkSystem')) $('bkSystem').style.width = pctOf(bk.system) + '%';
+    if ($('bkTools')) $('bkTools').style.width = pctOf(bk.tools) + '%';
+
+    if ($('bkChatVal')) $('bkChatVal').textContent = formatTokens(bk.chat || 0);
+    if ($('bkFilesVal')) $('bkFilesVal').textContent = formatTokens(bk.files || 0);
+    if ($('bkSystemVal')) $('bkSystemVal').textContent = formatTokens(bk.system || 2000);
+    if ($('bkToolsVal')) $('bkToolsVal').textContent = formatTokens(bk.tools || 0);
+
+    // Checkpoints
+    const thresholds = [30, 60, 80, 90];
+    thresholds.forEach(t => {
+      const el = $('cp' + t);
+      const item = el?.closest('.checkpoint-item');
+      if (!el || !item) return;
+
+      if (pct >= t) {
+        el.textContent = '✓ reached';
+        el.className = 'cp-status reached';
+        item.className = t >= 80 ? 'checkpoint-item critical' : 'checkpoint-item passed';
+      } else if (pct >= t - 15) {
+        el.textContent = 'approaching';
+        el.className = 'cp-status upcoming';
+        item.className = 'checkpoint-item active';
+      } else {
+        el.textContent = 'upcoming';
+        el.className = 'cp-status upcoming';
+        item.className = 'checkpoint-item';
+      }
+    });
+
+    // Staleness
+    if (ctx.last_checkpoint && ctx.last_checkpoint !== 'None') {
+      $('gaugeAge').textContent = `Updated ${relativeTime(ctx.last_checkpoint)}`;
+    } else if (ctx.session_start) {
+      $('gaugeAge').textContent = `Session started ${relativeTime(ctx.session_start)}`;
+    }
+
+    // Conv ID badge
+    if (ctx.conversation_id) {
+      $('gaugeAge').textContent += ` · ${ctx.ide || ''} · ${ctx.conversation_id.substring(0, 8)}`;
+    }
+
+  } catch (e) {
+    console.error('Context status error:', e);
   }
 }
 
@@ -894,9 +1046,9 @@ async function triggerSync() {
   try {
     const d = await api('sync-github', { method: 'POST' });
     if (d.status === 'synced') {
-      toast(`Synced! Snapshot: ${d.snapshot}`);
+      toast(`Synced ${d.n} files to GitHub`);
     } else {
-      toast(`Sync returned: ${d.status || d.error}`, 'error');
+      toast(`Sync: ${d.error || d.status}`, 'error');
     }
     loadAll();
   } catch (e) {
@@ -906,212 +1058,7 @@ async function triggerSync() {
   }
 }
 
-// ======================== CONTEXT WINDOW ========================
-// Token-based context window calculation
-// Reference: 1 token ≈ 4 characters (English), ≈ 2-3 chars (Vietnamese/CJK)
-// Claude 3.5 Sonnet: 200,000 token context window
-// Components: System Prompt + Chat History + Files/Code + Tool Results + RAG snippets
-
-// Source: https://www.anthropic.com/news/claude-opus-4-6 (Feb 2026)
-// Pricing: $5/$25 per 1M tokens (standard), $10/$37.50 for >200K input
-const MODEL_LIMITS = {
-  'claude-opus-4.6':   1000000,  // 1M tokens (beta) — first Opus with 1M
-  'claude-sonnet-4.6':  200000,  // 200K (1M on AWS Bedrock)
-  'claude-sonnet-4.5':  200000,  // Antigravity default model
-  'claude-opus-4.5':    200000,
-  'gpt-5.4':            272000,
-  'gpt-5.2':            400000,
-  'gemini-3-pro':      1000000,
-  'default':            200000   // Antigravity uses Claude Sonnet 4.5
-};
-
-function estimateTokens(text) {
-  if (!text) return 0;
-  // Mixed content (English + Vietnamese + code): ~3.5 chars per token average
-  return Math.round(text.length / 3.5);
-}
-
-function parseContextFromSession(session) {
-  if (!session || !session.content) return null;
-  const c = session.content;
-  const modelLimit = MODEL_LIMITS['default'];
-  
-  // 1. SYSTEM PROMPT: ~2,000 tokens (GEMINI.md rules, SKILL.md, system instructions)
-  const systemTokens = 2000;
-  
-  // 2. CHAT HISTORY: Estimate from session content
-  //    Session content is a summary, actual conversation is ~3-5x larger
-  const sessionTokens = estimateTokens(c);
-  const chatHistoryTokens = sessionTokens * 4; // conversation is ~4x the summary
-  
-  // 3. FILES & CODE: Estimate from content references
-  //    Count file references in content to estimate files loaded
-  const fileRefs = (c.match(/\.(md|ts|js|py|html|css|json)\b/gi) || []).length;
-  const fileTokens = fileRefs * 800; // ~800 tokens per file on average
-  
-  // 4. TOOL RESULTS: Each tool call returns ~500-2000 tokens
-  const tcMatch = c.match(/(\d+)\s*tool\s*calls?/i);
-  const toolCallCount = tcMatch ? parseInt(tcMatch[1]) : Math.round(c.length / 250);
-  const toolTokens = toolCallCount * 1200; // ~1200 tokens per tool result average
-  
-  // 5. Check for explicit context % in content (from checkpoints)
-  const pctMatch = c.match(/context\s*[~≈]?\s*(\d+)\s*%/i);
-  
-  // Total estimated tokens
-  const totalTokens = systemTokens + chatHistoryTokens + fileTokens + toolTokens;
-  
-  // Calculate percentage
-  let percent;
-  if (pctMatch) {
-    // Trust explicit checkpoint markers from the agent
-    percent = parseInt(pctMatch[1]);
-  } else {
-    percent = Math.min(100, Math.round((totalTokens / modelLimit) * 100));
-  }
-  
-  // Parse checkpoints
-  const cpMatch = c.match(/checkpoint\s*#?(\d)/gi);
-  const checkpoints = [];
-  if (cpMatch) cpMatch.forEach(m => {
-    const n = m.match(/\d/); if (n) checkpoints.push(parseInt(n[0]));
-  });
-  
-  return {
-    percent,
-    totalTokens,
-    modelLimit,
-    breakdown: {
-      system: systemTokens,
-      chat: chatHistoryTokens,
-      files: fileTokens,
-      tools: toolTokens
-    },
-    toolCalls: toolCallCount,
-    checkpoints
-  };
-}
-
-function formatTokens(n) {
-  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-  return n.toString();
-}
-
-function updateContextGauge(sessions) {
-  const latest = sessions && sessions.length ? sessions[0] : null;
-  const ctx = parseContextFromSession(latest);
-  
-  const fill = $('gaugeFill');
-  const pctEl = $('gaugePercent');
-  const statusEl = $('gaugeStatus');
-  const tokenEl = $('gaugeTokens');
-  const circumference = 2 * Math.PI * 78; // r=78 (new ring size)
-  
-  if (!ctx || !latest) {
-    pctEl.textContent = '0%';
-    fill.style.strokeDashoffset = circumference;
-    tokenEl.textContent = '0 / 200K tokens';
-    statusEl.textContent = 'No active session';
-    statusEl.className = 'gauge-status ok';
-    $('ctxTokens').textContent = '0';
-    $('ctxStartTime').textContent = '—';
-    $('ctxLastCheckpoint').textContent = 'None';
-    // Reset breakdown
-    ['bkChat','bkFiles','bkSystem','bkTools'].forEach(id => { if ($(id)) $(id).style.width = '0%'; });
-    ['bkChatVal','bkFilesVal','bkToolsVal'].forEach(id => { if ($(id)) $(id).textContent = '0'; });
-    return;
-  }
-  
-  const pct = Math.min(ctx.percent, 100);
-  const offset = circumference - (pct / 100) * circumference;
-  
-  fill.style.strokeDasharray = circumference;
-  fill.style.strokeDashoffset = offset;
-  pctEl.textContent = pct + '%';
-  tokenEl.textContent = `${formatTokens(ctx.totalTokens)} / ${formatTokens(ctx.modelLimit)} tokens`;
-  
-  // Color coding
-  fill.classList.remove('warn', 'danger');
-  
-  if (pct >= 80) {
-    fill.classList.add('danger');
-    statusEl.textContent = pct >= 90 ? '🔴 Critical — new session needed' : '🟠 High — consider new session';
-    statusEl.className = 'gauge-status danger';
-  } else if (pct >= 60) {
-    fill.classList.add('warn');
-    statusEl.textContent = '⚠️ Moderate usage';
-    statusEl.className = 'gauge-status warn';
-  } else {
-    statusEl.textContent = '✅ Healthy';
-    statusEl.className = 'gauge-status ok';
-  }
-  
-  // Meta cards
-  $('ctxTokens').textContent = formatTokens(ctx.totalTokens);
-  $('ctxTokens').className = pct >= 80 ? 'meta-value red' : pct >= 60 ? 'meta-value yellow' : 'meta-value cyan';
-  
-  // Session start time
-  if (latest.created_at) {
-    const d = new Date(latest.created_at);
-    $('ctxStartTime').textContent = d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
-  }
-  
-  // Token breakdown bars
-  const bk = ctx.breakdown;
-  const maxToken = ctx.modelLimit;
-  const pctOf = (v) => Math.min(100, (v / maxToken) * 100 * 5).toFixed(1); // scale x5 for visibility
-  
-  if ($('bkChat')) $('bkChat').style.width = pctOf(bk.chat) + '%';
-  if ($('bkFiles')) $('bkFiles').style.width = pctOf(bk.files) + '%';
-  if ($('bkSystem')) $('bkSystem').style.width = pctOf(bk.system) + '%';
-  if ($('bkTools')) $('bkTools').style.width = pctOf(bk.tools) + '%';
-  
-  if ($('bkChatVal')) $('bkChatVal').textContent = formatTokens(bk.chat);
-  if ($('bkFilesVal')) $('bkFilesVal').textContent = formatTokens(bk.files);
-  if ($('bkSystemVal')) $('bkSystemVal').textContent = '~2K';
-  if ($('bkToolsVal')) $('bkToolsVal').textContent = formatTokens(bk.tools);
-  
-  // Checkpoints
-  const thresholds = [30, 60, 80, 90];
-  thresholds.forEach(t => {
-    const el = $('cp' + t);
-    const item = el?.closest('.checkpoint-item');
-    if (!el || !item) return;
-    
-    if (pct >= t) {
-      el.textContent = '✓ reached';
-      el.className = 'cp-status reached';
-      item.className = t >= 80 ? 'checkpoint-item critical' : 'checkpoint-item passed';
-    } else if (pct >= t - 15) {
-      el.textContent = 'approaching';
-      el.className = 'cp-status upcoming';
-      item.className = 'checkpoint-item active';
-    } else {
-      el.textContent = 'upcoming';
-      el.className = 'cp-status upcoming';
-      item.className = 'checkpoint-item';
-    }
-  });
-  
-  // Last checkpoint
-  const passedCps = thresholds.filter(t => pct >= t);
-  $('ctxLastCheckpoint').textContent = passedCps.length ? `#${passedCps.length} (${passedCps[passedCps.length-1]}%)` : 'None';
-  
-  // Staleness indicator
-  if (latest.created_at) {
-    const age = relativeTime(latest.created_at);
-    $('gaugeAge').textContent = age ? `Last saved ${age}` : 'Updates on agent checkpoint';
-  }
-}
-
-// ======================== MAIN LOOP ========================
 // ======================== MODEL QUOTAS ========================
-function getQuotaColor(pct) {
-  if (pct > 50) return 'green';
-  if (pct > 20) return 'yellow';
-  return 'red';
-}
-
 function formatCountdown(resetAt) {
   const diff = resetAt - Date.now();
   if (diff <= 0) return 'Resetting…';
@@ -1120,31 +1067,17 @@ function formatCountdown(resetAt) {
   return `${hrs}h ${mins}m`;
 }
 
-function getNextReset(hourUTC, minUTC) {
-  const now = new Date();
-  const reset = new Date(now);
-  reset.setUTCHours(hourUTC, minUTC, 0, 0);
-  if (reset <= now) reset.setUTCDate(reset.getUTCDate() + 1);
-  return reset.getTime();
-}
-
 async function loadQuotas() {
   const grid = $('quotaGrid');
 
   try {
-    // Try local quotas.json first (written by sync-quotas.ps1), fallback to edge function
     let rows = [];
-    let source = 'api';
-    let localUpdatedAt = null;
     try {
       const localResp = await fetch('quotas.json?t=' + Date.now());
       if (localResp.ok) {
         const local = await localResp.json();
         rows = local.quotas || [];
-        localUpdatedAt = local.updated_at;
-        // Inject updated_at per item from top-level
         rows.forEach(r => { if (!r.updated_at) r.updated_at = local.updated_at; });
-        source = 'local';
       }
     } catch (_) {}
     if (!rows.length) {
@@ -1153,32 +1086,28 @@ async function loadQuotas() {
     }
 
     if (!rows.length) {
-      grid.innerHTML = '<div class="empty-state">No quota data yet. Run sync-quotas.ps1 or agent will report at next session.</div>';
+      grid.innerHTML = '<div class="empty-state">No quota data. Run sync-quotas.ps1 to populate.</div>';
       $('quotaBadge').textContent = '0';
       return;
     }
 
     $('quotaBadge').textContent = rows.length;
 
-    // Calculate nearest reset (if any have reset_at)
     const resets = rows.filter(r => r.reset_at).map(r => new Date(r.reset_at).getTime());
     if (resets.length) {
-      const nearest = Math.min(...resets);
-      $('quotaResetInfo').textContent = `Next reset in ${formatCountdown(nearest)}`;
+      $('quotaResetInfo').textContent = `Next reset in ${formatCountdown(Math.min(...resets))}`;
     } else {
-      const updatedTimes = rows.map(r => new Date(r.updated_at).getTime());
-      const latest = Math.max(...updatedTimes);
+      const latest = Math.max(...rows.map(r => new Date(r.updated_at).getTime()));
       $('quotaResetInfo').textContent = `Updated ${new Date(latest).toLocaleString('en-GB', { month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' })}`;
     }
 
     grid.innerHTML = rows.map(q => {
-      const remaining = q.usage_pct; // now = remaining% (100→0)
+      const remaining = q.usage_pct;
       const color = remaining > 60 ? 'green' : remaining > 25 ? 'yellow' : 'red';
       const tierLabel = q.tier || (remaining > 60 ? 'High' : remaining > 25 ? 'Medium' : 'Low');
       const tierClass = remaining > 60 ? '' : remaining > 25 ? 'medium' : 'low';
       const updatedStr = new Date(q.updated_at).toLocaleString('en-GB', {
-        month:'2-digit', day:'2-digit', year:'numeric',
-        hour:'2-digit', minute:'2-digit'
+        month:'2-digit', day:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit'
       });
       return `
         <div class="quota-card">
@@ -1197,41 +1126,14 @@ async function loadQuotas() {
     }).join('');
   } catch (err) {
     console.error('Quota fetch failed:', err);
-    grid.innerHTML = '<div class="empty-state">⚠️ Could not load quotas. Check API connection.</div>';
+    grid.innerHTML = '<div class="empty-state">⚠️ Could not load quotas.</div>';
   }
 }
 
+// ======================== MAIN LOOP ========================
 async function loadAll() {
-  const sessionPromise = loadSessions();
-  await Promise.all([loadHealth(), sessionPromise, loadSyncTimeline()]);
-  
-  // Load model quotas (always, regardless of session state)
+  await Promise.all([loadHealth(), loadSessions(), loadSyncTimeline(), loadContextStatus()]);
   try { loadQuotas(); } catch (_) {}
-
-  // Update context gauge from latest session OR init-session
-  try {
-    const project = $('projectSelect').value;
-    const q = project ? `sessions?project=${encodeURIComponent(project)}` : 'sessions';
-    const d = await api(q);
-    const sessions = d.sessions || [];
-    
-    // Check for recent init-session (new conv started but no checkpoint yet)
-    const latestSession = sessions[0];
-    if (latestSession && latestSession.category === 'session-init') {
-      const initAge = Date.now() - new Date(latestSession.created_at).getTime();
-      if (initAge < 3600000) { // within last hour
-        $('gaugePercent').textContent = '2%';
-        document.querySelector('.gauge-fill')?.setAttribute('stroke-dasharray', `${2 * 4.4} ${440 - 2 * 4.4}`);
-        $('gaugeTokens').textContent = '~2K / 200K tokens';
-        $('gaugeStatus').textContent = '🆕 New Session';
-        $('gaugeStatus').className = 'gauge-status ok';
-        $('gaugeAge').textContent = `Session started ${relativeTime(latestSession.created_at)}`;
-        return;
-      }
-    }
-    
-    updateContextGauge(sessions);
-  } catch (_) {}
 }
 
 function startAutoRefresh() {
@@ -1241,24 +1143,18 @@ function startAutoRefresh() {
   }
 }
 
-// Clock
 function tickClock() {
-  const now = new Date();
-  $('clock').textContent = now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+  $('clock').textContent = new Date().toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
 }
 
-// Toggle auto-refresh
 $('refreshToggle').addEventListener('click', () => {
   autoRefresh = !autoRefresh;
   $('toggleTrack').classList.toggle('active', autoRefresh);
   startAutoRefresh();
-  toast(autoRefresh ? 'Auto-refresh ON (30s)' : 'Auto-refresh OFF');
+  toast(autoRefresh ? 'Auto-refresh ON (15s)' : 'Auto-refresh OFF');
 });
 
-// Project change
-$('projectSelect').addEventListener('change', () => {
-  loadSessions();
-});
+$('projectSelect').addEventListener('change', loadAll);
 
 // ======================== INIT ========================
 (async () => {
@@ -1272,7 +1168,7 @@ $('projectSelect').addEventListener('change', () => {
     const projects = new Set();
     (all.sessions || []).forEach(s => {
       (s.tags || []).forEach(t => {
-        if (!['session','antigravity','cursor','claude','codex','gemini','auto-memory'].includes(t)) {
+        if (!['session','session-init','antigravity','cursor','claude','codex','gemini','auto-memory','sync'].includes(t)) {
           projects.add(t);
         }
       });
