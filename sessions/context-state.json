@@ -1,1 +1,18 @@
-{}
+{
+  "LPOpenBIMAI": {
+    "pct": 85,
+    "est_tokens": 170000,
+    "model_limit": 200000,
+    "session_start": "2026-03-16T12:55:38.892Z",
+    "last_checkpoint": "2026-03-16T12:55:38.7434266Z",
+    "conversation_id": "453a7ede-f70a-416f-9bb6-605e741135a6",
+    "model": "claude-sonnet-4.5",
+    "ide": "antigravity",
+    "breakdown": {
+      "tools": 20000,
+      "chat": 80000,
+      "files": 45000,
+      "system": 25000
+    }
+  }
+}
