@@ -1,0 +1,1 @@
+Added Vault Node Placement Protocol to GEMINI.md TIER 0. Rule enforces: (1) new files go inside numbered group folders, (2) update MOC, (3) add wikilinks. Moved 5 skill graph notes from Agent-Skills root into 9-Knowledge-Architecture subfolder.
