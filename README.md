@@ -129,7 +129,7 @@ YourWorkspace/
 │
 ├── insforge/                         # Backend (InsForge)
 │   ├── functions/
-│   │   ├── mem-gw-final/index.ts     #   Edge function v2.2 (deployed)
+│   │   ├── mem-gw-final/index.ts     #   Edge function v2.3 (deployed)
 │   │   ├── quota-api/index.ts        #   Quota API
 │   │   └── memory-gateway/           #   Legacy gateway
 │   ├── schema.sql                    #   Core DB schema
@@ -177,13 +177,14 @@ YourWorkspace/
            │ POST /sync-github
            ▼
 ┌─ InsForge Cloud ────────────────────────────────┐
-│  Edge Function: mem-gw-final v2.2                │
+│  Edge Function: mem-gw-final v2.3                │
 │  ├── /health          → DB status                │
 │  ├── /init-session    → Start tracking           │
 │  ├── /save-session    → Save + push GitHub       │
 │  ├── /sessions        → Load history             │
 │  ├── /quotas          → Model usage tracking     │
-│  ├── /context-update  → Context window %         │
+│  ├── /context-update  → Real-time context %      │
+│  ├── /context-status  → Get current context      │
 │  └── /sync-github     → Manual GitHub push       │
 │                                                  │
 │  PostgreSQL: memories, entities, sync_log, quotas│
@@ -242,10 +243,12 @@ Base URL: `https://4ian5xm8.functions.insforge.app`
 | Method | Path | Mô tả |
 |--------|------|-------|
 | GET | `/mem-gw-final/health` | Health check + DB counts |
-| POST | `/mem-gw-final/init-session` | Init session mới |
+| POST | `/mem-gw-final/init-session` | Init session mới (resets context gauge) |
 | POST | `/mem-gw-final/save-session` | Save session + optional GitHub push |
 | GET | `/mem-gw-final/sessions?project={p}` | Load recent sessions |
-| GET | `/mem-gw-final/context-stats` | Memory + entity counts |
+| POST | `/mem-gw-final/context-update` | Agent posts real context % + tokens |
+| GET | `/mem-gw-final/context-status?project={p}` | Get current context state (pct, breakdown) |
+| GET | `/mem-gw-final/context-stats` | Sync timeline + memory stats |
 | GET | `/mem-gw-final/quotas?project={p}` | Model quota data |
 | POST | `/mem-gw-final/quotas` | Upsert quota data |
 | POST | `/mem-gw-final/sync-github` | Push sessions to GitHub |
@@ -255,7 +258,13 @@ Base URL: `https://4ian5xm8.functions.insforge.app`
 ```powershell
 # Health check
 Invoke-RestMethod "https://4ian5xm8.functions.insforge.app/mem-gw-final/health"
-# → {status: "ok", v: "2.2", counts: {memories: 56, entities: 6, sync: 23}}
+# → {status: "ok", v: "2.3", counts: {memories: 91, entities: 6, sync: 23}}
+
+# Post context update (agent calls this at checkpoints)
+Invoke-RestMethod -Uri ".../mem-gw-final/context-update" -Method POST -Body (@{
+  conversation_id = "abc-123"; project = "MyProject"
+  context_percent = 60; est_tokens = 120000; model_limit = 200000
+} | ConvertTo-Json) -ContentType "application/json"
 
 # Save session
 Invoke-RestMethod -Uri ".../mem-gw-final/save-session" -Method POST -Body (@{
@@ -343,6 +352,11 @@ Sửa base URL trong:
 
 ### v2.3 — 2026-03-16
 
+- ✅ Edge function v2.3: added `/context-update` + `/context-status` endpoints
+- ✅ Dashboard: real context tracking (polls agent data, no more heuristics)
+- ✅ Dashboard: session names extracted from content (🆕 Init, 🔄 Sync, 📋 Summary)
+- ✅ Dashboard: 15s auto-refresh, version v2.3
+- ✅ NPM packaging: `package.json`, `bin/init.js`, `.npmignore`, `LICENSE`
 - ✅ E2E vault audit: **148 files, 0 duplicates, 0 broken links**
 - ✅ Enriched all 64 skill notes with full content + frontmatter tags
 - ✅ Skills Dashboard `.base` — filter fixed (`agent-skill` tag)
@@ -370,6 +384,21 @@ Sửa base URL trong:
 
 ---
 
+## 📝 Publish lên npm (khi sẵn sàng):
+
+```bash
+npm login                    # Login npm account
+npm publish --access public  # Publish
+```
+
+Sau khi publish, ai cũng có thể install:
+
+```bash
+npx auto-memory-kit init
+```
+
+---
+
 ## 📄 License
 
-Private repository — LongPhamOpenBIM AI.
+MIT — LongPhamOpenBIM AI.
