@@ -34,100 +34,156 @@ cd Obsidan-LongPhamOpenBIM-MemoryContext
 
 ```
 YourWorkspace/
-├── .agent/                        # Agent rules + skills (always-on)
-│   ├── rules/GEMINI.md            # Core AI behavior rules
-│   ├── agents/                    # 9 specialist agent profiles
-│   └── skills/                    # 53 modular skills
-│       ├── auto-memory/           # Session lifecycle protocol ⭐
-│       ├── intelligent-routing/   # Auto agent selection
-│       ├── ui-ux-pro-max/         # Design intelligence
-│       └── ...
+├── .agent/                           # Agent rules + skills
+│   ├── GEMINI.md                     # Core AI behavior rules (always-on)
+│   ├── ARCHITECTURE.md               # System map
+│   ├── SOUL.md                       # AI personality
+│   ├── agents/                       # 20 specialist agent profiles
+│   │   ├── orchestrator.md           #   Master coordinator
+│   │   ├── frontend-specialist.md    #   UI/UX expert
+│   │   ├── backend-specialist.md     #   API/DB specialist
+│   │   ├── security-auditor.md       #   Security analyzer
+│   │   ├── debugger.md               #   Bug hunter
+│   │   └── ... (15 more)
+│   ├── skills/                       # 64 modular skills
+│   │   ├── auto-memory/              #   Session lifecycle ⭐
+│   │   ├── intelligent-routing/      #   Auto agent selection
+│   │   ├── ui-ux-pro-max/            #   Design intelligence
+│   │   ├── clean-code/               #   Code standards
+│   │   ├── brainstorming/            #   Discovery protocol
+│   │   └── ... (59 more)
+│   ├── workflows/                    # Slash commands (/create, /debug, /deploy...)
+│   ├── scripts/                      # Automation (checklist.py, verify_all.py)
+│   └── memory/                       # Memory gateway code
 │
-├── LPOpenBIMAI/                   # Main Obsidian vault (148 files)
-│   ├── Agent-Skills/              # 64 enriched skill notes
-│   │   ├── 1-Superpowers/         #   Core orchestration skills (16)
-│   │   ├── 2-OpenSpec/            #   OpenSpec workflow skills (6)
-│   │   ├── 3-Obsidian/            #   Obsidian integration (5)
-│   │   ├── 4-Design-Frontend/     #   UI/UX & design skills (8)
-│   │   ├── 5-Backend-Infra/       #   Backend & infrastructure (8)
-│   │   ├── 6-Security-Quality/    #   Security & testing (7)
-│   │   ├── 7-Meta/                #   Cross-cutting skills (6)
-│   │   ├── 8-Additional/          #   Specialized skills (8)
-│   │   ├── Agent-Skills.md        #   📋 MOC (Map of Content)
-│   │   └── Skills Dashboard.base  #   📊 Obsidian Base view
-│   │
-│   ├── Agent-Agents/              # 23 AI agent profiles
-│   │   ├── Agent-Agents.md        #   📋 MOC
-│   │   ├── orchestrator.md        #   Master coordinator
-│   │   ├── frontend-specialist.md #   UI/UX expert
-│   │   └── ...
-│   │
-│   ├── Agent-Memory/              # Memory system (29 files)
-│   │   ├── Agent-Memory.md        #   📋 MOC
-│   │   ├── dashboard.html         #   📊 Live monitoring
-│   │   ├── 4-Sessions/            #   Session notes
-│   │   ├── memory-config.md       #   Sync settings
-│   │   └── sync-quotas.ps1        #   Quota sync script
-│   │
-│   ├── Agent-Plugins/             # 16 plugin configs
-│   ├── Platforms/                 # 6 platform integration hubs
-│   └── Resources/                 # 7 reference materials
+├── .agents/                          # Additional skills (InsForge)
+│   └── skills/
+│       ├── insforge/                 #   InsForge SDK docs
+│       └── insforge-cli/             #   InsForge CLI docs
 │
-├── insforge/                      # Backend (InsForge)
+├── LPOpenBIMAI/                      # Obsidian vault
+│   ├── Agent-Skills/                 # 64 enriched skill notes
+│   │   ├── 1-Superpowers/            #   Core orchestration (16)
+│   │   ├── 2-OpenSpec/               #   OpenSpec workflow (6)
+│   │   ├── 3-Obsidian/               #   Obsidian tools (5)
+│   │   ├── 4-Design-Frontend/        #   UI/UX & design (8)
+│   │   ├── 5-Backend-Infra/          #   Backend & infra (8)
+│   │   ├── 6-Security-Quality/       #   Security & testing (7)
+│   │   ├── 7-Meta/                   #   Cross-cutting (6)
+│   │   ├── 8-Additional/             #   Specialized (8)
+│   │   ├── Agent-Skills.md           #   📋 MOC
+│   │   └── Skills Dashboard.base     #   📊 Dashboard view
+│   │
+│   ├── Agent-Agents/                 # 23 agent profile notes
+│   │   ├── Agent-Agents.md           #   📋 MOC
+│   │   └── *.md                      #   Agent profiles
+│   │
+│   ├── Agent-Memory/                 # Memory system (37 files)
+│   │   ├── Agent-Memory.md           #   📋 MOC
+│   │   ├── dashboard.html            #   📊 Live monitoring
+│   │   ├── sync-quotas.ps1           #   Quota sync script
+│   │   ├── 1-Config/                 #   Settings (5 files)
+│   │   ├── 2-Patterns/               #   Behavior patterns (6 files)
+│   │   ├── 3-Infrastructure/         #   Backend docs (7 files)
+│   │   ├── 4-Sessions/               #   Session notes (3 files)
+│   │   ├── 5-Guides/                 #   Setup guides (7 files)
+│   │   └── assets/                   #   Media files
+│   │
+│   ├── Agent-Plugins/                # 17 plugin docs
+│   │   ├── Agent-Plugins.md          #   📋 MOC
+│   │   ├── 1-Visualization/          #   Graph, Canvas (5)
+│   │   ├── 2-Editor/                 #   Editor tools (5)
+│   │   ├── 3-Navigation/             #   Nav plugins (3)
+│   │   └── 4-Productivity/           #   Productivity (2)
+│   │
+│   ├── Platforms/                    # Platform hub notes
+│   ├── Resources/                    # Reference materials
+│   │
+│   ├── Agent-Swarm.canvas            # 🗺️ Agent relationship map
+│   ├── Memory-Graph.canvas           # 🗺️ Memory flow diagram
+│   ├── Vault Dashboard.base          # 📊 Full vault view
+│   ├── GitHub Dashboard.base         # 📊 GitHub activity
+│   └── Session Dashboard.base        # 📊 Session overview
+│
+├── insforge/                         # Backend (InsForge)
 │   ├── functions/
-│   │   ├── mem-gw-final/          # Edge function v2.2
-│   │   └── quota-api/             # Quota API
-│   └── *.sql                      # Schema definitions
+│   │   ├── mem-gw-final/index.ts     #   Edge function v2.2 (deployed)
+│   │   ├── quota-api/index.ts        #   Quota API
+│   │   └── memory-gateway/           #   Legacy gateway
+│   ├── schema.sql                    #   Core DB schema
+│   ├── quota-schema.sql              #   Quota tables
+│   ├── relationships.sql             #   Graph relationships
+│   └── *.sql                         #   Other migrations
 │
-└── install.ps1                    # Install script
+└── install.ps1                       # Install script
 ```
 
 ### Vault Stats
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| 🧩 Skills | 64 | Enriched skill cards with triggers, connections, group tags |
-| 🤖 Agents | 23 | AI specialist profiles (Orchestrator, Frontend, Backend...) |
-| 🧠 Memory | 29 | Session notes, config, patterns, guides, dashboards |
-| 🔌 Plugins | 16 | Obsidian plugin configs with usage guides |
-| 🗺️ Platforms | 6 | Integration hubs (InsForge, Obsidian, OpenSpec...) |
-| 📚 Resources | 7 | Reference materials, prompt libraries, workflows |
-| **Total** | **148** | **All files verified: 0 duplicates, 0 broken links** |
+| 🧩 Skills | 64 | Enriched skill notes in 8 groups (Superpowers→Additional) |
+| 🤖 Agents | 23 | AI specialist profiles (+ 20 source `.agent/agents/`) |
+| 🧠 Memory | 37 | Config, patterns, infrastructure, sessions, guides |
+| 🔌 Plugins | 17 | Plugin docs in 4 categories (Viz, Editor, Nav, Productivity) |
+| 📊 Dashboards | 4 | Vault, Skills, GitHub, Session (Obsidian Base views) |
+| 🗺️ Canvases | 3 | Agent-Swarm, Memory-Graph, Untitled |
+| **Total** | **148** | **E2E verified: 0 duplicates, 0 ghost links, 0 broken wikilinks** |
 
 ---
 
 ## 🧠 Auto-Memory Protocol
 
-### Hoạt động như thế nào?
+### Data Flow
 
 ```
-┌─ Your Machine ──────────────────────────┐
-│  AI IDE ← reads SKILL.md → auto-load    │
-│  Obsidian ← LPOpenBIMAI/ vault          │
-└──────────┬──────────────────────────────┘
-           │ HTTP API
+┌─ Your Machine ──────────────────────────────────┐
+│                                                  │
+│  AI IDE (Antigravity/Cursor/Claude)              │
+│    ↓ reads .agent/skills/auto-memory/SKILL.md    │
+│    ↓ auto-loads past sessions at start           │
+│    ↓ saves checkpoints at 30/60/80/90% context   │
+│                                                  │
+│  Obsidian Vault (LPOpenBIMAI/)                   │
+│    ← Agent-Memory/4-Sessions/ session notes      │
+│    ← dashboard.html (live monitoring)            │
+│    ← sync-quotas.ps1 (quota sync)                │
+│                                                  │
+└──────────┬──────────────────────────────────────┘
+           │ POST /save-session
+           │ GET  /sessions
+           │ POST /sync-github
            ▼
-┌─ InsForge Cloud ────────────────────────┐
-│  Edge Function: mem-gw-final v2.2       │
-│  PostgreSQL: memories, entities, ...    │
-│  Cron: snapshot → GitHub every 2h       │
-└──────────┬──────────────────────────────┘
+┌─ InsForge Cloud ────────────────────────────────┐
+│  Edge Function: mem-gw-final v2.2                │
+│  ├── /health          → DB status                │
+│  ├── /init-session    → Start tracking           │
+│  ├── /save-session    → Save + push GitHub       │
+│  ├── /sessions        → Load history             │
+│  ├── /quotas          → Model usage tracking     │
+│  ├── /context-update  → Context window %         │
+│  └── /sync-github     → Manual GitHub push       │
+│                                                  │
+│  PostgreSQL: memories, entities, sync_log, quotas│
+└──────────┬──────────────────────────────────────┘
+           │ GitHub API
            ▼
-┌─ GitHub (Private) ──────────────────────┐
-│  sessions/ + context-snapshots/         │
-└─────────────────────────────────────────┘
+┌─ GitHub (Private Repo) ─────────────────────────┐
+│  LPOpenBIMAI/Agent-Memory/sessions/              │
+│  context-snapshots/                              │
+└─────────────────────────────────────────────────┘
 ```
 
 ### Session Lifecycle
 
 | Phase | Trigger | Hành động |
-|-------|---------|-----------| 
-| **Start** | IDE mở workspace | Load 5 sessions gần nhất, init session mới |
-| **30% context** | ~30 tool calls | Checkpoint #1 — save session note |
-| **60% context** | ~60 tool calls | ⚠️ Warning — save + log |
-| **80% context** | ~80 tool calls | 🟠 Auto-save + hỏi user tiếp hay mới |
-| **90% context** | ~90 tool calls | 🔴 STOP — save + yêu cầu session mới |
-| **End** | User nói "done" | Save Query Log + Decision Log + push GitHub |
+|-------|---------|-----------|
+| **Start** | IDE mở workspace | Read SKILL.md → GET /sessions → load 5 gần nhất |
+| **30%** | ~30 tool calls | 📌 Checkpoint #1 — save session note to Obsidian |
+| **60%** | ~60 tool calls | ⚠️ Warning — POST /save-session + update query log |
+| **80%** | ~80 tool calls | 🟠 Auto-save + hỏi user: tiếp tục hay mở session mới? |
+| **90%** | ~90 tool calls | 🔴 STOP — save tất cả + yêu cầu session mới |
+| **End** | User nói "done/xong" | Save Query Log + Decision Log + POST /save-session (push_github: true) |
 
 ### Session Note Format
 
