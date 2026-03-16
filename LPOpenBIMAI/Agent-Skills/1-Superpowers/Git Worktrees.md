@@ -1,27 +1,28 @@
----
+﻿---
 title: Git Worktrees
 tags:
+  - agent-skill
   - skill
   - superpowers
   - workflow
 group: Superpowers
-role: Tạo isolated workspace bằng git worktree — smart directory + safety verification
+role: Táº¡o isolated workspace báº±ng git worktree â€” smart directory + safety verification
 source: .agent/skills/using-git-worktrees/SKILL.md
 ---
 
 # Using Git Worktrees
 
-> [!abstract] Vai Trò
-> Tạo isolated workspace chia sẻ cùng repo. Dùng khi cần work trên nhiều branches đồng thời mà không switch.
+> [!abstract] Vai TrÃ²
+> Táº¡o isolated workspace chia sáº» cÃ¹ng repo. DÃ¹ng khi cáº§n work trÃªn nhiá»u branches Ä‘á»“ng thá»i mÃ  khÃ´ng switch.
 
 > [!tip] Core Principle
 > Systematic directory selection + safety verification = reliable isolation
 
 ## Directory Selection Priority
 
-1. **Check existing:** `.worktrees/` (preferred, hidden) → `worktrees/`
+1. **Check existing:** `.worktrees/` (preferred, hidden) â†’ `worktrees/`
 2. **Check CLAUDE.md/GEMINI.md** for preference
-3. **Ask user** — present 2 options:
+3. **Ask user** â€” present 2 options:
    - `.worktrees/` (project-local, hidden)
    - `~/.config/superpowers/worktrees/<project>/` (global)
 
@@ -32,7 +33,7 @@ source: .agent/skills/using-git-worktrees/SKILL.md
 git check-ignore -q .worktrees 2>/dev/null
 ```
 
-**NOT ignored?** → Add to `.gitignore` → Commit → Proceed
+**NOT ignored?** â†’ Add to `.gitignore` â†’ Commit â†’ Proceed
 
 > [!warning] Critical
 > Prevents accidentally committing worktree contents to repo.
@@ -63,8 +64,8 @@ cd "$path"
 ```bash
 npm test / cargo test / pytest / go test ./...
 ```
-- Fail → Report, ask proceed or investigate
-- Pass → Report ready
+- Fail â†’ Report, ask proceed or investigate
+- Pass â†’ Report ready
 
 ### 5. Report Location
 ```
@@ -80,7 +81,7 @@ Ready to implement <feature-name>
 | `.worktrees/` exists | Use it (verify ignored) |
 | `worktrees/` exists | Use it (verify ignored) |
 | Both exist | Use `.worktrees/` |
-| Neither exists | Check docs → Ask user |
+| Neither exists | Check docs â†’ Ask user |
 | Not ignored | Add to .gitignore + commit |
 | Tests fail baseline | Report + ask |
 
@@ -102,12 +103,12 @@ Ready to implement <feature-name>
 ## Integration
 
 **Called by:**
-- [[Brainstorming]] (Phase 4) — khi design approved
-- [[Subagent Driven Dev]] — REQUIRED before tasks
-- [[Executing Plans]] — REQUIRED before tasks
+- [[Brainstorming]] (Phase 4) â€” khi design approved
+- [[Subagent Driven Dev]] â€” REQUIRED before tasks
+- [[Executing Plans]] â€” REQUIRED before tasks
 
 **Pairs with:**
-- [[Finishing Dev Branch]] — cleanup after work complete
+- [[Finishing Dev Branch]] â€” cleanup after work complete
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

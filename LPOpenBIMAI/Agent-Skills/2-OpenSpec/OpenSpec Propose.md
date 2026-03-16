@@ -1,42 +1,43 @@
----
+﻿---
 title: OpenSpec Propose
 tags:
+  - agent-skill
   - skill
   - openspec
   - workflow
 group: OpenSpec
-role: Tạo change proposal với all artifacts trong 1 step
+role: Táº¡o change proposal vá»›i all artifacts trong 1 step
 source: .agent/skills/openspec-propose/SKILL.md
 ---
 
-# OpenSpec Propose — One-Step Change Proposal
+# OpenSpec Propose â€” One-Step Change Proposal
 
-> [!abstract] Vai Trò
-> Tạo change mới với all artifacts (proposal.md, design.md, tasks.md) trong 1 bước. User mô tả muốn build gì → nhận proposal hoàn chỉnh ready for implementation.
+> [!abstract] Vai TrÃ²
+> Táº¡o change má»›i vá»›i all artifacts (proposal.md, design.md, tasks.md) trong 1 bÆ°á»›c. User mÃ´ táº£ muá»‘n build gÃ¬ â†’ nháº­n proposal hoÃ n chá»‰nh ready for implementation.
 
 ## Input
 
-User request có tên change (kebab-case) HOẶC mô tả muốn build gì.
+User request cÃ³ tÃªn change (kebab-case) HOáº¶C mÃ´ táº£ muá»‘n build gÃ¬.
 
-Nếu không rõ → hỏi: "What change do you want to work on?"
+Náº¿u khÃ´ng rÃµ â†’ há»i: "What change do you want to work on?"
 
 ## Steps
 
 ### 1. Clarify Input
-Nếu chưa rõ → hỏi user. Từ mô tả → derive kebab-case name.
+Náº¿u chÆ°a rÃµ â†’ há»i user. Tá»« mÃ´ táº£ â†’ derive kebab-case name.
 
 ### 2. Create Change Directory
 ```bash
 openspec new change "<name>"
 ```
-→ Creates `openspec/changes/<name>/` with `.openspec.yaml`
+â†’ Creates `openspec/changes/<name>/` with `.openspec.yaml`
 
 ### 3. Get Build Order
 ```bash
 openspec status --change "<name>" --json
 ```
-→ `applyRequires`: artifacts needed before implementation
-→ `artifacts`: all artifacts with status/dependencies
+â†’ `applyRequires`: artifacts needed before implementation
+â†’ `artifacts`: all artifacts with status/dependencies
 
 ### 4. Create Artifacts in Sequence
 
@@ -78,8 +79,8 @@ openspec status --change "<name>"
 ## Guardrails
 - Create ALL artifacts needed for implementation
 - Read dependencies before creating
-- If unclear → ask user, but prefer reasonable decisions
-- If change exists → ask continue or new
+- If unclear â†’ ask user, but prefer reasonable decisions
+- If change exists â†’ ask continue or new
 - Verify each artifact file after writing
 
 ## Connections
@@ -87,5 +88,5 @@ openspec status --change "<name>"
 - **Followed by:** [[OpenSpec Apply]]
 - **Related:** [[OpenSpec Archive]]
 
-## Nhóm
-OpenSpec | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+OpenSpec | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

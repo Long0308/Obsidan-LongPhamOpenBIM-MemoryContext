@@ -1,5 +1,7 @@
 ---
 title: UI-UX Design Resources
+description: "Dashboard design, component libraries, 3D assets, Stitch MCP"
+url: "https://21st.dev/community/components"
 tags:
   - resources
   - ui-ux
@@ -71,5 +73,6 @@ aliases:
 
 ## Links
 
+- [[AI-Link-Dashboard|📊 AI Link Dashboard]]
 - [[AGENT_SWARM|← Agent Swarm MOC]]
 - [[Prompt & AI Image Library|Prompt Library]]

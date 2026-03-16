@@ -1,63 +1,81 @@
----
-title: App Builder
+﻿---
 tags:
-  - skill
-  - architecture
-  - full-stack
-  - scaffolding
-parent: "[[Agent-Skills]]"
-skill-folder: app-builder
-group: Architecture & Planning
-aliases:
-  - App Builder Skill
+  - agent-skill
+  - superpower
+  - orchestrator
+skill-source: "[[App Builder SKILL|.agent/skills/app-builder/SKILL.md]]"
+related-skills:
+  - "[[Plan Writing]]"
+  - "[[Brainstorming]]"
+  - "[[Frontend Design]]"
 ---
 
-# 🏗️ App Builder
+# App Builder - Application Building Orchestrator
 
-> [!abstract] Mục đích
-> Skill chính để tạo ứng dụng full-stack từ mô tả ngôn ngữ tự nhiên. Orchestrator cho quá trình build app — xác định project type, chọn tech stack, phối hợp các agents.
+> Analyzes user's requests, determines tech stack, plans structure, and coordinates agents.
 
-## Khi nào dùng
+## ðŸŽ¯ Selective Reading Rule
 
-- User nói "build", "create app", "tạo project mới"
-- Request type = **COMPLEX CODE** hoặc **DESIGN/UI**
-- Cần scaffolding toàn bộ project structure
+**Read ONLY files relevant to the request!** Check the content map, find what you need.
 
-## Cách hoạt động
+| File | Description | When to Read |
+|------|-------------|--------------|
+| `project-detection.md` | Keyword matrix, project type detection | Starting new project |
+| `tech-stack.md` | 2026 default stack, alternatives | Choosing technologies |
+| `agent-coordination.md` | Agent pipeline, execution order | Coordinating multi-agent work |
+| `scaffolding.md` | Directory structure, core files | Creating project structure |
+| `feature-building.md` | Feature analysis, error handling | Adding features to existing project |
+| `templates/SKILL.md` | **Project templates** | Scaffolding new project |
+
+---
+
+## ðŸ“¦ Templates (13)
+
+Quick-start scaffolding for new projects. **Read the matching template only!**
+
+| Template | Tech Stack | When to Use |
+|----------|------------|-------------|
+| `templates/nextjs-fullstack/TEMPLATE.md` | Next.js + Prisma | Full-stack web app |
+| `templates/nextjs-saas/TEMPLATE.md` | Next.js + Stripe | SaaS product |
+| `templates/nextjs-static/TEMPLATE.md` | Next.js + Framer | Landing page |
+| `templates/nuxt-app/TEMPLATE.md` | Nuxt 3 + Pinia | Vue full-stack app |
+| `templates/express-api/TEMPLATE.md` | Express + JWT | REST API |
+| `templates/python-fastapi/TEMPLATE.md` | FastAPI | Python API |
+| `templates/react-native-app/TEMPLATE.md` | Expo + Zustand | Mobile app |
+| `templates/flutter-app/TEMPLATE.md` | Flutter + Riverpod | Cross-platform mobile |
+| `templates/electron-desktop/TEMPLATE.md` | Electron + React | Desktop app |
+| `templates/chrome-extension/TEMPLATE.md` | Chrome MV3 | Browser extension |
+| `templates/cli-tool/TEMPLATE.md` | Node.js + Commander | CLI app |
+| `templates/monorepo-turborepo/TEMPLATE.md` | Turborepo + pnpm | Monorepo |
+
+---
+
+## ðŸ”— Related Agents
+
+| Agent | Role |
+|-------|------|
+| `project-planner` | Task breakdown, dependency graph |
+| `frontend-specialist` | UI components, pages |
+| `backend-specialist` | API, business logic |
+| `database-architect` | Schema, migrations |
+| `devops-engineer` | Deployment, preview |
+
+---
+
+## Usage Example
 
 ```
-User Request → App Builder analyzes:
-  1. Project Type Detection (web, mobile, API, game)
-  2. Tech Stack Selection (Next.js, Vite, React Native...)
-  3. Agent Routing (frontend-specialist, backend-specialist...)
-  4. Scaffold Generation (folder structure, configs, base code)
-  5. Skill Chaining (load relevant skills for each step)
+User: "Make an Instagram clone with photo sharing and likes"
+
+App Builder Process:
+1. Project type: Social Media App
+2. Tech stack: Next.js + Prisma + Cloudinary + Clerk
+3. Create plan:
+   â”œâ”€ Database schema (users, posts, likes, follows)
+   â”œâ”€ API routes (12 endpoints)
+   â”œâ”€ Pages (feed, profile, upload)
+   â””â”€ Components (PostCard, Feed, LikeButton)
+4. Coordinate agents
+5. Report progress
+6. Start preview
 ```
-
-## Kết hợp với Skills khác
-
-| Skill | Vai trò |
-|-------|---------|
-| `brainstorming` | Socratic Gate trước khi build |
-| `architecture` | System design decisions |
-| `frontend-design` | UI/UX nếu có giao diện |
-| `database-design` | Schema nếu có database |
-| `deployment-procedures` | Deploy sau khi build xong |
-
-## Agents liên quan
-
-- [[Orchestrator]] — điều phối quá trình build
-- [[Frontend Specialist]] — xử lý UI components
-- [[Backend Specialist]] — xử lý API/server
-
-## Key Rules
-
-1. **Luôn chạy Socratic Gate trước** — hỏi Purpose, Users, Scope
-2. **Tạo `task-slug.md`** cho mọi complex build
-3. **Không skip testing** — testing-patterns skill phải được load
-
-## Links
-
-- [[Agent-Skills|← Skills Index]]
-- [[Architecture|🏛️ Architecture Skill]]
-- [[Brainstorming|🧠 Brainstorming Skill]]

@@ -1,18 +1,19 @@
----
+﻿---
 title: UI-UX Pro Max
 tags:
+  - agent-skill
   - skill
   - design
   - frontend
 group: Design
-role: Design intelligence — 50 styles, 97 palettes, 57 fonts, 99 UX guidelines, 9 stacks
+role: Design intelligence â€” 50 styles, 97 palettes, 57 fonts, 99 UX guidelines, 9 stacks
 source: .agent/skills/ui-ux-pro-max/SKILL.md
 ---
 
-# UI-UX Pro Max — Design Intelligence
+# UI-UX Pro Max â€” Design Intelligence
 
-> [!abstract] Vai Trò
-> Comprehensive design guide: 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, 25 chart types × 9 technology stacks. Searchable database với priority-based recommendations.
+> [!abstract] Vai TrÃ²
+> Comprehensive design guide: 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, 25 chart types Ã— 9 technology stacks. Searchable database vá»›i priority-based recommendations.
 
 ## Rule Categories by Priority
 
@@ -27,27 +28,27 @@ source: .agent/skills/ui-ux-pro-max/SKILL.md
 | 7 | Style Selection | MEDIUM | `style` |
 | 8 | Charts & Data | LOW | `chart` |
 
-## Quick Reference — Critical Rules
+## Quick Reference â€” Critical Rules
 
 ### Accessibility (CRITICAL)
-- `color-contrast` — Min 4.5:1 ratio
-- `focus-states` — Visible focus rings
-- `aria-labels` — aria-label for icon-only buttons
-- `keyboard-nav` — Tab order matches visual order
+- `color-contrast` â€” Min 4.5:1 ratio
+- `focus-states` â€” Visible focus rings
+- `aria-labels` â€” aria-label for icon-only buttons
+- `keyboard-nav` â€” Tab order matches visual order
 
 ### Touch & Interaction (CRITICAL)
-- `touch-target-size` — Min 44×44px
-- `loading-buttons` — Disable during async
-- `cursor-pointer` — Add to all clickable elements
+- `touch-target-size` â€” Min 44Ã—44px
+- `loading-buttons` â€” Disable during async
+- `cursor-pointer` â€” Add to all clickable elements
 
 ### Performance (HIGH)
-- `image-optimization` — WebP, srcset, lazy loading
-- `reduced-motion` — Check `prefers-reduced-motion`
+- `image-optimization` â€” WebP, srcset, lazy loading
+- `reduced-motion` â€” Check `prefers-reduced-motion`
 
 ### Layout (HIGH)
-- `viewport-meta` — width=device-width initial-scale=1
-- `readable-font-size` — Min 16px body on mobile
-- `z-index-management` — Define scale (10, 20, 30, 50)
+- `viewport-meta` â€” width=device-width initial-scale=1
+- `readable-font-size` â€” Min 16px body on mobile
+- `z-index-management` â€” Define scale (10, 20, 30, 50)
 
 ## Workflow (4 Steps)
 
@@ -108,8 +109,8 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 ### Icons
 | Do | Don't |
 |----|-------|
-| SVG icons (Heroicons, Lucide) | Emojis as UI icons 🚀 |
-| Consistent sizing (24×24) | Mix icon sizes |
+| SVG icons (Heroicons, Lucide) | Emojis as UI icons ðŸš€ |
+| Consistent sizing (24Ã—24) | Mix icon sizes |
 
 ### Light/Dark Mode
 | Do | Don't |
@@ -120,7 +121,7 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 
 ## Pre-Delivery Checklist
 
-- [ ] No emojis as icons → use SVG
+- [ ] No emojis as icons â†’ use SVG
 - [ ] All clickable elements have `cursor-pointer`
 - [ ] Hover states: 150-300ms transitions
 - [ ] Light mode text: 4.5:1 contrast min
@@ -131,5 +132,5 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 - **Related:** [[Frontend Design]], [[Web Design Guidelines]]
 - **Used by:** [[Frontend Specialist]], [[Mobile Developer]]
 
-## Nhóm
-Design | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Design | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

@@ -1,0 +1,100 @@
+filters:
+  and:
+    - or:
+        - file.hasTag("resources")
+        - file.hasTag("ai-links")
+    - not:
+        - file.hasTag("session")
+formulas:
+  category: if(file.hasTag("antigravity"), "🏗️ Antigravity Kit", if(file.hasTag("system-prompt"), "🤖 System Prompts", if(file.hasTag("ai-agent"), "🤖 AI Agent", if(file.hasTag("prompt"), "🎨 Prompt & Image", if(file.hasTag("ui-ux"), "🖥️ UI/UX Design", if(file.hasTag("claude"), "🧩 Claude Skills", if(file.hasTag("MOC"), "🔗 Link Hub", "📄 Other")))))))
+  skill_group: if(group, group, if(file.hasTag("dev-tools"), "Development", if(file.hasTag("ai-agent"), "AI References", if(file.hasTag("prompt"), "AI References", if(file.hasTag("ui-ux"), "Development", "General")))))
+  desc: if(description, description, "—")
+  link: if(url, url, "—")
+  modified: file.mtime.format("YYYY-MM-DD HH:mm")
+  size_kb: (file.size / 1024).round(1)
+  backlinks: file.backlinks.length
+  tag_list: file.tags.join(", ")
+properties:
+  formula.category:
+    displayName: Danh Mục
+  formula.skill_group:
+    displayName: Nhóm Skill
+  formula.desc:
+    displayName: Mô Tả
+  formula.link:
+    displayName: 🔗 GitHub URL
+  formula.modified:
+    displayName: Cập Nhật
+  formula.size_kb:
+    displayName: Size (KB)
+  formula.backlinks:
+    displayName: Links
+  formula.tag_list:
+    displayName: Tags
+views:
+  - type: table
+    name: 📊 All GitHub Resources
+    groupBy:
+      property: formula.category
+      direction: ASC
+    order:
+      - file.name
+      - formula.desc
+      - formula.link
+      - formula.skill_group
+      - formula.backlinks
+      - formula.modified
+    sort:
+      - property: formula.category
+        direction: ASC
+    columnSize:
+      file.name: 220
+      formula.desc: 486
+      formula.link: 336
+      formula.skill_group: 140
+  - type: table
+    name: 🧩 By Skill Group
+    groupBy:
+      property: formula.skill_group
+      direction: ASC
+    order:
+      - file.name
+      - formula.category
+      - formula.desc
+      - formula.link
+      - formula.backlinks
+    sort:
+      - property: file.name
+        direction: ASC
+    columnSize:
+      file.name: 220
+      formula.category: 160
+      formula.desc: 250
+      formula.link: 300
+  - type: table
+    name: 🏷️ By Tags
+    order:
+      - file.name
+      - formula.tag_list
+      - formula.desc
+      - formula.link
+      - formula.modified
+    sort:
+      - property: formula.tag_list
+        direction: ASC
+    columnSize:
+      file.name: 200
+      formula.tag_list: 250
+      formula.desc: 200
+      formula.link: 300
+  - type: cards
+    name: 🃏 Resource Cards
+    groupBy:
+      property: formula.category
+      direction: ASC
+    order:
+      - file.name
+      - formula.desc
+      - formula.link
+      - formula.skill_group
+      - formula.backlinks

@@ -1,5 +1,7 @@
 ---
 title: AI Agent Resources
+description: "System prompts, LLM cookbook, và AI agent frameworks"
+url: "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools"
 tags:
   - resources
   - ai-agent
@@ -31,6 +33,7 @@ aliases:
 
 ## Links
 
+- [[AI-Link-Dashboard|📊 AI Link Dashboard]]
 - [[AGENT_SWARM|← Agent Swarm MOC]]
 - [[Claude Skills Resources|Claude Skills]]
 - [[Antigravity Kit Resources|Antigravity Kit]]

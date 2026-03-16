@@ -1,24 +1,25 @@
----
+﻿---
 title: Writing Skills
 tags:
+  - agent-skill
   - skill
   - superpowers
   - meta
 group: Superpowers
-role: TDD cho documentation — tạo skill mới hoặc edit skill cũ
+role: TDD cho documentation â€” táº¡o skill má»›i hoáº·c edit skill cÅ©
 source: .agent/skills/writing-skills/SKILL.md
 ---
 
-# Writing Skills — TDD for Documentation
+# Writing Skills â€” TDD for Documentation
 
-> [!abstract] Vai Trò
-> Áp dụng TDD cho process documentation. Viết test (pressure scenarios) → watch fail (baseline) → viết skill → watch pass → refactor (close loopholes).
+> [!abstract] Vai TrÃ²
+> Ãp dá»¥ng TDD cho process documentation. Viáº¿t test (pressure scenarios) â†’ watch fail (baseline) â†’ viáº¿t skill â†’ watch pass â†’ refactor (close loopholes).
 
 > [!caution] The Iron Law
 > ```
 > NO SKILL WITHOUT A FAILING TEST FIRST
 > ```
-> Viết skill trước test? Delete. Start over. Applies to NEW skills AND EDITS.
+> Viáº¿t skill trÆ°á»›c test? Delete. Start over. Applies to NEW skills AND EDITS.
 
 ## What is a Skill?
 - **Are:** Reusable techniques, patterns, tools, reference guides
@@ -30,8 +31,8 @@ source: .agent/skills/writing-skills/SKILL.md
 |-------------|------------------|
 | Technique wasn't intuitively obvious | One-off solutions |
 | Would reference again across projects | Standard practices documented elsewhere |
-| Pattern applies broadly | Project-specific conventions (→ GEMINI.md) |
-| Others would benefit | Mechanical constraints (→ automate) |
+| Pattern applies broadly | Project-specific conventions (â†’ GEMINI.md) |
+| Others would benefit | Mechanical constraints (â†’ automate) |
 
 ## TDD Mapping
 
@@ -53,12 +54,12 @@ description: Use when [specific triggering conditions]
 
 # Skill Name
 
-## Overview — Core principle (1-2 sentences)
-## When to Use — Symptoms, flowchart if non-obvious
-## Core Pattern — Before/after code comparison
-## Quick Reference — Table for scanning
-## Implementation — Inline code or link to file
-## Common Mistakes — What goes wrong + fixes
+## Overview â€” Core principle (1-2 sentences)
+## When to Use â€” Symptoms, flowchart if non-obvious
+## Core Pattern â€” Before/after code comparison
+## Quick Reference â€” Table for scanning
+## Implementation â€” Inline code or link to file
+## Common Mistakes â€” What goes wrong + fixes
 ```
 
 ## Claude Search Optimization (CSO)
@@ -70,13 +71,13 @@ description: Use when [specific triggering conditions]
 - Max 500 characters
 
 > [!warning] Trap
-> Descriptions that summarize workflow → Claude follows description instead of reading skill body. Tests proved this.
+> Descriptions that summarize workflow â†’ Claude follows description instead of reading skill body. Tests proved this.
 
 ```yaml
-# ❌ BAD: Summarizes workflow
+# âŒ BAD: Summarizes workflow
 description: Use for TDD - write test first, watch it fail, write minimal code
 
-# ✅ GOOD: Just triggers
+# âœ… GOOD: Just triggers
 description: Use when implementing any feature or bugfix, before writing code
 ```
 
@@ -99,16 +100,16 @@ description: Use when implementing any feature or bugfix, before writing code
 
 ## Bulletproofing Against Rationalization
 
-1. **Close every loophole explicitly** — "Delete. Don't keep as reference."
-2. **Address spirit vs letter** — "Violating letter = violating spirit"
-3. **Build rationalization table** — capture every excuse from baseline testing
-4. **Create red flags list** — easy self-check
+1. **Close every loophole explicitly** â€” "Delete. Don't keep as reference."
+2. **Address spirit vs letter** â€” "Violating letter = violating spirit"
+3. **Build rationalization table** â€” capture every excuse from baseline testing
+4. **Create red flags list** â€” easy self-check
 
 ## Skill Creation Checklist
 
 **RED Phase:**
 - [ ] Create 3+ pressure scenarios
-- [ ] Run WITHOUT skill → document baseline
+- [ ] Run WITHOUT skill â†’ document baseline
 - [ ] Identify rationalization patterns
 
 **GREEN Phase:**
@@ -116,10 +117,10 @@ description: Use when implementing any feature or bugfix, before writing code
 - [ ] YAML: name + description (max 1024 chars)
 - [ ] Description: "Use when..." + triggers only
 - [ ] Address specific baseline failures
-- [ ] Run WITH skill → verify compliance
+- [ ] Run WITH skill â†’ verify compliance
 
 **REFACTOR Phase:**
-- [ ] Find new rationalizations → add counters
+- [ ] Find new rationalizations â†’ add counters
 - [ ] Build rationalization table
 - [ ] Create red flags list
 - [ ] Re-test until bulletproof
@@ -137,8 +138,8 @@ description: Use when implementing any feature or bugfix, before writing code
 | `SKILL.md` + reference files | Heavy reference (100+ lines) |
 
 ## Connections
-- **Depends on:** [[Test Driven Development]] — same discipline
+- **Depends on:** [[Test Driven Development]] â€” same discipline
 - **Related:** [[Using Superpowers]], [[Brainstorming]]
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

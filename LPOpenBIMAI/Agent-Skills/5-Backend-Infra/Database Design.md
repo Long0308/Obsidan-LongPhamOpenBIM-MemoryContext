@@ -1,38 +1,58 @@
 ---
-title: Database Design
 tags:
-  - skill
-  - agent-swarm
+  - agent-skill
   - backend
   - database
-group: Backend & Infra
-role: Schema design, indexing, ORM selection, serverless databases
-source: .agent/skills/database-design/SKILL.md
+skill-source: "[[Database Design SKILL|.agent/skills/database-design/SKILL.md]]"
+related-skills:
+  - "[[API Patterns]]"
+  - "[[Node.js Best Practices]]"
+  - "[[Python Patterns]]"
 ---
 
 # Database Design
 
-> [!abstract] Skill
-> Database design principles and decision-making. Schema design, indexing strategy, ORM selection, serverless databases.
+> **Learn to THINK, not copy SQL patterns.**
 
-## Triggers
-`database, schema, migration, index, ORM, SQL, PostgreSQL, Supabase, serverless DB`
+## 🎯 Selective Reading Rule
 
-## Key Concepts
-- **Schema design** — Normalization vs denormalization trade-offs
-- **Indexing** — B-tree, GIN, partial indexes, covering indexes
-- **ORM selection** — Prisma vs Drizzle vs raw SQL decision framework
-- **Serverless databases** — Supabase, PlanetScale, Neon patterns
-- **Migration strategy** — Version control, rollback safety, zero-downtime
+**Read ONLY files relevant to the request!** Check the content map, find what you need.
 
-## Connections
-- **Used by:** [[Backend Specialist]], [[Database Architect]]
-- **Pairs with:** [[API Patterns]], [[Node.js Best Practices]]
-- **Quality:** [[Vulnerability Scanner]] (SQL injection prevention)
+| File | Description | When to Read |
+|------|-------------|--------------|
+| `database-selection.md` | PostgreSQL vs Neon vs Turso vs SQLite | Choosing database |
+| `orm-selection.md` | Drizzle vs Prisma vs Kysely | Choosing ORM |
+| `schema-design.md` | Normalization, PKs, relationships | Designing schema |
+| `indexing.md` | Index types, composite indexes | Performance tuning |
+| `optimization.md` | N+1, EXPLAIN ANALYZE | Query optimization |
+| `migrations.md` | Safe migrations, serverless DBs | Schema changes |
 
-## Nhóm
-Backend & Infra | [[InsForge Hub]] | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+---
 
-## Memory Integration
-- `store()` — Lưu schema decisions, index strategies
-- `recall()` — Load current schema context trước khi thêm tables
+## ⚠️ Core Principle
+
+- ASK user for database preferences when unclear
+- Choose database/ORM based on CONTEXT
+- Don't default to PostgreSQL for everything
+
+---
+
+## Decision Checklist
+
+Before designing schema:
+
+- [ ] Asked user about database preference?
+- [ ] Chosen database for THIS context?
+- [ ] Considered deployment environment?
+- [ ] Planned index strategy?
+- [ ] Defined relationship types?
+
+---
+
+## Anti-Patterns
+
+❌ Default to PostgreSQL for simple apps (SQLite may suffice)
+❌ Skip indexing
+❌ Use SELECT * in production
+❌ Store JSON when structured data is better
+❌ Ignore N+1 queries

@@ -11,19 +11,22 @@ aliases:
   - All Skills
 ---
 
-# 🧩 Agent-Skills — 58 Skills
+# 🧩 Agent-Skills — 65 Skills
 
 > Index note cho toàn bộ skills trong hệ thống Antigravity Kit.
 
-## 🧠 Superpowers (13)
+## 🧠 Superpowers (16)
 
 | Skill | Phase |
 |-------|-------|
 | [[Brainstorming]] | 💡 Ideation |
 | [[Writing Plans]] | 📝 Planning |
+| [[Plan Writing]] | 📝 Planning |
 | [[Executing Plans]] | ⚡ Execution |
+| [[App Builder]] | 🏗️ Build |
 | [[Subagent Driven Dev]] | ✂️ Split |
 | [[Dispatching Parallel Agents]] | 🔀 Parallel |
+| [[Parallel Agents]] | 🔀 Parallel |
 | [[Requesting Code Review]] | 👀 Review |
 | [[Receiving Code Review]] | ✅ Review |
 | [[Test Driven Development]] | 🧪 Test |
@@ -39,8 +42,8 @@ aliases:
 |-------|---------|
 | [[OpenSpec Explore]] | `/opsx:explore` |
 | [[OpenSpec Propose]] | `/opsx:propose` |
-| [[OpenSpec Apply Change]] | `/opsx:apply` |
-| [[OpenSpec Archive Change]] | `/opsx:archive` |
+| [[OpenSpec Apply]] | `/opsx:apply` |
+| [[OpenSpec Archive]] | `/opsx:archive` |
 
 ## 📝 Obsidian (5)
 
@@ -52,7 +55,7 @@ aliases:
 | [[Obsidian CLI]] | — |
 | [[Defuddle]] | "lấy web" |
 
-## 🎨 Design & Frontend (8)
+## 🎨 Design & Frontend (9)
 
 | Skill | Trigger |
 |-------|---------|
@@ -62,6 +65,7 @@ aliases:
 | [[Mobile Design]] | "thiết kế mobile" |
 | [[Tailwind Patterns]] | "tailwind" |
 | [[React Best Practices]] | "react" |
+| [[Gemini-King-Mode]] | "ULTRATHINK, king mode" |
 | [[i18n Localization]] | "i18n, translation" |
 | [[Web Design Guidelines]] | "review UI, accessibility" |
 
@@ -81,7 +85,7 @@ aliases:
 | [[InsForge SDK]] | "@insforge/sdk" |
 | [[InsForge CLI]] | "insforge-cli" |
 
-## 🛡️ Security & Quality (6)
+## 🛡️ Security & Quality (7)
 
 | Skill | Trigger |
 |-------|---------|
@@ -91,12 +95,14 @@ aliases:
 | [[Webapp Testing]] | "E2E test" |
 | [[Performance Profiling]] | "performance" |
 | [[Code Review Checklist]] | "checklist" |
+| [[Lint and Validate]] | "lint, format" |
 
-## 📖 Meta (7)
+## 📖 Meta (8)
 
 | Skill | Trigger |
 |-------|---------|
 | [[Using Superpowers]] | — |
+| [[Intelligent Routing]] | auto |
 | [[Writing Skills]] | "tạo skill" |
 | [[Behavioral Modes]] | — |
 | [[Clean Code]] | — |

@@ -1,38 +1,235 @@
----
+﻿---
 title: React Best Practices
 tags:
+  - agent-skill
   - skill
-  - agent-swarm
   - frontend
   - react
-group: Design & Frontend
-role: React + Next.js performance optimization from Vercel Engineering
+  - nextjs
+  - performance
+group: Frontend
+role: React & Next.js performance optimization â€” 57 rules from Vercel Engineering
 source: .agent/skills/nextjs-react-expert/SKILL.md
 ---
 
-# React Best Practices
+# Next.js & React Performance Expert
 
-> [!abstract] Skill
-> React and Next.js performance optimization from Vercel Engineering. Server/client components, bundle size, eliminating waterfalls.
+> **From Vercel Engineering** - 57 optimization rules prioritized by impact
+> **Philosophy:** Eliminate waterfalls first, optimize bundles second, then micro-optimize.
 
-## Triggers
-`react, next.js, nextjs, RSC, server components, hooks, bundle size, waterfall`
+---
 
-## Key Concepts
-- **Server Components** — RSC patterns, when to use `"use client"`
-- **Data fetching** — Parallel fetching, Suspense boundaries, streaming
-- **Performance** — Bundle analysis, code splitting, lazy loading
-- **Patterns** — Composition over prop drilling, custom hooks, state management
-- **Optimization** — React.memo, useMemo, useCallback — when NOT to use them
+## ðŸŽ¯ Selective Reading Rule (MANDATORY)
+
+**Read ONLY sections relevant to your task!** Check the content map below and load what you need.
+
+> ðŸ”´ **For performance reviews: Start with CRITICAL sections (1-2), then move to HIGH/MEDIUM.**
+
+---
+
+## ðŸ“‘ Content Map
+
+| File | Impact | Rules | When to Read |
+|------|--------|-------|--------------|
+| `1-async-eliminating-waterfalls.md` | ðŸ”´ **CRITICAL** | 5 rules | Slow page loads, sequential API calls, data fetching waterfalls |
+| `2-bundle-bundle-size-optimization.md` | ðŸ”´ **CRITICAL** | 5 rules | Large bundle size, slow Time to Interactive, First Load issues |
+| `3-server-server-side-performance.md` | ðŸŸ  **HIGH** | 7 rules | Slow SSR, API route optimization, server-side waterfalls |
+| `4-client-client-side-data-fetching.md` | ðŸŸ¡ **MEDIUM-HIGH** | 4 rules | Client data management, SWR patterns, deduplication |
+| `5-rerender-re-render-optimization.md` | ðŸŸ¡ **MEDIUM** | 12 rules | Excessive re-renders, React performance, memoization |
+| `6-rendering-rendering-performance.md` | ðŸŸ¡ **MEDIUM** | 9 rules | Rendering bottlenecks, virtualization, image optimization |
+| `7-js-javascript-performance.md` | âšª **LOW-MEDIUM** | 12 rules | Micro-optimizations, caching, loop performance |
+| `8-advanced-advanced-patterns.md` | ðŸ”µ **VARIABLE** | 3 rules | Advanced React patterns, useLatest, init-once |
+
+**Total: 57 rules across 8 categories**
+
+---
+
+## ðŸš€ Quick Decision Tree
+
+**What's your performance issue?**
+
+```
+ðŸŒ Slow page loads / Long Time to Interactive
+  â†’ Read Section 1: Eliminating Waterfalls
+  â†’ Read Section 2: Bundle Size Optimization
+
+ðŸ“¦ Large bundle size (> 200KB)
+  â†’ Read Section 2: Bundle Size Optimization
+  â†’ Check: Dynamic imports, barrel imports, tree-shaking
+
+ðŸ–¥ï¸ Slow Server-Side Rendering
+  â†’ Read Section 3: Server-Side Performance
+  â†’ Check: Parallel data fetching, streaming
+
+ðŸ”„ Too many re-renders / UI lag
+  â†’ Read Section 5: Re-render Optimization
+  â†’ Check: React.memo, useMemo, useCallback
+
+ðŸŽ¨ Rendering performance issues
+  â†’ Read Section 6: Rendering Performance
+  â†’ Check: Virtualization, layout thrashing
+
+ðŸŒ Client-side data fetching problems
+  â†’ Read Section 4: Client-Side Data Fetching
+  â†’ Check: SWR deduplication, localStorage
+
+âœ¨ Need advanced patterns
+  â†’ Read Section 8: Advanced Patterns
+```
+
+---
+
+## ðŸ“Š Impact Priority Guide
+
+**Use this order when doing comprehensive optimization:**
+
+```
+1ï¸âƒ£ CRITICAL (Biggest Gains - Do First):
+   â”œâ”€ Section 1: Eliminating Waterfalls
+   â”‚  â””â”€ Each waterfall adds full network latency (100-500ms+)
+   â””â”€ Section 2: Bundle Size Optimization
+      â””â”€ Affects Time to Interactive and Largest Contentful Paint
+
+2ï¸âƒ£ HIGH (Significant Impact - Do Second):
+   â””â”€ Section 3: Server-Side Performance
+      â””â”€ Eliminates server-side waterfalls, faster response times
+
+3ï¸âƒ£ MEDIUM (Moderate Gains - Do Third):
+   â”œâ”€ Section 4: Client-Side Data Fetching
+   â”œâ”€ Section 5: Re-render Optimization
+   â””â”€ Section 6: Rendering Performance
+
+4ï¸âƒ£ LOW (Polish - Do Last):
+   â”œâ”€ Section 7: JavaScript Performance
+   â””â”€ Section 8: Advanced Patterns
+```
+
+---
+
+## ðŸ“– Section Details
+
+### Section 1: Eliminating Waterfalls (CRITICAL)
+**Impact:** Each waterfall adds 100-500ms+ latency
+**Key Concepts:** Parallel fetching, Promise.all(), Suspense boundaries, preloading
+
+### Section 2: Bundle Size Optimization (CRITICAL)
+**Impact:** Directly affects Time to Interactive, Largest Contentful Paint
+**Key Concepts:** Dynamic imports, tree-shaking, barrel import avoidance
+
+### Section 3: Server-Side Performance (HIGH)
+**Impact:** Faster server responses, better SEO
+**Key Concepts:** Parallel server fetching, streaming, API route optimization
+
+### Section 4: Client-Side Data Fetching (MEDIUM-HIGH)
+**Impact:** Reduces redundant requests, better UX
+**Key Concepts:** SWR deduplication, localStorage caching, event listeners
+
+### Section 5: Re-render Optimization (MEDIUM)
+**Impact:** Smoother UI, less wasted computation
+**Key Concepts:** React.memo, useMemo, useCallback, component structure
+
+### Section 6: Rendering Performance (MEDIUM)
+**Impact:** Better rendering efficiency
+**Key Concepts:** Virtualization, image optimization, layout thrashing
+
+### Section 7: JavaScript Performance (LOW-MEDIUM)
+**Impact:** Incremental improvements in hot paths
+**Key Concepts:** Loop optimization, caching, RegExp hoisting
+
+### Section 8: Advanced Patterns (VARIABLE)
+**Impact:** Specific use cases
+**Key Concepts:** useLatest hook, init-once patterns, event handler refs
+
+---
+
+## âœ… Performance Review Checklist
+
+Before shipping to production:
+
+**Critical (Must Fix):**
+- [ ] No sequential data fetching (waterfalls eliminated)
+- [ ] Bundle size < 200KB for main bundle
+- [ ] No barrel imports in app code
+- [ ] Dynamic imports used for large components
+- [ ] Parallel data fetching where possible
+
+**High Priority:**
+- [ ] Server components used where appropriate
+- [ ] API routes optimized (no N+1 queries)
+- [ ] Suspense boundaries for data fetching
+- [ ] Static generation used where possible
+
+**Medium Priority:**
+- [ ] Expensive computations memoized
+- [ ] List rendering virtualized (if > 100 items)
+- [ ] Images optimized with next/image
+- [ ] No unnecessary re-renders
+
+**Low Priority (Polish):**
+- [ ] Hot path loops optimized
+- [ ] RegExp patterns hoisted
+- [ ] Property access cached in loops
+
+---
+
+## âŒ Anti-Patterns (Common Mistakes)
+
+**DON'T:**
+- âŒ Use sequential `await` for independent operations
+- âŒ Import entire libraries when you need one function
+- âŒ Use barrel exports (`index.ts` re-exports) in app code
+- âŒ Skip dynamic imports for large components/libraries
+- âŒ Fetch data in useEffect without deduplication
+- âŒ Forget to memoize expensive computations
+- âŒ Use client components when server components work
+
+**DO:**
+- âœ… Fetch data in parallel with `Promise.all()`
+- âœ… Use dynamic imports: `const Comp = dynamic(() => import('./Heavy'))`
+- âœ… Import directly: `import { specific } from 'library/specific'`
+- âœ… Use Suspense boundaries for better UX
+- âœ… Leverage React Server Components
+- âœ… Measure performance before optimizing
+- âœ… Use Next.js built-in optimizations (next/image, next/font)
+
+---
+
+## ðŸ”— Related Skills
+
+| Need | Skill |
+|------|-------|
+| API design patterns | `api-patterns` |
+| Database optimization | `database-design` |
+| Testing strategies | `testing-patterns` |
+| UI/UX design principles | `frontend-design` |
+| Deployment & DevOps | `deployment-procedures` |
+
+---
+
+## ðŸŽ“ Best Practices Summary
+
+**Golden Rules:**
+1. **Measure first** - Use React DevTools Profiler, Chrome DevTools
+2. **Biggest impact first** - Waterfalls â†’ Bundle â†’ Server â†’ Micro
+3. **Don't over-optimize** - Focus on real bottlenecks
+4. **Use platform features** - Next.js has optimizations built-in
+5. **Think about users** - Real-world conditions matter
+
+**Performance Mindset:**
+- Every `await` in sequence = potential waterfall
+- Every `import` = potential bundle bloat
+- Every re-render = wasted computation (if unnecessary)
+- Server components = less JavaScript to ship
+- Measure, don't guess
+
+---
+
+**Source:** Vercel Engineering | **Total Rules:** 57 across 8 categories
 
 ## Connections
+
+- **Related:** [[Frontend Design]], [[Node.js Best Practices]], [[Tailwind Patterns]]
 - **Used by:** [[Frontend Specialist]]
-- **Pairs with:** [[Frontend Design]], [[Tailwind Patterns]], [[UI-UX Pro Max]]
-- **Quality:** [[Performance Profiling]], [[Webapp Testing]]
 
-## Nhóm
-Design & Frontend | [[UI Design Hub]] | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
-
-## Memory Integration
-- `store()` — Lưu React conventions, component patterns
-- `recall()` — Load project React architecture trước khi build component
+## NhÃ³m
+Frontend | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

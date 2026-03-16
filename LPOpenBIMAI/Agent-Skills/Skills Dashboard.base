@@ -1,8 +1,6 @@
 filters:
   and:
-    - file.hasTag("skill")
-    - 'file.ext == "md"'
-    - file.inFolder("LPOpenBIMAI/Agent-Skills")
+    - file.hasTag("agent-skill")
 
 formulas:
   nhom: 'if(group, group, "—")'

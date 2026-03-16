@@ -1,6 +1,7 @@
----
+﻿---
 title: Lint and Validate
 tags:
+  - agent-skill
   - skill
   - testing
   - quality
@@ -13,33 +14,33 @@ aliases:
   - Linting
 ---
 
-# 🔍 Lint and Validate
+# ðŸ” Lint and Validate
 
-> [!abstract] Mục đích
-> Chạy linting và validation trên code. Đảm bảo code quality, type safety, và formatting standards trước khi commit.
+> [!abstract] Má»¥c Ä‘Ã­ch
+> Cháº¡y linting vÃ  validation trÃªn code. Äáº£m báº£o code quality, type safety, vÃ  formatting standards trÆ°á»›c khi commit.
 
-## Khi nào dùng
+## Khi nÃ o dÃ¹ng
 
-- Sau MỌI code change
-- Trước commit/PR
-- Khi `checklist.py` chạy (step 2: Code Quality)
+- Sau Má»ŒI code change
+- TrÆ°á»›c commit/PR
+- Khi `checklist.py` cháº¡y (step 2: Code Quality)
 
-## Công cụ hỗ trợ
+## CÃ´ng cá»¥ há»— trá»£
 
-| Tool | Mục đích |
+| Tool | Má»¥c Ä‘Ã­ch |
 |------|----------|
 | ESLint | JavaScript/TypeScript linting |
 | Prettier | Code formatting |
 | TypeScript compiler | Type checking (`tsc --noEmit`) |
 | Biome | All-in-one lint+format (alternative) |
 
-## Quy trình
+## Quy trÃ¬nh
 
 ```
-Code Change → Lint Runner:
-  1. ESLint/Biome check → fix auto-fixable issues
-  2. TypeScript strict check → report type errors
-  3. Prettier format → enforce consistent style
+Code Change â†’ Lint Runner:
+  1. ESLint/Biome check â†’ fix auto-fixable issues
+  2. TypeScript strict check â†’ report type errors
+  3. Prettier format â†’ enforce consistent style
   4. Report: pass/fail + details
 ```
 
@@ -49,16 +50,16 @@ Code Change → Lint Runner:
 python .agent/skills/lint-and-validate/scripts/lint_runner.py
 ```
 
-## Kết hợp với
+## Káº¿t há»£p vá»›i
 
-| Skill | Quan hệ |
+| Skill | Quan há»‡ |
 |-------|---------|
-| `clean-code` | Standards mà lint enforce |
-| `testing-patterns` | Lint chạy trước tests |
-| `verification-before-completion` | Lint là bước đầu của verification |
+| `clean-code` | Standards mÃ  lint enforce |
+| `testing-patterns` | Lint cháº¡y trÆ°á»›c tests |
+| `verification-before-completion` | Lint lÃ  bÆ°á»›c Ä‘áº§u cá»§a verification |
 
 ## Links
 
-- [[Agent-Skills|← Skills Index]]
-- [[Clean Code|🧹 Clean Code]]
-- [[Testing Patterns|🧪 Testing Patterns]]
+- [[Agent-Skills|â† Skills Index]]
+- [[Clean Code|ðŸ§¹ Clean Code]]
+- [[Testing Patterns|ðŸ§ª Testing Patterns]]

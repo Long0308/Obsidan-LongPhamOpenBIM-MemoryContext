@@ -1,5 +1,7 @@
 ---
 title: OpenSpec Integration
+description: "Spec-driven development — agree before you build"
+url: "https://github.com/Fission-AI/OpenSpec"
 tags:
   - resources
   - openspec

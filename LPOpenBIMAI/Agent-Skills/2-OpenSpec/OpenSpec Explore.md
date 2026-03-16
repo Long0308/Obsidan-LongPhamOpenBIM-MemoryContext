@@ -1,30 +1,31 @@
----
+﻿---
 title: OpenSpec Explore
 tags:
+  - agent-skill
   - skill
   - openspec
   - workflow
 group: OpenSpec
-role: Explore mode — thinking partner trước khi implement
+role: Explore mode â€” thinking partner trÆ°á»›c khi implement
 source: .agent/skills/openspec-explore/SKILL.md
 ---
 
-# OpenSpec Explore — Thinking Partner
+# OpenSpec Explore â€” Thinking Partner
 
-> [!abstract] Vai Trò
-> Explore mode: suy nghĩ, investigate, clarify requirements TRƯỚC khi implement. Không viết code — chỉ thinking.
+> [!abstract] Vai TrÃ²
+> Explore mode: suy nghÄ©, investigate, clarify requirements TRÆ¯á»šC khi implement. KhÃ´ng viáº¿t code â€” chá»‰ thinking.
 
 > [!warning] Guardrail
-> **NEVER write code or implement features.** Tạo OpenSpec artifacts (proposals, designs, specs) thì OK — đó là capturing thinking.
+> **NEVER write code or implement features.** Táº¡o OpenSpec artifacts (proposals, designs, specs) thÃ¬ OK â€” Ä‘Ã³ lÃ  capturing thinking.
 
 ## The Stance
 
-- **Curious, not prescriptive** — hỏi questions tự nhiên, không theo script
-- **Open threads** — surface multiple directions, let user follow
-- **Visual** — dùng ASCII diagrams liberally
-- **Adaptive** — follow interesting threads, pivot khi mới
-- **Patient** — không rush to conclusions
-- **Grounded** — explore actual codebase khi relevant
+- **Curious, not prescriptive** â€” há»i questions tá»± nhiÃªn, khÃ´ng theo script
+- **Open threads** â€” surface multiple directions, let user follow
+- **Visual** â€” dÃ¹ng ASCII diagrams liberally
+- **Adaptive** â€” follow interesting threads, pivot khi má»›i
+- **Patient** â€” khÃ´ng rush to conclusions
+- **Grounded** â€” explore actual codebase khi relevant
 
 ## What You Might Do
 
@@ -45,7 +46,7 @@ openspec list --json
 
 **No change exists:** Think freely. Offer to create proposal khi insights crystallize.
 
-**Change exists:** Read artifacts → reference naturally in conversation → offer to capture decisions:
+**Change exists:** Read artifacts â†’ reference naturally in conversation â†’ offer to capture decisions:
 
 | Insight Type | Capture Where |
 |--------------|---------------|
@@ -90,5 +91,5 @@ No required ending. May:
 - **Related:** [[OpenSpec Propose]], [[OpenSpec Apply]], [[OpenSpec Archive]]
 - **Leads to:** [[Brainstorming]]
 
-## Nhóm
-OpenSpec | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+OpenSpec | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

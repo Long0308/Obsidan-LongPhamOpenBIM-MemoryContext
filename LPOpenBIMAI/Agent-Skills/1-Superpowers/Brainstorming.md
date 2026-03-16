@@ -1,89 +1,90 @@
----
+﻿---
 title: Brainstorming
 tags:
+  - agent-skill
   - skill
   - superpowers
   - planning
 group: Superpowers
-role: Ý tưởng ban đầu, phân tích requirements trước khi code
+role: Ã tÆ°á»Ÿng ban Ä‘áº§u, phÃ¢n tÃ­ch requirements trÆ°á»›c khi code
 source: .agent/skills/brainstorming/SKILL.md
 ---
 
-# Brainstorming — Ideas Into Designs
+# Brainstorming â€” Ideas Into Designs
 
-> [!abstract] Vai Trò
-> PHẢI dùng trước MỌI creative work — tạo features, build components, thêm functionality, sửa behavior. Khám phá intent, requirements, design trước implementation.
+> [!abstract] Vai TrÃ²
+> PHáº¢I dÃ¹ng trÆ°á»›c Má»ŒI creative work â€” táº¡o features, build components, thÃªm functionality, sá»­a behavior. KhÃ¡m phÃ¡ intent, requirements, design trÆ°á»›c implementation.
 
 > [!caution] HARD GATE
-> KHÔNG được invoke bất kỳ implementation skill, viết code, scaffold project, hay thực thi bất kỳ action nào TRƯỚC KHI present design VÀ user đã approve. Áp dụng cho MỌI project bất kể mức độ đơn giản.
+> KHÃ”NG Ä‘Æ°á»£c invoke báº¥t ká»³ implementation skill, viáº¿t code, scaffold project, hay thá»±c thi báº¥t ká»³ action nÃ o TRÆ¯á»šC KHI present design VÃ€ user Ä‘Ã£ approve. Ãp dá»¥ng cho Má»ŒI project báº¥t ká»ƒ má»©c Ä‘á»™ Ä‘Æ¡n giáº£n.
 
 ## Anti-Pattern: "This Is Too Simple"
 
-Mọi project đều đi qua process này. Todo list, utility function, config change — tất cả. "Simple" projects là nơi unexamined assumptions gây waste nhiều nhất. Design có thể ngắn (vài câu cho project đơn giản), nhưng PHẢI present và get approval.
+Má»i project Ä‘á»u Ä‘i qua process nÃ y. Todo list, utility function, config change â€” táº¥t cáº£. "Simple" projects lÃ  nÆ¡i unexamined assumptions gÃ¢y waste nhiá»u nháº¥t. Design cÃ³ thá»ƒ ngáº¯n (vÃ i cÃ¢u cho project Ä‘Æ¡n giáº£n), nhÆ°ng PHáº¢I present vÃ  get approval.
 
-## Checklist (9 bước bắt buộc)
+## Checklist (9 bÆ°á»›c báº¯t buá»™c)
 
-| # | Bước | Mô tả |
+| # | BÆ°á»›c | MÃ´ táº£ |
 |---|------|--------|
 | 1 | Explore project context | Check files, docs, recent commits |
-| 2 | Offer visual companion | Nếu topic có visual questions (message riêng!) |
-| 3 | Ask clarifying questions | Từng câu một, hiểu purpose/constraints/success |
+| 2 | Offer visual companion | Náº¿u topic cÃ³ visual questions (message riÃªng!) |
+| 3 | Ask clarifying questions | Tá»«ng cÃ¢u má»™t, hiá»ƒu purpose/constraints/success |
 | 4 | Propose 2-3 approaches | Trade-offs + recommendation |
-| 5 | Present design | Theo sections, get approval từng phần |
+| 5 | Present design | Theo sections, get approval tá»«ng pháº§n |
 | 6 | Write design doc | Save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` |
 | 7 | Spec review loop | Dispatch reviewer subagent (max 5 iterations) |
-| 8 | User reviews spec | User approve trước khi proceed |
-| 9 | Transition | → Invoke [[Writing Plans]] (ONLY skill) |
+| 8 | User reviews spec | User approve trÆ°á»›c khi proceed |
+| 9 | Transition | â†’ Invoke [[Writing Plans]] (ONLY skill) |
 
-## Process — Understanding Ideas
+## Process â€” Understanding Ideas
 
-**Hiểu ý tưởng:**
-- Check project state trước (files, docs, recent commits)
-- Nếu request có multiple independent subsystems → flag ngay, decompose trước
-- Hỏi từng câu một (1 question per message)
-- Prefer multiple choice khi có thể
+**Hiá»ƒu Ã½ tÆ°á»Ÿng:**
+- Check project state trÆ°á»›c (files, docs, recent commits)
+- Náº¿u request cÃ³ multiple independent subsystems â†’ flag ngay, decompose trÆ°á»›c
+- Há»i tá»«ng cÃ¢u má»™t (1 question per message)
+- Prefer multiple choice khi cÃ³ thá»ƒ
 - Focus: purpose, constraints, success criteria
 
 **Explore approaches:**
-- Propose 2-3 options với trade-offs
-- Lead với recommendation + reasoning
-- Phong cách conversational
+- Propose 2-3 options vá»›i trade-offs
+- Lead vá»›i recommendation + reasoning
+- Phong cÃ¡ch conversational
 
 **Present design:**
-- Scale sections theo complexity (vài câu if simple, 200-300 words if nuanced)
-- Ask sau mỗi section: "looks right so far?"
+- Scale sections theo complexity (vÃ i cÃ¢u if simple, 200-300 words if nuanced)
+- Ask sau má»—i section: "looks right so far?"
 - Cover: architecture, components, data flow, error handling, testing
 
 ## Design Principles
 
-- **Isolation & clarity** — units có 1 purpose, well-defined interfaces, testable independently
+- **Isolation & clarity** â€” units cÃ³ 1 purpose, well-defined interfaces, testable independently
 - **For each unit** answer: what does it do? how do you use it? what does it depend on?
 - **Smaller, focused files** > large files doing too much
-- **In existing codebases** — follow existing patterns, don't refactor unrelated things
+- **In existing codebases** â€” follow existing patterns, don't refactor unrelated things
 
-## After Design → Spec Review Loop
+## After Design â†’ Spec Review Loop
 
 ```
-Write spec → Dispatch reviewer → Issues? Fix & re-dispatch → Approved?
-→ User reviews → Changes? Update & re-review → Approved?
-→ Invoke writing-plans skill (ONLY next step)
+Write spec â†’ Dispatch reviewer â†’ Issues? Fix & re-dispatch â†’ Approved?
+â†’ User reviews â†’ Changes? Update & re-review â†’ Approved?
+â†’ Invoke writing-plans skill (ONLY next step)
 ```
 
-- Max 5 iterations → nếu exceed, surface to human
+- Max 5 iterations â†’ náº¿u exceed, surface to human
 - Save spec to: `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
 - Commit to git
 
 ## Key Principles
 
-- **One question at a time** — không overwhelm
-- **Multiple choice preferred** — easier to answer
-- **YAGNI ruthlessly** — remove unnecessary features
-- **Explore alternatives** — always 2-3 approaches
-- **Incremental validation** — present → get approval → move on
+- **One question at a time** â€” khÃ´ng overwhelm
+- **Multiple choice preferred** â€” easier to answer
+- **YAGNI ruthlessly** â€” remove unnecessary features
+- **Explore alternatives** â€” always 2-3 approaches
+- **Incremental validation** â€” present â†’ get approval â†’ move on
 
 ## Visual Companion
 
-Browser-based tool cho mockups, diagrams, visual options. Chỉ offer khi anticipate visual questions:
+Browser-based tool cho mockups, diagrams, visual options. Chá»‰ offer khi anticipate visual questions:
 
 > "Some of what we're working on might be easier to explain if I can show it to you in a web browser. I can put together mockups, diagrams, comparisons..."
 
@@ -94,5 +95,5 @@ Browser-based tool cho mockups, diagrams, visual options. Chỉ offer khi antici
 - **Depends on:** [[Using Superpowers]]
 - **Flows to:** [[Writing Plans]]
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

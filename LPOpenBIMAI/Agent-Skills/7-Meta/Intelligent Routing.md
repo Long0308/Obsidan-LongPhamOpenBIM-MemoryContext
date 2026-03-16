@@ -1,6 +1,7 @@
----
+﻿---
 title: Intelligent Routing
 tags:
+  - agent-skill
   - skill
   - routing
   - agent-selection
@@ -13,25 +14,25 @@ aliases:
   - Auto Routing
 ---
 
-# 🧭 Intelligent Routing
+# ðŸ§­ Intelligent Routing
 
-> [!abstract] Mục đích
-> Tự động phân tích user request và chọn agent persona phù hợp nhất. Không cần user chỉ định `@agent` — hệ thống tự detect domain và route.
+> [!abstract] Má»¥c Ä‘Ã­ch
+> Tá»± Ä‘á»™ng phÃ¢n tÃ­ch user request vÃ  chá»n agent persona phÃ¹ há»£p nháº¥t. KhÃ´ng cáº§n user chá»‰ Ä‘á»‹nh `@agent` â€” há»‡ thá»‘ng tá»± detect domain vÃ  route.
 
-## Khi nào dùng
+## Khi nÃ o dÃ¹ng
 
-- **Luôn active** — chạy tự động trước MỌI response
-- Embedded trong GEMINI.md → Agent Routing Checklist
-- Là TIER 0 rule — không skip được
+- **LuÃ´n active** â€” cháº¡y tá»± Ä‘á»™ng trÆ°á»›c Má»ŒI response
+- Embedded trong GEMINI.md â†’ Agent Routing Checklist
+- LÃ  TIER 0 rule â€” khÃ´ng skip Ä‘Æ°á»£c
 
-## Cách hoạt động
+## CÃ¡ch hoáº¡t Ä‘á»™ng
 
 ```
-User Request → Silent Analysis:
+User Request â†’ Silent Analysis:
   1. Detect domains (Frontend, Backend, Security, DB, Mobile...)
-  2. Match keywords → Agent mapping
+  2. Match keywords â†’ Agent mapping
   3. Select best agent(s)
-  4. Announce: 🤖 Applying knowledge of @[agent]...
+  4. Announce: ðŸ¤– Applying knowledge of @[agent]...
   5. Load agent persona + frontmatter skills
 ```
 
@@ -41,7 +42,7 @@ User Request → Silent Analysis:
 |----------------|----------------|-------------------|
 | UI, CSS, React, "trang web" | `frontend-specialist` | frontend-design, react-best-practices |
 | API, server, database | `backend-specialist` | api-patterns, database-design |
-| Bug, lỗi, không hoạt động | `debugger` | systematic-debugging |
+| Bug, lá»—i, khÃ´ng hoáº¡t Ä‘á»™ng | `debugger` | systematic-debugging |
 | Security, OWASP, hack | `security-auditor` | vulnerability-scanner |
 | Mobile, iOS, Android | `mobile-developer` | mobile-design |
 | Plan, roadmap, breakdown | `project-planner` | brainstorming, plan-writing |
@@ -49,12 +50,12 @@ User Request → Silent Analysis:
 
 ## Rules
 
-1. **Silent Analysis** — không verbose "I am analyzing..."
-2. **User Override** — nếu user nói `@agent`, dùng agent đó
-3. **Mandatory Checklist** — phải pass 4-step checklist trước khi code
+1. **Silent Analysis** â€” khÃ´ng verbose "I am analyzing..."
+2. **User Override** â€” náº¿u user nÃ³i `@agent`, dÃ¹ng agent Ä‘Ã³
+3. **Mandatory Checklist** â€” pháº£i pass 4-step checklist trÆ°á»›c khi code
 
 ## Links
 
-- [[Agent-Skills|← Skills Index]]
-- [[Behavioral Modes|🎭 Behavioral Modes]]
-- [[GEMINI Rules|📜 GEMINI Rules]]
+- [[Agent-Skills|â† Skills Index]]
+- [[Behavioral Modes|ðŸŽ­ Behavioral Modes]]
+- [[GEMINI Rules|ðŸ“œ GEMINI Rules]]

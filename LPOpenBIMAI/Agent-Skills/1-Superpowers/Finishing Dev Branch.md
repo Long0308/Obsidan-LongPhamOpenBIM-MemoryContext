@@ -1,18 +1,19 @@
----
+﻿---
 title: Finishing Dev Branch
 tags:
+  - agent-skill
   - skill
   - superpowers
   - workflow
 group: Superpowers
-role: Hoàn thành dev branch — verify tests → present options → execute → cleanup
+role: HoÃ n thÃ nh dev branch â€” verify tests â†’ present options â†’ execute â†’ cleanup
 source: .agent/skills/finishing-a-development-branch/SKILL.md
 ---
 
 # Finishing a Development Branch
 
-> [!abstract] Vai Trò
-> Guide completion of development work: Verify tests → Present 4 options → Execute choice → Clean up.
+> [!abstract] Vai TrÃ²
+> Guide completion of development work: Verify tests â†’ Present 4 options â†’ Execute choice â†’ Clean up.
 
 ## The Process (5 Steps)
 
@@ -20,8 +21,8 @@ source: .agent/skills/finishing-a-development-branch/SKILL.md
 ```bash
 npm test / cargo test / pytest / go test ./...
 ```
-- Tests fail? → **STOP.** Show failures. Cannot proceed.
-- Tests pass? → Continue.
+- Tests fail? â†’ **STOP.** Show failures. Cannot proceed.
+- Tests pass? â†’ Continue.
 
 ### Step 2: Determine Base Branch
 ```bash
@@ -44,10 +45,10 @@ Which option?
 
 | Option | Actions |
 |--------|---------|
-| **1. Merge locally** | checkout base → pull → merge → verify tests → delete branch |
-| **2. Create PR** | push -u origin → gh pr create |
+| **1. Merge locally** | checkout base â†’ pull â†’ merge â†’ verify tests â†’ delete branch |
+| **2. Create PR** | push -u origin â†’ gh pr create |
 | **3. Keep as-is** | Report branch/worktree location. Don't cleanup. |
-| **4. Discard** | Confirm first ("type 'discard'") → checkout base → branch -D |
+| **4. Discard** | Confirm first ("type 'discard'") â†’ checkout base â†’ branch -D |
 
 ### Step 5: Cleanup Worktree
 - **Options 1, 2, 4:** `git worktree remove <path>`
@@ -57,10 +58,10 @@ Which option?
 
 | Option | Merge | Push | Keep WT | Cleanup Branch |
 |--------|-------|------|---------|----------------|
-| 1. Merge | ✓ | - | - | ✓ |
-| 2. PR | - | ✓ | ✓ | - |
-| 3. Keep | - | - | ✓ | - |
-| 4. Discard | - | - | - | ✓ (force) |
+| 1. Merge | âœ“ | - | - | âœ“ |
+| 2. PR | - | âœ“ | âœ“ | - |
+| 3. Keep | - | - | âœ“ | - |
+| 4. Discard | - | - | - | âœ“ (force) |
 
 ## Common Mistakes
 
@@ -84,7 +85,7 @@ Which option?
 - [[Executing Plans]] (after all batches)
 
 **Pairs with:**
-- [[Git Worktrees]] — cleans up worktree created by that skill
+- [[Git Worktrees]] â€” cleans up worktree created by that skill
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

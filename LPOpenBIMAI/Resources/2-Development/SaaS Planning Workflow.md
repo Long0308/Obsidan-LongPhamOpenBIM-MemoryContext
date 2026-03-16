@@ -1,5 +1,7 @@
 ---
 title: SaaS Planning Workflow
+description: "Quy trình lập kế hoạch SaaS app với AI agents"
+url: "https://github.com/openai/openai-cookbook"
 tags:
   - resources
   - saas

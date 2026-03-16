@@ -1,38 +1,61 @@
----
+﻿---
 title: Web Design Guidelines
 tags:
+  - agent-skill
   - skill
-  - agent-swarm
   - frontend
   - design
-group: Design & Frontend
-role: Web Interface Guidelines compliance — accessibility, best practices review
-source: .agent/skills/web-design-guidelines/SKILL.md
+  - quality
+group: Design-Frontend
+role: Vercel web UI audit + accessibility
 ---
 
-# Web Design Guidelines
+# Web Interface Guidelines
 
-> [!abstract] Skill
-> Review UI code for Web Interface Guidelines compliance. Accessibility, best practices, UX patterns.
+Review files for compliance with Web Interface Guidelines.
 
-## Triggers
-`review UI, check accessibility, audit design, review UX, check site, WCAG`
+## How It Works
 
-## Key Concepts
-- **Accessibility** — WCAG 2.1 AA, ARIA roles, keyboard navigation
-- **Responsive** — Mobile-first, breakpoint strategy, fluid typography
-- **UX patterns** — Loading states, error states, empty states
-- **Forms** — Input validation, labels, error messages, autofill
-- **Navigation** — Breadcrumbs, skip links, focus management
+1. Fetch the latest guidelines from the source URL below
+2. Read the specified files (or prompt user for files/pattern)
+3. Check against all rules in the fetched guidelines
+4. Output findings in the terse `file:line` format
 
-## Connections
-- **Used by:** [[Frontend Specialist]], [[QA Automation Engineer]]
-- **Pairs with:** [[Frontend Design]], [[UI-UX Pro Max]]
-- **Validates:** [[Webapp Testing]], [[SEO Fundamentals]]
+## Guidelines Source
 
-## Nhóm
-Design & Frontend | [[UI Design Hub]] | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+Fetch fresh guidelines before each review:
 
-## Memory Integration
-- `store()` — Lưu accessibility audit results
-- `recall()` — Load project UX standards
+```
+https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
+```
+
+Use WebFetch to retrieve the latest rules. The fetched content contains all the rules and output format instructions.
+
+## Usage
+
+When a user provides a file or pattern argument:
+1. Fetch guidelines from the source URL above
+2. Read the specified files
+3. Apply all rules from the fetched guidelines
+4. Output findings using the format specified in the guidelines
+
+If no files specified, ask the user which files to review.
+
+---
+
+## Related Skills
+
+| Skill | When to Use |
+|-------|-------------|
+| **`../frontend-design/SKILL.md`** | Before coding - Learn design principles (color, typography, UX psychology) |
+| **web-design-guidelines** (this) | After coding - Audit for accessibility, performance, and best practices |
+
+## Design Workflow
+
+```
+1. DESIGN   â†’ Read frontend-design principles
+2. CODE     â†’ Implement the design
+3. AUDIT    â†’ Run web-design-guidelines review â† YOU ARE HERE
+4. FIX      â†’ Address findings from audit
+```
+

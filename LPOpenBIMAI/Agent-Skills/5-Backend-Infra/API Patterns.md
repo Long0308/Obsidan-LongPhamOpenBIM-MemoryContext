@@ -1,37 +1,86 @@
 ---
-title: API Patterns
 tags:
-  - skill
-  - agent-swarm
+  - agent-skill
   - backend
-group: Backend & Infra
-role: API design decisions — REST vs GraphQL vs tRPC, response formats, versioning
-source: .agent/skills/api-patterns/SKILL.md
+  - api
+skill-source: "[[API Patterns SKILL|.agent/skills/api-patterns/SKILL.md]]"
+related-skills:
+  - "[[Database Design]]"
+  - "[[Node.js Best Practices]]"
+  - "[[Python Patterns]]"
 ---
 
 # API Patterns
 
-> [!abstract] Skill
-> API design principles and decision-making. REST vs GraphQL vs tRPC selection, response formats, versioning, pagination.
+> API design principles and decision-making for 2025.
+> **Learn to THINK, not copy fixed patterns.**
 
-## Triggers
-`api, endpoint, REST, GraphQL, tRPC, response format, versioning, pagination`
+## 🎯 Selective Reading Rule
 
-## Key Concepts
-- **Protocol selection** — REST vs GraphQL vs tRPC trade-offs
-- **Response formats** — Envelope patterns, error shapes, pagination cursors
-- **Versioning** — URL vs header vs content negotiation strategies
-- **Pagination** — Cursor-based vs offset, infinite scroll patterns
-- **Rate limiting** — Throttle design, quota headers
+**Read ONLY files relevant to the request!** Check the content map, find what you need.
 
-## Connections
-- **Used by:** [[Backend Specialist]], [[Database Architect]]
-- **Pairs with:** [[Database Design]], [[Node.js Best Practices]]
-- **Quality:** [[Testing Patterns]], [[Webapp Testing]]
+---
 
-## Nhóm
-Backend & Infra | [[InsForge Hub]] | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## 📑 Content Map
 
-## Memory Integration
-- `store()` — Lưu API decisions (protocol, versioning strategy)
-- `recall()` — Load project API conventions trước khi thiết kế endpoint mới
+| File | Description | When to Read |
+|------|-------------|--------------|
+| `api-style.md` | REST vs GraphQL vs tRPC decision tree | Choosing API type |
+| `rest.md` | Resource naming, HTTP methods, status codes | Designing REST API |
+| `response.md` | Envelope pattern, error format, pagination | Response structure |
+| `graphql.md` | Schema design, when to use, security | Considering GraphQL |
+| `trpc.md` | TypeScript monorepo, type safety | TS fullstack projects |
+| `versioning.md` | URI/Header/Query versioning | API evolution planning |
+| `auth.md` | JWT, OAuth, Passkey, API Keys | Auth pattern selection |
+| `rate-limiting.md` | Token bucket, sliding window | API protection |
+| `documentation.md` | OpenAPI/Swagger best practices | Documentation |
+| `security-testing.md` | OWASP API Top 10, auth/authz testing | Security audits |
+
+---
+
+## 🔗 Related Skills
+
+| Need | Skill |
+|------|-------|
+| API implementation | `@[skills/backend-development]` |
+| Data structure | `@[skills/database-design]` |
+| Security details | `@[skills/security-hardening]` |
+
+---
+
+## ✅ Decision Checklist
+
+Before designing an API:
+
+- [ ] **Asked user about API consumers?**
+- [ ] **Chosen API style for THIS context?** (REST/GraphQL/tRPC)
+- [ ] **Defined consistent response format?**
+- [ ] **Planned versioning strategy?**
+- [ ] **Considered authentication needs?**
+- [ ] **Planned rate limiting?**
+- [ ] **Documentation approach defined?**
+
+---
+
+## ❌ Anti-Patterns
+
+**DON'T:**
+- Default to REST for everything
+- Use verbs in REST endpoints (/getUsers)
+- Return inconsistent response formats
+- Expose internal errors to clients
+- Skip rate limiting
+
+**DO:**
+- Choose API style based on context
+- Ask about client requirements
+- Document thoroughly
+- Use appropriate status codes
+
+---
+
+## Script
+
+| Script | Purpose | Command |
+|--------|---------|---------|
+| `scripts/api_validator.py` | API endpoint validation | `python scripts/api_validator.py <project_path>` |

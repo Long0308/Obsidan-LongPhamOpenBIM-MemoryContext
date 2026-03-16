@@ -1,70 +1,71 @@
----
+﻿---
 title: Parallel Agents
 tags:
+  - agent-skill
   - skill
   - orchestration
   - multi-agent
   - workflow
 parent: "[[Agent-Skills]]"
 skill-folder: parallel-agents
-group: Dev Workflow — Superpowers
+group: Dev Workflow â€” Superpowers
 aliases:
   - Parallel Agents Skill
   - Multi-Agent
 ---
 
-# 🔀 Parallel Agents
+# ðŸ”€ Parallel Agents
 
-> [!abstract] Mục đích
-> Patterns cho multi-agent orchestration. Dùng khi nhiều tasks độc lập có thể chạy song song, hoặc khi cần phân tích đa góc nhìn từ nhiều specialist agents.
+> [!abstract] Má»¥c Ä‘Ã­ch
+> Patterns cho multi-agent orchestration. DÃ¹ng khi nhiá»u tasks Ä‘á»™c láº­p cÃ³ thá»ƒ cháº¡y song song, hoáº·c khi cáº§n phÃ¢n tÃ­ch Ä‘a gÃ³c nhÃ¬n tá»« nhiá»u specialist agents.
 
-## Khi nào dùng
+## Khi nÃ o dÃ¹ng
 
-- 2+ tasks độc lập, không share state
-- Cần comprehensive analysis từ nhiều perspectives
-- Code review từ nhiều agents (security + performance + UX)
-- Task lớn có thể chia nhỏ
+- 2+ tasks Ä‘á»™c láº­p, khÃ´ng share state
+- Cáº§n comprehensive analysis tá»« nhiá»u perspectives
+- Code review tá»« nhiá»u agents (security + performance + UX)
+- Task lá»›n cÃ³ thá»ƒ chia nhá»
 
-## So sánh với skills tương tự
+## So sÃ¡nh vá»›i skills tÆ°Æ¡ng tá»±
 
-| Skill | Khi nào dùng |
+| Skill | Khi nÃ o dÃ¹ng |
 |-------|-------------|
 | `parallel-agents` | Multi-agent patterns + orchestration logic |
-| `dispatching-parallel-agents` | 2+ independent tasks chạy ngay |
-| `subagent-driven-development` | Tasks độc lập trong CÙNG session |
+| `dispatching-parallel-agents` | 2+ independent tasks cháº¡y ngay |
+| `subagent-driven-development` | Tasks Ä‘á»™c láº­p trong CÃ™NG session |
 
 ## Orchestration Patterns
 
 ### Fan-out / Fan-in
 ```
-Orchestrator → spawn N agents (parallel)
-            → collect results
-            → merge + resolve conflicts
-            → deliver unified output
+Orchestrator â†’ spawn N agents (parallel)
+            â†’ collect results
+            â†’ merge + resolve conflicts
+            â†’ deliver unified output
 ```
 
 ### Pipeline
 ```
-Agent A (research) → Agent B (design) → Agent C (implement) → Agent D (test)
+Agent A (research) â†’ Agent B (design) â†’ Agent C (implement) â†’ Agent D (test)
 ```
 
 ### Cross-review
 ```
-Feature code → Agent 1 (security review)
-             → Agent 2 (performance review)
-             → Agent 3 (UX review)
-             → Merge all feedback
+Feature code â†’ Agent 1 (security review)
+             â†’ Agent 2 (performance review)
+             â†’ Agent 3 (UX review)
+             â†’ Merge all feedback
 ```
 
 ## Rules
 
-1. **Chỉ parallel khi THỰC SỰ independent** — shared state = sequential
-2. **Có merge strategy** — conflicting outputs phải được resolve
-3. **Timeout handling** — agent chậm không block pipeline
+1. **Chá»‰ parallel khi THá»°C Sá»° independent** â€” shared state = sequential
+2. **CÃ³ merge strategy** â€” conflicting outputs pháº£i Ä‘Æ°á»£c resolve
+3. **Timeout handling** â€” agent cháº­m khÃ´ng block pipeline
 
 ## Links
 
-- [[Agent-Skills|← Skills Index]]
-- [[Dispatching Parallel Agents|🚀 Dispatching Parallel Agents]]
-- [[Subagent Driven Dev|🏗️ Subagent Driven Dev]]
-- [[Orchestrator|🎯 Orchestrator Agent]]
+- [[Agent-Skills|â† Skills Index]]
+- [[Dispatching Parallel Agents|ðŸš€ Dispatching Parallel Agents]]
+- [[Subagent Driven Dev|ðŸ—ï¸ Subagent Driven Dev]]
+- [[Orchestrator|ðŸŽ¯ Orchestrator Agent]]

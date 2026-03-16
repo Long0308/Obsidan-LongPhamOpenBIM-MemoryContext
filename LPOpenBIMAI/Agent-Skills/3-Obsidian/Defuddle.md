@@ -1,18 +1,19 @@
----
+﻿---
 title: Defuddle
 tags:
+  - agent-skill
   - skill
   - tools
   - web
 group: Tools
-role: Extract clean markdown từ web pages, giảm token usage
+role: Extract clean markdown tá»« web pages, giáº£m token usage
 source: .agent/skills/defuddle/SKILL.md
 ---
 
-# Defuddle — Clean Web Content Extraction
+# Defuddle â€” Clean Web Content Extraction
 
-> [!abstract] Vai Trò
-> CLI tool extract clean readable content từ web pages. Prefer over WebFetch cho standard pages — remove navigation, ads, clutter → giảm token usage đáng kể.
+> [!abstract] Vai TrÃ²
+> CLI tool extract clean readable content tá»« web pages. Prefer over WebFetch cho standard pages â€” remove navigation, ads, clutter â†’ giáº£m token usage Ä‘Ã¡ng ká»ƒ.
 
 ## Installation
 
@@ -41,23 +42,23 @@ defuddle parse <url> -p domain
 
 ## Output Formats
 
-| Flag | Format | Khi nào dùng |
+| Flag | Format | Khi nÃ o dÃ¹ng |
 |------|--------|-------------|
-| `--md` | Markdown | Mặc định, dùng cho mọi extraction |
-| `--json` | JSON (HTML + markdown) | Khi cần cả HTML lẫn markdown |
-| *(none)* | HTML | Khi cần raw HTML |
-| `-p <name>` | Metadata property | Khi chỉ cần 1 property (title, domain...) |
+| `--md` | Markdown | Máº·c Ä‘á»‹nh, dÃ¹ng cho má»i extraction |
+| `--json` | JSON (HTML + markdown) | Khi cáº§n cáº£ HTML láº«n markdown |
+| *(none)* | HTML | Khi cáº§n raw HTML |
+| `-p <name>` | Metadata property | Khi chá»‰ cáº§n 1 property (title, domain...) |
 
 ## When to Use
 
-- User provides URL → dùng Defuddle thay WebFetch
+- User provides URL â†’ dÃ¹ng Defuddle thay WebFetch
 - Online documentation, articles, blog posts
-- Bất kỳ standard web page nào
-- Mục tiêu: giảm token count bằng cách loại bỏ noise
+- Báº¥t ká»³ standard web page nÃ o
+- Má»¥c tiÃªu: giáº£m token count báº±ng cÃ¡ch loáº¡i bá» noise
 
 ## Connections
 - **Use instead of:** WebFetch (cho standard pages)
 - **Related:** [[Clean Code]] (token efficiency)
 
-## Nhóm
-Tools | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Tools | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

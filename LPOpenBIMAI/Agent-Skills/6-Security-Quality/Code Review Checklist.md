@@ -1,37 +1,115 @@
 ---
-title: Code Review Checklist
 tags:
-  - skill
-  - agent-swarm
+  - agent-skill
   - quality
-group: Security & Quality
-role: Code review guidelines — quality, security, best practices
-source: .agent/skills/code-review-checklist/SKILL.md
+  - code-review
+skill-source: "[[Code Review Checklist SKILL|.agent/skills/code-review-checklist/SKILL.md]]"
+related-skills:
+  - "[[Clean Code]]"
+  - "[[Testing Patterns]]"
+  - "[[Vulnerability Scanner]]"
 ---
 
 # Code Review Checklist
 
-> [!abstract] Skill
-> Code review guidelines covering code quality, security, and best practices. Systematic checklist for thorough reviews.
+## Quick Review Checklist
 
-## Triggers
-`checklist, code review, PR review, quality gate, review guidelines`
+### Correctness
+- [ ] Code does what it's supposed to do
+- [ ] Edge cases handled
+- [ ] Error handling in place
+- [ ] No obvious bugs
 
-## Key Concepts
-- **Quality checks** — Naming, complexity, DRY, SOLID principles
-- **Security review** — Input validation, auth checks, data exposure
-- **Performance** — N+1 queries, memory leaks, unnecessary renders
-- **Maintainability** — Test coverage, documentation, error handling
-- **Architecture** — Separation of concerns, dependency direction
+### Security
+- [ ] Input validated and sanitized
+- [ ] No SQL/NoSQL injection vulnerabilities
+- [ ] No XSS or CSRF vulnerabilities
+- [ ] No hardcoded secrets or sensitive credentials
+- [ ] **AI-Specific:** Protection against Prompt Injection (if applicable)
+- [ ] **AI-Specific:** Outputs are sanitized before being used in critical sinks
 
-## Connections
-- **Used by:** [[Test Engineer]], [[Security Auditor]]
-- **Pairs with:** [[Requesting Code Review]], [[Receiving Code Review]]
-- **Applies:** [[Clean Code]]
+### Performance
+- [ ] No N+1 queries
+- [ ] No unnecessary loops
+- [ ] Appropriate caching
+- [ ] Bundle size impact considered
 
-## Nhóm
-Security & Quality | Cross-platform | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+### Code Quality
+- [ ] Clear naming
+- [ ] DRY - no duplicate code
+- [ ] SOLID principles followed
+- [ ] Appropriate abstraction level
 
-## Memory Integration
-- `store()` — Lưu recurring review findings, team conventions
-- `recall()` — Load project-specific review criteria
+### Testing
+- [ ] Unit tests for new code
+- [ ] Edge cases tested
+- [ ] Tests readable and maintainable
+
+### Documentation
+- [ ] Complex logic commented
+- [ ] Public APIs documented
+- [ ] README updated if needed
+
+## AI & LLM Review Patterns (2025)
+
+### Logic & Hallucinations
+- [ ] **Chain of Thought:** Does the logic follow a verifiable path?
+- [ ] **Edge Cases:** Did the AI account for empty states, timeouts, and partial failures?
+- [ ] **External State:** Is the code making safe assumptions about file systems or networks?
+
+### Prompt Engineering Review
+```markdown
+// ❌ Vague prompt in code
+const response = await ai.generate(userInput);
+
+// ✅ Structured & Safe prompt
+const response = await ai.generate({
+  system: "You are a specialized parser...",
+  input: sanitize(userInput),
+  schema: ResponseSchema
+});
+```
+
+## Anti-Patterns to Flag
+
+```typescript
+// ❌ Magic numbers
+if (status === 3) { ... }
+
+// ✅ Named constants
+if (status === Status.ACTIVE) { ... }
+
+// ❌ Deep nesting
+if (a) { if (b) { if (c) { ... } } }
+
+// ✅ Early returns
+if (!a) return;
+if (!b) return;
+if (!c) return;
+// do work
+
+// ❌ Long functions (100+ lines)
+// ✅ Small, focused functions
+
+// ❌ any type
+const data: any = ...
+
+// ✅ Proper types
+const data: UserData = ...
+```
+
+## Review Comments Guide
+
+```
+// Blocking issues use 🔴
+🔴 BLOCKING: SQL injection vulnerability here
+
+// Important suggestions use 🟡
+🟡 SUGGESTION: Consider using useMemo for performance
+
+// Minor nits use 🟢
+🟢 NIT: Prefer const over let for immutable variable
+
+// Questions use ❓
+❓ QUESTION: What happens if user is null here?
+```

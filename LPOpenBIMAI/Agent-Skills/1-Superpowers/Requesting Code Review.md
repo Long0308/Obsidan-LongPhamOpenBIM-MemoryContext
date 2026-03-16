@@ -1,18 +1,19 @@
----
+﻿---
 title: Requesting Code Review
 tags:
+  - agent-skill
   - skill
   - superpowers
   - quality
 group: Superpowers
-role: Request code review từ subagent trước khi merge
+role: Request code review tá»« subagent trÆ°á»›c khi merge
 source: .agent/skills/requesting-code-review/SKILL.md
 ---
 
 # Requesting Code Review
 
-> [!abstract] Vai Trò
-> Dispatch code-reviewer subagent để catch issues trước khi cascade. Reviewer nhận crafted context cho evaluation — KHÔNG inherit session history.
+> [!abstract] Vai TrÃ²
+> Dispatch code-reviewer subagent Ä‘á»ƒ catch issues trÆ°á»›c khi cascade. Reviewer nháº­n crafted context cho evaluation â€” KHÃ”NG inherit session history.
 
 ## When to Request
 
@@ -35,11 +36,11 @@ HEAD_SHA=$(git rev-parse HEAD)
 ```
 
 ### 2. Dispatch code-reviewer subagent
-Fill template tại `code-reviewer.md` với:
-- `{WHAT_WAS_IMPLEMENTED}` — what you just built
-- `{PLAN_OR_REQUIREMENTS}` — what it should do
-- `{BASE_SHA}` — starting commit
-- `{HEAD_SHA}` — ending commit
+Fill template táº¡i `code-reviewer.md` vá»›i:
+- `{WHAT_WAS_IMPLEMENTED}` â€” what you just built
+- `{PLAN_OR_REQUIREMENTS}` â€” what it should do
+- `{BASE_SHA}` â€” starting commit
+- `{HEAD_SHA}` â€” ending commit
 
 ### 3. Act on feedback
 
@@ -60,7 +61,7 @@ Fill template tại `code-reviewer.md` với:
 
 ## Red Flags
 
-- Skip review vì "it's simple"
+- Skip review vÃ¬ "it's simple"
 - Ignore Critical issues
 - Proceed with unfixed Important issues
 - Argue with valid technical feedback
@@ -70,5 +71,5 @@ Fill template tại `code-reviewer.md` với:
 - **Used by:** [[Subagent Driven Dev]], [[Executing Plans]]
 - **Related:** [[Finishing Dev Branch]]
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

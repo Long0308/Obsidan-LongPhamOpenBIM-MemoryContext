@@ -1,72 +1,157 @@
 ---
-title: Plan Writing
 tags:
-  - skill
+  - agent-skill
+  - superpower
   - planning
-  - architecture
-  - task-management
-parent: "[[Agent-Skills]]"
-skill-folder: plan-writing
-group: Architecture & Planning
-aliases:
-  - Plan Writing Skill
+skill-source: "[[Plan Writing SKILL|.agent/skills/plan-writing/SKILL.md]]"
+related-skills:
+  - "[[Brainstorming]]"
+  - "[[App Builder]]"
+  - "[[Writing Plans]]"
 ---
 
-# 📝 Plan Writing
+# Plan Writing
 
-> [!abstract] Mục đích
-> Viết task plan có structure rõ ràng với breakdown, dependencies, và verification criteria. Dùng TRƯỚC KHI code cho mọi feature, refactor, hoặc multi-step work.
+> Source: obra/superpowers
 
-## Khi nào dùng
+## Overview
+This skill provides a framework for breaking down work into clear, actionable tasks with verification criteria.
 
-- Trước khi implement feature (GEMINI.md TIER 1 rule)
-- Multi-file changes
-- Complex refactoring
-- Bất kỳ task nào cần > 1 step
+## Task Breakdown Principles
 
-## So sánh `plan-writing` vs `writing-plans`
+### 1. Small, Focused Tasks
+- Each task should take 2-5 minutes
+- One clear outcome per task
+- Independently verifiable
 
-| Skill | Focus |
-|-------|-------|
-| `plan-writing` | Task planning, breakdown, verification criteria |
-| `writing-plans` | Multi-step task specs từ requirements/specs |
+### 2. Clear Verification
+- How do you know it's done?
+- What can you check/test?
+- What's the expected output?
 
-Cả hai bổ sung nhau — `plan-writing` cho breakdown, `writing-plans` cho spec-to-plan conversion.
+### 3. Logical Ordering
+- Dependencies identified
+- Parallel work where possible
+- Critical path highlighted
+- **Phase X: Verification is always LAST**
 
-## Output Format
+### 4. Dynamic Naming in Project Root
+- Plan files are saved as `{task-slug}.md` in the PROJECT ROOT
+- Name derived from task (e.g., "add auth" → `auth-feature.md`)
+- **NEVER** inside `.claude/`, `docs/`, or temp folders
 
-```markdown
-# {Task Name}
+## Planning Principles (NOT Templates!)
+
+> 🔴 **NO fixed templates. Each plan is UNIQUE to the task.**
+
+### Principle 1: Keep It SHORT
+
+| ❌ Wrong | ✅ Right |
+|----------|----------|
+| 50 tasks with sub-sub-tasks | 5-10 clear tasks max |
+| Every micro-step listed | Only actionable items |
+| Verbose descriptions | One-line per task |
+
+> **Rule:** If plan is longer than 1 page, it's too long. Simplify.
+
+---
+
+### Principle 2: Be SPECIFIC, Not Generic
+
+| ❌ Wrong | ✅ Right |
+|----------|----------|
+| "Set up project" | "Run `npx create-next-app`" |
+| "Add authentication" | "Install next-auth, create `/api/auth/[...nextauth].ts`" |
+| "Style the UI" | "Add Tailwind classes to `Header.tsx`" |
+
+> **Rule:** Each task should have a clear, verifiable outcome.
+
+---
+
+### Principle 3: Dynamic Content Based on Project Type
+
+**For NEW PROJECT:**
+- What tech stack? (decide first)
+- What's the MVP? (minimal features)
+- What's the file structure?
+
+**For FEATURE ADDITION:**
+- Which files are affected?
+- What dependencies needed?
+- How to verify it works?
+
+**For BUG FIX:**
+- What's the root cause?
+- What file/line to change?
+- How to test the fix?
+
+---
+
+### Principle 4: Scripts Are Project-Specific
+
+> 🔴 **DO NOT copy-paste script commands. Choose based on project type.**
+
+| Project Type | Relevant Scripts |
+|--------------|------------------|
+| Frontend/React | `ux_audit.py`, `accessibility_checker.py` |
+| Backend/API | `api_validator.py`, `security_scan.py` |
+| Mobile | `mobile_audit.py` |
+| Database | `schema_validator.py` |
+| Full-stack | Mix of above based on what you touched |
+
+**Wrong:** Adding all scripts to every plan
+**Right:** Only scripts relevant to THIS task
+
+---
+
+### Principle 5: Verification is Simple
+
+| ❌ Wrong | ✅ Right |
+|----------|----------|
+| "Verify the component works correctly" | "Run `npm run dev`, click button, see toast" |
+| "Test the API" | "curl localhost:3000/api/users returns 200" |
+| "Check styles" | "Open browser, verify dark mode toggle works" |
+
+---
+
+## Plan Structure (Flexible, Not Fixed!)
+
+```
+# [Task Name]
 
 ## Goal
-Mô tả ngắn: làm gì, tại sao
+One sentence: What are we building/fixing?
 
 ## Tasks
-- [ ] Task 1 — description
-  - [ ] Sub-task 1a
-  - [ ] Sub-task 1b
-- [ ] Task 2 — description (depends on Task 1)
-- [ ] Task 3 — description (independent)
+- [ ] Task 1: [Specific action] → Verify: [How to check]
+- [ ] Task 2: [Specific action] → Verify: [How to check]
+- [ ] Task 3: [Specific action] → Verify: [How to check]
 
-## Dependencies
-Task 2 → Task 1 (blocking)
-Task 3 → none (can parallel)
-
-## Verification
-- [ ] Unit tests pass
-- [ ] E2E tests pass
-- [ ] Screenshots match design
+## Done When
+- [ ] [Main success criteria]
 ```
 
-## Rules
+> **That's it.** No phases, no sub-sections unless truly needed.
+> Keep it minimal. Add complexity only when required.
 
-1. **Breakdown nhỏ nhất có thể** — 1 task = 1 commit
-2. **Dependencies rõ ràng** — task nào block task nào
-3. **Verification criteria** — mỗi task phải có criteria "done"
+## Notes
+[Any important considerations]
 
-## Links
+---
 
-- [[Agent-Skills|← Skills Index]]
-- [[Writing Plans|✍️ Writing Plans]]
-- [[Brainstorming|🧠 Brainstorming]]
-- [[Executing Plans|⚡ Executing Plans]]
+## Best Practices (Quick Reference)
+
+1. **Start with goal** - What are we building/fixing?
+2. **Max 10 tasks** - If more, break into multiple plans
+3. **Each task verifiable** - Clear "done" criteria
+4. **Project-specific** - No copy-paste templates
+5. **Update as you go** - Mark `[x]` when complete
+
+---
+
+## When to Use
+
+- New project from scratch
+- Adding a feature
+- Fixing a bug (if complex)
+- Refactoring multiple files

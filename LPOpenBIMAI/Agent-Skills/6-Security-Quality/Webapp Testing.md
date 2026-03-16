@@ -1,38 +1,193 @@
----
+﻿---
 title: Webapp Testing
 tags:
+  - agent-skill
   - skill
-  - agent-swarm
+  - testing
   - quality
-  - e2e
-group: Security & Quality
-role: Web application E2E testing — Playwright, deep audit strategies
-source: .agent/skills/webapp-testing/SKILL.md
+group: Security-Quality
+role: E2E testing, Playwright, deep audit
 ---
 
-# Webapp Testing
+# Web App Testing
 
-> [!abstract] Skill
-> Web application testing principles. E2E testing, Playwright automation, deep audit strategies.
+> Discover and test everything. Leave no route untested.
 
-## Triggers
-`E2E test, playwright, cypress, browser test, visual regression, accessibility test`
+## ðŸ”§ Runtime Scripts
 
-## Key Concepts
-- **Playwright** — Page objects, fixtures, parallel execution
-- **Test strategies** — Smoke, regression, visual diff, accessibility
-- **Selectors** — Role-based, data-testid, avoiding fragile selectors
-- **CI integration** — Headless browsers, artifact capture, retries
-- **Accessibility** — axe-core, WCAG compliance, screen reader testing
+**Execute these for automated browser testing:**
 
-## Connections
-- **Used by:** [[Test Engineer]], [[QA Automation Engineer]], [[Frontend Specialist]]
-- **Pairs with:** [[Testing Patterns]], [[Performance Profiling]]
-- **Validates:** [[Frontend Design]], [[React Best Practices]]
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| `scripts/playwright_runner.py` | Basic browser test | `python scripts/playwright_runner.py https://example.com` |
+| | With screenshot | `python scripts/playwright_runner.py <url> --screenshot` |
+| | Accessibility check | `python scripts/playwright_runner.py <url> --a11y` |
 
-## Nhóm
-Security & Quality | [[UI Design Hub]] | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+**Requires:** `pip install playwright && playwright install chromium`
 
-## Memory Integration
-- `store()` — Lưu test selectors, page object patterns
-- `recall()` — Load existing E2E test patterns trước khi viết test mới
+---
+
+## 1. Deep Audit Approach
+
+### Discovery First
+
+| Target | How to Find |
+|--------|-------------|
+| Routes | Scan app/, pages/, router files |
+| API endpoints | Grep for HTTP methods |
+| Components | Find component directories |
+| Features | Read documentation |
+
+### Systematic Testing
+
+1. **Map** - List all routes/APIs
+2. **Scan** - Verify they respond
+3. **Test** - Cover critical paths
+
+---
+
+## 2. Testing Pyramid for Web
+
+```
+        /\          E2E (Few)
+       /  \         Critical user flows
+      /----\
+     /      \       Integration (Some)
+    /--------\      API, data flow
+   /          \
+  /------------\    Component (Many)
+                    Individual UI pieces
+```
+
+---
+
+## 3. E2E Test Principles
+
+### What to Test
+
+| Priority | Tests |
+|----------|-------|
+| 1 | Happy path user flows |
+| 2 | Authentication flows |
+| 3 | Critical business actions |
+| 4 | Error handling |
+
+### E2E Best Practices
+
+| Practice | Why |
+|----------|-----|
+| Use data-testid | Stable selectors |
+| Wait for elements | Avoid flaky tests |
+| Clean state | Independent tests |
+| Avoid implementation details | Test user behavior |
+
+---
+
+## 4. Playwright Principles
+
+### Core Concepts
+
+| Concept | Use |
+|---------|-----|
+| Page Object Model | Encapsulate page logic |
+| Fixtures | Reusable test setup |
+| Assertions | Built-in auto-wait |
+| Trace Viewer | Debug failures |
+
+### Configuration
+
+| Setting | Recommendation |
+|---------|----------------|
+| Retries | 2 on CI |
+| Trace | on-first-retry |
+| Screenshots | on-failure |
+| Video | retain-on-failure |
+
+---
+
+## 5. Visual Testing
+
+### When to Use
+
+| Scenario | Value |
+|----------|-------|
+| Design system | High |
+| Marketing pages | High |
+| Component library | Medium |
+| Dynamic content | Lower |
+
+### Strategy
+
+- Baseline screenshots
+- Compare on changes
+- Review visual diffs
+- Update intentional changes
+
+---
+
+## 6. API Testing Principles
+
+### Coverage Areas
+
+| Area | Tests |
+|------|-------|
+| Status codes | 200, 400, 404, 500 |
+| Response shape | Matches schema |
+| Error messages | User-friendly |
+| Edge cases | Empty, large, special chars |
+
+---
+
+## 7. Test Organization
+
+### File Structure
+
+```
+tests/
+â”œâ”€â”€ e2e/           # Full user flows
+â”œâ”€â”€ integration/   # API, data
+â”œâ”€â”€ component/     # UI units
+â””â”€â”€ fixtures/      # Shared data
+```
+
+### Naming Convention
+
+| Pattern | Example |
+|---------|---------|
+| Feature-based | `login.spec.ts` |
+| Descriptive | `user-can-checkout.spec.ts` |
+
+---
+
+## 8. CI Integration
+
+### Pipeline Steps
+
+1. Install dependencies
+2. Install browsers
+3. Run tests
+4. Upload artifacts (traces, screenshots)
+
+### Parallelization
+
+| Strategy | Use |
+|----------|-----|
+| Per file | Playwright default |
+| Sharding | Large suites |
+| Workers | Multiple browsers |
+
+---
+
+## 9. Anti-Patterns
+
+| âŒ Don't | âœ… Do |
+|----------|-------|
+| Test implementation | Test behavior |
+| Hardcode waits | Use auto-wait |
+| Skip cleanup | Isolate tests |
+| Ignore flaky tests | Fix root cause |
+
+---
+
+> **Remember:** E2E tests are expensive. Use them for critical paths only.
+

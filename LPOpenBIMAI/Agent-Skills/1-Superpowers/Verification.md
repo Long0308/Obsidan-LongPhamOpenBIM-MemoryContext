@@ -1,35 +1,36 @@
----
+﻿---
 title: Verification
 tags:
+  - agent-skill
   - skill
   - superpowers
   - quality
 group: Superpowers
-role: Verify trước khi claim completion — evidence before assertions
+role: Verify trÆ°á»›c khi claim completion â€” evidence before assertions
 source: .agent/skills/verification-before-completion/SKILL.md
 ---
 
 # Verification Before Completion
 
-> [!abstract] Vai Trò
-> Dùng trước khi claim work đã xong, fixed, hay passing. PHẢI run verification commands VÀ confirm output trước khi claim success.
+> [!abstract] Vai TrÃ²
+> DÃ¹ng trÆ°á»›c khi claim work Ä‘Ã£ xong, fixed, hay passing. PHáº¢I run verification commands VÃ€ confirm output trÆ°á»›c khi claim success.
 
 > [!caution] The Iron Law
 > ```
 > NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 > ```
-> Chưa run verification → KHÔNG ĐƯỢC claim nó pass.
+> ChÆ°a run verification â†’ KHÃ”NG ÄÆ¯á»¢C claim nÃ³ pass.
 
 ## The Gate Function
 
 ```
 BEFORE claiming status:
-1. IDENTIFY: Command nào proves claim này?
+1. IDENTIFY: Command nÃ o proves claim nÃ y?
 2. RUN: Execute FULL command (fresh, complete)
 3. READ: Full output, check exit code, count failures
 4. VERIFY: Output confirms claim?
-   - NO → State actual status WITH evidence
-   - YES → State claim WITH evidence
+   - NO â†’ State actual status WITH evidence
+   - YES â†’ State claim WITH evidence
 5. ONLY THEN: Make the claim
 ```
 
@@ -44,7 +45,7 @@ BEFORE claiming status:
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
 
-## Red Flags — STOP
+## Red Flags â€” STOP
 
 - Using "should", "probably", "seems to"
 - Expressing satisfaction before verification ("Great!", "Done!")
@@ -57,7 +58,7 @@ BEFORE claiming status:
 | Excuse | Reality |
 |--------|---------|
 | "Should work now" | RUN the verification |
-| "I'm confident" | Confidence ≠ evidence |
+| "I'm confident" | Confidence â‰  evidence |
 | "Just this once" | No exceptions |
 | "Agent said success" | Verify independently |
 | "Partial check is enough" | Partial proves nothing |
@@ -66,20 +67,20 @@ BEFORE claiming status:
 
 **Tests:**
 ```
-✅ [Run test] [See: 34/34 pass] "All tests pass"
-❌ "Should pass now" / "Looks correct"
+âœ… [Run test] [See: 34/34 pass] "All tests pass"
+âŒ "Should pass now" / "Looks correct"
 ```
 
 **TDD Red-Green:**
 ```
-✅ Write → Run (pass) → Revert fix → Run (MUST FAIL) → Restore → Run (pass)
-❌ "I've written a regression test" (without red-green)
+âœ… Write â†’ Run (pass) â†’ Revert fix â†’ Run (MUST FAIL) â†’ Restore â†’ Run (pass)
+âŒ "I've written a regression test" (without red-green)
 ```
 
 **Requirements:**
 ```
-✅ Re-read plan → Create checklist → Verify each → Report
-❌ "Tests pass, phase complete"
+âœ… Re-read plan â†’ Create checklist â†’ Verify each â†’ Report
+âŒ "Tests pass, phase complete"
 ```
 
 ## When To Apply
@@ -92,5 +93,5 @@ BEFORE claiming status:
 - **Related:** [[Systematic Debugging]], [[Test Driven Development]]
 - **Used by:** [[Executing Plans]], [[Finishing Dev Branch]]
 
-## Nhóm
-Superpowers | Xem thêm tại [[AGENT_SWARM|Agent Swarm MOC]]
+## NhÃ³m
+Superpowers | Xem thÃªm táº¡i [[AGENT_SWARM|Agent Swarm MOC]]

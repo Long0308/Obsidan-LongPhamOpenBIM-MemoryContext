@@ -1,5 +1,7 @@
 ---
 title: Prompt & AI Image Library
+description: "Thư viện prompts tạo ảnh AI — Nano Banana Pro"
+url: "https://muset-ai.github.io/awesome-nano-banana-pro/"
 tags:
   - resources
   - prompt
@@ -37,5 +39,6 @@ aliases:
 
 ## Links
 
+- [[AI-Link-Dashboard|📊 AI Link Dashboard]]
 - [[AGENT_SWARM|← Agent Swarm MOC]]
 - [[UI-UX Design Resources|UI/UX Resources]]
