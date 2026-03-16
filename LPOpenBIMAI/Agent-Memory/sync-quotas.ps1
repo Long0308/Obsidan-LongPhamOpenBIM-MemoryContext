@@ -110,6 +110,21 @@ foreach ($q in $quotaData) {
     }
 }
 
+# --- Step 6.5: Write quotas.json for dashboard direct read ---
+$jsonOut = @{
+    quotas = $quotaData
+    updated_at = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
+    plan = @{
+        available = $resp.userStatus.planStatus.availablePromptCredits
+        monthly = $resp.userStatus.planStatus.planInfo.monthlyPromptCredits
+    }
+} | ConvertTo-Json -Depth 4
+
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$jsonPath = Join-Path $scriptDir "quotas.json"
+$jsonOut | Out-File -FilePath $jsonPath -Encoding utf8 -Force
+Write-Host "  Wrote quotas.json -> $jsonPath" -ForegroundColor Cyan
+
 Write-Host ""
 Write-Host "Quota sync complete!" -ForegroundColor Green
 

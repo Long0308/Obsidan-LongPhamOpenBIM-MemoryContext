@@ -179,6 +179,7 @@
   },
   "active": "1c1ad75c87958d7d",
   "lastOpenFiles": [
+    "Agent-Memory/quotas.json",
     "Agent-Memory/MCP Config.md",
     "Agent-Memory/session-2026-03-15-antigravity-LPOpenBIMAI.md",
     "Agent-Memory/Install Guide.md",
@@ -213,7 +214,6 @@
     "AGENT_SWARM.md",
     "Agent-Memory/Gemini Artifacts.md",
     "Agent-Memory/dashboard.html",
-    "Agent-Swarm Canvas.md",
     "Agent-Swarm.canvas",
     "Agent-Plugins/Plugins Dashboard.base",
     "Agent-Skills/Skills Dashboard.base",

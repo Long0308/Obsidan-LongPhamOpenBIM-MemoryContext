@@ -1,0 +1,51 @@
+﻿{
+    "updated_at":  "2026-03-16T11:11:55Z",
+    "plan":  {
+                 "available":  500,
+                 "monthly":  50000
+             },
+    "quotas":  [
+                   {
+                       "model_name":  "Gemini 3.1 Pro",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T09:09:41Z",
+                       "tier":  "High",
+                       "usage_pct":  100
+                   },
+                   {
+                       "model_name":  "Gemini 3.1 Pro",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T09:09:41Z",
+                       "tier":  "Low",
+                       "usage_pct":  100
+                   },
+                   {
+                       "model_name":  "Gemini 3 Flash",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T09:09:41Z",
+                       "tier":  "",
+                       "usage_pct":  100
+                   },
+                   {
+                       "model_name":  "Claude Sonnet 4.6",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T04:46:38Z",
+                       "tier":  "Thinking",
+                       "usage_pct":  100
+                   },
+                   {
+                       "model_name":  "Claude Opus 4.6",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T04:46:38Z",
+                       "tier":  "Thinking",
+                       "usage_pct":  100
+                   },
+                   {
+                       "model_name":  "GPT-OSS 120B",
+                       "project":  "LPOpenBIMAI",
+                       "reset_at":  "2026-03-16T04:46:38Z",
+                       "tier":  "Medium",
+                       "usage_pct":  100
+                   }
+               ]
+}

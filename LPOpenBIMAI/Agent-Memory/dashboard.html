@@ -1132,8 +1132,25 @@ async function loadQuotas() {
   const grid = $('quotaGrid');
 
   try {
-    const data = await api('quotas');
-    const rows = data.quotas || [];
+    // Try local quotas.json first (written by sync-quotas.ps1), fallback to edge function
+    let rows = [];
+    let source = 'api';
+    let localUpdatedAt = null;
+    try {
+      const localResp = await fetch('quotas.json?t=' + Date.now());
+      if (localResp.ok) {
+        const local = await localResp.json();
+        rows = local.quotas || [];
+        localUpdatedAt = local.updated_at;
+        // Inject updated_at per item from top-level
+        rows.forEach(r => { if (!r.updated_at) r.updated_at = local.updated_at; });
+        source = 'local';
+      }
+    } catch (_) {}
+    if (!rows.length) {
+      const data = await api('quotas');
+      rows = data.quotas || [];
+    }
 
     if (!rows.length) {
       grid.innerHTML = '<div class="empty-state">No quota data yet. Run sync-quotas.ps1 or agent will report at next session.</div>';
