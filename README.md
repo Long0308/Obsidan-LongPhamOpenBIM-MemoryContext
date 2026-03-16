@@ -22,17 +22,11 @@ cd Obsidan-LongPhamOpenBIM-MemoryContext
 ### Install Script tự động làm gì?
 
 | Step | Hành động | Kết quả |
-|------|-----------|---------|
-| 1/4 | Copy Obsidian vault | `vault/LPOpenBIMAI/` → workspace |
+|------|-----------|---------| 
+| 1/4 | Copy Obsidian vault | `LPOpenBIMAI/` → workspace |
 | 2/4 | Install SKILL.md | `.agent/skills/auto-memory/` (local) hoặc `~/.agents/skills/` (global) |
-| 3/4 | Copy memory-config | `LPOpenBIMAI/Agent-Memory/memory-config.md` |
+| 3/4 | Copy memory-config | `Agent-Memory/memory-config.md` |
 | 4/4 | Verify | Check 6 critical files exist |
-
-### Sau khi install
-
-1. Mở workspace trong **Obsidian** (vault = `LPOpenBIMAI/`)
-2. Mở workspace trong **Antigravity** (hoặc IDE khác)
-3. Bắt đầu làm việc — agent tự động load memory
 
 ---
 
@@ -40,42 +34,65 @@ cd Obsidan-LongPhamOpenBIM-MemoryContext
 
 ```
 YourWorkspace/
-├── .agent/                    # Agent rules + skills (always-on)
-│   ├── rules/GEMINI.md        # Core AI behavior rules
-│   └── skills/                # 50+ modular skills
-│       ├── auto-memory/       # Session lifecycle protocol ⭐
-│       ├── intelligent-routing/ # Auto agent selection
+├── .agent/                        # Agent rules + skills (always-on)
+│   ├── rules/GEMINI.md            # Core AI behavior rules
+│   ├── agents/                    # 9 specialist agent profiles
+│   └── skills/                    # 53 modular skills
+│       ├── auto-memory/           # Session lifecycle protocol ⭐
+│       ├── intelligent-routing/   # Auto agent selection
+│       ├── ui-ux-pro-max/         # Design intelligence
 │       └── ...
-├── LPOpenBIMAI/               # Main Obsidian vault
-│   ├── Agent-Memory/          # Memory system
-│   │   ├── dashboard.html     # 📊 Live monitoring dashboard
-│   │   ├── sync-quotas.ps1    # Quota sync script
-│   │   ├── memory-config.md   # Sync settings
-│   │   ├── patterns.md        # User behavior patterns
-│   │   └── session notes      # Per-session context
-│   ├── Agent-Agents/          # 20 AI agent profiles
-│   ├── Agent-Skills/          # 58 skill documentation notes
-│   ├── Agent-Plugins/         # 15 plugin documentation
-│   ├── Platforms/             # Platform integration hubs
-│   └── Resources/             # Reference materials
-├── insforge/                  # Backend (InsForge)
+│
+├── LPOpenBIMAI/                   # Main Obsidian vault (148 files)
+│   ├── Agent-Skills/              # 64 enriched skill notes
+│   │   ├── 1-Superpowers/         #   Core orchestration skills (16)
+│   │   ├── 2-OpenSpec/            #   OpenSpec workflow skills (6)
+│   │   ├── 3-Obsidian/            #   Obsidian integration (5)
+│   │   ├── 4-Design-Frontend/     #   UI/UX & design skills (8)
+│   │   ├── 5-Backend-Infra/       #   Backend & infrastructure (8)
+│   │   ├── 6-Security-Quality/    #   Security & testing (7)
+│   │   ├── 7-Meta/                #   Cross-cutting skills (6)
+│   │   ├── 8-Additional/          #   Specialized skills (8)
+│   │   ├── Agent-Skills.md        #   📋 MOC (Map of Content)
+│   │   └── Skills Dashboard.base  #   📊 Obsidian Base view
+│   │
+│   ├── Agent-Agents/              # 23 AI agent profiles
+│   │   ├── Agent-Agents.md        #   📋 MOC
+│   │   ├── orchestrator.md        #   Master coordinator
+│   │   ├── frontend-specialist.md #   UI/UX expert
+│   │   └── ...
+│   │
+│   ├── Agent-Memory/              # Memory system (29 files)
+│   │   ├── Agent-Memory.md        #   📋 MOC
+│   │   ├── dashboard.html         #   📊 Live monitoring
+│   │   ├── 4-Sessions/            #   Session notes
+│   │   ├── memory-config.md       #   Sync settings
+│   │   └── sync-quotas.ps1        #   Quota sync script
+│   │
+│   ├── Agent-Plugins/             # 16 plugin configs
+│   ├── Platforms/                 # 6 platform integration hubs
+│   └── Resources/                 # 7 reference materials
+│
+├── insforge/                      # Backend (InsForge)
 │   ├── functions/
-│   │   ├── mem-gw-final/      # Edge function v2.2 (deployed)
-│   │   └── quota-api/         # Quota API
-│   └── *.sql                  # Schema definitions
-└── install.ps1                # Install script
+│   │   ├── mem-gw-final/          # Edge function v2.2
+│   │   └── quota-api/             # Quota API
+│   └── *.sql                      # Schema definitions
+│
+└── install.ps1                    # Install script
 ```
 
 ### Vault Stats
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| 🤖 Agents | 20 | AI specialist profiles (Orchestrator, Frontend, Backend...) |
-| 🧩 Skills | 58 | Skill cards with triggers, connections, memory hooks |
-| 🔌 Plugins | 15 | Obsidian plugin configs with usage guides |
-| 🧠 Memory | 7 | Memory system files (config, patterns, context) |
-| 📊 Dashboards | 3 | Obsidian Base views (Vault, Skills, Plugins) |
-| 🗺️ Canvases | 3 | Visual graphs (Agent-Swarm, Memory-Graph) |
+| 🧩 Skills | 64 | Enriched skill cards with triggers, connections, group tags |
+| 🤖 Agents | 23 | AI specialist profiles (Orchestrator, Frontend, Backend...) |
+| 🧠 Memory | 29 | Session notes, config, patterns, guides, dashboards |
+| 🔌 Plugins | 16 | Obsidian plugin configs with usage guides |
+| 🗺️ Platforms | 6 | Integration hubs (InsForge, Obsidian, OpenSpec...) |
+| 📚 Resources | 7 | Reference materials, prompt libraries, workflows |
+| **Total** | **148** | **All files verified: 0 duplicates, 0 broken links** |
 
 ---
 
@@ -86,7 +103,7 @@ YourWorkspace/
 ```
 ┌─ Your Machine ──────────────────────────┐
 │  AI IDE ← reads SKILL.md → auto-load    │
-│  Obsidian ← vault/LPOpenBIMAI/          │
+│  Obsidian ← LPOpenBIMAI/ vault          │
 └──────────┬──────────────────────────────┘
            │ HTTP API
            ▼
@@ -104,7 +121,7 @@ YourWorkspace/
 ### Session Lifecycle
 
 | Phase | Trigger | Hành động |
-|-------|---------|-----------|
+|-------|---------|-----------| 
 | **Start** | IDE mở workspace | Load 5 sessions gần nhất, init session mới |
 | **30% context** | ~30 tool calls | Checkpoint #1 — save session note |
 | **60% context** | ~60 tool calls | ⚠️ Warning — save + log |
@@ -121,7 +138,7 @@ Mỗi session tự động tạo file: `session-{date}-{ide}-{project}.md`
 date: 2026-03-16
 ide: antigravity
 project: LPOpenBIMAI
-model: gemini-2.5-pro
+model: claude-sonnet-4.5
 ---
 
 ## 🗣️ User Query Log
@@ -147,7 +164,7 @@ Base URL: `https://4ian5xm8.functions.insforge.app`
 | Method | Path | Mô tả |
 |--------|------|-------|
 | GET | `/mem-gw-final/health` | Health check + DB counts |
-| POST | `/mem-gw-final/init-session` | Init session mới (conversation_id, ide, project) |
+| POST | `/mem-gw-final/init-session` | Init session mới |
 | POST | `/mem-gw-final/save-session` | Save session + optional GitHub push |
 | GET | `/mem-gw-final/sessions?project={p}` | Load recent sessions |
 | GET | `/mem-gw-final/context-stats` | Memory + entity counts |
@@ -179,11 +196,10 @@ Live monitoring tại `LPOpenBIMAI/Agent-Memory/dashboard.html`:
 
 - **Sessions** — Lịch sử session + conversation tracking
 - **Quotas** — Model quota usage (Gemini, Claude, GPT) + reset timer
-- **Context Window** — Theo dõi context sử dụng
+- **Context Window** — Theo dõi context sử dụng real-time
 - **Sync** — Nút Sync to GitHub
 - **DB Stats** — InsForge database counts
 
-Mở dashboard:
 ```powershell
 npx -y http-server LPOpenBIMAI/Agent-Memory -p 8484 -c-1 --cors
 # → http://localhost:8484/dashboard.html
@@ -198,29 +214,27 @@ npx -y http-server LPOpenBIMAI/Agent-Memory -p 8484 -c-1 --cors
 ### Bước 1: InsForge Setup
 
 ```powershell
-# Tạo project trên insforge.dev
 npx -y @insforge/cli link --project-id YOUR_PROJECT_ID
 ```
 
 ### Bước 2: Database Schema
 
 ```powershell
-# Chạy SQL schema
 npx -y @insforge/cli db query --file schema/setup.sql
 ```
 
 ### Bước 3: Deploy Edge Function
 
 ```powershell
-# Deploy (MCP recommended vì CLI có bug INVALID_INPUT)
-# Hoặc qua InsForge Dashboard → Functions → Create
+# Deploy qua InsForge Dashboard → Functions → Create
+# (CLI có bug INVALID_INPUT — dùng MCP hoặc dashboard)
 ```
 
 ### Bước 4: Secrets
 
 ```powershell
 npx -y @insforge/cli secrets add GITHUB_PAT "ghp_your_token"
-npx -y @insforge/cli secrets add GITHUB_OWNER "YourUsername"
+npx -y @insforge/cli secrets add GITHUB_OWNER "YourUsername"  
 npx -y @insforge/cli secrets add GITHUB_REPO "YourRepo"
 ```
 
@@ -230,8 +244,6 @@ Sửa base URL trong:
 - `.agent/skills/auto-memory/SKILL.md`
 - `LPOpenBIMAI/Agent-Memory/memory-config.md`
 - `LPOpenBIMAI/Agent-Memory/dashboard.html`
-
-👉 Chi tiết: [docs/E2E-Setup-Guide.md](docs/E2E-Setup-Guide.md) | [docs/SETUP-FOR-OTHERS.md](docs/SETUP-FOR-OTHERS.md)
 
 ---
 
@@ -251,17 +263,26 @@ Sửa base URL trong:
 
 ## 🔄 Changelog
 
+### v2.3 — 2026-03-16
+
+- ✅ E2E vault audit: **148 files, 0 duplicates, 0 broken links**
+- ✅ Enriched all 64 skill notes with full content + frontmatter tags
+- ✅ Skills Dashboard `.base` — filter fixed (`agent-skill` tag)
+- ✅ Removed 241 duplicate files across vault
+- ✅ Fixed 13 phantom `skill-source` wikilinks
+- ✅ Fixed 41 ghost `.md` links → inline code
+- ✅ Added 7 missing skills to MOC
+- ✅ Connected session notes to Agent-Memory MOC
+- ✅ Auto-memory pipeline verified: save-session + GitHub sync working
+
 ### v2.2 — 2026-03-16
 
 - ✅ Edge function `mem-gw-final` v2.2 deployed (MCP)
 - ✅ Thêm `/quotas` GET/POST + `/sync-github` routes
-- ✅ Fix TypeScript `never[]` type errors
-- ✅ Minified to 4998 bytes
-- ✅ Dashboard: fix quota display + sync button
+- ✅ Context tracker: `/context-update` + `/context-status`
+- ✅ Dashboard: quota display + sync button + context gauge
 - ✅ `sync-quotas.ps1`: fix null default 100→0
-- ✅ 50+ skill notes enriched
 - ✅ Auto-memory protocol embedded in GEMINI.md
-- ✅ Git init + full vault push (305 files)
 
 ### v1.0 — 2026-03-15
 
