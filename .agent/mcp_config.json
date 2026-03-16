@@ -1,0 +1,33 @@
+{
+    "mcpServers": {
+        "obsidian-mcp": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "obsidian-mcp",
+                "D:\\10.Obsidan"
+            ]
+        },
+        "context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp",
+                "--api-key",
+                "YOUR_API_KEY"
+            ]
+        },
+        "shadcn": {
+            "command": "npx",
+            "args": [
+                "shadcn@latest",
+                "mcp"
+            ]
+        }
+    }
+}
+
+// setup mcp server in  ~/.gemini\antigravity\mcp_config.json
+// obsidian-mcp tools: read-note, create-note, edit-note, delete-note,
+// move-note, search-vault, add-tags, remove-tags, rename-tag, manage-tags
+

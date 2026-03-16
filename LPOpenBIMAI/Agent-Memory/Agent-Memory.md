@@ -34,23 +34,27 @@ aliases:
 
 ## Infrastructure
 
-| Layer | Backend | Slug |
-|-------|---------|------|
-| InsForge | PostgreSQL + Edge Functions | `mem-gw-final` |
-| GitHub | Session sync | — |
-| Local | Obsidian vault | — |
+| Layer | Backend | Slug | Note |
+|-------|---------|------|------|
+| InsForge | PostgreSQL + Edge Functions | `mem-gw-final` | [[Edge Function v2.2]] |
+| GitHub | Session sync | — | Private repo |
+| Local | Obsidian vault | — | This vault |
+| Dashboard | HTML monitoring | — | [[Dashboard Guide]] |
 
-## Guides
+## Guides & Setup
 
 | Guide | Mô tả |
 |-------|--------|
-| [[E2E-Setup-Guide]] | End-to-end setup guide |
+| [[Install Guide]] | ⚡ Quick install — 3 modes (local/global/vault) |
+| [[E2E-Setup-Guide]] | End-to-end backend setup |
 | [[E2E-Guide]] | E2E workflow guide |
 | [[Gemini Artifacts]] | Brain artifacts & memory flow |
 | [[GEMINI Rules]] | AI agent rules & checkpoint protocol |
 | [[Auto Memory]] | Auto-Memory Skill & protocol |
 | [[QUOTA-API-README]] | Hướng dẫn lấy Antigravity quotas |
 | [[Memory Context Monitor]] | Dashboard & context tracking |
+| [[Edge Function v2.2]] | API routes & deploy history |
+| [[Dashboard Guide]] | Dashboard features & setup |
 
 ## Research & Analysis
 

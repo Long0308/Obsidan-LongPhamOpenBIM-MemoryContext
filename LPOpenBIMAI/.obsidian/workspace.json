@@ -11,10 +11,14 @@
             "id": "1c1ad75c87958d7d",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Agent-Memory/session-2026-03-15-antigravity-LPOpenBIMAI.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "session-2026-03-15-antigravity-LPOpenBIMAI"
             }
           }
         ]
@@ -179,6 +183,9 @@
   },
   "active": "1c1ad75c87958d7d",
   "lastOpenFiles": [
+    "Agent-Memory/Install Guide.md",
+    "Agent-Memory/Dashboard Guide.md",
+    "Agent-Memory/Edge Function v2.2.md",
     "Agent-Memory/Memory Types trong Agentic Systems.md",
     "Agent-Memory/session-2026-03-15-antigravity-LPOpenBIMAI.md",
     "Agent-Memory/feedback.json",
@@ -214,8 +221,6 @@
     "Agent-Swarm.canvas",
     "Agent-Plugins/Plugins Dashboard.base",
     "Agent-Skills/Skills Dashboard.base",
-    "Agent-Skills/Verification.md",
-    "Agent-Skills/OpenSpec Archive Change.md",
     "Untitled.canvas",
     "Platforms"
   ]

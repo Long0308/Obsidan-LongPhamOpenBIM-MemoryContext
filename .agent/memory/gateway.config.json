@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "activeAdapter": "insforge",
+  "fallbackChain": ["insforge", "supabase", "sqlite"],
+  "adapters": {
+    "insforge": {
+      "enabled": true,
+      "projectId": "105f7d35-5480-467c-8674-289ce4e91cb4",
+      "pgvector": true,
+      "embeddingModel": "text-embedding-3-small",
+      "embeddingDimensions": 1536
+    },
+    "supabase": {
+      "enabled": true,
+      "projectRef": "sgzztnzvovjengauqlgw",
+      "schema": "memory",
+      "apiUrl": "https://sgzztnzvovjengauqlgw.supabase.co"
+    },
+    "sqlite": {
+      "enabled": true,
+      "path": "Agent/memory/agent.db",
+      "walMode": true
+    }
+  },
+  "sync": {
+    "enabled": true,
+    "interval": "5m",
+    "onSessionEnd": true,
+    "conflictResolution": "last-writer-wins"
+  },
+  "decay": {
+    "enabled": true,
+    "threshold": 0.1,
+    "inactiveDays": 30,
+    "archivePath": "Agent/memory/archive/",
+    "checkInterval": "1h"
+  },
+  "ops": {
+    "journalEnabled": true,
+    "canonicalJson": true,
+    "maxOpsPerSession": 10000
+  }
+}
