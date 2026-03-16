@@ -1,0 +1,25 @@
+# Dev & internal files
+.obsidian/
+.claude/
+.gemini/
+.git/
+node_modules/
+
+# Scripts (not needed for install)
+fix-wikilinks.ps1
+restructure-vault.ps1
+skills-lock.json
+install.ps1
+
+# InsForge local config
+insforge/.insforge/
+insforge/insforge/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temp
+*.log
+*.tmp

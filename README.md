@@ -1,4 +1,8 @@
-# 🧠 Auto-Memory Kit — Full Stack
+# 🧠 Auto-Memory Kit
+
+[![npm version](https://img.shields.io/npm/v/auto-memory-kit?color=cb3837&logo=npm)](https://www.npmjs.com/package/auto-memory-kit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub](https://img.shields.io/github/stars/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext?style=social)](https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext)
 
 > AI Agent memory system — Obsidian vault powering intelligent agent memory, session tracking, quota monitoring, and multi-agent orchestration.
 >
@@ -8,24 +12,42 @@
 
 ## ⚡ Quick Install
 
-```powershell
-# 1. Clone
-git clone https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext.git
-cd Obsidan-LongPhamOpenBIM-MemoryContext
-
-# 2. Install (chọn 1 trong 3)
-./install.ps1 -WorkspacePath "D:\YourWorkspace"          # Local workspace
-./install.ps1 -WorkspacePath "D:\YourObsidian" -Global   # Global (all projects)
-./install.ps1 -VaultOnly -WorkspacePath "D:\YourObsidian" # Vault only (no skill)
+```bash
+npx auto-memory-kit init
 ```
 
-### Install Script tự động làm gì?
+Install to a specific directory:
 
-| Step | Hành động | Kết quả |
-|------|-----------|---------| 
-| 1/4 | Copy Obsidian vault | `LPOpenBIMAI/` → workspace |
-| 2/4 | Install SKILL.md | `.agent/skills/auto-memory/` (local) hoặc `~/.agents/skills/` (global) |
-| 3/4 | Copy memory-config | `Agent-Memory/memory-config.md` |
+```bash
+npx auto-memory-kit init ./my-workspace
+```
+
+Options:
+
+```bash
+npx auto-memory-kit init . --global       # Install skill globally (~/.agents/)
+npx auto-memory-kit init . --vault-only   # Only install Obsidian vault
+npx auto-memory-kit init . --force        # Overwrite existing files
+```
+
+<details>
+<summary><b>Alternative: Git Clone</b></summary>
+
+```powershell
+git clone https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext.git
+cd Obsidan-LongPhamOpenBIM-MemoryContext
+./install.ps1 -WorkspacePath "D:\YourWorkspace"
+```
+
+</details>
+
+### What gets installed?
+
+| Step | Action | Result |
+|------|--------|--------|
+| 1/4 | Install Obsidian vault | `LPOpenBIMAI/` — 148 notes, dashboards, canvases |
+| 2/4 | Install agent rules | `.agent/` — 20 agents, 64 skills, workflows |
+| 3/4 | Install backend schemas | `insforge/` — edge functions, SQL migrations |
 | 4/4 | Verify | Check 6 critical files exist |
 
 ---

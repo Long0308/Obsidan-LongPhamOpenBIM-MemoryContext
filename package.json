@@ -1,0 +1,45 @@
+{
+  "name": "auto-memory-kit",
+  "version": "2.3.0",
+  "description": "AI Agent memory system — Obsidian vault for intelligent agent memory, session tracking, quota monitoring, and multi-agent orchestration",
+  "main": "bin/init.js",
+  "bin": {
+    "auto-memory-kit": "bin/init.js"
+  },
+  "scripts": {
+    "postinstall": "echo '🧠 Run: npx auto-memory-kit init'"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "memory",
+    "obsidian",
+    "antigravity",
+    "cursor",
+    "claude",
+    "gemini",
+    "session-tracking",
+    "vault",
+    "auto-memory",
+    "mcp"
+  ],
+  "author": "LongPhamOpenBIM",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext.git"
+  },
+  "homepage": "https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext#readme",
+  "bugs": {
+    "url": "https://github.com/Long0308/Obsidan-LongPhamOpenBIM-MemoryContext/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ]
+}

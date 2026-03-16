@@ -28,3 +28,6 @@ desktop.ini
 *.mov
 *.zip
 *.rar
+
+# NPM templates (junction - published by npm, not git)
+templates/
