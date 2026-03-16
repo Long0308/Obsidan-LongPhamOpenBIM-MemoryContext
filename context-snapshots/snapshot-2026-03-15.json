@@ -1,0 +1,1024 @@
+{
+  "timestamp": "2026-03-15T16:44:14.637Z",
+  "count": 50,
+  "data": [
+    {
+      "id": "2e3485c3-eaa5-478e-b400-efa701ef957a",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "deploy-insforge-site",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "4eade317-27cd-41f3-90c2-6f1756e200f1",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "remove-fake-data",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "6e210822-fd38-4ff3-94a4-b503607c80fc",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "quota-sync-at-session-start",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "051f85c8-e47f-4043-aac9-40a841142ed8",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "quota-remaining-display-100-to-0",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.61216+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.61216+00:00",
+      "updated_at": "2026-03-15T16:15:23.61216+00:00"
+    },
+    {
+      "id": "4bd605fa-1645-4e25-8fcd-44012e97a962",
+      "type": "long-term",
+      "category": "session",
+      "content": "Session 2026-03-15: 34 queries. Live quota fetch via sync-quotas.ps1. Dashboard deployed to insforge.site. Auto-memory protocol updated with quota sync step.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T16:15:23.55359+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T16:15:23.55359+00:00",
+      "updated_at": "2026-03-15T16:15:23.55359+00:00"
+    },
+    {
+      "id": "fd958994-e5f7-445d-bd24-37e9c49ac86b",
+      "type": "long-term",
+      "category": "session-init",
+      "content": "Conv 1074004b: Session initialized — 2026-03-15T14:53:36.611Z",
+      "tags": [
+        "session-init",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.3,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T14:53:36.869756+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T14:53:36.869756+00:00",
+      "updated_at": "2026-03-15T14:53:36.869756+00:00"
+    },
+    {
+      "id": "4524cbc3-83cb-4df4-8863-48d9a92ff5ee",
+      "type": "long-term",
+      "category": "session-init",
+      "content": "Conv test-dep: Session initialized — 2026-03-15T14:49:07.163Z",
+      "tags": [
+        "session-init",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.3,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T14:49:07.238307+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T14:49:07.238307+00:00",
+      "updated_at": "2026-03-15T14:49:07.238307+00:00"
+    },
+    {
+      "id": "e420b050-9d76-4a47-a1b3-b48b4833d8c8",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Updated GITHUB_PAT in InsForge",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "120596ba-c7cf-4d2b-b675-6cb79f28fb4e",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Added Conv 4+5 to session note",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "56663359-4d84-478f-a5d0-9ab2e6b5ca82",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Redeployed mem-gw-final",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.445114+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.445114+00:00",
+      "updated_at": "2026-03-15T12:15:33.445114+00:00"
+    },
+    {
+      "id": "56386d67-bbde-4655-bbfe-f5fb456b2b8e",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 5: Built Memory Dashboard + Fixed GitHub PAT. Dashboard verified with live data. PAT updated to fine-grained token with repo access.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:15:33.422434+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:15:33.422434+00:00",
+      "updated_at": "2026-03-15T12:15:33.422434+00:00"
+    },
+    {
+      "id": "b2aaf268-36a5-43db-b3dd-79556c6f1610",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Project selector auto-discovers from sessions API",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.814445+00:00",
+      "updated_at": "2026-03-15T12:01:51.814445+00:00"
+    },
+    {
+      "id": "30ba604a-b887-44f7-aa91-df1eb1a6bc91",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Auto-refresh 30s interval",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.814445+00:00",
+      "updated_at": "2026-03-15T12:01:51.814445+00:00"
+    },
+    {
+      "id": "7faa9749-8904-4364-aa15-cc73161b2cb3",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Dark glassmorphism design",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.814445+00:00",
+      "updated_at": "2026-03-15T12:01:51.814445+00:00"
+    },
+    {
+      "id": "5e74a633-b6b6-41e4-adba-15a4f5e0a7ba",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Single HTML file, no framework",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.814445+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.814445+00:00",
+      "updated_at": "2026-03-15T12:01:51.814445+00:00"
+    },
+    {
+      "id": "2f69ee74-9318-47c7-b5ce-2d7e380d84e6",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 4 (1074004b): Built Memory Context Monitor web UI dashboard (dashboard.html). Single-page dark glassmorphism HTML with stats cards, sessions table, sync timeline, auto-refresh 30s. Connects to all 5 mem-gw-final endpoints. Verified in browser - all data loads correctly.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T12:01:51.781765+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T12:01:51.781765+00:00",
+      "updated_at": "2026-03-15T12:01:51.781765+00:00"
+    },
+    {
+      "id": "a5d67f34-3d2e-40c7-b60e-cc6672b23624",
+      "type": "long-term",
+      "category": "session",
+      "content": "",
+      "tags": [
+        "session",
+        "antigravity",
+        "10.Obsidan"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T11:46:27.057723+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T11:46:27.057723+00:00",
+      "updated_at": "2026-03-15T11:46:27.057723+00:00"
+    },
+    {
+      "id": "5c35be84-e1e3-4f59-8325-727822f3b5e0",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "NEXT: Full vault audit for descriptions + setup docs needed in new session",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:49:05.249201+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:49:05.249201+00:00",
+      "updated_at": "2026-03-15T10:49:05.249201+00:00"
+    },
+    {
+      "id": "bac42255-9239-4b26-92b3-bd3dbe596150",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Auto-memory embedded in both global + workspace GEMINI.md",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:49:05.249201+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:49:05.249201+00:00",
+      "updated_at": "2026-03-15T10:49:05.249201+00:00"
+    },
+    {
+      "id": "f9e382a9-92b2-42f7-9ed0-6e09231e4674",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Dotfiles hidden in Obsidian graph - always use normal names",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:49:05.249201+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:49:05.249201+00:00",
+      "updated_at": "2026-03-15T10:49:05.249201+00:00"
+    },
+    {
+      "id": "1a6e1bec-f523-4377-9787-b34bc0f8e497",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "80% threshold = auto-save + ask user",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:49:05.249201+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:49:05.249201+00:00",
+      "updated_at": "2026-03-15T10:49:05.249201+00:00"
+    },
+    {
+      "id": "f7d55ca6-c62e-49c8-8fe7-1f23f5bcbeef",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 3 FINAL: Fixed auto-memory enforcement (GEMINI.md TIER 0), added to global GEMINI.md, fixed .gemini dotfile naming, added GEMINI.md description to Gemini Artifacts note. NEXT SESSION NEEDED: Full vault audit - ensure all notes have proper descriptions, context, setup instructions. User wants comprehensive documentation in every agent/skill/memory note.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:49:05.153732+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:49:05.153732+00:00",
+      "updated_at": "2026-03-15T10:49:05.153732+00:00"
+    },
+    {
+      "id": "90c2327b-4ae2-49fc-90b2-29173a9f0859",
+      "type": "long-term",
+      "category": "decisions",
+      "content": ".gemini artifacts linked to Obsidian via Agent-Memory reference note",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:27:59.98343+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:27:59.98343+00:00",
+      "updated_at": "2026-03-15T10:27:59.98343+00:00"
+    },
+    {
+      "id": "742b6f1b-d4ae-4f3e-8637-2941b201e849",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "80% = auto-save + ask user, 100% = save + stop",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:27:59.98343+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:27:59.98343+00:00",
+      "updated_at": "2026-03-15T10:27:59.98343+00:00"
+    },
+    {
+      "id": "c709c28b-aa26-4e78-a1d9-a07f59a30d24",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 3 final: Fixed 80% threshold to auto-save + ask user. Created .gemini-artifacts.md note linking Antigravity brain dir to Obsidian vault. All changes pushed to GitHub.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:27:59.905191+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:27:59.905191+00:00",
+      "updated_at": "2026-03-15T10:27:59.905191+00:00"
+    },
+    {
+      "id": "0a3673f9-d879-4ebb-a000-979a24dea11c",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Self-Check Trigger pattern - AI asks itself before each response if checkpoint due",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:24:27.687577+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:24:27.687577+00:00",
+      "updated_at": "2026-03-15T10:24:27.687577+00:00"
+    },
+    {
+      "id": "9826d301-020b-4100-b96b-689bc8d27966",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Embed auto-memory in GEMINI.md TIER 0 - only always-on enforcement layer",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:24:27.687577+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:24:27.687577+00:00",
+      "updated_at": "2026-03-15T10:24:27.687577+00:00"
+    },
+    {
+      "id": "8ab0a4c4-8bd2-4827-b875-e5af3f1579e1",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 3 continued: Fixed auto-memory enforcement architecture. Root cause: SKILL.md is documentation-only, lost on context truncation, no enforcement layer. Fix: Embedded auto-memory lifecycle protocol into GEMINI.md TIER 0 (.agent/rules/GEMINI.md) - this survives truncation as always-on user rules. Added enforcement cross-reference to SKILL.md.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:24:27.598595+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:24:27.598595+00:00",
+      "updated_at": "2026-03-15T10:24:27.598595+00:00"
+    },
+    {
+      "id": "26d237b2-d009-49ce-9ab1-ed36d0ca0aec",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Index notes needed for folder-level wikilinks - Obsidian requires .md files to resolve",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:17:46.132475+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:17:46.132475+00:00",
+      "updated_at": "2026-03-15T10:17:46.132475+00:00"
+    },
+    {
+      "id": "ddd87554-a776-4981-8e92-7e2ed84736c0",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Option A+B for Platform Coordinators - both documentation + runtime routing",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:17:46.132475+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:17:46.132475+00:00",
+      "updated_at": "2026-03-15T10:17:46.132475+00:00"
+    },
+    {
+      "id": "659a2085-08e7-46ab-8154-fccb36ff100c",
+      "type": "long-term",
+      "category": "session",
+      "content": "Conv 3 (fbdd4deb): Orchestration audit - analyzed 3 layers (runtime/routing/Obsidian). Wired Platform Coordinators (Option A+B): added Coordinator sections to 6 platform hubs + extended intelligent-routing SKILL with platform-aware routing. Created 4 index notes (Agent-Agents, Agent-Skills, Agent-Memory, Agent-Plugins) to fix ghost nodes in graph. Updated AGENT_SWARM.md. Vault: 113 files total. Pushed 3 commits to GitHub.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T10:17:46.054675+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T10:17:46.054675+00:00",
+      "updated_at": "2026-03-15T10:17:46.054675+00:00"
+    },
+    {
+      "id": "4c393dd3-fde3-40e5-9057-8ab033bb21f5",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Minified edge function to 4972 bytes to fit InsForge 5KB source limit",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "57a379ee-cefc-4430-9b96-f24af4d822c6",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Fixed sync_log_operation_check constraint to allow save-session and cron-sync operations",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "13d891cb-b668-4b66-a590-dced946feeea",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Updated SKILL.md with Step 0 AUTO-LOAD protocol and multi-conversation tracking",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "a397e2aa-3c02-4a8a-824a-af9592c76136",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Deleted 4 test functions: deploy-test, test-v2, memory-gw-mid, memory-gateway",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "47cc4468-ee22-4600-a599-31fd89ca713f",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Deployed as mem-gw-final slug (new) instead of updating old memory-gateway",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.854741+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.854741+00:00",
+      "updated_at": "2026-03-15T08:39:53.854741+00:00"
+    },
+    {
+      "id": "eb449954-6d29-4d36-bc71-8a497dc46a44",
+      "type": "long-term",
+      "category": "session",
+      "content": "Session 2 (conversation fbdd4deb): E2E verification of Auto-Memory System v2. Fixed sync_log CHECK constraint (operation_check only allowed create/update/delete/sync but code used save-session/cron-sync). Deployed v2 as mem-gw-final (4.9KB minified). All endpoints verified: health, save-session, sessions, context-stats. DB counts: memories=14, entities=6, sync_log=2. Cron schedule updated. Cleaned up 4 test functions. Updated SKILL.md with auto-load protocol.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:39:53.763306+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:39:53.763306+00:00",
+      "updated_at": "2026-03-15T08:39:53.763306+00:00"
+    },
+    {
+      "id": "e1768577-03b2-43d7-9d40-fd8adb3cce70",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Fixed sync_log CHECK constraint to allow save-session and cron-sync operations",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:30:37.266843+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:30:37.266843+00:00",
+      "updated_at": "2026-03-15T08:30:37.266843+00:00"
+    },
+    {
+      "id": "02b6de2c-cad8-425c-8920-05c59e79c126",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Minified edge function to 4.9KB to fit InsForge source limit",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:30:37.266843+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:30:37.266843+00:00",
+      "updated_at": "2026-03-15T08:30:37.266843+00:00"
+    },
+    {
+      "id": "2da96e71-6393-47ad-94ef-d88df5df3bd4",
+      "type": "long-term",
+      "category": "session",
+      "content": "Final E2E verification of Auto-Memory v2 system. All endpoints working: health, save-session, sessions, context-stats, sync-github. sync_log CHECK constraint fixed. Function deployed as mem-gw-final.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:30:37.148824+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:30:37.148824+00:00",
+      "updated_at": "2026-03-15T08:30:37.148824+00:00"
+    },
+    {
+      "id": "13f20212-b9b8-4762-8a11-2defd2f11bb0",
+      "type": "long-term",
+      "category": "session",
+      "content": "Verifying sync_log after CHECK constraint fix.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:29:38.482246+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:29:38.482246+00:00",
+      "updated_at": "2026-03-15T08:29:38.482246+00:00"
+    },
+    {
+      "id": "87b14b64-cf6e-4022-be7c-5d1ccd31ac40",
+      "type": "long-term",
+      "category": "session",
+      "content": "Testing sync_log after GRANT fix.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:26:51.374442+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:26:51.374442+00:00",
+      "updated_at": "2026-03-15T08:26:51.374442+00:00"
+    },
+    {
+      "id": "356d9598-c699-471d-a1b1-5fa66c7f41a3",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Extracted ghPush helper for code reuse",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:22:06.000811+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:22:06.000811+00:00",
+      "updated_at": "2026-03-15T08:22:06.000811+00:00"
+    },
+    {
+      "id": "3c3450c2-f674-412a-b015-8267e342b6e0",
+      "type": "long-term",
+      "category": "decisions",
+      "content": "Minified v2 to 4.9KB to fit InsForge 5KB source limit",
+      "tags": [
+        "decision",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:22:06.000811+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:22:06.000811+00:00",
+      "updated_at": "2026-03-15T08:22:06.000811+00:00"
+    },
+    {
+      "id": "d74b317b-7b75-4fff-be75-8e298f684b86",
+      "type": "long-term",
+      "category": "session",
+      "content": "E2E test: Auto-Memory v2 edge function deployed as mem-gw-final. Testing save-session with GitHub push.",
+      "tags": [
+        "session",
+        "antigravity",
+        "LPOpenBIMAI"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T08:22:05.922312+00:00",
+      "access_count": 0,
+      "source": "auto-memory",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T08:22:05.922312+00:00",
+      "updated_at": "2026-03-15T08:22:05.922312+00:00"
+    },
+    {
+      "id": "443c2498-699b-45ff-b671-de32cfa8a2c7",
+      "type": "long-term",
+      "category": "session",
+      "content": "Phase 3-6: 20 agents, 47 skills, 15 plugins, 6 graph groups, 93 tagged notes",
+      "tags": [
+        "session",
+        "graph"
+      ],
+      "metadata": {},
+      "importance": 0.9,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T07:07:47.907687+00:00",
+      "access_count": 0,
+      "source": "agent",
+      "project_id": null,
+      "session_id": null,
+      "created_at": "2026-03-15T07:07:47.907687+00:00",
+      "updated_at": "2026-03-15T07:07:47.907687+00:00"
+    },
+    {
+      "id": "a519c208-5452-4f8f-bf16-8029267215f2",
+      "type": "long-term",
+      "category": "tech-stack",
+      "content": "Insforge (primary) + Supabase (sync) + SQLite (offline) — fallback chain for Memory Gateway",
+      "tags": [
+        "tech-stack",
+        "infrastructure"
+      ],
+      "metadata": {},
+      "importance": 0.95,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T06:42:20.880724+00:00",
+      "access_count": 0,
+      "source": "agent",
+      "project_id": "LPOpenBIMAI",
+      "session_id": "2026-03-15",
+      "created_at": "2026-03-15T06:42:20.880724+00:00",
+      "updated_at": "2026-03-15T06:42:20.880724+00:00"
+    },
+    {
+      "id": "70e124b2-76c8-4d17-a47b-0b0d84505f07",
+      "type": "short-term",
+      "category": "session",
+      "content": "E2E test results: 9/9 pass. All systems operational. Insforge agent linked and skills installed.",
+      "tags": [
+        "test",
+        "e2e",
+        "verification"
+      ],
+      "metadata": {},
+      "importance": 0.7,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T06:42:20.880724+00:00",
+      "access_count": 0,
+      "source": "agent",
+      "project_id": "LPOpenBIMAI",
+      "session_id": "2026-03-15",
+      "created_at": "2026-03-15T06:42:20.880724+00:00",
+      "updated_at": "2026-03-15T06:42:20.880724+00:00"
+    },
+    {
+      "id": "000dbc1e-e6aa-43f9-8a10-3938d5cc298a",
+      "type": "long-term",
+      "category": "patterns",
+      "content": "15 Obsidian plugins installed. Graph viz: 3D Graph, Graphs, Graphviz, Graph Analysis. Editing: Smart Typography, Advanced Cursors, Autocorrect",
+      "tags": [
+        "plugins",
+        "obsidian",
+        "patterns"
+      ],
+      "metadata": {},
+      "importance": 0.8,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T06:42:20.880724+00:00",
+      "access_count": 0,
+      "source": "agent",
+      "project_id": "LPOpenBIMAI",
+      "session_id": "2026-03-15",
+      "created_at": "2026-03-15T06:42:20.880724+00:00",
+      "updated_at": "2026-03-15T06:42:20.880724+00:00"
+    },
+    {
+      "id": "d93fa467-c716-4673-ad65-1356d1ada717",
+      "type": "long-term",
+      "category": "preferences",
+      "content": "User prefers Vietnamese responses, English code. Uses Obsidian as knowledge hub. Vault: LPOpenBIMAI",
+      "tags": [
+        "preferences",
+        "language",
+        "obsidian"
+      ],
+      "metadata": {},
+      "importance": 0.85,
+      "decay_rate": 0.01,
+      "last_accessed": "2026-03-15T06:42:20.880724+00:00",
+      "access_count": 0,
+      "source": "agent",
+      "project_id": "LPOpenBIMAI",
+      "session_id": "2026-03-15",
+      "created_at": "2026-03-15T06:42:20.880724+00:00",
+      "updated_at": "2026-03-15T06:42:20.880724+00:00"
+    }
+  ]
+}

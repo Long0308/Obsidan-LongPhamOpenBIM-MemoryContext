@@ -1,0 +1,1 @@
+Final E2E verification of Auto-Memory v2 system. All endpoints working: health, save-session, sessions, context-stats, sync-github. sync_log CHECK constraint fixed. Function deployed as mem-gw-final.
