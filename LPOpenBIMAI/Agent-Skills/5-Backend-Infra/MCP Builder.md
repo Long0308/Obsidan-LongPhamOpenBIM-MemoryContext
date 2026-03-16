@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - backend
   - mcp
-skill-source: "[[MCP Builder SKILL|.agent/skills/mcp-builder/SKILL.md]]"
+skill-source: ".agent/skills/mcp-builder/SKILL.md"
 related-skills:
   - "[[API Patterns]]"
   - "[[Node.js Best Practices]]"
@@ -38,10 +38,10 @@ Model Context Protocol - standard for connecting AI systems with external tools 
 
 ```
 my-mcp-server/
-├── src/
-│   └── index.ts      # Main entry
-├── package.json
-└── tsconfig.json
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ index.ts      # Main entry
+â”œâ”€â”€ package.json
+â””â”€â”€ tsconfig.json
 ```
 
 ### Transport Types

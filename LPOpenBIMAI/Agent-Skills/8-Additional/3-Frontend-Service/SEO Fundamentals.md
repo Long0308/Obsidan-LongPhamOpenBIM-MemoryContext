@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - quality
   - seo
-skill-source: "[[SEO Fundamentals SKILL|.agent/skills/seo-fundamentals/SKILL.md]]"
+skill-source: ".agent/skills/seo-fundamentals/SKILL.md"
 related-skills:
   - "[[GEO Fundamentals]]"
   - "[[Performance Profiling]]"
@@ -99,7 +99,7 @@ related-skills:
 
 ### What Google Looks For
 
-| ✅ Do | ❌ Don't |
+| âœ… Do | âŒ Don't |
 |-------|----------|
 | AI draft + human edit | Publish raw AI content |
 | Add original insights | Copy without value |

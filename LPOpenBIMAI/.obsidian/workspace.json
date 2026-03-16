@@ -11,13 +11,10 @@
             "id": "1c1ad75c87958d7d",
             "type": "leaf",
             "state": {
-              "type": "bases",
-              "state": {
-                "file": "Agent-Skills/Skills Dashboard.base",
-                "viewName": "📋 All Skills"
-              },
-              "icon": "lucide-table",
-              "title": "Skills Dashboard"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -182,8 +179,8 @@
   },
   "active": "1c1ad75c87958d7d",
   "lastOpenFiles": [
-    "Agent-Skills/Agent-Skills.md",
     "Agent-Skills/Skills Dashboard.base",
+    "Agent-Skills/Agent-Skills.md",
     "AI-Link-Dashboard.md",
     "Agent-Skills/5-Backend-Infra/InsForge CLI.md",
     "Agent-Skills/5-Backend-Infra/Documentation Templates.md",

@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - quality
   - code-review
-skill-source: "[[Code Review Checklist SKILL|.agent/skills/code-review-checklist/SKILL.md]]"
+skill-source: ".agent/skills/code-review-checklist/SKILL.md"
 related-skills:
   - "[[Clean Code]]"
   - "[[Testing Patterns]]"
@@ -59,10 +59,10 @@ related-skills:
 
 ### Prompt Engineering Review
 ```markdown
-// ❌ Vague prompt in code
+// âŒ Vague prompt in code
 const response = await ai.generate(userInput);
 
-// ✅ Structured & Safe prompt
+// âœ… Structured & Safe prompt
 const response = await ai.generate({
   system: "You are a specialized parser...",
   input: sanitize(userInput),
@@ -73,43 +73,43 @@ const response = await ai.generate({
 ## Anti-Patterns to Flag
 
 ```typescript
-// ❌ Magic numbers
+// âŒ Magic numbers
 if (status === 3) { ... }
 
-// ✅ Named constants
+// âœ… Named constants
 if (status === Status.ACTIVE) { ... }
 
-// ❌ Deep nesting
+// âŒ Deep nesting
 if (a) { if (b) { if (c) { ... } } }
 
-// ✅ Early returns
+// âœ… Early returns
 if (!a) return;
 if (!b) return;
 if (!c) return;
 // do work
 
-// ❌ Long functions (100+ lines)
-// ✅ Small, focused functions
+// âŒ Long functions (100+ lines)
+// âœ… Small, focused functions
 
-// ❌ any type
+// âŒ any type
 const data: any = ...
 
-// ✅ Proper types
+// âœ… Proper types
 const data: UserData = ...
 ```
 
 ## Review Comments Guide
 
 ```
-// Blocking issues use 🔴
-🔴 BLOCKING: SQL injection vulnerability here
+// Blocking issues use ðŸ”´
+ðŸ”´ BLOCKING: SQL injection vulnerability here
 
-// Important suggestions use 🟡
-🟡 SUGGESTION: Consider using useMemo for performance
+// Important suggestions use ðŸŸ¡
+ðŸŸ¡ SUGGESTION: Consider using useMemo for performance
 
-// Minor nits use 🟢
-🟢 NIT: Prefer const over let for immutable variable
+// Minor nits use ðŸŸ¢
+ðŸŸ¢ NIT: Prefer const over let for immutable variable
 
-// Questions use ❓
-❓ QUESTION: What happens if user is null here?
+// Questions use â“
+â“ QUESTION: What happens if user is null here?
 ```

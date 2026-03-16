@@ -19,7 +19,9 @@ aliases:
 
 | Note | Mô tả |
 |------|--------|
-| [[session-2026-03-15-antigravity-LPOpenBIMAI]] | Latest session — LPOpenBIMAI |
+| [[session-2026-03-16-antigravity-LPOpenBIMAI]] | Session 16/3 — Vault Cleanup & Audit |
+| [[session-2026-03-15-antigravity-LPOpenBIMAI]] | Session 15/3 — Auto-Memory Deploy |
+| [[Session Dashboard]] | 📊 Session overview dashboard |
 
 ## Config & Rules
 

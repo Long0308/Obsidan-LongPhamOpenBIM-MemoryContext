@@ -3,7 +3,7 @@ tags:
   - agent-skill
   - documentation
   - templates
-skill-source: "[[Documentation Templates SKILL|.agent/skills/documentation-templates/SKILL.md]]"
+skill-source: ".agent/skills/documentation-templates/SKILL.md"
 related-skills:
   - "[[Plan Writing]]"
   - "[[Clean Code]]"

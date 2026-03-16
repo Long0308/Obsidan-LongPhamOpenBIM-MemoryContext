@@ -3,7 +3,7 @@ tags:
   - agent-skill
   - superpower
   - orchestrator
-skill-source: "[[App Builder SKILL|.agent/skills/app-builder/SKILL.md]]"
+skill-source: ".agent/skills/app-builder/SKILL.md"
 related-skills:
   - "[[Plan Writing]]"
   - "[[Brainstorming]]"

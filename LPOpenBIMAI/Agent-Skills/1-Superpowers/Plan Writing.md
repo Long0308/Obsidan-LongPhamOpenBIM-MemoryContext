@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - superpower
   - planning
-skill-source: "[[Plan Writing SKILL|.agent/skills/plan-writing/SKILL.md]]"
+skill-source: ".agent/skills/plan-writing/SKILL.md"
 related-skills:
   - "[[Brainstorming]]"
   - "[[App Builder]]"
@@ -37,16 +37,16 @@ This skill provides a framework for breaking down work into clear, actionable ta
 
 ### 4. Dynamic Naming in Project Root
 - Plan files are saved as `{task-slug}.md` in the PROJECT ROOT
-- Name derived from task (e.g., "add auth" → `auth-feature.md`)
+- Name derived from task (e.g., "add auth" â†’ `auth-feature.md`)
 - **NEVER** inside `.claude/`, `docs/`, or temp folders
 
 ## Planning Principles (NOT Templates!)
 
-> 🔴 **NO fixed templates. Each plan is UNIQUE to the task.**
+> ðŸ”´ **NO fixed templates. Each plan is UNIQUE to the task.**
 
 ### Principle 1: Keep It SHORT
 
-| ❌ Wrong | ✅ Right |
+| âŒ Wrong | âœ… Right |
 |----------|----------|
 | 50 tasks with sub-sub-tasks | 5-10 clear tasks max |
 | Every micro-step listed | Only actionable items |
@@ -58,7 +58,7 @@ This skill provides a framework for breaking down work into clear, actionable ta
 
 ### Principle 2: Be SPECIFIC, Not Generic
 
-| ❌ Wrong | ✅ Right |
+| âŒ Wrong | âœ… Right |
 |----------|----------|
 | "Set up project" | "Run `npx create-next-app`" |
 | "Add authentication" | "Install next-auth, create `/api/auth/[...nextauth].ts`" |
@@ -89,7 +89,7 @@ This skill provides a framework for breaking down work into clear, actionable ta
 
 ### Principle 4: Scripts Are Project-Specific
 
-> 🔴 **DO NOT copy-paste script commands. Choose based on project type.**
+> ðŸ”´ **DO NOT copy-paste script commands. Choose based on project type.**
 
 | Project Type | Relevant Scripts |
 |--------------|------------------|
@@ -106,7 +106,7 @@ This skill provides a framework for breaking down work into clear, actionable ta
 
 ### Principle 5: Verification is Simple
 
-| ❌ Wrong | ✅ Right |
+| âŒ Wrong | âœ… Right |
 |----------|----------|
 | "Verify the component works correctly" | "Run `npm run dev`, click button, see toast" |
 | "Test the API" | "curl localhost:3000/api/users returns 200" |
@@ -123,9 +123,9 @@ This skill provides a framework for breaking down work into clear, actionable ta
 One sentence: What are we building/fixing?
 
 ## Tasks
-- [ ] Task 1: [Specific action] → Verify: [How to check]
-- [ ] Task 2: [Specific action] → Verify: [How to check]
-- [ ] Task 3: [Specific action] → Verify: [How to check]
+- [ ] Task 1: [Specific action] â†’ Verify: [How to check]
+- [ ] Task 2: [Specific action] â†’ Verify: [How to check]
+- [ ] Task 3: [Specific action] â†’ Verify: [How to check]
 
 ## Done When
 - [ ] [Main success criteria]

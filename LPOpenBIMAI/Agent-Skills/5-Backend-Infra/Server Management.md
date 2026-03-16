@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - backend
   - devops
-skill-source: "[[Server Management SKILL|.agent/skills/server-management/SKILL.md]]"
+skill-source: ".agent/skills/server-management/SKILL.md"
 related-skills:
   - "[[Deployment Procedures]]"
   - "[[Node.js Best Practices]]"
@@ -154,7 +154,7 @@ When something's wrong:
 
 ## 8. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| âŒ Don't | âœ… Do |
 |----------|-------|
 | Run as root | Use non-root user |
 | Ignore logs | Set up log rotation |

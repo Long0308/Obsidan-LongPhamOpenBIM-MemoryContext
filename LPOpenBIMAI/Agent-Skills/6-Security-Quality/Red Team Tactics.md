@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - security
   - red-team
-skill-source: "[[Red Team Tactics SKILL|.agent/skills/red-team-tactics/SKILL.md]]"
+skill-source: ".agent/skills/red-team-tactics/SKILL.md"
 related-skills:
   - "[[Vulnerability Scanner]]"
   - "[[Code Review Checklist]]"
@@ -21,11 +21,11 @@ related-skills:
 ### Attack Lifecycle
 
 ```
-RECONNAISSANCE → INITIAL ACCESS → EXECUTION → PERSISTENCE
-       ↓              ↓              ↓            ↓
-   PRIVILEGE ESC → DEFENSE EVASION → CRED ACCESS → DISCOVERY
-       ↓              ↓              ↓            ↓
-LATERAL MOVEMENT → COLLECTION → C2 → EXFILTRATION → IMPACT
+RECONNAISSANCE â†’ INITIAL ACCESS â†’ EXECUTION â†’ PERSISTENCE
+       â†“              â†“              â†“            â†“
+   PRIVILEGE ESC â†’ DEFENSE EVASION â†’ CRED ACCESS â†’ DISCOVERY
+       â†“              â†“              â†“            â†“
+LATERAL MOVEMENT â†’ COLLECTION â†’ C2 â†’ EXFILTRATION â†’ IMPACT
 ```
 
 ### Phase Objectives
@@ -193,7 +193,7 @@ For each successful technique:
 
 ## 10. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| âŒ Don't | âœ… Do |
 |----------|-------|
 | Rush to exploitation | Follow methodology |
 | Cause damage | Minimize impact |

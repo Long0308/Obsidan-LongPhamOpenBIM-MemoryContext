@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - backend
   - database
-skill-source: "[[Database Design SKILL|.agent/skills/database-design/SKILL.md]]"
+skill-source: ".agent/skills/database-design/SKILL.md"
 related-skills:
   - "[[API Patterns]]"
   - "[[Node.js Best Practices]]"
@@ -14,7 +14,7 @@ related-skills:
 
 > **Learn to THINK, not copy SQL patterns.**
 
-## 🎯 Selective Reading Rule
+## ðŸŽ¯ Selective Reading Rule
 
 **Read ONLY files relevant to the request!** Check the content map, find what you need.
 
@@ -29,7 +29,7 @@ related-skills:
 
 ---
 
-## ⚠️ Core Principle
+## âš ï¸ Core Principle
 
 - ASK user for database preferences when unclear
 - Choose database/ORM based on CONTEXT
@@ -51,8 +51,8 @@ Before designing schema:
 
 ## Anti-Patterns
 
-❌ Default to PostgreSQL for simple apps (SQLite may suffice)
-❌ Skip indexing
-❌ Use SELECT * in production
-❌ Store JSON when structured data is better
-❌ Ignore N+1 queries
+âŒ Default to PostgreSQL for simple apps (SQLite may suffice)
+âŒ Skip indexing
+âŒ Use SELECT * in production
+âŒ Store JSON when structured data is better
+âŒ Ignore N+1 queries

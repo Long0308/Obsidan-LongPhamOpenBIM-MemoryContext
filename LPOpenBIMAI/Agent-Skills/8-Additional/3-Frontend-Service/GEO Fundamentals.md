@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - seo
   - ai-optimization
-skill-source: "[[GEO Fundamentals SKILL|.agent/skills/geo-fundamentals/SKILL.md]]"
+skill-source: ".agent/skills/geo-fundamentals/SKILL.md"
 related-skills:
   - "[[SEO Fundamentals]]"
   - "[[Documentation Templates]]"
@@ -141,7 +141,7 @@ How AI engines select content to cite:
 
 ## 9. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| âŒ Don't | âœ… Do |
 |----------|-------|
 | Publish without dates | Add timestamps |
 | Vague attributions | Name sources |

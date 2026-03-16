@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - backend
   - api
-skill-source: "[[API Patterns SKILL|.agent/skills/api-patterns/SKILL.md]]"
+skill-source: ".agent/skills/api-patterns/SKILL.md"
 related-skills:
   - "[[Database Design]]"
   - "[[Node.js Best Practices]]"
@@ -15,13 +15,13 @@ related-skills:
 > API design principles and decision-making for 2025.
 > **Learn to THINK, not copy fixed patterns.**
 
-## 🎯 Selective Reading Rule
+## ðŸŽ¯ Selective Reading Rule
 
 **Read ONLY files relevant to the request!** Check the content map, find what you need.
 
 ---
 
-## 📑 Content Map
+## ðŸ“‘ Content Map
 
 | File | Description | When to Read |
 |------|-------------|--------------|
@@ -38,7 +38,7 @@ related-skills:
 
 ---
 
-## 🔗 Related Skills
+## ðŸ”— Related Skills
 
 | Need | Skill |
 |------|-------|
@@ -48,7 +48,7 @@ related-skills:
 
 ---
 
-## ✅ Decision Checklist
+## âœ… Decision Checklist
 
 Before designing an API:
 
@@ -62,7 +62,7 @@ Before designing an API:
 
 ---
 
-## ❌ Anti-Patterns
+## âŒ Anti-Patterns
 
 **DON'T:**
 - Default to REST for everything

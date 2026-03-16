@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - frontend
   - localization
-skill-source: "[[i18n Localization SKILL|.agent/skills/i18n-localization/SKILL.md]]"
+skill-source: ".agent/skills/i18n-localization/SKILL.md"
 related-skills:
   - "[[Frontend Design]]"
   - "[[React Best Practices]]"
@@ -31,11 +31,11 @@ related-skills:
 
 | Project Type | i18n Needed? |
 |--------------|--------------|
-| Public web app | ✅ Yes |
-| SaaS product | ✅ Yes |
-| Internal tool | ⚠️ Maybe |
-| Single-region app | ⚠️ Consider future |
-| Personal project | ❌ Optional |
+| Public web app | âœ… Yes |
+| SaaS product | âœ… Yes |
+| Internal tool | âš ï¸ Maybe |
+| Single-region app | âš ï¸ Consider future |
+| Personal project | âŒ Optional |
 
 ---
 
@@ -77,23 +77,23 @@ print(_("Welcome to our app"))
 
 ```
 locales/
-├── en/
-│   ├── common.json
-│   ├── auth.json
-│   └── errors.json
-├── tr/
-│   ├── common.json
-│   ├── auth.json
-│   └── errors.json
-└── ar/          # RTL
-    └── ...
+â”œâ”€â”€ en/
+â”‚   â”œâ”€â”€ common.json
+â”‚   â”œâ”€â”€ auth.json
+â”‚   â””â”€â”€ errors.json
+â”œâ”€â”€ tr/
+â”‚   â”œâ”€â”€ common.json
+â”‚   â”œâ”€â”€ auth.json
+â”‚   â””â”€â”€ errors.json
+â””â”€â”€ ar/          # RTL
+    â””â”€â”€ ...
 ```
 
 ---
 
 ## 5. Best Practices
 
-### DO ✅
+### DO âœ…
 
 - Use translation keys, not raw text
 - Namespace translations by feature
@@ -102,7 +102,7 @@ locales/
 - Plan for RTL from the start
 - Use ICU message format for complex strings
 
-### DON'T ❌
+### DON'T âŒ
 
 - Hardcode strings in components
 - Concatenate translated strings

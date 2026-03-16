@@ -1,9 +1,9 @@
----
+﻿---
 tags:
   - agent-skill
   - quality
   - performance
-skill-source: "[[Performance Profiling SKILL|.agent/skills/performance-profiling/SKILL.md]]"
+skill-source: ".agent/skills/performance-profiling/SKILL.md"
 related-skills:
   - "[[React Best Practices]]"
   - "[[SEO Fundamentals]]"
@@ -14,7 +14,7 @@ related-skills:
 
 > Measure, analyze, optimize - in that order.
 
-## 🔧 Runtime Scripts
+## ðŸ”§ Runtime Scripts
 
 **Execute these for automated profiling:**
 
@@ -49,10 +49,10 @@ related-skills:
 ### The 4-Step Process
 
 ```
-1. BASELINE → Measure current state
-2. IDENTIFY → Find the bottleneck
-3. FIX → Make targeted change
-4. VALIDATE → Confirm improvement
+1. BASELINE â†’ Measure current state
+2. IDENTIFY â†’ Find the bottleneck
+3. FIX â†’ Make targeted change
+4. VALIDATE â†’ Confirm improvement
 ```
 
 ### Profiling Tool Selection
@@ -137,7 +137,7 @@ related-skills:
 
 ## 7. Anti-Patterns
 
-| ❌ Don't | ✅ Do |
+| âŒ Don't | âœ… Do |
 |----------|-------|
 | Guess at problems | Profile first |
 | Micro-optimize | Fix biggest issue |

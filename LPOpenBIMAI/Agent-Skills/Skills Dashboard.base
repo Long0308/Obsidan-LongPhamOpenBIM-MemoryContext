@@ -1,42 +1,38 @@
 filters:
   and:
     - file.hasTag("agent-skill")
-
 formulas:
-  nhom: 'if(group, group, "—")'
-  trigger_summary: 'if(role, role, "—")'
-  modified: 'file.mtime.format("YYYY-MM-DD")'
-  size_kb: '(file.size / 1024).round(1)'
-
+  nhom: if(group, group, "—")
+  trigger_summary: if(role, role, "—")
+  modified: file.mtime.format("YYYY-MM-DD")
+  size_kb: (file.size / 1024).round(1)
 properties:
   formula.nhom:
-    displayName: "Nhóm"
+    displayName: Nhóm
   formula.trigger_summary:
-    displayName: "Role"
+    displayName: Role
   formula.modified:
-    displayName: "Modified"
+    displayName: Modified
   formula.size_kb:
-    displayName: "Size (KB)"
-
+    displayName: Size (KB)
 views:
   - type: table
-    name: "📋 All Skills"
+    name: 📋 All Skills
+    groupBy:
+      property: formula.nhom
+      direction: ASC
     order:
       - file.name
       - formula.nhom
       - formula.trigger_summary
       - formula.modified
       - formula.size_kb
+  - type: cards
+    name: 🃏 Skill Cards
     groupBy:
       property: formula.nhom
       direction: ASC
-
-  - type: cards
-    name: "🃏 Skill Cards"
     order:
       - file.name
       - formula.nhom
       - formula.trigger_summary
-    groupBy:
-      property: formula.nhom
-      direction: ASC
