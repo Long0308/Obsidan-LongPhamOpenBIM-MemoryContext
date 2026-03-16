@@ -1,1 +1,1 @@
-Session 2026-03-16: Fixed sync button (no download, push to GitHub), fixed context gauge (DB persistence), added title/work_summary to session notes. 13 user queries, 4 decisions logged.
+Phase 1 Dashboard Hardening COMPLETE: (1) version v2.3?v2.5, (2) API retry with exponential backoff, (3) sync button sends lightweight context instead of overwriting, (4) green/red connection indicator, (5) 3 export buttons for sessions/quotas. All verified in browser.
