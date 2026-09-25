@@ -1,0 +1,271 @@
+{
+  "nodes": [
+    {
+      "id": "hub-center",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 120,
+      "type": "text",
+      "text": "# 🧠 SECOND BRAIN\n**Trung Tâm Điều Phối Ký Ức Đa IDE**\n*(Codex · VS Code · Antigravity)*",
+      "color": "1"
+    },
+    {
+      "id": "node-ws-61-SetupAgent",
+      "x": -500,
+      "y": -300,
+      "width": 280,
+      "height": 100,
+      "type": "text",
+      "text": "## 🏢 61.SetupAgent\nXem hub: [[workspaces/61-SetupAgent|Chi tiết]]",
+      "color": "4"
+    },
+    {
+      "id": "node-ws-50-LOpenBIMAI",
+      "x": 500,
+      "y": -300,
+      "width": 280,
+      "height": 100,
+      "type": "text",
+      "text": "## 📐 50.LOpenBIMAI\nXem hub: [[workspaces/50-LOpenBIMAI|Chi tiết]]",
+      "color": "5"
+    },
+    {
+      "id": "node-ws-Ban-Cai-Tien",
+      "x": -500,
+      "y": 300,
+      "width": 280,
+      "height": 100,
+      "type": "text",
+      "text": "## ⚡ Ban Cải Tiến\nXem hub: [[workspaces/Ban-Cai-Tien|Chi tiết]]",
+      "color": "6"
+    },
+    {
+      "id": "node-ws-hub-ai",
+      "x": 500,
+      "y": 300,
+      "width": 280,
+      "height": 100,
+      "type": "text",
+      "text": "## 🩺 hub-ai (Y tế/Nghiên cứu)\nXem hub: [[workspaces/hub-ai|Chi tiết]]",
+      "color": "3"
+    },
+    {
+      "id": "node-sess-01a0d6fb",
+      "x": 700,
+      "y": 180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0d6fb|là 1 bách sĩ nguyên khoa siêu âm tu...]]**\n`custom/oauth-anti-gemini-`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0d203",
+      "x": -700,
+      "y": -340,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0d203|kiểm tra và push toàn bộ code lên g...]]**\n`custom/oauth-anti-gemini-`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0d10f",
+      "x": -700,
+      "y": -260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0d10f|file:///D:/61.SetupAgent/Zalo-KKT/d...]]**\n`custom/oauth-anti-gemini-`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0ccda",
+      "x": -700,
+      "y": -180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0ccda|Kiểm tra và cập nhật các model mới ...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0ccd5",
+      "x": -700,
+      "y": 180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0ccd5|sử sụng và computer user kiểm tra d...]]**\n`custom/oauth-anti-gemini-`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0cccf",
+      "x": -700,
+      "y": 260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0cccf|kiểm tra hub ban cải tiến như nào r...]]**\n`gpt-6-luna`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0cbd3",
+      "x": 700,
+      "y": -260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0cbd3|hiện tại có skill , agent , hook ps...]]**\n`gpt-6-astra`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0c863",
+      "x": -700,
+      "y": -180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0c863|KKT-NEX-Tranning-BIM tối ưu luồng t...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0c84b",
+      "x": -700,
+      "y": -420,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0c84b|kiểm tra [ này nói gì...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0c7a8",
+      "x": -700,
+      "y": -340,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0c7a8|Reply with exactly: PONG...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a0c747",
+      "x": -700,
+      "y": -260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a0c747|UAT TASK. Output ONLY a JSON object...]]**\n`custom/oauth-anti-gemini-`",
+      "color": "2"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-center-61-SetupAgent",
+      "fromNode": "hub-center",
+      "fromSide": "left",
+      "toNode": "node-ws-61-SetupAgent",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-center-50-LOpenBIMAI",
+      "fromNode": "hub-center",
+      "fromSide": "right",
+      "toNode": "node-ws-50-LOpenBIMAI",
+      "toSide": "left"
+    },
+    {
+      "id": "edge-center-Ban-Cai-Tien",
+      "fromNode": "hub-center",
+      "fromSide": "left",
+      "toNode": "node-ws-Ban-Cai-Tien",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-center-hub-ai",
+      "fromNode": "hub-center",
+      "fromSide": "right",
+      "toNode": "node-ws-hub-ai",
+      "toSide": "left"
+    },
+    {
+      "id": "edge-ws-01a0d6fb",
+      "fromNode": "node-ws-hub-ai",
+      "fromSide": "right",
+      "toNode": "node-sess-01a0d6fb",
+      "toSide": "left"
+    },
+    {
+      "id": "edge-ws-01a0d203",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0d203",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0d10f",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0d10f",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0ccda",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0ccda",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0ccd5",
+      "fromNode": "node-ws-Ban-Cai-Tien",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0ccd5",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0cccf",
+      "fromNode": "node-ws-Ban-Cai-Tien",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0cccf",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0cbd3",
+      "fromNode": "node-ws-50-LOpenBIMAI",
+      "fromSide": "right",
+      "toNode": "node-sess-01a0cbd3",
+      "toSide": "left"
+    },
+    {
+      "id": "edge-ws-01a0c863",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0c863",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0c84b",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0c84b",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0c7a8",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0c7a8",
+      "toSide": "right"
+    },
+    {
+      "id": "edge-ws-01a0c747",
+      "fromNode": "node-ws-61-SetupAgent",
+      "fromSide": "left",
+      "toNode": "node-sess-01a0c747",
+      "toSide": "right"
+    }
+  ]
+}
