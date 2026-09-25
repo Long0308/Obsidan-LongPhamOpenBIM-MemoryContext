@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"b1c2d3e4f5a60001","type":"group","x":-400,"y":-300,"width":1200,"height":200,"color":"3","label":"🧠 Memory Gateway API"},
+		{"id":"b1c2d3e4f5a60020","type":"group","x":-400,"y":400,"width":1050,"height":200,"color":"1","label":"💾 Backend Adapters (Fallback Chain)"},
+		{"id":"b1c2d3e4f5a60030","type":"group","x":-400,"y":900,"width":1050,"height":200,"color":"6","label":"📁 Memory Storage"},
+		{"id":"b1c2d3e4f5a60010","type":"group","x":-400,"y":20,"width":700,"height":200,"color":"5","label":"⚙️ Middleware"},
+		{"id":"b1c2d3e4f5a60021","type":"text","text":"## 🟢 Insforge\nSQLite + pgvector\nSemantic search\n**Primary adapter**","x":-350,"y":460,"width":250,"height":100,"color":"1"},
+		{"id":"b1c2d3e4f5a60022","type":"text","text":"## 🟡 Supabase\nRemote Postgres\nCross-device sync\n**Backup adapter**","x":-50,"y":460,"width":250,"height":100,"color":"2"},
+		{"id":"b1c2d3e4f5a60002","type":"text","text":"## Gateway Interface\n`store()` · `recall()` · `search()`\n`link()` · `traverse()` · `sync()`\n`export()` · `import()` · `health()`","x":-350,"y":-250,"width":350,"height":100,"color":"3"},
+		{"id":"b1c2d3e4f5a60003","type":"file","file":".agent/memory/gateway/interface.ts","x":50,"y":-250,"width":300,"height":100},
+		{"id":"b1c2d3e4f5a60004","type":"file","file":".agent/memory/gateway/ops.ts","x":400,"y":-250,"width":300,"height":100},
+		{"id":"b1c2d3e4f5a60013","type":"text","text":"### Decay Manager\nAuto-archive stale\nAccess-based scoring","x":150,"y":210,"width":200,"height":80,"color":"5"},
+		{"id":"b1c2d3e4f5a60023","type":"text","text":"## 🟢 SQLite\nLocal agent.db\nAlways available\n**Offline fallback**","x":250,"y":460,"width":250,"height":100,"color":"4"},
+		{"id":"b1c2d3e4f5a60012","type":"text","text":"### Ops Logger\nAppend-only journal\nReplay + audit trail","x":-100,"y":80,"width":200,"height":80,"color":"5"},
+		{"id":"b1c2d3e4f5a60011","type":"text","text":"### Fallback Controller\nInsforge → Supabase → SQLite\nTransparent failover","x":-350,"y":80,"width":210,"height":90,"color":"5"},
+		{"id":"b1c2d3e4f5a60031","type":"text","text":"### Obsidian KG\n📝 markdown notes\n🔗 wikilink graph\n📊 bases views\n🖼️ canvas maps","x":-350,"y":960,"width":250,"height":100,"color":"6"},
+		{"id":"b1c2d3e4f5a60032","type":"text","text":"### Projects Memory\n`memory/projects/`\nContexts · Decisions\nEntities · Sessions","x":-50,"y":960,"width":250,"height":100,"color":"3"},
+		{"id":"b1c2d3e4f5a60033","type":"text","text":"### Long-Term Memory\npreferences · tech-stack\npatterns · people\n**Permanent, no decay**","x":250,"y":960,"width":250,"height":100,"color":"3"},
+		{"id":"b1c2d3e4f5a60034","type":"text","text":"### Archive\n`memory/archive/`\ndecayScore < 0.1\n**Cold storage**","x":820,"y":910,"width":200,"height":100,"color":"1"}
+	],
+	"edges":[
+		{"id":"f1a2b3c4d5e60001","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60011","toSide":"top"},
+		{"id":"f1a2b3c4d5e60002","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60012","toSide":"top"},
+		{"id":"f1a2b3c4d5e60003","fromNode":"b1c2d3e4f5a60002","fromSide":"bottom","toNode":"b1c2d3e4f5a60013","toSide":"top"},
+		{"id":"f1a2b3c4d5e60004","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60021","toSide":"top","label":"primary"},
+		{"id":"f1a2b3c4d5e60005","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60022","toSide":"top","label":"fallback"},
+		{"id":"f1a2b3c4d5e60006","fromNode":"b1c2d3e4f5a60011","fromSide":"bottom","toNode":"b1c2d3e4f5a60023","toSide":"top","label":"offline"},
+		{"id":"f1a2b3c4d5e60007","fromNode":"b1c2d3e4f5a60021","fromSide":"right","toNode":"b1c2d3e4f5a60022","toSide":"left","label":"sync"},
+		{"id":"f1a2b3c4d5e60008","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60031","toSide":"top","label":"export .md"},
+		{"id":"f1a2b3c4d5e60009","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60032","toSide":"top","label":"per-project"},
+		{"id":"f1a2b3c4d5e60010","fromNode":"b1c2d3e4f5a60021","fromSide":"bottom","toNode":"b1c2d3e4f5a60033","toSide":"top","label":"global"},
+		{"id":"f1a2b3c4d5e60011","fromNode":"b1c2d3e4f5a60013","fromSide":"bottom","toNode":"b1c2d3e4f5a60034","toSide":"top","label":"archive"}
+	]
+}

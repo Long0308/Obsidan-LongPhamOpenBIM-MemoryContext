@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiến Trúc 4 Tầng Second Brain Harness — LPOpenBIM</title>
+  <style>
+    :root {
+      --bg: #F7FAFD;
+      --card-bg: #FFFFFF;
+      --text: #0A2540;
+      --text-muted: #5C6795;
+      --primary: #0B4FD9;
+      --primary-soft: #E8F0FE;
+      --border: #DDE5F0;
+      --border-focus: #0B4FD9;
+      --success: #3E8914;
+      --success-soft: #EBF8E7;
+      --danger: #D00000;
+      --danger-soft: #FDE8E8;
+      --tier1: #0B4FD9;
+      --tier2: #0284C7;
+      --tier3: #4338CA;
+      --tier4: #0F766E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+    }
+
+    .header-titles h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(11, 79, 217, 0.2);
+    }
+
+    .header-titles p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .header-kpi {
+      display: flex;
+      gap: 16px;
+    }
+
+    .kpi-box {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 14px;
+      text-align: right;
+    }
+
+    .kpi-box .val {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .kpi-box .lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Diagram Canvas */
+    .diagram-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+    }
+
+    .canvas-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      background: #FFFFFF;
+      border: 1px solid #EEF3FA;
+    }
+
+    .node {
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .node:hover {
+      filter: drop-shadow(0 4px 12px rgba(11, 79, 217, 0.15));
+    }
+
+    .node rect {
+      stroke-width: 1.5;
+      rx: 8;
+      ry: 8;
+    }
+
+    .node text.title {
+      font-size: 13px;
+      font-weight: 700;
+      fill: var(--text);
+    }
+
+    .node text.sub {
+      font-size: 10.5px;
+      fill: var(--text-muted);
+    }
+
+    .conn-line {
+      fill: none;
+      stroke: #5B9BF5;
+      stroke-width: 2;
+    }
+
+    .conn-line.active {
+      stroke: var(--primary);
+      stroke-width: 2.5;
+      stroke-dasharray: 6 3;
+      animation: dash 1s linear infinite;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -9; }
+    }
+
+    .conn-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      fill: var(--text-muted);
+      background: #FFF;
+    }
+
+    /* Details Panel */
+    .grid-details {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+    }
+
+    .card h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tier-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tier-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      background: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tier-item:hover, .tier-item.active {
+      border-color: var(--primary);
+      background: var(--card-bg);
+      box-shadow: 0 2px 8px rgba(11, 79, 217, 0.08);
+    }
+
+    .tier-info strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .tier-info span {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: block;
+    }
+
+    .tier-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+    }
+
+    /* Detail Inspector */
+    .inspector-content {
+      font-size: 12.5px;
+      color: var(--text);
+    }
+
+    .inspector-content p {
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+
+    .inspector-metric {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .metric-item {
+      background: var(--bg);
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .metric-item .m-title {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .metric-item .m-val {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-titles">
+      <h1>
+        Kiến Trúc 4 Tầng Second Brain Harness
+        <span class="badge-pill">Production Ready</span>
+      </h1>
+      <p>Tách bạch hoàn toàn: Tạo sinh (LLM) · Phán đoán & Nén (Jev) · Lưu vết lịch sử (InsForge/Obsidian) · Ký ức dài hạn (Hindsight)</p>
+    </div>
+    <div class="header-kpi">
+      <div class="kpi-box">
+        <div class="val">1.5s / turn</div>
+        <div class="lbl">Tốc độ DeepSeek</div>
+      </div>
+      <div class="kpi-box">
+        <div class="val">&lt; 80k Tokens</div>
+        <div class="lbl">Context Active</div>
+      </div>
+      <div class="kpi-box">
+        <div class="val">$0.042 / 1M</div>
+        <div class="lbl">Jev System One</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sơ đồ kiến trúc SVG trực quan -->
+  <div class="diagram-panel">
+    <div class="canvas-title">
+      <span>SƠ ĐỒ LUỒNG DỮ LIỆU ĐIỀU PHỐI (VIEWBOX: 1360 × 580)</span>
+      <span style="color: var(--primary); font-size: 11px;">Nhấp vào từng khối để xem chi tiết kỹ thuật</span>
+    </div>
+
+    <svg viewBox="0 0 1360 580">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="#0B4FD9" />
+        </marker>
+        <marker id="arrow-soft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="#5B9BF5" />
+        </marker>
+      </defs>
+
+      <!-- Vùng phân cách các Tầng -->
+      <rect x="20" y="20" width="480" height="540" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4" />
+      <text x="35" y="45" font-size="11" font-weight="700" fill="#64748B">TẦNG 0: ĐA MÁY KHÁCH & ĐIỀU PHỐI (IDE & GATEWAY)</text>
+
+      <rect x="520" y="20" width="270" height="540" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" stroke-dasharray="4" />
+      <text x="535" y="45" font-size="11" font-weight="700" fill="#15803D">TẦNG 1 & 2: THỰC THI & NÉN NGỮ CẢNH</text>
+
+      <rect x="810" y="20" width="260" height="540" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1" stroke-dasharray="4" />
+      <text x="825" y="45" font-size="11" font-weight="700" fill="#1D4ED8">TẦNG 3: LƯU VẾT & QUAN HỆ (OFFLOAD)</text>
+
+      <rect x="1090" y="20" width="250" height="540" rx="10" fill="#FDF4FF" stroke="#F5D0FE" stroke-width="1" stroke-dasharray="4" />
+      <text x="1105" y="45" font-size="11" font-weight="700" fill="#A21CAF">TẦNG 4: TRI THỨC DÀI HẠN</text>
+
+      <!-- Đường kết nối (Connections) -->
+      <!-- IDE -> Router -->
+      <path d="M 210 240 L 260 240" class="conn-line active" marker-end="url(#arrow)" />
+      
+      <!-- Router -> LLM -->
+      <path d="M 460 210 Q 500 130 540 130" class="conn-line active" marker-end="url(#arrow)" />
+      
+      <!-- Router -> Jev (khi prompt >= 100k) -->
+      <path d="M 460 270 Q 500 370 540 370" class="conn-line" marker-end="url(#arrow-soft)" stroke-dasharray="4" />
+      
+      <!-- Jev -> InsForge -->
+      <path d="M 760 370 Q 790 370 820 250" class="conn-line" marker-end="url(#arrow-soft)" />
+      
+      <!-- Jev -> Obsidian -->
+      <path d="M 760 380 L 820 420" class="conn-line" marker-end="url(#arrow-soft)" />
+
+      <!-- InsForge / Obsidian -> Sync Memory Bank -->
+      <path d="M 1040 240 L 1100 240" class="conn-line active" marker-end="url(#arrow)" />
+
+      <!-- Sync Memory -> Hindsight -->
+      <path d="M 1210 280 L 1210 370" class="conn-line active" marker-end="url(#arrow)" />
+
+      <!-- Nodes -->
+      <!-- 1. IDEs -->
+      <g class="node" onclick="inspect('ide')">
+        <rect x="40" y="190" width="170" height="100" fill="#FFFFFF" stroke="#0B4FD9" />
+        <text x="55" y="225" class="title">Đa Client IDE</text>
+        <text x="55" y="245" class="sub">Codex · Claude Code</text>
+        <text x="55" y="260" class="sub">VS Code · Antigravity</text>
+      </g>
+
+      <!-- 2. Codex Router -->
+      <g class="node" onclick="inspect('router')">
+        <rect x="270" y="190" width="190" height="100" fill="#FFFFFF" stroke="#0B4FD9" />
+        <text x="285" y="220" class="title">Codex Router (:4202)</text>
+        <text x="285" y="240" class="sub">• repeatedSegmentCollapse</text>
+        <text x="285" y="255" class="sub">• bridgeCustomTools</text>
+        <text x="285" y="270" class="sub">• autoCompact: 160k</text>
+      </g>
+
+      <!-- 3. LLM Engine -->
+      <g class="node" onclick="inspect('llm')">
+        <rect x="550" y="80" width="210" height="100" fill="#FFFFFF" stroke="#15803D" />
+        <text x="565" y="115" class="title">TẦNG 1: LLM Engine</text>
+        <text x="565" y="135" class="sub">DeepSeek V4.1 · Claude 3.7</text>
+        <text x="565" y="150" class="sub">GPT-5.6 · GLM-5.3</text>
+        <text x="565" y="165" class="sub" fill="#15803D" font-weight="bold">Tốc độ: 1.5s (Context &lt; 80k)</text>
+      </g>
+
+      <!-- 4. Jev Fast Compactor -->
+      <g class="node" onclick="inspect('jev')">
+        <rect x="550" y="320" width="210" height="100" fill="#FFFFFF" stroke="#0284C7" />
+        <text x="565" y="355" class="title">TẦNG 2: Jev Compactor</text>
+        <text x="565" y="375" class="sub">TypeSafe AI ($0.042/1M)</text>
+        <text x="565" y="390" class="sub">Scoring p(drop) trong 1s</text>
+        <text x="565" y="405" class="sub" fill="#0284C7" font-weight="bold">Giữ Verbatim, Không tóm tắt</text>
+      </g>
+
+      <!-- 5. InsForge Backend -->
+      <g class="node" onclick="inspect('insforge')">
+        <rect x="830" y="190" width="200" height="100" fill="#FFFFFF" stroke="#1D4ED8" />
+        <text x="845" y="225" class="title">TẦNG 3A: InsForge SQL</text>
+        <text x="845" y="245" class="sub">PostgreSQL / PostgREST</text>
+        <text x="845" y="260" class="sub">Lưu Session, Raw Tool logs,</text>
+        <text x="845" y="275" class="sub">Checkpoints & Diff history</text>
+      </g>
+
+      <!-- 6. Obsidian Vault -->
+      <g class="node" onclick="inspect('obsidian')">
+        <rect x="830" y="370" width="200" height="100" fill="#FFFFFF" stroke="#4338CA" />
+        <text x="845" y="405" class="title">TẦNG 3B: Obsidian Vault</text>
+        <text x="845" y="425" class="sub">D:\20.Obsidian\MemoryContext</text>
+        <text x="845" y="440" class="sub">Karpathy LLM Wiki Pattern</text>
+        <text x="845" y="455" class="sub">raw/ · wiki/ · projects/</text>
+      </g>
+
+      <!-- 7. Sync Memory Bank -->
+      <g class="node" onclick="inspect('sync')">
+        <rect x="1110" y="190" width="210" height="90" fill="#FFFFFF" stroke="#A21CAF" />
+        <text x="1125" y="225" class="title">Bộ Lọc Tinh Hoa</text>
+        <text x="1125" y="245" class="sub">/sync-memory-bank</text>
+        <text x="1125" y="260" class="sub">Rút 3–5 Fact cốt lõi cuối phiên</text>
+      </g>
+
+      <!-- 8. Hindsight Graph -->
+      <g class="node" onclick="inspect('hindsight')">
+        <rect x="1110" y="370" width="210" height="100" fill="#FFFFFF" stroke="#A21CAF" />
+        <text x="1125" y="405" class="title">TẦNG 4: Hindsight Graph</text>
+        <text x="1125" y="425" class="sub">Graph RAG (:8888/:8890)</text>
+        <text x="1125" y="440" class="sub">may-agent-memory · 0-token</text>
+        <text x="1125" y="455" class="sub">Bền vững qua mọi Agent</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Details Grid -->
+  <div class="grid-details">
+    <div class="card">
+      <h2>Danh Mục Phân Tầng Hệ Thống</h2>
+      <div class="tier-list">
+        <div class="tier-item active" onclick="inspect('llm')">
+          <div class="tier-info">
+            <strong>Tầng 1: Active Execution — LLM Engine</strong>
+            <span>DeepSeek V4.1, Claude 3.7, GPT-5.6 — Xử lý nghiệp vụ chính với prompt luôn siêu nhẹ.</span>
+          </div>
+          <span class="tier-tag" style="color: #15803D;">&lt; 80k Tokens</span>
+        </div>
+
+        <div class="tier-item" onclick="inspect('jev')">
+          <div class="tier-info">
+            <strong>Tầng 2: Decision & Pruning — Jev Fast Compactor</strong>
+            <span>TypeSafe System One — Lọc cắt tỉa tool calls/results rác trong 1 giây, giữ verbatim code & lỗi.</span>
+          </div>
+          <span class="tier-tag" style="color: #0284C7;">$0.042 / 1M</span>
+        </div>
+
+        <div class="tier-item" onclick="inspect('insforge')">
+          <div class="tier-info">
+            <strong>Tầng 3: Structured History — InsForge SQL & Obsidian</strong>
+            <span>Lưu vết toàn bộ session transcripts, diffs và ghi chú đồ thị Markdown liên kết Karpathy.</span>
+          </div>
+          <span class="tier-tag" style="color: #1D4ED8;">PostgreSQL & Vault</span>
+        </div>
+
+        <div class="tier-item" onclick="inspect('hindsight')">
+          <div class="tier-info">
+            <strong>Tầng 4: Long-Term Knowledge — Hindsight Graph RAG</strong>
+            <span>Kho ký ức vĩnh viễn không ô nhiễm, đồng bộ 3-5 facts mỗi phiên qua /sync-memory-bank.</span>
+          </div>
+          <span class="tier-tag" style="color: #A21CAF;">Graph RAG</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inspector -->
+    <div class="card">
+      <h2>Chi Tiết Thành Phần</h2>
+      <div id="inspector-body" class="inspector-content">
+        <h3 id="ins-title" style="font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px;">TẦNG 1: LLM Engine</h3>
+        <p id="ins-desc">Tập trung hoàn toàn vào việc suy luận và sinh mã. Nhờ việc Context được nén liên tục dưới 80k-100k tokens, Attention của mô hình đạt độ tập trung cao nhất, loại bỏ hoàn toàn hiện tượng CoT lặp từ.</p>
+        
+        <div class="inspector-metric">
+          <div class="metric-item">
+            <div class="m-title">Độ trễ trung bình</div>
+            <div class="m-val" id="ins-lat">1.45s / turn</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-title">Giao thức</div>
+            <div class="m-val" id="ins-proto">Responses / Chat</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-title">Ngưỡng nén Auto</div>
+            <div class="m-val" id="ins-thresh">160,000 tokens</div>
+          </div>
+          <div class="metric-item">
+            <div class="m-title">Trạng thái Router</div>
+            <div class="m-val" id="ins-status">Active Healthy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const DETAILS = {
+    ide: {
+      title: "Đa Client IDE (Codex · Claude · VS Code)",
+      desc: "Tất cả các môi trường lập trình của lập trình viên gửi request tới Gateway tập trung qua cấu hình chuẩn OpenAI hoặc Responses API.",
+      lat: "Tức thì (Local)",
+      proto: "HTTP / stdio MCP",
+      thresh: "Không giới hạn",
+      status: "Connected"
+    },
+    router: {
+      title: "Codex Router Core (:4202)",
+      desc: "Bộ điều phối thông minh trung tâm. Tích hợp bộ lọc cắt câu lặp repeatedSegmentCollapseTransform và chuyển đổi Custom Tool thành Function Tool cho 100% các model.",
+      lat: "< 10ms proxy",
+      proto: "Responses API (:4202)",
+      thresh: "autoCompact: 160k",
+      status: "Listen (200 OK)"
+    },
+    llm: {
+      title: "TẦNG 1: LLM Engine (DeepSeek / Claude)",
+      desc: "Tập trung hoàn toàn vào việc suy luận và sinh mã. Nhờ Context luôn duy trì dưới 80k-100k tokens, Attention của mô hình đạt độ tập trung cao nhất, loại bỏ hoàn toàn bẫy lặp CoT.",
+      lat: "1.45s / turn",
+      proto: "Chat Completions",
+      thresh: "Context < 80k",
+      status: "Healthy (250 models)"
+    },
+    jev: {
+      title: "TẦNG 2: Jev Fast Compactor (TypeSafe)",
+      desc: "Model System One chuyên phán đoán relevance. Chấm điểm p(drop) cho từng tool call & result trong 1 giây mà không tóm tắt, giữ nguyên vẹn dòng code và thông báo lỗi then chốt.",
+      lat: "< 1.0s instant",
+      proto: "REST / SDK",
+      thresh: "$0.042 / 1M tokens",
+      status: "Configured (Key Verified)"
+    },
+    insforge: {
+      title: "TẦNG 3A: InsForge Backend (PostgreSQL)",
+      desc: "Nơi lưu vết toàn bộ session transcripts, tool calls raw, diffs và checkpoints lịch sử, sẵn sàng cho việc query lại mà không làm nghẽn RAM ngữ cảnh hiện tại.",
+      lat: "< 15ms query",
+      proto: "PostgreSQL / PostgREST",
+      thresh: "Offload 100% raw",
+      status: "Docker Compose Ready"
+    },
+    obsidian: {
+      title: "TẦNG 3B: Obsidian Vault (MemoryContext)",
+      desc: "Kho ghi chú Plaintext Markdown tại D:\\20.Obsidian\\MemoryContext. Tổ chức theo chuẩn Karpathy LLM Wiki (raw/, wiki/, projects/), kết nối Wikilinks & Canvas trực quan.",
+      lat: "0ms Local SSD",
+      proto: "Markdown / Git Sync",
+      thresh: "148+ Notes Linked",
+      status: "Local Git Synced"
+    },
+    sync: {
+      title: "Bộ Lọc Tinh Hoa (/sync-memory-bank)",
+      desc: "Chặn rác trước khi đưa vào Hindsight. Rút tỉa chính xác 3–7 fact then chốt (quyết định kiến trúc, lỗi đã fix) vào cuối phiên làm việc.",
+      lat: "Cuối phiên / milestone",
+      proto: "Python script / MCP",
+      thresh: "3 - 7 Fact / session",
+      status: "Enforced Policy"
+    },
+    hindsight: {
+      title: "TẦNG 4: Hindsight Knowledge Graph (:8888/:8890)",
+      desc: "Đồ thị tri thức thực thể bền vững (Graph RAG). Hỗ trợ recall tức thì (0 token) cho mọi agent ở các phiên sau, không bao giờ bị ô nhiễm bởi log rác.",
+      lat: "< 1ms recall",
+      proto: "REST / Vector + Graph",
+      thresh: "0 token recall",
+      status: "Up (Healthy)"
+    }
+  };
+
+  function inspect(id) {
+    const data = DETAILS[id];
+    if (!data) return;
+    document.getElementById("ins-title").textContent = data.title;
+    document.getElementById("ins-desc").textContent = data.desc;
+    document.getElementById("ins-lat").textContent = data.lat;
+    document.getElementById("ins-proto").textContent = data.proto;
+    document.getElementById("ins-thresh").textContent = data.thresh;
+    document.getElementById("ins-status").textContent = data.status;
+
+    document.querySelectorAll(".tier-item").forEach(item => item.classList.remove("active"));
+  }
+</script>
+
+</body>
+</html>

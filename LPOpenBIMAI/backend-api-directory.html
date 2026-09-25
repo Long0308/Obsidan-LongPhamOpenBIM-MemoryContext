@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LPOpenBIM — Danh Mục API & Dịch Vụ Toàn Hệ Thống</title>
+  <style>
+    :root {
+      --bg: #F7FAFD;
+      --card-bg: #FFFFFF;
+      --text: #0A2540;
+      --text-muted: #5C6795;
+      --primary: #0B4FD9;
+      --primary-soft: #E8F0FE;
+      --border: #DDE5F0;
+      --success: #3E8914;
+      --success-soft: #EBF8E7;
+      --warning: #B45309;
+      --warning-soft: #FEF3C7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .badge-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(11, 79, 217, 0.2);
+    }
+
+    .grid-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 20px;
+    }
+
+    .api-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 6px rgba(10, 37, 64, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .api-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .api-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .api-endpoint {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 3px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    .status-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--success-soft);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--success);
+      border-radius: 50%;
+    }
+
+    .api-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .endpoint-list {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      margin-bottom: 14px;
+    }
+
+    .endpoint-list div {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .endpoint-list div:last-child {
+      margin-bottom: 0;
+    }
+
+    .method {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .method.get { background: #E0F2FE; color: #0284C7; }
+    .method.post { background: #DCFCE7; color: #16A34A; }
+
+    .ep-path {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--text);
+    }
+
+    .api-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      transition: all 0.15s;
+    }
+
+    .btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .btn.btn-primary {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .btn.btn-primary:hover {
+      background: #0940b5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>
+        LPOpenBIM — Backend API Directory
+        <span class="badge-pill">Central Hub</span>
+      </h1>
+      <p>Tổng hợp toàn bộ điểm cuối API, dịch vụ điều phối, cơ sở dữ liệu và giám sát trong hệ thống.</p>
+    </div>
+    <div>
+      <span class="status-badge">TẤT CẢ DỊCH VỤ HOẠT ĐỘNG</span>
+    </div>
+  </div>
+
+  <div class="grid-sections">
+    <!-- 1. Supabase PostgREST API -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Supabase Data REST API (PostgREST)</div>
+          <span class="api-endpoint">http://127.0.0.1:3003</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Tự động sinh RESTful API chuẩn OpenAPI v3 từ cơ sở dữ liệu PostgreSQL. Hỗ trợ query lọc, sắp xếp, pagination và insert/update dữ liệu.</div>
+      <div class="endpoint-list">
+        <div><span class="method get">GET</span> <span class="ep-path">/bookmarks?category=eq.01-NEX</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/memory_facts?bank_id=eq.may-agent-memory</span></div>
+        <div><span class="method post">POST</span> <span class="ep-path">/session_records</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:3003" target="_blank" class="btn btn-primary">OpenAPI Spec (JSON)</a>
+        <a href="http://127.0.0.1:8012/project/default/editor" target="_blank" class="btn">Mở Supabase Studio</a>
+      </div>
+    </div>
+
+    <!-- 2. Supabase Auth (GoTrue) -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Supabase Auth & SSO (GoTrue)</div>
+          <span class="api-endpoint">http://127.0.0.1:9998</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Hệ thống xác thực người dùng, cấp phát JWT Tokens, quản lý phân quyền thành viên và xác thực đăng nhập một lần (SSO) qua Google & Microsoft Azure.</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/token?grant_type=password</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/user (Yêu cầu Bearer Token)</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/authorize?provider=google</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:9998/health" target="_blank" class="btn btn-primary">Health Endpoint</a>
+        <a href="http://127.0.0.1:8012/project/default/auth/users" target="_blank" class="btn">Quản Lý Users</a>
+      </div>
+    </div>
+
+    <!-- 3. Codex Router Core -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Codex Router Core</div>
+          <span class="api-endpoint">http://127.0.0.1:4202</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Điều phối model thông minh cho Codex Desktop & Claude Code. Tích hợp bộ lọc cắt câu lặp và chuyển đổi Custom Tool calling thành Function Tool calling.</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/responses (OpenAI Responses API)</span></div>
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/chat/completions</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/health (Trạng thái router)</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:4202/health" target="_blank" class="btn btn-primary">Kiểm Tra Health</a>
+        <a href="http://127.0.0.1:4400/setup/" target="_blank" class="btn">Router Setup</a>
+      </div>
+    </div>
+
+    <!-- 4. New-API Gateway -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">New-API Token & Quota Gateway</div>
+          <span class="api-endpoint">http://127.0.0.1:3300</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Ngân hàng Quota trung tâm, quản lý kênh xoay OpenCode Go (Channel 16/17), Command Code, Claude, và phát key theo vai.</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/chat/completions</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/api/user/self</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/api/channel/</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:3300" target="_blank" class="btn btn-primary">Mở New-API</a>
+        <a href="http://127.0.0.1:20128" target="_blank" class="btn">9Router :20128</a>
+      </div>
+    </div>
+
+    <!-- 5. Hindsight Local -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Hindsight Memory Local (BIM-02)</div>
+          <span class="api-endpoint">http://127.0.0.1:8890</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Đồ thị tri thức lưu vết ký ức làm việc của BIM-02 (may-agent-memory, may-skill, may-ban-cai-tien). Hỗ trợ tra cứu 0-token.</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/default/banks/{bank}/memories/recall</span></div>
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/default/banks/{bank}/memories</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">/v1/default/banks</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:5180" target="_blank" class="btn btn-primary">Hindsight Console :5180</a>
+        <a href="http://127.0.0.1:8890/v1/default/banks" target="_blank" class="btn">Danh Sách Banks</a>
+      </div>
+    </div>
+
+    <!-- 6. Hindsight VPS & NEX Zalo -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Hindsight & NEX Backend (VPS)</div>
+          <span class="api-endpoint">http://192.168.26.10:8888</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Hệ thống ký ức 17 bank của Khối Kỹ Thuật (kkt, da-kkt-tranning-bim, train-kkt-qaqc) và server Hindsight-BIM-MCP (:8791).</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/default/banks/kkt/memories/recall</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">http://192.168.26.10:4900/docs (NEX Swagger)</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">http://192.168.26.10:8791/mcp (BIM MCP)</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://192.168.26.10:4900/docs" target="_blank" class="btn btn-primary">NEX API Swagger</a>
+        <a href="http://192.168.26.10:9119" target="_blank" class="btn">Hermes VPS</a>
+      </div>
+    </div>
+
+    <!-- 7. Grafana Telemetry -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Grafana & Telemetry Monitoring</div>
+          <span class="api-endpoint">http://127.0.0.1:3001</span>
+        </div>
+        <span class="status-badge">LIVE</span>
+      </div>
+      <div class="api-desc">Dashboard giám sát tài nguyên (CPU %, RAM MB) và live logs tập trung (Loki) của toàn bộ container sa-* trong hệ thống.</div>
+      <div class="endpoint-list">
+        <div><span class="method get">GET</span> <span class="ep-path">/api/dashboards/uid/setupagent-telemetry</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">http://127.0.0.1:9090/api/v1/query (Prometheus)</span></div>
+        <div><span class="method get">GET</span> <span class="ep-path">http://127.0.0.1:8085/metrics (cAdvisor)</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="http://127.0.0.1:3001/d/setupagent-telemetry/setupagent-container-telemetry-and-logs" target="_blank" class="btn btn-primary">Mở Grafana Dashboard</a>
+        <a href="http://127.0.0.1:8085" target="_blank" class="btn">cAdvisor</a>
+      </div>
+    </div>
+
+    <!-- 8. Jev TypeSafe Decision Engine -->
+    <div class="api-card">
+      <div class="api-card-head">
+        <div>
+          <div class="api-title">Jev TypeSafe System One (Engine Nén)</div>
+          <span class="api-endpoint">https://api.typesafe.ai</span>
+        </div>
+        <span class="status-badge">AUTHENTICATED</span>
+      </div>
+      <div class="api-desc">Model System One chuyên phán đoán relevance, nén ngữ cảnh tức thì trong 1 giây ($0.042/1M tokens, 0 token tạo sinh).</div>
+      <div class="endpoint-list">
+        <div><span class="method post">POST</span> <span class="ep-path">/v1/system_one (Choice / Noul Evaluation)</span></div>
+        <div><span class="method get">CLI</span> <span class="ep-path">python jev_bridge.py --mode doctor</span></div>
+        <div><span class="method get">CLI</span> <span class="ep-path">python compact_context.py --input ...</span></div>
+      </div>
+      <div class="api-card-actions">
+        <a href="https://console.typesafe.ai/keys" target="_blank" class="btn btn-primary">TypeSafe Console</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

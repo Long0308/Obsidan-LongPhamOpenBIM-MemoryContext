@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Canvas Neon Glow Theme for Obsidian
+   Cyberpunk neon aesthetics with 6-color glow system + Focus Dim
+   From skill: obsidian-canvas-theme
+   ========================================================================== */
+
+/* Dark canvas background */
+.canvas-background {
+  background-color: #0a0e17 !important;
+}
+
+/* Glowing edges */
+.canvas-edges path {
+  filter: drop-shadow(0 0 3px rgba(0, 200, 255, 0.4))
+          drop-shadow(0 0 8px rgba(0, 200, 255, 0.15));
+  stroke-width: 2.5px;
+}
+
+/* Glassmorphism path labels */
+.canvas-path-label {
+  background: rgba(10, 14, 23, 0.75) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 200, 255, 0.3) !important;
+  border-radius: 6px !important;
+  color: #e2e8f0 !important;
+  font-size: 11px !important;
+  padding: 3px 8px !important;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.15);
+}
+
+/* Hover animation on nodes */
+.canvas-node {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+}
+.canvas-node:hover {
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+/* Group nodes */
+.canvas-node[data-node-type="group"] .canvas-node-container {
+  border-style: dashed !important;
+  border-width: 1.5px !important;
+  background-color: rgba(10, 14, 23, 0.4) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Neon Node Borders — 6 Color Semantics */
+/* 1: Red (Deploy / Critical) */
+.canvas-node[data-color="1"] .canvas-node-container {
+  border-color: rgba(255, 70, 80, 0.8) !important;
+  box-shadow: 0 0 12px rgba(255, 70, 80, 0.3), inset 0 0 8px rgba(255, 70, 80, 0.1) !important;
+}
+/* 2: Orange (QA/QC / Warning) */
+.canvas-node[data-color="2"] .canvas-node-container {
+  border-color: rgba(255, 160, 50, 0.8) !important;
+  box-shadow: 0 0 12px rgba(255, 160, 50, 0.3), inset 0 0 8px rgba(255, 160, 50, 0.1) !important;
+}
+/* 3: Yellow (Architecture / Config / Gateway) */
+.canvas-node[data-color="3"] .canvas-node-container {
+  border-color: rgba(255, 220, 70, 0.8) !important;
+  box-shadow: 0 0 12px rgba(255, 220, 70, 0.3), inset 0 0 8px rgba(255, 220, 70, 0.1) !important;
+}
+/* 4: Green (CAD / Data / LLM Execution) */
+.canvas-node[data-color="4"] .canvas-node-container {
+  border-color: rgba(50, 230, 130, 0.8) !important;
+  box-shadow: 0 0 12px rgba(50, 230, 130, 0.3), inset 0 0 8px rgba(50, 230, 130, 0.1) !important;
+}
+/* 5: Cyan (MEP / Core / Decision Jev) */
+.canvas-node[data-color="5"] .canvas-node-container {
+  border-color: rgba(0, 200, 255, 0.8) !important;
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.3), inset 0 0 8px rgba(0, 200, 255, 0.1) !important;
+}
+/* 6: Purple (Utility / Archive / Knowledge) */
+.canvas-node[data-color="6"] .canvas-node-container {
+  border-color: rgba(180, 100, 255, 0.8) !important;
+  box-shadow: 0 0 12px rgba(180, 100, 255, 0.3), inset 0 0 8px rgba(180, 100, 255, 0.1) !important;
+}
+
+/* Focus Dim — SQL-style Relationship Highlight */
+.canvas:has(.canvas-node.is-focused) .canvas-node:not(.is-focused) {
+  opacity: 0.25;
+  filter: blur(0.5px);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+.canvas:has(.canvas-node.is-focused) .canvas-edges {
+  opacity: 0.18;
+}
+.canvas-node.is-focused {
+  opacity: 1 !important;
+  transform: scale(1.03);
+  z-index: 50 !important;
+}

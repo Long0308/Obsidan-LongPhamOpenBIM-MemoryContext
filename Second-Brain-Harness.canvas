@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"grp_tier4","type":"group","text":"🧠 TẦNG 4: TRI THỨC DÀI HẠN & GIÁM SÁT (HINDSIGHT & TELEMETRY)","x":1080,"y":480,"width":1680,"height":700,"color":"1","label":"🧠 TẦNG 4: TRI THỨC DÀI HẠN & GIÁM SÁT (HINDSIGHT & TELEMETRY)"},
+		{"id":"grp_tier3","type":"group","text":"💾 TẦNG 3: LƯU VẾT LỊCH SỬ & QUAN HỆ (SUPABASE & OBSIDIAN)","x":-1120,"y":460,"width":1300,"height":720,"color":"2","label":"💾 TẦNG 3: LƯU VẾT LỊCH SỬ & QUAN HỆ (SUPABASE & OBSIDIAN)"},
+		{"id":"grp_tier12","type":"group","text":"⚡ TẦNG 1 & 2: THỰC THI & NÉN NGỮ CẢNH (LLM & JEV)","x":1080,"y":-360,"width":1680,"height":440,"color":"5","label":"⚡ TẦNG 1 & 2: THỰC THI & NÉN NGỮ CẢNH (LLM & JEV)"},
+		{"id":"grp_tier0","type":"group","text":"🖥️ TẦNG 0: ĐA CLIENT & ĐIỀU PHỐI (IDE & ROUTER)","x":-1120,"y":-400,"width":1300,"height":480,"color":"3","label":"🖥️ TẦNG 0: ĐA CLIENT & ĐIỀU PHỐI (IDE & ROUTER)"},
+		{"id":"node_llm","type":"text","text":"### 🟢 TẦNG 1: LLM Engine\n- **DeepSeek V4.1 Flash / Pro**\n- **Claude 3.7 Sonnet** / **GPT-5.6**\n- **Tốc độ:** **1.5s / turn**\n- **Prompt:** Duy trì tối ưu < 80k tokens\n- Triệt tiêu 100% bẫy lặp CoT monologue","x":1120,"y":-300,"width":530,"height":260,"color":"4"},
+		{"id":"node_ide","type":"text","text":"### 💻 Đa Client IDE\n- **Codex Desktop**\n- **Claude Code**\n- **VS Code Copilot**\n- **Antigravity / OpenClaw**","x":-1080,"y":-340,"width":300,"height":300,"color":"3"},
+		{"id":"node_router","type":"text","text":"### ⚡ Codex Router (:4202/:4200)\n- `repeatedSegmentCollapseTransform` (Chống lặp)\n- `bridgeCustomTools` (Chuyển Custom -> Function Tool)\n- Ngưỡng nén: `autoCompact: 160k`\n- Tích hợp Auto Hook `PreCompact` & `PostCompact`","x":-430,"y":-340,"width":500,"height":300,"color":"3"},
+		{"id":"node_sync","type":"text","text":"### 🔄 Sync Memory Bank\n- Lệnh thống nhất: `dong-bo-second-brain.ps1`\n- Rút tỉa **3–5 Fact cốt lõi** cuối phiên\n- Tự động lọc rác, chỉ lưu quyết định và bài học","x":1120,"y":540,"width":480,"height":420,"color":"1"},
+		{"id":"node_supabase","type":"text","text":"### 🐘 TẦNG 3A: Supabase PostgreSQL\n- `public.bookmarks` (188 links 12 cụm)\n- `public.agent_sessions` & `session_records`\n- `public.compaction_checkpoints`\n- Bảo mật: RLS Enabled 100% (Advisor Pass)\n- PostgREST OpenAPI (:3003) & Studio (:8012)","x":-1080,"y":520,"width":520,"height":300,"color":"2"},
+		{"id":"node_obsidian","type":"text","text":"### 📓 TẦNG 3B: Obsidian Vault\n- Lưu trữ vật lý chính: `D:\\61.SetupAgent\\MemoryContext`\n- Chuẩn **Karpathy LLM Wiki Pattern**:\n  - `raw/` (Tài liệu gốc read-only)\n  - `wiki/` (sources, entities, concepts, synthesis)\n  - `projects/` (Inputs -> Process -> Outputs -> Feedback)\n  - `wiki/log.md` (Nhật ký audit tự động)","x":-430,"y":740,"width":520,"height":300,"color":"2"},
+		{"id":"node_hindsight","type":"text","text":"### 🌐 TẦNG 4: Hindsight Graph RAG\n- **Local (:8890):** `may-agent-memory` (7.6k facts), `may-handover` (17k facts)\n- **VPS (:8888):** 17 banks Khối Kỹ Thuật (`kkt`, `da-kkt-tranning-bim`, `da-kkt-nobu`)\n- **Truy xuất 0-token**, không ô nhiễm log rác","x":2200,"y":540,"width":520,"height":420,"color":"1"},
+		{"id":"node_jev","type":"text","text":"### 🔵 TẦNG 2: Jev Fast Compactor\n- **TypeSafe AI System One**\n- Chấm điểm relevance `p(drop)` trong **1.0 giây**\n- Chi phí: **$0.042 / 1 triệu tokens**\n- Giữ nguyên văn code sửa & lỗi, drop log thừa","x":2120,"y":-300,"width":480,"height":260,"color":"5"}
+	],
+	"edges":[
+		{"id":"e_ide_router","fromNode":"node_ide","fromSide":"right","toNode":"node_router","toSide":"left","label":"Prompt & Tools"},
+		{"id":"e_router_llm","fromNode":"node_router","fromSide":"right","toNode":"node_llm","toSide":"left","label":"Prompt < 80k (1.5s/turn)"},
+		{"id":"e_router_jev","fromNode":"node_router","fromSide":"bottom","toNode":"node_jev","toSide":"left","label":"Khi Context >= 100k: Nén tức thì 1s"},
+		{"id":"e_jev_supabase","fromNode":"node_jev","fromSide":"bottom","toNode":"node_supabase","toSide":"top","label":"Offload tool logs rác"},
+		{"id":"e_jev_obsidian","fromNode":"node_jev","fromSide":"bottom","toNode":"node_obsidian","toSide":"top","label":"Ghi session transcript"},
+		{"id":"e_supabase_sync","fromNode":"node_supabase","fromSide":"right","toNode":"node_sync","toSide":"left","label":"Tổng hợp phiên"},
+		{"id":"e_obsidian_sync","fromNode":"node_obsidian","fromSide":"right","toNode":"node_sync","toSide":"left","label":"Chắt lọc 3-5 facts"},
+		{"id":"e_sync_hindsight","fromNode":"node_sync","fromSide":"right","toNode":"node_hindsight","toSide":"left","label":"Ghi fact bền vững (0-token recall)"}
+	]
+}

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Twitter / X Lights-Out Theme for Obsidian
+   Replaces all purple accents with Twitter Blue (#1D9BF0) and pure sleek dark UI
+   ========================================================================== */
+
+:root, .theme-dark {
+  /* Twitter Colors */
+  --twitter-blue: #1D9BF0;
+  --twitter-blue-hover: #1A8CD8;
+  --twitter-blue-subtle: rgba(29, 155, 240, 0.18);
+  --twitter-black: #000000;
+  --twitter-dark-surface: #0e1217;
+  --twitter-border: #2F3336;
+  --twitter-text: #F7F9F9;
+  --twitter-text-muted: #71767B;
+
+  /* Obsidian Theme Overrides */
+  --color-accent: var(--twitter-blue) !important;
+  --color-accent-1: var(--twitter-blue-hover) !important;
+  --color-accent-2: var(--twitter-blue) !important;
+  --interactive-accent: var(--twitter-blue) !important;
+  --interactive-accent-hover: var(--twitter-blue-hover) !important;
+  --text-accent: var(--twitter-blue) !important;
+  --text-accent-hover: var(--twitter-blue-hover) !important;
+  
+  /* Link colors */
+  --link-color: var(--twitter-blue) !important;
+  --link-color-hover: var(--twitter-blue-hover) !important;
+  --link-external-color: var(--twitter-blue) !important;
+  
+  /* Active selection and file highlight - NO MORE PURPLE */
+  --nav-item-background-active: var(--twitter-blue-subtle) !important;
+  --nav-item-color-active: #FFFFFF !important;
+  --nav-item-weight-active: 600 !important;
+  
+  /* Caret and cursor */
+  --caret-color: var(--twitter-blue) !important;
+}
+
+/* Sidebar active file bar - Twitter Blue pill */
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+.tree-item-self.is-active,
+.is-selected {
+  background-color: rgba(29, 155, 240, 0.22) !important;
+  color: #FFFFFF !important;
+  border-left: 3px solid #1D9BF0 !important;
+  border-radius: 4px !important;
+}
+
+/* Hover on nav items */
+.tree-item-self:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Active tab header */
+.workspace-tab-header.is-active {
+  color: #1D9BF0 !important;
+  border-bottom: 2px solid #1D9BF0 !important;
+  background-color: rgba(29, 155, 240, 0.06) !important;
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+/* Tab text */
+.workspace-tab-header-inner-title {
+  color: #A0A5AA !important;
+}
+
+/* Clean up table headers */
+.markdown-rendered table th {
+  background-color: #16181C !important;
+  color: #1D9BF0 !important;
+  border-bottom: 2px solid #2F3336 !important;
+  font-weight: 600 !important;
+}
+
+.markdown-rendered table td {
+  border-color: #2F3336 !important;
+}
+
+/* Headings with crisp white */
+.markdown-rendered h1 {
+  color: #F7F9F9 !important;
+  border-bottom: 1px solid #2F3336 !important;
+  padding-bottom: 8px !important;
+}
+
+.markdown-rendered h2, 
+.markdown-rendered h3 {
+  color: #E7E9EA !important;
+}
+
+/* Wikilinks */
+.internal-link {
+  color: #1D9BF0 !important;
+  text-decoration: none !important;
+}
+.internal-link:hover {
+  text-decoration: underline !important;
+  color: #1A8CD8 !important;
+}
+
+/* Tag pills */
+.tag {
+  color: #1D9BF0 !important;
+  background-color: rgba(29, 155, 240, 0.12) !important;
+  border: 1px solid rgba(29, 155, 240, 0.3) !important;
+  border-radius: 999px !important;
+}
