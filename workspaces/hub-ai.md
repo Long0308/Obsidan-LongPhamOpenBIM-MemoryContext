@@ -1,6 +1,6 @@
 ---
 workspace: hub-ai
-total_sessions: 1
+total_sessions: 2
 tags: [workspace, hub, hub-ai]
 ---
 
@@ -13,6 +13,7 @@ tags: [workspace, hub, hub-ai]
 
 | Ngày | Phiên Chat Chi Tiết | Mô Hình AI | Token |
 |---|---|---|---|
+| 29/09/2026 | [[sessions/codex-01a0ea7d|Reviewing `setup/vscode/docs`: - `ai-ghi-vao-dau.archify.json` & `.html` - ]] | `custom/oauth-anti-gemini-flash-high` | 34,224,084 |
 | 25/09/2026 | [[sessions/codex-01a0d6fb|là 1 bách sĩ nguyên khoa siêu âm tuyến vú đọc kết quả này giúp tôi]] | `custom/oauth-anti-gemini-flash-high` | 316,302 |
 
 ---

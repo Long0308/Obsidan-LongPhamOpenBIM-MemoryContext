@@ -5,7 +5,7 @@ date: 24/09/2026 08:37:20
 workspace: "[[workspaces/61-SetupAgent|61.SetupAgent]]"
 model: "[[models/custom-oauth-anti-gemini-flash-high|custom/oauth-anti-gemini-flash-high]]"
 ide: Codex Desktop
-tokens: 455223658
+tokens: 488224955
 tags: [session, codex, 61-SetupAgent]
 ---
 
@@ -13,7 +13,7 @@ tags: [session, codex, 61-SetupAgent]
 
 > **Nền tảng**: Codex Desktop · **Mô hình**: `[[models/custom-oauth-anti-gemini-flash-high|custom/oauth-anti-gemini-flash-high]]`
 > **Thư mục**: `[[workspaces/61-SetupAgent|61.SetupAgent]]` · **Thời gian**: `24/09/2026 08:37:20`
-> **Mức tiêu thụ**: **455,223,658 tokens**
+> **Mức tiêu thụ**: **488,224,955 tokens**
 
 ---
 

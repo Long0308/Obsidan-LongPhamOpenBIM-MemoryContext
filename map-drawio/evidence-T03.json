@@ -1,0 +1,160 @@
+{
+  "task": "T03",
+  "objective": "Chay generate_nex_architecture_drawio.py mot lan, co backup, xuat artifact + evidence",
+  "evidence_provenance": "RECONSTRUCTED BY ROOT: buoc 6 cua builder da khong ghi file nay; root do lai tu file that + backup that (khong lay tu loi khai cua builder).",
+  "timestamp": "2026-10-02T14:28:42.685080+07:00",
+  "command": "python D:\\61.SetupAgent\\generate_nex_architecture_drawio.py",
+  "exit_code": 0,
+  "harness_evidence": {
+    "model_cli": "opencode-go/deepseek-v4.1-flash",
+    "provider_relay": "codex-router-signed",
+    "provider_upstream": "opencode-go",
+    "exit_code": 0,
+    "het_gio": false,
+    "turn_completed": true,
+    "ket_luan": "DUNG",
+    "source": "codex_router\\tools\\harness-cli.ps1 -Vai worker"
+  },
+  "files": {
+    "NEX Map.drawio": {
+      "path": "D:\\61.SetupAgent\\MemoryContext\\map-drawio\\NEX Map.drawio",
+      "before": {
+        "sha256": "a71ddac40841b28f53dc177aa00ee27aa3b5374b39c7f26087ed25cb16243e45",
+        "size": 10145841,
+        "page_count": 13,
+        "page_ids": [
+          "M32W4NCCQRAxRLgJopBE",
+          "yEUkmWXfPsVM6degbdXP",
+          "xzbemNa1v2obxV9PqgD_",
+          "ttmBsvplukT1wxgEPFqW",
+          "a8WyxDoc4DfXBEMRYVyF",
+          "qrRuKn54Kb_6Cb-6uU2F",
+          "xtENOoWD10USCw6JoGd8",
+          "QK1NEtlztfDamrScvjaQ",
+          "0nXnxJs-RGZRqjrrXtd0",
+          "qlIo2Yp2Z5cKsHNKgtCX",
+          "_IWdqTc8NahSZ0TwYNB3",
+          "NEX-HA-TANG-FPT-GPU",
+          "NEX-7-TANG-FRAMEWORK"
+        ],
+        "image_cells": 244,
+        "base64_icons": 9
+      },
+      "after": {
+        "sha256": "7085ea3baa5362641dd39c9256e5ae1ae7885edb9413232007f6c1e1e3d7b3a5",
+        "size": 10314300,
+        "page_count": 13,
+        "page_ids": [
+          "M32W4NCCQRAxRLgJopBE",
+          "yEUkmWXfPsVM6degbdXP",
+          "xzbemNa1v2obxV9PqgD_",
+          "ttmBsvplukT1wxgEPFqW",
+          "a8WyxDoc4DfXBEMRYVyF",
+          "qrRuKn54Kb_6Cb-6uU2F",
+          "xtENOoWD10USCw6JoGd8",
+          "QK1NEtlztfDamrScvjaQ",
+          "0nXnxJs-RGZRqjrrXtd0",
+          "qlIo2Yp2Z5cKsHNKgtCX",
+          "_IWdqTc8NahSZ0TwYNB3",
+          "NEX-HA-TANG-FPT-GPU",
+          "NEX-7-TANG-FRAMEWORK"
+        ],
+        "image_cells": 256,
+        "base64_icons": 21
+      }
+    },
+    "khung_kien_truc_nex_7_tang.drawio": {
+      "path": "D:\\61.SetupAgent\\Zalo-KKT\\docs\\khung_kien_truc_nex_7_tang.drawio",
+      "before": {
+        "sha256": "ace671419d6f51a064a68a27d3fcc9f4caafaa864b9078ffe40ca4ed78f5bf91",
+        "size": 15678,
+        "page_count": 1,
+        "page_ids": [
+          "NEX-7-TANG-FRAMEWORK"
+        ],
+        "image_cells": 0,
+        "base64_icons": 0
+      },
+      "after": {
+        "sha256": "4de79b49a727eb8e65350716427c459934683a657afc8f37e0684952c50760f2",
+        "size": 184137,
+        "page_count": 1,
+        "page_ids": [
+          "NEX-7-TANG-FRAMEWORK"
+        ],
+        "image_cells": 12,
+        "base64_icons": 12
+      }
+    },
+    "ha_tang_fpt_gpu_cloud.drawio": {
+      "path": "D:\\61.SetupAgent\\Zalo-KKT\\docs\\ha_tang_fpt_gpu_cloud.drawio",
+      "before": {
+        "sha256": "1f7650d10960bb4720396273dd1d2e69f97ebea736e6009d0f3c4a5d3c332ae0",
+        "size": 527199,
+        "page_count": 1,
+        "page_ids": [
+          "NEX-HA-TANG-FPT-GPU"
+        ],
+        "image_cells": 9,
+        "base64_icons": 9
+      },
+      "after": {
+        "sha256": "1f7650d10960bb4720396273dd1d2e69f97ebea736e6009d0f3c4a5d3c332ae0",
+        "size": 527199,
+        "page_count": 1,
+        "page_ids": [
+          "NEX-HA-TANG-FPT-GPU"
+        ],
+        "image_cells": 9,
+        "base64_icons": 9
+      }
+    },
+    "drawio_new_hashes.json": {
+      "path": "D:\\61.SetupAgent\\Zalo-KKT\\docs\\drawio_new_hashes.json",
+      "before": {
+        "sha256": "78a8826d1a7238d8113f185a5d740430472e2a917102b2ad0474fb4526df123c",
+        "size": 686492,
+        "keys": [
+          "ha_tang_fpt",
+          "nex_7_tang"
+        ],
+        "value_lengths": {
+          "ha_tang_fpt": 508002,
+          "nex_7_tang": 178444
+        }
+      },
+      "after": {
+        "sha256": "78a8826d1a7238d8113f185a5d740430472e2a917102b2ad0474fb4526df123c",
+        "size": 686492,
+        "keys": [
+          "ha_tang_fpt",
+          "nex_7_tang"
+        ],
+        "value_lengths": {
+          "ha_tang_fpt": 508002,
+          "nex_7_tang": 178444
+        }
+      }
+    }
+  },
+  "backups": [
+    "D:\\61.SetupAgent\\MemoryContext\\map-drawio\\NEX Map.drawio.bak-t03-20261002T142424",
+    "D:\\61.SetupAgent\\Zalo-KKT\\docs\\khung_kien_truc_nex_7_tang.drawio.bak-t03-20261002T142424",
+    "D:\\61.SetupAgent\\Zalo-KKT\\docs\\ha_tang_fpt_gpu_cloud.drawio.bak-t03-20261002T142424",
+    "D:\\61.SetupAgent\\Zalo-KKT\\docs\\drawio_new_hashes.json.bak-t03-20261002T142424"
+  ],
+  "incidents": [],
+  "verdict": "DAT_CO_DIEU_KIEN",
+  "nex_map_page_integrity": {
+    "pages_before": 13,
+    "pages_after": 13,
+    "pages_lost": [],
+    "pages_lost_outside_expected": [],
+    "preserved_pages_semantically_identical": 11,
+    "preserved_pages_modified": [],
+    "replaced_pages_changed": {
+      "NEX-HA-TANG-FPT-GPU": false,
+      "NEX-7-TANG-FRAMEWORK": true
+    }
+  }
+}

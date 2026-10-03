@@ -3,17 +3,17 @@ id: codex-01a0cccf
 title: "kiểm tra hub ban cải tiến như nào rồi"
 date: 23/09/2026 12:49:29
 workspace: "[[workspaces/Ban-Cai-Tien|Ban Cải Tiến]]"
-model: "[[models/gpt-6-luna|gpt-6-luna]]"
+model: "[[models/custom-oauth-cc-opus|custom/oauth-cc-opus]]"
 ide: Codex Desktop
-tokens: 434673144
+tokens: 735321136
 tags: [session, codex, Ban-Cai-Tien]
 ---
 
 # 🗣️ Phiên Chat: kiểm tra hub ban cải tiến như nào rồi
 
-> **Nền tảng**: Codex Desktop · **Mô hình**: `[[models/gpt-6-luna|gpt-6-luna]]`
+> **Nền tảng**: Codex Desktop · **Mô hình**: `[[models/custom-oauth-cc-opus|custom/oauth-cc-opus]]`
 > **Thư mục**: `[[workspaces/Ban-Cai-Tien|Ban Cải Tiến]]` · **Thời gian**: `23/09/2026 12:49:29`
-> **Mức tiêu thụ**: **434,673,144 tokens**
+> **Mức tiêu thụ**: **735,321,136 tokens**
 
 ---
 
@@ -98,5 +98,5 @@ Checking the contents of `CF-TUNNEL-HUB-BIM02.cmd` to see what tunnels might be 
 ## 🧭 3. Điều Hướng & Liên Kết Mạng Lưới
 - 📋 Danh mục tổng: [[Session-Chat-History|Trang Tổng Hợp Lịch Sử Phiên Chat]]
 - 🏢 Không gian làm việc: [[workspaces/Ban-Cai-Tien|Dự án Ban Cải Tiến]]
-- 🤖 Mô hình xử lý: [[models/gpt-6-luna|gpt-6-luna]]
+- 🤖 Mô hình xử lý: [[models/custom-oauth-cc-opus|custom/oauth-cc-opus]]
 - 🗺️ Bản đồ quan hệ: [[Memory-Graph.canvas|Canvas Mạng Lưới Tri Thức]]
