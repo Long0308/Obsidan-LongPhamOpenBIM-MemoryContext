@@ -1,7 +1,7 @@
 # 📖 Wiki Catalog & Master Index
 
 > **LLM Wiki Pattern (Andrej Karpathy / second-brain-os)**
-> Đây là mục lục trung tâm được tự động đọc đầu tiên bởi mọi Agent (Claude Code, Codex Desktop, VS Code Copilot).
+> Mục lục wiki tại vault `D:/61.SetupAgent/MemoryContext/LPOpenBIMAI`. Agent dùng wiki cần mở mục lục này; chưa có bằng chứng mọi runtime tự đọc khi vào phiên.
 
 ---
 

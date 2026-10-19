@@ -8,4 +8,4 @@ tags: [model, ai, gateway]
 > Mô hình AI được gọi thông qua Gateway điều phối (Codex Router / 9Router / New-API).
 
 ## 📋 Các Phiên Làm Việc Sử Dụng Mô Hình Này
-- [[sessions/codex-01a0fa83|Tra loi dung mot dong: OPUS-OK]] (*61.SetupAgent* - 02/10/2026)
+- [[sessions/codex-01a10ab3|Task Codex]] (*e2e_cx_131329* - 05/10/2026)

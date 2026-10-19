@@ -1,3 +1,45 @@
+<!-- BOOKMARKS_GENERATED_START -->
+# Bookmark HUB AI
+
+Snapshot: 2026-10-12. 307 unique URLs / 18 groups.
+Content SHA-256: `fd66930699b5d4980de3df7674dda3fc862da845a3b816029dbb616948a9d643`.
+
+Local profile clone verified; Google Cloud upload unverified. Cross-account continuous sync is not implemented.
+
+Accounts: [[LPOpenBIMAI/wiki/entities/bookmarks/accounts/kenpham320|kenpham320@gmail.com]] / [[LPOpenBIMAI/wiki/entities/bookmarks/accounts/philongpham018|philongpham018@gmail.com]]
+
+Canvas: [[LPOpenBIMAI/wiki/sources/HUB-AI.canvas|HUB AI]]
+
+## Categories
+
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/01-NEX|01-NEX]] (2)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/02-Newtecons|02-Newtecons]] (27)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/03-HERMES DESKTOP|03-HERMES DESKTOP]] (2)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/04-HERMES VPS|04-HERMES VPS]] (2)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/05-Agent & Harness|05-Agent & Harness]] (32)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/06-Skills & Prompts|06-Skills & Prompts]] (19)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/07-Memory & Knowledge|07-Memory & Knowledge]] (11)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/08-AI & LLM|08-AI & LLM]] (17)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/09-Frontend UI|09-Frontend UI]] (17)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/10-Backend & API|10-Backend & API]] (14)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/11-OCR & Documents|11-OCR & Documents]] (8)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/12-BIM Revit & CAD|12-BIM Revit & CAD]] (55)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/13-MCP & DevTools|13-MCP & DevTools]] (13)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/14-Router & LLM API|14-Router & LLM API]] (14)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/15-Cloud, VPS & Mạng|15-Cloud, VPS & Mạng]] (17)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/16-IoT, PLC & In 3D|16-IoT, PLC & In 3D]] (14)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/17-Media, Video & Images|17-Media, Video & Images]] (22)
+- [[LPOpenBIMAI/wiki/entities/bookmarks/categories/18-Tiện ích & Cá nhân|18-Tiện ích & Cá nhân]] (21)
+<!-- BOOKMARKS_GENERATED_END -->
+
+## Bản Triển Khai Mới (16/10/2026)
+
+[[wiki/sources/bookmarks-sidebar-search-2026-10-16|Bookmark Sidebar Search v1.2]] bổ sung sidebar, tìm từ khóa/đoạn trích đã lưu, graph ngữ cảnh và chỉnh sửa. Không gọi graph cục bộ là Cognee trực tiếp.
+
+[[wiki/sources/bookmarks-cloud-extension-2026-10-16|Bookmark Cloud Extension v1.1]] ghi mốc đóng gói trước khi người dùng cài; nguồn Cloudflare đã đọc lại 308 URL / 18 nhóm ở revision 3. Ảnh người dùng gửi sau đó hiển thị đã xác minh 308 URL / 18 nhóm / 0 trùng trên hồ sơ đang mở, nhưng chưa kết nối Cloudflare; không suy thành hai Gmail/mọi máy đã đồng bộ. Snapshot 307 URL và nhận định ngày 12/10 trong khối generated ở trên được giữ nguyên như lịch sử, không phải trạng thái triển khai mới.
+
+## Historical Catalog (25 September 2026, Not Reverified)
+
 # 🔖 Danh Mục Dấu Trang Chuẩn Hóa 12 Cụm (Hub AI & KKT)
 
 > Đồng bộ tự động 12 cụm không trùng lặp từ Supabase & Chrome Profiles.

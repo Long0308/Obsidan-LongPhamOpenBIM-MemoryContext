@@ -5,7 +5,7 @@ date: 03/10/2026 09:31:53
 workspace: "[[workspaces/61-SetupAgent|61.SetupAgent]]"
 model: "[[models/gpt-6.1-sol|gpt-6.1-sol]]"
 ide: Codex Desktop
-tokens: 28313363
+tokens: 1361349294
 tags: [session, codex, 61-SetupAgent]
 ---
 
@@ -13,7 +13,7 @@ tags: [session, codex, 61-SetupAgent]
 
 > **Nền tảng**: Codex Desktop · **Mô hình**: `[[models/gpt-6.1-sol|gpt-6.1-sol]]`
 > **Thư mục**: `[[workspaces/61-SetupAgent|61.SetupAgent]]` · **Thời gian**: `03/10/2026 09:31:53`
-> **Mức tiêu thụ**: **28,313,363 tokens**
+> **Mức tiêu thụ**: **1,361,349,294 tokens**
 
 ---
 

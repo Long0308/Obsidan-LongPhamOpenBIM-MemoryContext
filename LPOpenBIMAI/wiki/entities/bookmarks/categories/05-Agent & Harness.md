@@ -1,0 +1,40 @@
+<!-- BOOKMARKS_GENERATED_START -->
+# 05-Agent & Harness
+
+Catalog: [[LPOpenBIMAI/wiki/sources/bookmarks-hub-ai|Bookmark HUB AI]]
+
+## Bookmarks
+
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/b8c54ae28635cab69ee2a68d025f4c787cab9087a53a4f9c6362d82baa62296d|AI Coding Agent for Building Ambitious Software]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/ffedf23310e567ac2e90456a86c7e43f1d0055d85cb7dd2d524433f0d3efb0eb|GitHub - CopilotKit/openbot]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/cc4387902a8a7ddd5dca28facdb8be11270a4fd4750b2c46408eaec67cf7719e|GitHub - CristianOlivera1/openhero]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/6ee8fd955bc189c6a7899999b0e5f9e4ba247783624fef0dcafd485c3a89fffd|GitHub - MeisnerDan/mission-control]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/6eb73169f84ce43f98c75fcf0a5b59a0b6373d3829a3919151941cd320d6c61f|GitHub - NVIDIA/OpenShell: OpenShell is the safe, private runtime for autonomous AI agents. · GitHub]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/6db84a0c1d7c713b0356b07ec4f25b3a9ba605a9e131b822ad5ce9f3865f4686|GitHub - abundantbeing/hermes-browser-extension]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/5912247006ebb2f59da7aae5d51559cdc0dd6f7bdf2f5c98dcb6558db70988ef|GitHub - block/buzz]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/c1af6b58492f9bf434d283140c089cd8bec568302933f45108ba7657de9dd41a|GitHub - browser-use/browser-use: Agents that use the browser. · GitHub]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/16389f32495280ea98c7dc97d94e58609236d0b9919875016bc9d018f60ef5bf|GitHub - bytedance/deer-flow]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/31654d592b3b74d6fe249b9545ef8509cd97d8ffcc6dfa83d3e163a5f873e5c5|GitHub - heyjunpenn/awesome-jev]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/642743ad9061795af98bf77460ef1f89a7fb0d9c89887f62161b116b06801865|GitHub - langchain-ai/langgraph: Build resilient agents. · GitHub]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/63734ae06c596e9c1cc68ad343ffa50ab70466584145fdd00cccc128c2e0cc8c|GitHub - miuuyy/codex-chatgpt-web]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/8b01562a542974d19da4171ee06ac962998aa11236a58f3c13907dc64fb987b2|GitHub - superdesigndev/treg]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/e7169d0eea5980594dcd2fcc3e27c78278f4d0058755faf9d4e7b6f5031cf166|OpenClaw Control]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/13369e5afe1dcd8a0fc719a207ba08eba98cad6a7a4f06e2c3501573d4a1a9f2|OpenClaw Control]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/b6bb9341088f095442de1a74399cf3b7f18543efbdba973ae61774083f821ac5|Panniantong/Agent-Reach: Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/715b6bc81ab4b4ffcee5bb2150989321b00958a3da8b9307fbbd467d19cd4e11|crewAIInc/crewAI: Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/d807807ac58742dd264bf1e90085cab2dcab2882313d506f74fcd17dca632abd|microsoft/autogen: A programming framework for agentic AI]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/bbba856f6f33851163b0e4b3db30768dce34f83d4dea60db586e591cb96a8252|AI Coding Agent for Building Ambitious Software   Cursor]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/41dec400e26755b44a960a4a21cb77c65effe179b4547f51ffe2935fba1a9283|How NVIDIA Uses Tavily to Post-Train Deep Research Agents   Tavily Blog]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/6138ec733e3c4420aa012e0153ea15631c6576036f5b4d12d03ef22b412355d9|hermes-agent.nousresearch.com]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/91e036cf80447c2862e7a674572f01f9a19b9bad48662fac4b235d69fd0d270f|opencode]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/5712c0eccd7254a3ee6bc57902ee53fbfe488f28e6b97db121a973eb03d6a580|opencode]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/75c0c1ad245041de8bcf4caf5968ebc2d632c8f374d713d352ac2b5b0bed40ea|opencode.ai - go]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/7800399f14031c711a2a2cccbba190cbf0a791c5b7b472b1eec6df57dc20cb75|skool.com - about]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/890a56b0d2aff0c91c90bfee3adfd87e27a25d9e9e9f50e04c210ad01604188a|GitHub - deepseek-ai/deepseek-harness]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/feffd18453079320519827a2e828cc25cce402b4154d801f993dbb94c4095568|GitHub - donvito/codex-astra-luna-orchestrator]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/5033fc56af0af863a8c3f9a17bd0da88b3b0393f3cfbd9b71123a8cf70b1f92b|GitHub - donvito/codex-astra-luna-orchestrator]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/51673993f23a3f293847d68ec8073964f85b7def5051192b545059356cbd0769|GitHub - robonuggets/gauntlet-loop]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/a0f083f30d91311f715705db436259681686e79db7855a3bbfa3f01e2a8e58b1|instructkr/claw-code: The fastest repo in history to surpass 50K stars ⭐, reaching the milestone in just 2 hours after publication. Better Harness Tools, not merely storing the archive of leaked Claude Code but also make real things done. Now rewriting in Rust.]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/ba480b3db697a54441f0b10266db3d6adbb091a9de7af46b99a047660196f499|omdsh-dev/dsh-browser: Chrome sidebar extension that lets DeepSeek Harness operate your browser directly, no vision capabilities required. 一款 Chrome 侧边栏扩展程序，可让 DeepSeek Harness 直接操控您的浏览器，无需视觉能力。]]
+- [[LPOpenBIMAI/wiki/entities/bookmarks/links/27a4e3408234f1e83107da1ce3f4eed338111f9fa85cbda4f3bafd721c17b62b|we0.ai - claude-opus-5-s-gauntlet-loop]]
+<!-- BOOKMARKS_GENERATED_END -->

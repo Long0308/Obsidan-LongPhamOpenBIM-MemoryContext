@@ -51,123 +51,103 @@
       "color": "3"
     },
     {
-      "id": "node-sess-01a0ff9a",
+      "id": "node-sess-01a11a0e",
       "x": -700,
       "y": -420,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0ff9a|[ Codex tip: once GPT-6.1 Sol is yo...]]**\n`gpt-6.1-sol`",
+      "text": "**[[sessions/codex-01a11a0e|Guardian review...]]**\n`codex-auto-review`",
       "color": "2"
     },
     {
-      "id": "node-sess-01a0fbc3",
+      "id": "node-sess-01a119f7",
       "x": -700,
       "y": -340,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0fbc3|Cloudflare vừa thả model lên Huggin...]]**\n`opencode-go/deepseek-v4.1`",
+      "text": "**[[sessions/codex-01a119f7|Guardian review...]]**\n`codex-auto-review`",
       "color": "2"
     },
     {
-      "id": "node-sess-01a0fb8c",
+      "id": "node-sess-01a119f5",
       "x": -700,
-      "y": -260,
+      "y": 340,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0fb8c|Task: T04b — NGHIEM THU DOC LAP, PH...]]**\n`custom/oauth-anti-gemini-`",
+      "text": "**[[sessions/codex-01a119f5|Guardian review...]]**\n`codex-auto-review`",
       "color": "2"
     },
     {
-      "id": "node-sess-01a0fb84",
+      "id": "node-sess-01a1199f",
       "x": -700,
       "y": -180,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0fb84|Task: T04 — NGHIEM THU DOC LAP arti...]]**\n`custom/oauth-anti-gemini-`",
+      "text": "**[[sessions/codex-01a1199f|5. Use Windows Explorer to locate a...]]**\n`opencode-go/deepseek-v4.1`",
       "color": "2"
     },
     {
-      "id": "node-sess-01a0fb7e",
+      "id": "node-sess-01a11969",
+      "x": -700,
+      "y": 180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a11969|Gói khôi phục `0924` đã đầy đủ 122 ...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a1158c",
+      "x": -700,
+      "y": 260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a1158c|kiểm tra lỗi này...]]**\n`custom/oauth-anti-sonnet-`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a113ce",
+      "x": -700,
+      "y": -260,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a113ce|🌎 BƯỚC 1: Mở ChatGPT chế độ Work (p...]]**\n`gpt-6.1-sol`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a109a1",
+      "x": -700,
+      "y": -180,
+      "width": 260,
+      "height": 70,
+      "type": "text",
+      "text": "**[[sessions/codex-01a109a1|Hello, respond with CODEX IS ALIVE...]]**\n`opencode-go/deepseek-v4.1`",
+      "color": "2"
+    },
+    {
+      "id": "node-sess-01a1099c",
       "x": -700,
       "y": -420,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0fb7e|Task: T03 — Thi hanh BUOC 1 cua ski...]]**\n`opencode-go/deepseek-v4.1`",
+      "text": "**[[sessions/codex-01a1099c|Hello, respond with: CODEX READY...]]**\n`opencode-go/deepseek-v4.1`",
       "color": "2"
     },
     {
-      "id": "node-sess-01a0fb76",
+      "id": "node-sess-01a10982",
       "x": -700,
       "y": -340,
       "width": 260,
       "height": 70,
       "type": "text",
-      "text": "**[[sessions/codex-01a0fb76|hãy sử dụng subagent để phân tích t...]]**\n`opencode-go/deepseek-v4.1`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fab2",
-      "x": -700,
-      "y": -260,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fab2|tìm giao thưc spec autodesk về spec...]]**\n`opencode-go/deepseek-v4.1`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fa8b",
-      "x": -700,
-      "y": -180,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fa8b|Tra loi dung mot dong: ANTI-4...]]**\n`custom/oauth-anti-gemini-`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fa8b",
-      "x": -700,
-      "y": -420,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fa8b|Tra loi dung mot dong: ANTI-3...]]**\n`custom/oauth-anti-gemini-`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fa8a",
-      "x": -700,
-      "y": -340,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fa8a|Tra loi dung mot dong: ANTI-2...]]**\n`custom/oauth-anti-gemini-`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fa8a",
-      "x": -700,
-      "y": -260,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fa8a|Tra loi dung mot dong: ANTI-A...]]**\n`custom/oauth-anti-gemini-`",
-      "color": "2"
-    },
-    {
-      "id": "node-sess-01a0fa83",
-      "x": -700,
-      "y": -180,
-      "width": 260,
-      "height": 70,
-      "type": "text",
-      "text": "**[[sessions/codex-01a0fa83|Tra loi dung mot dong: OPUS-OK...]]**\n`custom/oauth-cc-opus-5-5`",
+      "text": "**[[sessions/codex-01a10982|Hello, respond with OK...]]**\n`gpt-6.1-sol`",
       "color": "2"
     }
   ],
@@ -201,87 +181,73 @@
       "toSide": "left"
     },
     {
-      "id": "edge-ws-01a0ff9a",
+      "id": "edge-ws-01a11a0e",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0ff9a",
+      "toNode": "node-sess-01a11a0e",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fbc3",
+      "id": "edge-ws-01a119f7",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fbc3",
+      "toNode": "node-sess-01a119f7",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fb8c",
-      "fromNode": "node-ws-61-SetupAgent",
+      "id": "edge-ws-01a119f5",
+      "fromNode": "node-ws-Ban-Cai-Tien",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fb8c",
+      "toNode": "node-sess-01a119f5",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fb84",
+      "id": "edge-ws-01a1199f",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fb84",
+      "toNode": "node-sess-01a1199f",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fb7e",
-      "fromNode": "node-ws-61-SetupAgent",
+      "id": "edge-ws-01a11969",
+      "fromNode": "node-ws-Ban-Cai-Tien",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fb7e",
+      "toNode": "node-sess-01a11969",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fb76",
-      "fromNode": "node-ws-61-SetupAgent",
+      "id": "edge-ws-01a1158c",
+      "fromNode": "node-ws-Ban-Cai-Tien",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fb76",
+      "toNode": "node-sess-01a1158c",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fab2",
+      "id": "edge-ws-01a113ce",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fab2",
+      "toNode": "node-sess-01a113ce",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fa8b",
+      "id": "edge-ws-01a109a1",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fa8b",
+      "toNode": "node-sess-01a109a1",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fa8b",
+      "id": "edge-ws-01a1099c",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fa8b",
+      "toNode": "node-sess-01a1099c",
       "toSide": "right"
     },
     {
-      "id": "edge-ws-01a0fa8a",
+      "id": "edge-ws-01a10982",
       "fromNode": "node-ws-61-SetupAgent",
       "fromSide": "left",
-      "toNode": "node-sess-01a0fa8a",
-      "toSide": "right"
-    },
-    {
-      "id": "edge-ws-01a0fa8a",
-      "fromNode": "node-ws-61-SetupAgent",
-      "fromSide": "left",
-      "toNode": "node-sess-01a0fa8a",
-      "toSide": "right"
-    },
-    {
-      "id": "edge-ws-01a0fa83",
-      "fromNode": "node-ws-61-SetupAgent",
-      "fromSide": "left",
-      "toNode": "node-sess-01a0fa83",
+      "toNode": "node-sess-01a10982",
       "toSide": "right"
     }
   ]
